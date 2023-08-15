@@ -1,0 +1,40 @@
+.App {
+    font-family: "Source Sans 3", sans-serif;
+    min-height: 100vh;
+}
+
+.Headings {
+    font-family: "Playfair Display", sans-serif;
+    font-weight: bold
+}
+
+* {
+    box-sizing: border-box;
+}
+
+a {
+    color: #C4B6B6;
+    transition: color ease-in-out 0.3s;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:hover i {
+    color: #0EA098;
+    transition: color ease-in-out 0.3s;
+}
+
+i {
+    color: white;
+    font-size: 1.6rem;
+    padding: 7px;
+    vertical-align: middle;
+}
+
+i:hover {
+    cursor: pointer;
+    transition: color ease-in-out 0.3s;
+    color: #2142b2;
+}

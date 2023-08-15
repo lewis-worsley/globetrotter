@@ -4,15 +4,16 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
 import logo from "../assets/globetrotters-logo.png";
+import styles from "../styles/NavBar.module.css"
 
 
 const NavBar = () => {
     return (
         <Navbar
-            bg="dark"
             variant="dark"
             expand="md"
             fixed="top"
+            className={styles.NavBar}
         >
             <Container>
                 <Navbar.Brand>
