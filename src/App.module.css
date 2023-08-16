@@ -1,6 +1,7 @@
 .App {
     font-family: "Source Sans 3", sans-serif;
     min-height: 100vh;
+    color: darkslategrey;
 }
 
 .Headings {
@@ -43,4 +44,8 @@ i:hover {
     cursor: pointer;
     transition: color ease-in-out 0.3s;
     color: #0EA098;
+}
+
+.Link {
+    color: darkslategrey;
 }
