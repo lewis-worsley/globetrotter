@@ -5,6 +5,7 @@ import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
 import logo from "../assets/globetrotters-logo.png";
 import styles from "../styles/NavBar.module.css"
+import { NavLink } from "react-router-dom";
 
 
 const NavBar = () => {
@@ -16,17 +17,36 @@ const NavBar = () => {
             className={styles.NavBar}
         >
             <Container>
-                <Navbar.Brand>
-                    <img src={logo} alt="logo" height="45" />
-                </Navbar.Brand>
+                <NavLink to="/home">
+                    <Navbar.Brand>
+                        <img src={logo} alt="logo" height="45" />
+                    </Navbar.Brand>
+                </NavLink>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto">
-                        <Nav.Link><i className="fas fa-home"></i>Home</Nav.Link>
-                        <Nav.Link><i className="fas fa-sign-in-alt"></i>Sign in</Nav.Link>
-                        <Nav.Link>
-                            <Button><i className="fas fa-user-plus"></i>Sign up</Button>
-                        </Nav.Link>
+                        <NavLink
+                            to="/home"
+                            className={styles.NavLink}
+                            activeClassName={styles.Active}
+                        >
+                            <i className="fas fa-home"></i>Home
+                        </NavLink>
+                        <NavLink 
+                            to="/signin"
+                            className={styles.NavLink}
+                            activeClassName={styles.Active}
+                        >
+                            <i className="fas fa-sign-in-alt"></i>Sign in
+                        </NavLink>
+                        <NavLink 
+                            to="signup"
+                            activeClassName={styles.Active}
+                        >
+                            <Button>
+                                <i className="fas fa-user-plus"></i>Sign up
+                            </Button>
+                        </NavLink>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
