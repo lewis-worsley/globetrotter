@@ -8,22 +8,20 @@ import { useHistory } from 'react-router-dom';
 import Alert from 'react-bootstrap/Alert'
 import { Link } from 'react-router-dom';
 
-
-const SignUpForm = () => {
-    const [signUpData, setSignUpData] = useState({
+const SignInForm = () => {
+    const [signInData, setSignInData] = useState({
         username: "",
-        password1: "",
-        password2: "",
+        password: "",
     });
-    const { username, password1, password2 } = signUpData;
+    const { username, password } = signInData;
 
     const [errors, setErrors] = useState({});
 
     const history = useHistory();
 
     const handleChange = (event) => {
-        setSignUpData({
-            ...signUpData,
+        setSignInData({
+            ...signInData,
             [event.target.name]: event.target.value,
         });
     };
@@ -31,8 +29,8 @@ const SignUpForm = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            await axios.post("/dj-rest-auth/registration/", signUpData);
-            history.push("/signin");
+            await axios.post("/dj-rest-auth/login/", signInData);
+            history.goBack("/");
         } catch (err) {
             setErrors(err.response?.data);
         }
@@ -40,8 +38,8 @@ const SignUpForm = () => {
 
     return (
         <div>
-            <h1>Recapture the memories & tell your story</h1>
-            <h2>Join Globetrotters today.</h2>
+            <h1>Hey there, Globetrotter!</h1>
+            <h2>Login to continue the adventure</h2>
             <Form onSubmit={handleSubmit}>
                 <Form.Group controlId="username">
                     <Form.Label className="d-none">Username</Form.Label>
@@ -62,36 +60,17 @@ const SignUpForm = () => {
                     </Alert>
                 )}
 
-                <Form.Group controlId="password1">
+                <Form.Group controlId="password">
                     <Form.Label className="d-none">Password</Form.Label>
                     <Form.Control
                         type="password"
                         placeholder="Password"
-                        name="password1"
-                        value={password1}
+                        name="password"
+                        value={password}
                         onChange={handleChange}
                     />
                 </Form.Group>
-                {errors.password1?.map((message, idx) =>
-                    <Alert
-                        variant="warning"
-                        key={idx}
-                    >
-                        {message}
-                    </Alert>
-                )}
-
-                <Form.Group controlId="password2">
-                    <Form.Label className="d-none">Confirm password</Form.Label>
-                    <Form.Control
-                        type="password"
-                        placeholder="Confirm password"
-                        name="password2"
-                        value={password2}
-                        onChange={handleChange}
-                    />
-                </Form.Group>
-                {errors.password2?.map((message, idx) =>
+                {errors.password?.map((message, idx) =>
                     <Alert
                         variant="warning"
                         key={idx}
@@ -103,27 +82,25 @@ const SignUpForm = () => {
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>
-                <Form.Text className="text-muted">
-                    By signing up, you agree to the Terms of Service and Privacy Policy, including Cookie Use.
-                </Form.Text>
                 {errors.non_field_errors?.map((message, idx) => (
-					<Alert key={idx} variant="warning" className="mt-3">
-						{message}
-					</Alert>
-					))}
+                    <Alert key={idx} variant="warning" className="mt-3">
+                        {message}
+                    </Alert>
+                ))}
             </Form>
 
             <Container className="mt-3">
-                <p>Already have an account?</p>
-                <Link to="/signin">
+                <p>Don't have an account?</p>
+                <Link to="/signup">
                     <Button >
-                        Sign in
+                        Sign up
                     </Button>
                 </Link>
+
             </Container>
 
         </div>
     )
 }
 
-export default SignUpForm
+export default SignInForm
