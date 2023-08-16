@@ -6,15 +6,67 @@ import Button from "react-bootstrap/Button";
 import logo from "../assets/globetrotters-logo.png";
 import styles from "../styles/NavBar.module.css"
 import { NavLink } from "react-router-dom";
-import { useCurrentUser } from "../contexts/CurrentUserContext";
+import { useCurrentUser, useSetCurrentUser } from "../contexts/CurrentUserContext";
+import axios from "axios";
+import Avatar from "./Avatar";
 
 
 const NavBar = () => {
     const currentUser = useCurrentUser();
+    const setCurrentUser = useSetCurrentUser();
 
-    const loggedInIcons = <>{currentUser?.username}</>
+    const handleSignOut = async () => {
+        try {
+            await axios.post("dj-rest-auth/logout/");
+            setCurrentUser(null);
+        } catch(err) {
+            console.log(err);
+        }
+    };
+
+    const loggedInIcons = (
+        <>
+            <NavLink
+                to="/"
+            >
+                <i className="fas fa-stream"></i>Feed
+            </NavLink>
+
+            <NavLink
+                to="/news"
+            >
+                <i className="fa-solid fa-newspaper"></i>News
+            </NavLink>
+
+            <NavLink
+                to="/blogs"
+            >
+                <i className="fa-solid fa-blog"></i>Blogs
+            </NavLink>
+
+            <NavLink
+                to={`/profiles/${currentUser?.profile_id}`}
+            >
+                <Avatar src={currentUser?.profile_image} text="Profile" height={40} /> Profile
+            </NavLink>
+
+            <NavLink
+                to="/home"
+                onClick={handleSignOut}
+            >
+                <i className="fas fa-sign-out-alt"></i>Sign out
+            </NavLink>
+        </>
+    )
     const loggedOutIcons = (
         <>
+            <NavLink
+                to="/home"
+                className={styles.NavLink}
+                activeClassName={styles.Active}
+            >
+                <i className="fas fa-home"></i>Home
+            </NavLink>
             <NavLink
                 to="/signin"
                 className={styles.NavLink}
@@ -49,13 +101,6 @@ const NavBar = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto">
-                        <NavLink
-                            to="/home"
-                            className={styles.NavLink}
-                            activeClassName={styles.Active}
-                        >
-                            <i className="fas fa-home"></i>Home
-                        </NavLink>
                         {currentUser ? loggedInIcons : loggedOutIcons}
                     </Nav>
                 </Navbar.Collapse>
