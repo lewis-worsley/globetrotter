@@ -5,6 +5,7 @@ import { Route, Switch } from "react-router-dom";
 import './api/axiosDefault';
 import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
+import Footer from "./components/Footer";
 
 
 
@@ -23,6 +24,7 @@ function App() {
 					<Route render={() => <h1 className={styles.Headings}>Page not found!</h1>} />
 				</Switch>
 			</Container>
+			<Footer />
 		</div>
 	);
 };
