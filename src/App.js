@@ -7,6 +7,7 @@ import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
 import Footer from "./components/Footer";
 import JourneyCreateForm from "./pages/journeys/JourneyCreateForm";
+import JourneyPage from "./pages/journeys/JourneyPage";
 
 
 
@@ -23,6 +24,7 @@ function App() {
 					<Route exact path='/signin' render={() => <SignInForm />} />
 					<Route exact path='/signup' render={() => <SignUpForm />} />
 					<Route exact path='/journeys/create' render={() => <JourneyCreateForm />} />
+					<Route exact path='/journeys/:id' render={() => <JourneyPage />} />
 					<Route render={() => <h1 className={styles.Headings}>Page not found!</h1>} />
 				</Switch>
 			</Container>
