@@ -1,7 +1,10 @@
 import React from 'react'
 import styles from "../../styles/Journey.modules.css";
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
-import { Card, Media, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import Card from 'react-bootstrap/Card';
+import Media from 'react-bootstrap/Media';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
 import Avatar from '../../components/Avatar';
 import { Link } from "react-router-dom";
 
@@ -16,6 +19,9 @@ const Journey = (props) => {
         likes_count,
         like_id,
         title,
+        content,
+        countries,
+        locations,
         image,
         updated_at,
         journeyPage,
@@ -34,6 +40,11 @@ const Journey = (props) => {
                         <Avatar src={profile_image} height={55} />
                         {owner}
                     </Link>
+                    {countries} 
+                    <div className="d-flex align-items-center">
+                        <span>{updated_at}</span>
+                        {is_owner && journeyPage && "..."}
+                    </div>
                 </Media>
             </Card.Body>
             <Link to={`/journeys/${id}`}>
@@ -41,6 +52,7 @@ const Journey = (props) => {
             </Link>
             <Card.Body>
                 {title && <Card.Title className="text-center">{title}</Card.Title>}
+                {content && <Card.Text>{content}</Card.Text>}
                 <div>
                     {is_owner ? (
                         <OverlayTrigger
@@ -65,7 +77,7 @@ const Journey = (props) => {
                             <i className={`${styles.Heart} far fa-heart`}></i>
                         </OverlayTrigger>
                     )}
-                    <a>{likes_count}</a>
+                    {likes_count}
                     <Link to={`/journeys/${id}`}>
                         <i className={`${styles.Comment} far fa-comments`}></i>
                     </Link>
