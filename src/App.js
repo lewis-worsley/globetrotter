@@ -9,11 +9,8 @@ import Footer from "./components/Footer";
 import JourneyCreateForm from "./pages/journeys/JourneyCreateForm";
 import JourneyPage from "./pages/journeys/JourneyPage";
 import JourneysPage from "./pages/journeys/JourneysPage";
-import { useCurrentUser } from "./contexts/CurrentUserContext";
 
 function App() {
-	const currentUser = useCurrentUser();
-	const profile_id = currentUser?.profile_id || "";
 
 	return (
 		<div className={styles.App}>

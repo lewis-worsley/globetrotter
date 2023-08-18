@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useLocation } from "react-router";
 
-import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
