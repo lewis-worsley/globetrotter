@@ -1,3 +1,16 @@
+.Post {
+    background-color: #ffffff;
+    border: 1px solid #dadadf;
+    border-radius: 2px;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.Post figure,
+h5 {
+    margin: 0 0;
+}
+
 a {
     color: white;
     transition: color ease-in-out 0.3s;
@@ -18,4 +31,3 @@ i:hover {
     transition: color ease-in-out 0.3s;
     color: #0EA098;
 }
-

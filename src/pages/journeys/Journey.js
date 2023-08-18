@@ -7,7 +7,7 @@ import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import Avatar from '../../components/Avatar';
 import { Link } from "react-router-dom";
-
+import { axiosRes } from '../../api/axiosDefaults';
 
 const Journey = (props) => {
     const {
@@ -28,9 +28,40 @@ const Journey = (props) => {
         setJourneys,
     } = props;
 
-
     const currentUser = useCurrentUser();
     const is_owner = currentUser?.username === owner
+
+    const handleLike = async () => {
+        try {
+            const { data } = await axiosRes.post("/journeys/likes/", { journey: id });
+            setJourneys((prevJourneys) => ({
+                ...prevJourneys,
+                results: prevJourneys.results.map((journey) => {
+                    return journey.id === id
+                        ? { ...journey, likes_count: journey.likes_count + 1, like_id: data.id }
+                        : journey;
+                }),
+            }));
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    const handleUnlike = async () => {
+        try {
+            await axiosRes.delete(`/journeys/likes/${like_id}`);
+            setJourneys((prevJourneys) => ({
+                ...prevJourneys,
+                results: prevJourneys.results.map((journey) => {
+                    return journey.id === id
+                    ? {...journey, likes_count: journey.likes_count - 1, like_id: null}
+                    : journey;
+                }),
+            }));
+        } catch(err) {
+            console.log(err);
+        }
+    };
 
     return (
         <Card className={styles.Post}>
@@ -40,7 +71,7 @@ const Journey = (props) => {
                         <Avatar src={profile_image} height={55} />
                         {owner}
                     </Link>
-                    {countries} 
+                    {countries}
                     <div className="d-flex align-items-center">
                         <span>{updated_at}</span>
                         {is_owner && journeyPage && "..."}
@@ -53,7 +84,7 @@ const Journey = (props) => {
             <Card.Body>
                 {title && <Card.Title className="text-center">{title}</Card.Title>}
                 {content && <Card.Text>{content}</Card.Text>}
-                <div>
+                <div className={styles.Post}>
                     {is_owner ? (
                         <OverlayTrigger
                             placement="top"
@@ -62,11 +93,11 @@ const Journey = (props) => {
                             <i className="far fa-heart"></i>
                         </OverlayTrigger>
                     ) : like_id ? (
-                        <span onClick={() => {}}>
+                        <span onClick={handleUnlike}>
                             <i className={`fas fa-heart ${styles.Heart}`}></i>
                         </span>
                     ) : currentUser ? (
-                        <span onClick={() => {}}>
+                        <span onClick={handleLike}>
                             <i className={`fas fa-heart ${styles.HeartOutline}`}></i>
                         </span>
                     ) : (
