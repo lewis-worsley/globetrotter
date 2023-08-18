@@ -8,18 +8,27 @@ import SignInForm from "./pages/auth/SignInForm";
 import Footer from "./components/Footer";
 import JourneyCreateForm from "./pages/journeys/JourneyCreateForm";
 import JourneyPage from "./pages/journeys/JourneyPage";
-
-
-
-
+import JourneysPage from "./pages/journeys/JourneysPage";
+import { useCurrentUser } from "./contexts/CurrentUserContext";
 
 function App() {
+	const currentUser = useCurrentUser();
+	const profile_id = currentUser?.profile_id || "";
 
 	return (
 		<div className={styles.App}>
 			<NavBar />
 			<Container className={styles.Main}>
 				<Switch>
+					<Route
+						exact
+						path='/'
+						render={() => (
+							<JourneysPage
+								message="No results found. Adjust the search keyword."
+							/>
+						)}
+					/>
 					<Route exact path='/home' render={() => <h1 className={styles.Headings}>Home page</h1>} />
 					<Route exact path='/signin' render={() => <SignInForm />} />
 					<Route exact path='/signup' render={() => <SignUpForm />} />
