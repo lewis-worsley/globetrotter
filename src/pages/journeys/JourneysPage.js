@@ -30,6 +30,8 @@ function JourneysPage({ message }) {
     const [hasLoaded, setHasLoaded] = useState(false);
     const { pathname } = useLocation();
 
+    const [query, setQuery] = useState("");
+
     // handle modal appearance
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -38,7 +40,7 @@ function JourneysPage({ message }) {
     useEffect(() => {
         const fetchJourneys = async () => {
             try {
-                const { data } = await axiosReq.get("/journeys/");
+                const { data } = await axiosReq.get(`/journeys/?search=${query}`);
                 setJourneys(data);
                 setHasLoaded(true);
             } catch (err) {
@@ -47,11 +49,15 @@ function JourneysPage({ message }) {
         };
 
         setHasLoaded(false);
-        fetchJourneys();
+        const timer = setTimeout(() => {
+            fetchJourneys();
+        }, 1000);
 
-    }, [pathname])
+        return () => {
+            clearTimeout(timer);
+        };
 
-
+    }, [query, pathname])
 
     function CreateJourneyModal(props) {
         const [errors, setErrors] = useState({});
@@ -258,8 +264,11 @@ function JourneysPage({ message }) {
                     </>
                 </Col>
                 <Col xs={4}>
-                    <Form className="py-2 p-0 p-lg-2">
+                    <Form className="py-2 p-0 p-lg-2" onSubmit={(event) => event.preventDefault()}>
                         <Form.Control
+                            value={query}
+                            onChange={(event) => setQuery(event.target.value)}
+                            type="text"
                             placeholder="Search journeys"
                         />
                     </Form>
