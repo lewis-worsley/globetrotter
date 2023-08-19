@@ -61,8 +61,8 @@ function JourneyCreateForm(props) {
         formData.append('content', content);
 
         try {
-            const { data } = await axiosReq.post('/journeys/', formData);
-            history.push(`/journeys/${data.id}`);
+            await axiosReq.post('/journeys/', formData);
+            history.push(`/`);
         } catch (err) {
             if (err.response?.status !== 401) {
                 setErrors(err.response?.data);
@@ -72,7 +72,7 @@ function JourneyCreateForm(props) {
 
     const textFields = (
         <div className="text-center">
-            <Form.Group {...props}>
+            <Form.Group>
                 <Form.Label>Title</Form.Label>
                 <Form.Control
                     type="text"
