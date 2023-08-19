@@ -18,8 +18,7 @@ import { useHistory } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import { Alert } from "react-bootstrap";
 
-function JourneyCreateForm() {
-
+function JourneyCreateForm(props) {
     const [errors, setErrors] = useState({});
 
     const [journeyData, setJourneyData] = useState({
@@ -73,7 +72,7 @@ function JourneyCreateForm() {
 
     const textFields = (
         <div className="text-center">
-            <Form.Group>
+            <Form.Group {...props}>
                 <Form.Label>Title</Form.Label>
                 <Form.Control
                     type="text"
@@ -134,19 +133,12 @@ function JourneyCreateForm() {
                 </Alert>
             ))}
 
-            <Button
-                onClick={() => history.goback()}
-            >
-                cancel
-            </Button>
-            <Button type="submit" >
-                create
-            </Button>
+            <Button type="submit" onClick={handleSubmit}>Publish</Button>
         </div>
     );
 
     return (
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit} {...props}>
             <Row>
                 <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
                     <Container
