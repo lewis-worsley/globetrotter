@@ -8,6 +8,8 @@ import Tooltip from 'react-bootstrap/Tooltip';
 import Avatar from '../../components/Avatar';
 import { Link } from "react-router-dom";
 import { axiosRes } from '../../api/axiosDefaults';
+import { MoreDropdown } from '../../components/MoreDropdown';
+import { useHistory } from "react-router-dom";
 
 const Journey = (props) => {
     const {
@@ -30,6 +32,20 @@ const Journey = (props) => {
 
     const currentUser = useCurrentUser();
     const is_owner = currentUser?.username === owner
+    const history = useHistory();
+
+    const handleEdit = () => {
+        history.push(`/journeys/${id}/edit`);
+    }
+
+    const handleDelete = async () => {
+        try {
+            await axiosRes.delete(`/journeys/${id}/`)
+            history.goBack();
+        } catch(err) {
+            console.log(err);
+        }
+    };
 
     const handleLike = async () => {
         try {
@@ -74,7 +90,12 @@ const Journey = (props) => {
                     {countries}
                     <div className="d-flex align-items-center">
                         <span>{updated_at}</span>
-                        {is_owner && journeyPage && "..."}
+                        {is_owner && journeyPage && (
+                            <MoreDropdown
+                                handleEdit={handleEdit}
+                                handleDelete={handleDelete}
+                            />
+                        )}
                     </div>
                 </Media>
             </Card.Body>
