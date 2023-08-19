@@ -17,6 +17,8 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import JourneyCreateForm from "./JourneyCreateForm"
+import InfiniteScroll from "react-infinite-scroll-component";
+import { fetchMoreData } from "../../utils/utils";
 
 function JourneysPage({ message }) {
     const [journeys, setJourneys] = useState({ results: [] });
@@ -106,13 +108,19 @@ function JourneysPage({ message }) {
                     {hasLoaded ? (
                         <>
                             {journeys.results.length ? (
-                                journeys.results.map((journey) => (
-                                    <Journey key={journey.id} {...journey} setJourneys={setJourneys} />
-                                ))
+                                <InfiniteScroll
+                                    children={journeys.results.map((journey) => (
+                                        <Journey key={journey.id} {...journey} setJourneys={setJourneys} />
+                                    ))}
+                                    dataLength={journeys.results.length}
+                                    loader={<Asset spinner />}
+                                    hasMore={!!journeys.next}
+                                    next={() => fetchMoreData(journeys, setJourneys)}
+                                />
                             ) : (
-                                <Container className={appStyles.Content}>
-                                    <Asset src={NoResults} message={message} />
-                                </Container>
+                            <Container className={appStyles.Content}>
+                                <Asset src={NoResults} message={message} />
+                            </Container>
                             )}
                         </>
                     ) : (
