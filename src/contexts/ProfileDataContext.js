@@ -9,7 +9,7 @@ const ProfileDataContext = createContext();
 export const useProfileData = useContext(ProfileDataContext);
 export const useSetProfileData = useContext(setProfileDataContext);
 
-export const ProfileDataContext = ({ children }) => {
+export const ProfileDataProvider = ({ children }) => {
     const [profileData, setProfileData] = useState({
         pageProfile: { results: [] },
     });
@@ -30,11 +30,10 @@ export const ProfileDataContext = ({ children }) => {
                     ),
                 },
             }));
-        }
-    } catch (err) {
+        } catch (err) {
         console.log(err);
+        }
     }
-
     return (
         <ProfileDataContext.Provider value={profileData} >
             <setProfileDataContext.Provider value={setProfileData}>
