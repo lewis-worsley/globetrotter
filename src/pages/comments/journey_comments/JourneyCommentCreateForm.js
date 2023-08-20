@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 
-import styles from "../../styles/CommentCreateEditForm.module.css"
-import Avatar from "../../components/Avatar";
+import styles from "../../../styles/CommentCreateEditForm.module.css"
+import Avatar from "../../../components/Avatar";
 import { Button } from 'react-bootstrap';
-import { axiosRes } from '../../api/axiosDefaults';
+import { axiosRes } from '../../../api/axiosDefaults';
 
 function JourneyCommentCreateForm(props) {
 

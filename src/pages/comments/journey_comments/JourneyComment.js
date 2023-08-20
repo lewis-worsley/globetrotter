@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { Media } from 'react-bootstrap';
 import { Link } from "react-router-dom";
-import Avatar from '../../components/Avatar';
-import styles from "../../styles/Comment.module.css"
-import { useCurrentUser } from '../../contexts/CurrentUserContext';
-import { MoreDropdown } from '../../components/MoreDropdown';
-import { axiosRes } from '../../api/axiosDefaults';
+import Avatar from '../../../components/Avatar';
+import styles from "../../../styles/Comment.module.css"
+import { useCurrentUser } from '../../../contexts/CurrentUserContext';
+import { MoreDropdown } from '../../../components/MoreDropdown';
+import { axiosRes } from '../../../api/axiosDefaults';
 import JourneyCommentEditForm from './JourneyCommentEditForm';
 
 const JourneyComment = (props) => {

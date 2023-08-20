@@ -1,9 +1,9 @@
 import { useState } from "react";
 
 import Form from "react-bootstrap/Form";
-import { axiosRes } from "../../api/axiosDefaults";
+import { axiosRes } from '../../../api/axiosDefaults';
 
-import styles from "../../styles/CommentCreateEditForm.module.css";
+import styles from "../../../styles/CommentCreateEditForm.module.css";
 import Button from "react-bootstrap/Button";
 
 function JourneyCommentEditForm(props) {
