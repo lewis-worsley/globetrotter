@@ -13,6 +13,9 @@ import Journey from "./Journey";
 import JourneyCommentCreateForm from "../../comments/journey_comments/JourneyCommentCreateForm";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import JourneyComment from "../../comments/journey_comments/JourneyComment";
+import InfiniteScroll from "react-infinite-scroll-component";
+import Asset from "../../components/Asset"
+import { fetchMoreData } from "../../utils/utils"
 
 function JourneyPage() {
     const { id } = useParams();
@@ -25,7 +28,7 @@ function JourneyPage() {
     useEffect(() => {
         const handleMount = async () => {
             try {
-                const [{ data: journey }, {data: journeyComments}] = await Promise.all([
+                const [{ data: journey }, { data: journeyComments }] = await Promise.all([
                     axiosReq.get(`/journeys/${id}`),
                     axiosReq.get(`/journeys/comments/?journey=${id}`),
                 ])
@@ -56,18 +59,24 @@ function JourneyPage() {
                         "Comments"
                     ) : null}
                     {journeyComments.results.length ? (
-                        journeyComments.results.map((journeyComment) => (
-                            <JourneyComment 
-                                key={journeyComment.id} 
-                                {...journeyComment} 
-                                setJourney={setJourney}
-                                setJourneyComments={setJourneyComments}
-                            />
-                        ))
+                        <InfiniteScroll
+                            children={journeyComments.results.map((journeyComment) => (
+                                <JourneyComment
+                                    key={journeyComment.id}
+                                    {...journeyComment}
+                                    setJourney={setJourney}
+                                    setJourneyComments={setJourneyComments}
+                                />
+                            ))}
+                            dataLength={journeyComments.results.length}
+                            loader={<Asset spinner />}
+                            hasMore={!!journeyComments.next}
+                            next={() => fetchMoreData(journeyComments, setJourneyComments)}
+                        />
                     ) : currentUser ? (
-                        <p>Here we go</p>
+                        <p>No comments yet, be the first to comment!</p>
                     ) : (
-                        <p>No comments yet</p>
+                        <p>No comments yet....</p>
                     )}
                 </Container>
             </Col>
