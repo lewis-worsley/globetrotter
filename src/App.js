@@ -10,6 +10,7 @@ import JourneyCreateForm from "./pages/journeys/JourneyCreateForm";
 import JourneyPage from "./pages/journeys/JourneyPage";
 import JourneysPage from "./pages/journeys/JourneysPage";
 import JourneyEditForm from "./pages/journeys/JourneyEditForm";
+import ProfilePage from "./pages/profiles/ProfilePage";
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
 					<Route exact path='/journeys/create' render={() => <JourneyCreateForm />} />
 					<Route exact path='/journeys/:id' render={() => <JourneyPage />} />
 					<Route exact path='/journeys/:id/edit' render={() => <JourneyEditForm />} />
+					<Route exact path='/profiles/:id' render={() => <ProfilePage />} />
 					<Route render={() => <h1 className={styles.Headings}>Page not found!</h1>} />
 				</Switch>
 			</Container>
