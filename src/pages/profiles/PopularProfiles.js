@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect } from 'react'
+import { useState } from 'react'
 import { Container } from 'react-bootstrap'
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import { axiosReq } from '../../api/axiosDefaults';
 import appStyles from "../../App.module.css"
 import Asset from '../../components/Asset';
 import Profile from './Profile';
+import { useProfileData } from '../../contexts/ProfileDataContext';
 
 const PopularProfiles = () => {
-
     const [profileData, setProfileData] = useState({
         popularProfiles: { results: [] },
     });
-    const { popularProfiles } = profileData;
+    const { popularProfiles } = useProfileData();
     const currentUser = useCurrentUser();
 
     useEffect(() => {
@@ -22,10 +23,10 @@ const PopularProfiles = () => {
                 );
                 setProfileData((prevState) => ({
                     ...prevState,
-                    popularProfiles: data
+                    popularProfiles: data,
                 }))
             } catch (err) {
-                console.log(err)
+                console.log(err);
             }
         };
 
@@ -38,7 +39,7 @@ const PopularProfiles = () => {
                 <>
                     <h3>Suggestions to follow</h3>
                     {popularProfiles.results.slice(0, 5).map((profile) => (
-                    <Profile key={profile.id} profile={profile} />
+                        <Profile key={profile.id} profile={profile} />
                     ))}
                 </>
             ) : (

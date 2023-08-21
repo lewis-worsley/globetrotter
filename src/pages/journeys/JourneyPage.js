@@ -10,9 +10,9 @@ import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import Journey from "./Journey";
 
-import JourneyCommentCreateForm from "../../comments/journey_comments/JourneyCommentCreateForm";
+import JourneyCommentCreateForm from "../comments/journey_comments/JourneyCommentCreateForm";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import JourneyComment from "../../comments/journey_comments/JourneyComment";
+import JourneyComment from "../comments/journey_comments/JourneyComment";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Asset from "../../components/Asset"
 import { fetchMoreData } from "../../utils/utils"
