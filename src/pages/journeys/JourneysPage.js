@@ -19,6 +19,7 @@ import Modal from "react-bootstrap/Modal";
 import JourneyCreateForm from "./JourneyCreateForm"
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
+import PopularProfiles from "../profiles/PopularProfiles";
 
 function JourneysPage({ message }) {
     const [journeys, setJourneys] = useState({ results: [] });
@@ -130,7 +131,7 @@ function JourneysPage({ message }) {
                     )}
                 </Col>
                 <Col md={4} className="d-none d-lg-block p-0 p-lg-2">
-                    <p>Popular profiles for desktop</p>
+                    <PopularProfiles />
                 </Col>
             </Row>
         </div>
