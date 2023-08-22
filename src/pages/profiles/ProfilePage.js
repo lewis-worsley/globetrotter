@@ -15,7 +15,7 @@ import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import {
     useProfileData,
-    useSetProfileData
+    useSetProfileData,
 } from "../../contexts/ProfileDataContext";
 import { Button, Image } from "react-bootstrap";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -31,7 +31,7 @@ function ProfilePage() {
     const currentUser = useCurrentUser();
     const { id } = useParams();
 
-    const { setProfileData } = useSetProfileData();
+    const { setProfileData, handleFollow, handleUnfollow } = useSetProfileData();
     const { pageProfile } = useProfileData();
 
     const [profile] = pageProfile.results;
@@ -46,7 +46,7 @@ function ProfilePage() {
                         axiosReq.get(`/profiles/${id}/`),
                         axiosReq.get(`/journeys/?owner__profile=${id}`)
                     ]);
-                setProfileData(prevState => ({
+                setProfileData((prevState) => ({
                     ...prevState,
                     pageProfile: { results: [pageProfile] },
                 }));
@@ -94,21 +94,21 @@ function ProfilePage() {
                         (profile?.following_id ? (
                             <Button
                                 className="btn"
-                                onClick={() => { }}
+                                onClick={() => handleUnfollow(profile)}
                             >
                                 Unfollow
                             </Button>
                         ) : (
                             <Button
                                 className="btn"
-                                onClick={() => { }}
+                                onClick={() => handleFollow(profile)}
                             >
                                 Follow
                             </Button>
                         ))
                     }
                 </Col>
-                {profile?.content && (<Col className="p-3">{profile.content}</Col>)}
+                {profile?.content && <Col className="p-3">{profile.content}</Col>}
             </Row>
         </>
     );
@@ -129,7 +129,7 @@ function ProfilePage() {
                     next={() => fetchMoreData(profileJourneys, setProfileJourneys)}
                 />
             ) : (
-                <Asset 
+                <Asset
                     src={NoResults}
                     message={`No results found, ${profile?.owner} hasn't posted a journey yet`}
                 />

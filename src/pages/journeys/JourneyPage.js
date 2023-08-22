@@ -14,8 +14,8 @@ import JourneyCommentCreateForm from "../comments/journey_comments/JourneyCommen
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import JourneyComment from "../comments/journey_comments/JourneyComment";
 import InfiniteScroll from "react-infinite-scroll-component";
-import Asset from "../../components/Asset"
-import { fetchMoreData } from "../../utils/utils"
+import Asset from "../../components/Asset";
+import { fetchMoreData } from "../../utils/utils";
 
 function JourneyPage() {
     const { id } = useParams();
@@ -31,7 +31,7 @@ function JourneyPage() {
                 const [{ data: journey }, { data: journeyComments }] = await Promise.all([
                     axiosReq.get(`/journeys/${id}`),
                     axiosReq.get(`/journeys/comments/?journey=${id}`),
-                ])
+                ]);
                 setJourney({ results: [journey] });
                 setJourneyComments(journeyComments);
             } catch (err) {
@@ -82,6 +82,6 @@ function JourneyPage() {
             </Col>
         </Row>
     );
-};
+}
 
 export default JourneyPage;
