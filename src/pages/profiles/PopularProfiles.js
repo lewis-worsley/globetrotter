@@ -10,6 +10,7 @@ import { useProfileData } from '../../contexts/ProfileDataContext';
 
 const PopularProfiles = () => {
     const [profileData, setProfileData] = useState({
+        profileData: { results: [] },
         popularProfiles: { results: [] },
     });
     const { popularProfiles } = useProfileData();

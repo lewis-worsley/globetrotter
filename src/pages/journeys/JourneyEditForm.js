@@ -8,8 +8,6 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Image from "react-bootstrap/Image";
 
-
-
 import styles from "../../styles/JourneyCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import { useHistory } from "react-router";
