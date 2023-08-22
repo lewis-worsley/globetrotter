@@ -20,7 +20,6 @@ import {
 
 import appStyles from "../../App.module.css";
 
-
 const ProfileEditForm = () => {
     const currentUser = useCurrentUser();
     const setCurrentUser = useSetCurrentUser();
@@ -32,8 +31,9 @@ const ProfileEditForm = () => {
         name: "",
         content: "",
         image: "",
+        based: "",
     });
-    const { name, content, image } = profileData;
+    const { name, content, image, based } = profileData;
 
     const [errors, setErrors] = useState({});
 
@@ -42,8 +42,8 @@ const ProfileEditForm = () => {
             if (currentUser?.profile_id?.toString() === id) {
                 try {
                     const { data } = await axiosReq.get(`/profiles/${id}/`);
-                    const { name, content, image } = data;
-                    setProfileData({ name, content, image });
+                    const { name, content, image, based } = data;
+                    setProfileData({ name, content, image, based });
                 } catch (err) {
                     console.log(err);
                     history.push("/");
@@ -78,6 +78,7 @@ const ProfileEditForm = () => {
         const formData = new FormData();
         formData.append("name", name);
         formData.append("content", content);
+        formData.append("based", based);
 
         if (imageFile?.current?.files[0]) {
             formData.append('image', imageFile.current.files[0]);
@@ -108,12 +109,23 @@ const ProfileEditForm = () => {
                     rows={7}
                 />
             </Form.Group>
-
             {errors?.content?.map((message, idx) => (
                 <Alert variant="warning" key={idx}>
                     {message}
                 </Alert>
             ))}
+
+            <Form.Group>
+                <Form.Label>Based</Form.Label>
+                <Form.Control
+                    as="textarea"
+                    value={based}
+                    onChange={handleChange}
+                    name="based"
+                    rows={1}
+                />
+            </Form.Group>
+
             <Button
                 onClick={() => history.goBack()}
             >

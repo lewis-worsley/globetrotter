@@ -89,6 +89,13 @@ function ProfilePage() {
                         </Col>
                     </Row>
                 </Col>
+                <Col xs={12}>
+                    <Row className="justify-content-center no-gutters">
+                        <Col className="my-2">
+                            <div>{profile?.based}</div>
+                        </Col>
+                    </Row>
+                </Col>
                 <Col lg={3} className="text-lg-right">
                     {currentUser &&
                         !is_owner &&
@@ -109,7 +116,7 @@ function ProfilePage() {
                         ))
                     }
                 </Col>
-                {profile?.content && <Col className="p-3">{profile.content}</Col>}
+                <Col xs={12} className="mt-4">{profile?.content}</Col>
             </Row>
         </>
     );
