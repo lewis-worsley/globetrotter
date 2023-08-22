@@ -14,6 +14,8 @@ import ProfilePage from "./pages/profiles/ProfilePage";
 import UsernameForm from "./pages/profiles/UsernameForm";
 import UserPasswordForm from "./pages/profiles/UserPasswordForm";
 import ProfileEditForm from "./pages/profiles/ProfileEditForm";
+import BlogsPage from "./pages/blogs/BlogsPage";
+import BlogCreateForm from "./pages/blogs/BlogCreateForm";
 
 function App() {
 
@@ -34,6 +36,8 @@ function App() {
 					<Route exact path='/home' render={() => <h1 className={styles.Headings}>Home page</h1>} />
 					<Route exact path='/signin' render={() => <SignInForm />} />
 					<Route exact path='/signup' render={() => <SignUpForm />} />
+					<Route exact path='/blogs' render={() => <BlogsPage />} />
+					<Route exact path='/blogs/create' render={() => <BlogCreateForm />} />
 					<Route exact path='/journeys/create' render={() => <JourneyCreateForm />} />
 					<Route exact path='/journeys/:id' render={() => <JourneyPage />} />
 					<Route exact path='/journeys/:id/edit' render={() => <JourneyEditForm />} />
