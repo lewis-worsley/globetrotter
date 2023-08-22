@@ -17,8 +17,10 @@ import appStyles from "../../App.module.css";
 import { useHistory } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import { Alert } from "react-bootstrap";
+import { useRedirect } from "../../hooks/useRedirect";
 
 function JourneyCreateForm(props) {
+    useRedirect("loggedOut")
     const [errors, setErrors] = useState({});
 
     const [journeyData, setJourneyData] = useState({
