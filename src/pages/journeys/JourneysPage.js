@@ -84,7 +84,7 @@ function JourneysPage({ message }) {
                 <Col className="py-2 p-0 p-lg-2" xs={8}>
                     <>
                         <Button variant="primary" onClick={handleShow}>
-                            Create Journey <i className="fa-solid fa-globe"></i>
+                            Create journey <i className="fa-solid fa-globe"></i>
                         </Button>
 
                         <CreateJourneyModal

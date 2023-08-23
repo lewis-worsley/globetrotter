@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useRef } from "react";
 import { useState } from "react";
 
@@ -8,19 +9,14 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Image from "react-bootstrap/Image";
 
-import Asset from "../../components/Asset";
-
-import Upload from "../../assets/upload.png";
-
 import styles from "../../styles/BlogCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import { useHistory } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import { Alert } from "react-bootstrap";
-import { useRedirect } from "../../hooks/useRedirect";
+import { useParams } from "react-router";
 
-function BlogCreateForm(props) {
-    useRedirect("loggedOut")
+function BlogEditForm() {
     const [errors, setErrors] = useState({});
 
     const [blogData, setBlogData] = useState({
@@ -34,6 +30,22 @@ function BlogCreateForm(props) {
 
     const imageInput = useRef(null);
     const history = useHistory();
+    const { id } = useParams();
+
+    useEffect(() => {
+        const handleMount = async () => {
+            try {
+                const { data } = await axiosReq.get(`/blogs/${id}/`);
+                const { image, title, countries, locations, content, is_owner } = data;
+
+                is_owner ? setBlogData({ image, title, countries, locations, content }) : history.push("/");
+            } catch (err) {
+                console.log(err)
+            }
+        };
+
+        handleMount();
+    }, [history, id])
 
     const handleChange = (event) => {
         setBlogData({
@@ -56,15 +68,18 @@ function BlogCreateForm(props) {
         event.preventDefault();
         const formData = new FormData();
 
-        formData.append('image', imageInput.current.files[0]);
         formData.append('title', title);
         formData.append('countries', countries);
         formData.append('locations', locations);
         formData.append('content', content);
 
+        if (imageInput?.current?.files[0]) {
+            formData.append('image', imageInput.current.files[0]);
+        }
+
         try {
-            const { data } = await axiosReq.post('/blogs/', formData);
-            history.push(`/blogs/${data.id}`);
+            await axiosReq.put(`/blogs/${id}/`, formData);
+            history.push(`/blogs/${id}/`);
         } catch (err) {
             if (err.response?.status !== 401) {
                 setErrors(err.response?.data);
@@ -135,20 +150,18 @@ function BlogCreateForm(props) {
                 </Alert>
             ))}
 
-            <Button type="submit" onClick={handleSubmit}>Publish</Button>
+            <Button type="submit" onClick={handleSubmit}>Save</Button>
         </div>
     );
 
     return (
-        <Form onSubmit={handleSubmit} {...props}>
+        <Form onSubmit={handleSubmit}>
             <Row>
                 <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
                     <Container
                         className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
                     >
                         <Form.Group className="text-center">
-                            {image ? (
-                                <>
                                     <figure>
                                         <Image className={appStyles.Image} src={image} />
                                     </figure>
@@ -160,19 +173,6 @@ function BlogCreateForm(props) {
                                             Change the image
                                         </Form.Label>
                                     </div>
-                                </>
-                            ) : (
-                                <Form.Label
-                                    className="d-flex justify-content-center"
-                                    htmlFor="image-upload"
-                                >
-                                    <Asset
-                                        src={Upload}
-                                        message="Click or tap to upload an image"
-                                    />
-                                </Form.Label>
-                            )}
-
                             <Form.File
                                 id="image-upload"
                                 accept="image/*"
@@ -198,4 +198,4 @@ function BlogCreateForm(props) {
     );
 }
 
-export default BlogCreateForm;
+export default BlogEditForm;

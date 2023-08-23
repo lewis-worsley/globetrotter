@@ -17,6 +17,7 @@ import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 import BlogsPage from "./pages/blogs/BlogsPage";
 import BlogCreateForm from "./pages/blogs/BlogCreateForm";
 import BlogPage from "./pages/blogs/BlogPage";
+import BlogEditForm from "./pages/blogs/BlogEditForm";
 
 function App() {
 
@@ -40,6 +41,7 @@ function App() {
 					<Route exact path='/blogs' render={() => <BlogsPage />} />
 					<Route exact path='/blogs/create' render={() => <BlogCreateForm />} />
 					<Route exact path='/blogs/:id' render={() => <BlogPage />} />
+					<Route exact path='/blogs/:id/edit' render={() => <BlogEditForm />} />
 					<Route exact path='/journeys/create' render={() => <JourneyCreateForm />} />
 					<Route exact path='/journeys/:id' render={() => <JourneyPage />} />
 					<Route exact path='/journeys/:id/edit' render={() => <JourneyEditForm />} />

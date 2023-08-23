@@ -9,11 +9,11 @@ import Avatar from "../../../components/Avatar";
 import { Button } from 'react-bootstrap';
 import { axiosRes } from '../../../api/axiosDefaults';
 
-function JourneyCommentCreateForm(props) {
+function BlogCommentCreateForm(props) {
 
     const {
-        journey,
-        setJourney,
+        blog,
+        setBlog,
         setComments,
         profileImage,
         profile_id,
@@ -28,19 +28,19 @@ function JourneyCommentCreateForm(props) {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const { data } = await axiosRes.post("/journeys/comments/", {
+            const { data } = await axiosRes.post("/blogs/comments/", {
                 content,
-                journey,
+                blog,
             });
             setComments((prevComments) => ({
                 ...prevComments,
                 results: [data, ...prevComments.results],
             }));
-            setJourney((prevJourney) => ({
+            setBlog((prevBlog) => ({
                 results: [
                     {
-                        ...prevJourney.results[0],
-                        comments_count: prevJourney.results[0].comments_count + 1,
+                        ...prevBlog.results[0],
+                        comments_count: prevBlog.results[0].comments_count + 1,
                     },
                 ],
             }));
@@ -78,4 +78,4 @@ function JourneyCommentCreateForm(props) {
     )
 }
 
-export default JourneyCommentCreateForm;
+export default BlogCommentCreateForm;

@@ -7,6 +7,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
+import Blog from "./Blog";
 import appStyles from "../../App.module.css";
 
 import NoResults from "../../assets/no-results.png";
@@ -15,13 +16,12 @@ import Asset from "../../components/Asset";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
+import BlogCreateForm from "./BlogCreateForm";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 import PopularProfiles from "../profiles/PopularProfiles";
-import Blog from "./Blog";
-import BlogCreateForm from "./BlogCreateForm";
 
-function BlogsPage ({ message }) {
+function BlogsPage({ message }) {
     const [blogs, setBlogs] = useState({ results: [] });
     const [hasLoaded, setHasLoaded] = useState(false);
     const { pathname } = useLocation();
@@ -84,7 +84,7 @@ function BlogsPage ({ message }) {
                 <Col className="py-2 p-0 p-lg-2" xs={8}>
                     <>
                         <Button variant="primary" onClick={handleShow}>
-                            Create Blog <i className="fa-solid fa-globe"></i>
+                            Create blog <i className="fa-solid fa-globe"></i>
                         </Button>
 
                         <CreateBlogModal
