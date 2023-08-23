@@ -140,4 +140,4 @@ const Journey = (props) => {
     )
 }
 
-export default Journey
+export default Journey;

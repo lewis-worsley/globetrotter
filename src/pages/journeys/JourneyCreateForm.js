@@ -63,8 +63,8 @@ function JourneyCreateForm(props) {
         formData.append('content', content);
 
         try {
-            await axiosReq.post('/journeys/', formData);
-            history.push(`/`);
+            const { data } = await axiosReq.post('/journeys/', formData);
+            history.push(`/journeys/${data.id}`);
         } catch (err) {
             if (err.response?.status !== 401) {
                 setErrors(err.response?.data);
