@@ -18,6 +18,9 @@ import BlogsPage from "./pages/blogs/BlogsPage";
 import BlogCreateForm from "./pages/blogs/BlogCreateForm";
 import BlogPage from "./pages/blogs/BlogPage";
 import BlogEditForm from "./pages/blogs/BlogEditForm";
+import NewssPage from "./pages/news/NewssPage";
+import StopPage from "./pages/journeys/stops/StopPage";
+import StopCreateForm from "./pages/journeys/stops/StopCreateForm";
 
 function App() {
 
@@ -46,6 +49,7 @@ function App() {
 					<Route exact path='/journeys/:id' render={() => <JourneyPage />} />
 					<Route exact path='/journeys/:id/edit' render={() => <JourneyEditForm />} />
 					<Route exact path='/profiles/:id' render={() => <ProfilePage />} />
+					<Route exact path='/news' render={() => <NewssPage />} />
 					<Route
 						exact
 						path='/profiles/:id/edit/username'
