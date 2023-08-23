@@ -9,7 +9,6 @@ import Asset from "../../components/Asset";
 import styles from "../../styles/ProfilePage.module.css";
 import appStyles from "../../App.module.css";
 
-import PopularProfiles from "./PopularProfiles";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
@@ -20,14 +19,18 @@ import {
 import { Button, Image } from "react-bootstrap";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Journey from "../journeys/Journey";
+import Blog from "../blogs/Blog";
 import { fetchMoreData } from "../../utils/utils";
 import NoResults from "../../assets/no-results.png";
 import { ProfileEditDropdown } from "../../components/MoreDropdown";
+import Tabs from 'react-bootstrap/Tabs';
+import Tab from "react-bootstrap/Tab";
 
 
 function ProfilePage() {
     const [hasLoaded, setHasLoaded] = useState(false);
     const [profileJourneys, setProfileJourneys] = useState({ results: [] });
+    const [profileBlogs, setProfileBlogs] = useState({ results: [] });
 
     const currentUser = useCurrentUser();
     const { id } = useParams();
@@ -38,20 +41,24 @@ function ProfilePage() {
     const [profile] = pageProfile.results;
     const is_owner = currentUser?.username === profile?.owner;
 
+    // Controls the tab view
+    const [key, setKey] = useState('journey')
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const [{ data: pageProfile }, { data: profileJourneys }] =
+                const [{ data: pageProfile }, { data: profileJourneys }, { data: profileBlogs }] =
                     await Promise.all([
                         axiosReq.get(`/profiles/${id}/`),
-                        axiosReq.get(`/journeys/?owner__profile=${id}`)
+                        axiosReq.get(`/journeys/?owner__profile=${id}`),
+                        axiosReq.get(`/blogs/?owner__profile=${id}`)
                     ]);
                 setProfileData((prevState) => ({
                     ...prevState,
                     pageProfile: { results: [pageProfile] },
                 }));
                 setProfileJourneys(profileJourneys);
+                setProfileBlogs(profileBlogs);
                 setHasLoaded(true);
             } catch (err) {
                 console.log(err);
@@ -123,11 +130,8 @@ function ProfilePage() {
 
     const mainProfileJourneys = (
         <>
-            <hr />
-            <p className="text-center">{profile?.owner}'s journeys</p>
-            <hr />
             {profileJourneys.results.length ? (
-                <InfiniteScroll 
+                <InfiniteScroll
                     children={profileJourneys.results.map((journey) => (
                         <Journey key={journey.id} {...journey} setJourneys={setProfileJourneys} />
                     ))}
@@ -145,22 +149,57 @@ function ProfilePage() {
         </>
     );
 
+    const mainProfileBlogs = (
+        <>
+            {profileBlogs.results.length ? (
+                <InfiniteScroll
+                    children={profileBlogs.results.map((blog) => (
+                        <Blog key={blog.id} {...blog} setBlogs={setProfileBlogs} />
+                    ))}
+                    dataLength={profileBlogs.results.length}
+                    loader={<Asset spinner />}
+                    hasMore={!!profileBlogs.next}
+                    next={() => fetchMoreData(profileBlogs, setProfileBlogs)}
+                />
+            ) : (
+                <Asset
+                    src={NoResults}
+                    message={`No results found, ${profile?.owner} hasn't posted a blog yet`}
+                />
+            )}
+        </>
+    );
+
+    function ControlledTabs() {
+        return (
+            <Tabs
+                id="controlled-tab-example"
+                activeKey={key}
+                onSelect={(k) => setKey(k)}
+            >
+                <Tab eventKey="journey" title="Journeys">
+                    {mainProfileJourneys}
+                </Tab>
+                <Tab eventKey="blog" title="Blogs">
+                    {mainProfileBlogs}
+                </Tab>
+            </Tabs>
+        );
+    }
+
     return (
         <Row>
-            <Col className="py-2 p-0 p-lg-2" lg={8}>
+            <Col className="py-2 p-0 p-lg-2" lg={12}>
                 <Container className={appStyles.Content}>
                     {hasLoaded ? (
                         <>
                             {mainProfile}
-                            {mainProfileJourneys}
+                            <ControlledTabs />
                         </>
                     ) : (
                         <Asset spinner />
                     )}
                 </Container>
-            </Col>
-            <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
-                <PopularProfiles />
             </Col>
         </Row>
     );
