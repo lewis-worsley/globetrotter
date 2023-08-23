@@ -125,6 +125,11 @@ const ProfileEditForm = () => {
                     rows={1}
                 />
             </Form.Group>
+            {errors?.based?.map((message, idx) => (
+                <Alert variant="warning" key={idx}>
+                    {message}
+                </Alert>
+            ))}
 
             <Button
                 onClick={() => history.goBack()}
