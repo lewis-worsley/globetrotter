@@ -123,7 +123,7 @@ const UniqueBlogPage = (props) => {
                                     <div>
                                         <Row>
                                             <Col>
-                                                <span>{created_at}</span>
+                                                <span className={styles.Date}>{created_at}</span>
                                                 {title && <Card.Title className={`${appStyles.Headings} mt-3`}>{title}</Card.Title>}
                                             </Col>
                                             <p className={` ${appStyles.Headings} mx-3`}>{countries}</p>
@@ -169,7 +169,7 @@ const UniqueBlogPage = (props) => {
                                     </Link>
                                     <div className="mx-4">
                                         <Link to={`/profiles/${profile_id}`}>
-                                            {owner}
+                                            <span className={styles.User}>{owner}</span>
                                         </Link>
 
                                         <div className='mt-3'>
@@ -177,14 +177,14 @@ const UniqueBlogPage = (props) => {
                                                 !is_owner &&
                                                 (following_id ? (
                                                     <Button
-                                                        className={appStyles.FollowButton}
+                                                        className={`${appStyles.FollowButton} py-2 px-4`}
                                                         onClick={() => handleUnfollow(profile)}
                                                     >
                                                         Unfollow
                                                     </Button>
                                                 ) : (
                                                     <Button
-                                                        className={appStyles.FollowButton}
+                                                    className={`${appStyles.FollowButton} py-2 px-4`}
                                                         onClick={() => handleFollow(profile)}
                                                     >
                                                         Follow

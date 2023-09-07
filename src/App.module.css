@@ -43,8 +43,20 @@ h5 {
     background-color: #0ea098;
     color: white;
     border-width: 0px;
+    border-radius: 100px;
+
 }
 
 .FollowButton:hover {
-    background-color: #63610c;
+    background-color: #c4b6b6;
+}
+
+.Image {
+    max-height: 720px;
+    max-width: 405px;
+    object-fit: contain;
+}
+
+input[type="file"] {
+    display: none;
 }
