@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 
-import styles from "../../../styles/CommentCreateEditForm.module.css"
+import styles from "../../../styles/BlogCommentCreateEditForm.module.css"
 import Avatar from "../../../components/Avatar";
 import { Button } from 'react-bootstrap';
 import { axiosRes } from '../../../api/axiosDefaults';
@@ -51,7 +51,7 @@ function BlogCommentCreateForm(props) {
     }
 
     return (
-        <Form className="mt-2" onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit}>
             <Form.Group>
                 <InputGroup>
                     <Link to={`/profiles/${profile_id}`}>

@@ -6,7 +6,7 @@ import styles from "../../../styles/Comment.module.css"
 import { useCurrentUser } from '../../../contexts/CurrentUserContext';
 import { MoreDropdown } from '../../../components/MoreDropdown';
 import { axiosRes } from '../../../api/axiosDefaults';
-import BlogCommentEditForm from './BlogCommentEditForm';
+import BlogCommentEditForm from '../blog_comments/BlogCommentEditForm';
 
 const BlogComment = (props) => {
     const {
@@ -49,7 +49,7 @@ const BlogComment = (props) => {
     return (
         <>
             <hr />
-            <Media>
+            <Media className='py-1'>
                 <Link to={`/profiles/${profile_id}`}>
                     <Avatar src={profile_image} />
                 </Link>
