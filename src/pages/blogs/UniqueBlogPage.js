@@ -154,11 +154,13 @@ const UniqueBlogPage = (props) => {
                                                 <i className={`${iconStyles.Heart} far fa-heart`}></i>
                                             </OverlayTrigger>
                                         )}
-                                        Likes {likes_count}
-                                        <Link to={`/blogs/${id}`}>
-                                            <i className={`${iconStyles.Comment} far fa-comments`}></i>
-                                        </Link>
-                                        Comments {comments_count}
+                                        <span>Likes {likes_count}</span>
+                                        <span className='ml-3'>
+                                            <Link to={`/blogs/${id}`}>
+                                                <i className={`${styles.Comment} far fa-comments`}></i>
+                                            </Link>
+                                            Comments {comments_count}
+                                        </span>
                                     </div>
                                 </Card.Body>
                                 <Media className="align-items-center p-4">

@@ -16,6 +16,7 @@ import BlogComment from "../comments/blog_comments/BlogComment";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Asset from "../../components/Asset";
 import { fetchMoreData } from "../../utils/utils";
+import UniqueBlogPage from "./UniqueBlogPage";
 
 function BlogPage() {
     const { id } = useParams();
@@ -23,17 +24,17 @@ function BlogPage() {
 
     const currentUser = useCurrentUser();
     const profile_image = currentUser?.profile_image;
-    const [blogComments, setBlogComments] = useState({ results: [] });
+    const [comments, setComments] = useState({ results: [] });
 
     useEffect(() => {
         const handleMount = async () => {
             try {
-                const [{ data: blog }, { data: blogComments }] = await Promise.all([
+                const [{ data: blog }, { data: comments }] = await Promise.all([
                     axiosReq.get(`/blogs/${id}`),
-                    axiosReq.get(`/blogs/comments/?blogs=${id}`),
+                    axiosReq.get(`/blogs/comments/?blog=${id}`),
                 ]);
                 setBlog({ results: [blog] });
-                setBlogComments(blogComments);
+                setComments(comments);
             } catch (err) {
                 console.log(err);
             }
@@ -45,7 +46,7 @@ function BlogPage() {
     return (
         <Row className="h-100">
             <Col className="py-2 p-0 p-lg-2">
-                <Blog {...blog.results[0]} setBlog={setBlog} blogPage />
+                <UniqueBlogPage {...blog.results[0]} setBlog={setBlog} blogPage />
                 <Container className={appStyles.Content}>
                     {currentUser ? (
                         <BlogCommentCreateForm
@@ -53,25 +54,25 @@ function BlogPage() {
                             profileImage={profile_image}
                             blog={id}
                             setBlog={setBlog}
-                            setBlogComments={setBlogComments}
+                            setComments={setComments}
                         />
-                    ) : blogComments.results.length ? (
+                    ) : comments.results.length ? (
                         "Comments"
                     ) : null}
-                    {blogComments.results.length ? (
+                    {comments.results.length ? (
                         <InfiniteScroll
-                            children={blogComments.results.map((blogComment) => (
+                            children={comments.results.map((comment) => (
                                 <BlogComment
-                                    key={blogComment.id}
-                                    {...blogComment}
+                                    key={comment.id}
+                                    {...comment}
                                     setBlog={setBlog}
-                                    setBlogComments={setBlogComments}
+                                    setComments={setComments}
                                 />
                             ))}
-                            dataLength={blogComments.results.length}
+                            dataLength={comments.results.length}
                             loader={<Asset spinner />}
-                            hasMore={!!blogComments.next}
-                            next={() => fetchMoreData(blogComments, setBlogComments)}
+                            hasMore={!!comments.next}
+                            next={() => fetchMoreData(comments, setComments)}
                         />
                     ) : currentUser ? (
                         <p>No comments yet, be the first to comment!</p>

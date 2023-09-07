@@ -123,7 +123,7 @@ function BlogCreateForm(props) {
                 <Form.Label>Content</Form.Label>
                 <Form.Control
                     as="textarea"
-                    rows={6}
+                    rows={12}
                     name="content"
                     value={content}
                     onChange={handleChange}
@@ -135,14 +135,20 @@ function BlogCreateForm(props) {
                 </Alert>
             ))}
 
-            <Button type="submit" onClick={handleSubmit}>Publish</Button>
+            <Button
+                type="submit"
+                onClick={handleSubmit}
+                className={`${styles.Button} px-4 py-2 mt-4`}
+            >
+                Publish
+            </Button>
         </div>
     );
 
     return (
         <Form onSubmit={handleSubmit} {...props}>
             <Row>
-                <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
+                <Col className="py-2 p-0 p-md-2" xs={12}>
                     <Container
                         className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
                     >
@@ -190,8 +196,8 @@ function BlogCreateForm(props) {
                         <div className="d-md-none">{textFields}</div>
                     </Container>
                 </Col>
-                <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
-                    <Container className={appStyles.Content}>{textFields}</Container>
+                <Col xs={12} sm={{ span: 8, offset: 2 }} className="d-none d-lg-block p-0 p-md-2 d-flex justify-content-center">
+                    <Container className={`${appStyles.Content}`}>{textFields}</Container>
                 </Col>
             </Row>
         </Form >

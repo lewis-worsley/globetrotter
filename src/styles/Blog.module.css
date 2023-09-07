@@ -6,6 +6,15 @@
     text-align: center;
 }
 
+.CardTop {
+    background-color: #02636d;
+    color: white;
+}
+
+.CardBody {
+    background-color: #525252;
+}
+
 .Post figure,
 h5 {
     margin: 0 0;
@@ -30,4 +39,39 @@ i:hover {
     cursor: pointer;
     transition: color ease-in-out 0.3s;
     color: #0EA098;
+}
+
+.Button {
+    border: none;
+    background-color: #02636d;
+    color: white;
+    border-radius: 100px;
+    padding: 4px 10px;
+    min-width: 75px;
+    margin: 5px;
+}
+
+.Button:hover {
+    cursor: pointer;
+    background-color: #c4b6b6;
+    color: white;
+}
+
+.Button:disabled {
+    background-color: #02636d;
+}
+
+.ReadOrHide {
+    color: #c4b6b6;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.User {
+    font-weight: bold;
+}
+
+.Date {
+    font-size: 14px;
 }

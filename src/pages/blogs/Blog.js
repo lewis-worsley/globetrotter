@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from "../../styles/Blog.module.css"
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import Card from 'react-bootstrap/Card';
@@ -10,6 +10,8 @@ import { Link } from "react-router-dom";
 import { axiosRes } from '../../api/axiosDefaults';
 import { MoreDropdown } from '../../components/MoreDropdown';
 import { useHistory } from "react-router-dom";
+import { Button, Col, Row } from 'react-bootstrap';
+import appStyles from '../../App.module.css'
 
 const Blog = (props) => {
     const {
@@ -26,6 +28,7 @@ const Blog = (props) => {
         locations,
         image,
         updated_at,
+        created_at,
         blogPage,
         setBlogs,
     } = props;
@@ -33,6 +36,22 @@ const Blog = (props) => {
     const currentUser = useCurrentUser();
     const is_owner = currentUser?.username === owner
     const history = useHistory();
+
+    const ReadMore = ({ children }) => {
+        const text = children;
+        const [isReadMore, setIsReadMore] = useState(true);
+        const toggleReadMore = () => {
+            setIsReadMore(!isReadMore);
+        };
+        return (
+            <p className="text">
+                {isReadMore ? text.slice(0, 280) : text}
+                <span onClick={toggleReadMore} className={`${styles.ReadOrHide} pl-1`}>
+                    {isReadMore ? <Link to={`/blogs/${id}`}>...read more</Link> : ""}
+                </span>
+            </p>
+        );
+    };
 
     const handleEdit = () => {
         history.push(`/blogs/${id}/edit`);
@@ -42,7 +61,7 @@ const Blog = (props) => {
         try {
             await axiosRes.delete(`/blogs/${id}/`)
             history.goBack();
-        } catch(err) {
+        } catch (err) {
             console.log(err);
         }
     };
@@ -70,42 +89,48 @@ const Blog = (props) => {
                 ...prevBlogs,
                 results: prevBlogs.results.map((blog) => {
                     return blog.id === id
-                    ? {...blog, likes_count: blog.likes_count - 1, like_id: null}
-                    : blog;
+                        ? { ...blog, likes_count: blog.likes_count - 1, like_id: null }
+                        : blog;
                 }),
             }));
-        } catch(err) {
+        } catch (err) {
             console.log(err);
         }
     };
 
     return (
-        <Card className={styles.Post}>
-            <Card.Body>
-                <Media className="align-items-center justify-content-between">
-                    <Link to={`/profiles/${profile_id}`}>
-                        <Avatar src={profile_image} height={55} />
-                        {owner}
-                    </Link>
-                    {countries}
-                    <div className="d-flex align-items-center">
-                        <span>{updated_at}</span>
-                        {is_owner && blogPage && (
-                            <MoreDropdown
-                                handleEdit={handleEdit}
-                                handleDelete={handleDelete}
-                            />
-                        )}
-                    </div>
-                </Media>
+        <Card className='my-4' bg='dark' text='light'>
+            <Card.Body className={`${styles.CardTop}`}>
+                <Row className="align-items-center">
+                    <Col xs={8}>
+                        <Media className="align-items-center">
+                            <Link to={`/profiles/${profile_id}`}>
+                                <Avatar src={profile_image} height={55} />
+                            </Link>
+                            <div className='mx-4'>
+                                <Link to={`/profiles/${profile_id}`}>
+                                    <span className={styles.User}>{owner}</span>
+                                </Link>
+                                <Card.Text className={`${styles.Date}`}>{created_at}</Card.Text>
+                            </div>
+                        </Media>
+                    </Col>
+                    <Col className='d-flex justify-content-end'>
+                        <Card.Text className={appStyles.Headings}>{countries}</Card.Text>
+                    </Col>
+
+                </Row>
             </Card.Body>
-            <Link to={`/blogs/${id}`}>
-                <Card.Img src={image} alt={title} />
-            </Link>
             <Card.Body>
-                {title && <Card.Title className="text-center">{title}</Card.Title>}
-                {content && <Card.Text>{content}</Card.Text>}
-                <div className={styles.Post}>
+                {title && <Card.Title><h2 className={appStyles.Headings}>{title}</h2></Card.Title>}
+                {content &&
+                    <Card.Text>
+                        <ReadMore>{content}</ReadMore>
+                    </Card.Text>}
+                <Link to={`/blogs/${id}`}>
+                    <Card.Img src={image} alt={title} />
+                </Link>
+                <div className='mt-4 d-flex justify-content-end align-items-center'>
                     {is_owner ? (
                         <OverlayTrigger
                             placement="top"
@@ -124,16 +149,21 @@ const Blog = (props) => {
                     ) : (
                         <OverlayTrigger
                             placement="top"
-                            overlay={<Tooltip>Login to like posts!</Tooltip>}
+                            overlay={<Tooltip>Login to like blogs!</Tooltip>}
                         >
                             <i className={`${styles.Heart} far fa-heart`}></i>
                         </OverlayTrigger>
                     )}
-                    {likes_count}
+                    <span>Likes {likes_count}</span>
+                    <span className='ml-3'>
+                        <Link to={`/blogs/${id}`}>
+                            <i className={`${styles.Comment} far fa-comments`}></i>
+                        </Link>
+                        Comments {comments_count}
+                    </span>
                     <Link to={`/blogs/${id}`}>
-                        <i className={`${styles.Comment} far fa-comments`}></i>
+                        <Button className={`${styles.Button} ml-4 py-2 px-4`}>Read blog</Button>
                     </Link>
-                    {comments_count}
                 </div>
             </Card.Body>
         </Card>
