@@ -104,7 +104,7 @@ const UniqueBlogPage = (props) => {
                 </div>
             </div>
 
-            <Card className={styles.Card} bg="dark" text="white">
+            <Card className={`${styles.Card} p-1`} mobile bg="dark" text="white">
                 <Card.Body>
                     <Row>
                         <Col xs={12}>
