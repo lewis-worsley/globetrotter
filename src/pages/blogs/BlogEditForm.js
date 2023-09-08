@@ -15,8 +15,10 @@ import { useHistory } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import { Alert } from "react-bootstrap";
 import { useParams } from "react-router";
+import { useRedirect } from "../../hooks/useRedirect";
 
 function BlogEditForm() {
+    useRedirect("loggedOut")
     const [errors, setErrors] = useState({});
 
     const [blogData, setBlogData] = useState({
