@@ -19,8 +19,9 @@ import BlogCreateForm from "./pages/blogs/BlogCreateForm";
 import BlogPage from "./pages/blogs/BlogPage";
 import BlogEditForm from "./pages/blogs/BlogEditForm";
 import NewssPage from "./pages/news/NewssPage";
-import StopPage from "./pages/journeys/stops/StopPage";
-import StopCreateForm from "./pages/journeys/stops/StopCreateForm";
+import NewsCreateForm from "./pages/news/NewsCreateForm";
+import HomePage from "./pages/home/HomePage";
+import NewsPage from "./pages/news/NewsPage";
 
 function App() {
 
@@ -38,7 +39,7 @@ function App() {
 							/>
 						)}
 					/>
-					<Route exact path='/home' render={() => <h1 className={styles.Headings}>Home page</h1>} />
+					<Route exact path='/home' render={() => <HomePage />} />
 					<Route exact path='/signin' render={() => <SignInForm />} />
 					<Route exact path='/signup' render={() => <SignUpForm />} />
 					<Route exact path='/blogs' render={() => <BlogsPage />} />
@@ -50,6 +51,8 @@ function App() {
 					<Route exact path='/journeys/:id/edit' render={() => <JourneyEditForm />} />
 					<Route exact path='/profiles/:id' render={() => <ProfilePage />} />
 					<Route exact path='/news' render={() => <NewssPage />} />
+					<Route exact path='/news/:id' render={() => <NewsPage />} />
+					<Route exact path='/news/create' render={() => <NewsCreateForm />} />
 					<Route
 						exact
 						path='/profiles/:id/edit/username'
