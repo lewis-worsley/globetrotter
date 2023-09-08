@@ -52,11 +52,39 @@ h5 {
 }
 
 .Image {
-    max-height: 720px;
-    max-width: 405px;
-    object-fit: contain;
+    max-height: 400px;
+    max-width: 720px;
+    object-fit: cover;
+    
+}
+
+.GridImage {
+    max-height: 170px;
+    max-width: 330px;
+    object-fit: cover;
+    height: 300px;
 }
 
 input[type="file"] {
     display: none;
+}
+
+.BlogButton {
+    border: none;
+    background-color: #02636d;
+    color: white;
+    border-radius: 100px;
+    padding: 4px 10px;
+    min-width: 75px;
+    margin: 5px;
+}
+
+.BlogButton:hover {
+    cursor: pointer;
+    background-color: #c4b6b6;
+    color: white;
+}
+
+.BlogButton:disabled {
+    background-color: #02636d;
 }

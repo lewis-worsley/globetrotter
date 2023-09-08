@@ -5,6 +5,7 @@ import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 
 import styles from "../../../styles/BlogCommentCreateEditForm.module.css"
+import appStyles from "../../../App.module.css"
 import Avatar from "../../../components/Avatar";
 import { Button } from 'react-bootstrap';
 import { axiosRes } from '../../../api/axiosDefaults';
@@ -68,7 +69,7 @@ function BlogCommentCreateForm(props) {
                 </InputGroup>
             </Form.Group>
             <Button
-                className={`${styles.Button} btn d-block ml-auto`}
+                className={`${appStyles.BlogButton} btn d-block ml-auto`}
                 disabled={!content.trim()}
                 type="submit"
             >

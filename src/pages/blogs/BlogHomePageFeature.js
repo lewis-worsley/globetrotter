@@ -162,7 +162,7 @@ const BlogHomePageFeature = (props) => {
                         {comments_count}
                     </span>
                     <Link to={`/blogs/${id}`}>
-                        <Button className={`${styles.Button} ml-4 py-2 px-4`}>Read blog</Button>
+                        <Button className={`${appStyles.BlogButton} ml-4 py-2 px-4`}>Read blog</Button>
                     </Link>
                 </div>
             </Card.Body>

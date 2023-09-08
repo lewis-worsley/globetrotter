@@ -4,6 +4,7 @@ import Form from "react-bootstrap/Form";
 import { axiosRes } from '../../../api/axiosDefaults';
 
 import styles from "../../../styles/CommentCreateEditForm.module.css";
+import appStyles from "../../../App.module.css"
 import Button from "react-bootstrap/Button";
 
 function BlogCommentEditForm(props) {
@@ -58,14 +59,14 @@ function BlogCommentEditForm(props) {
             </Form.Group>
             <div>
                 <Button
-                    className={styles.Button}
+                    className={appStyles.BlogButton}
                     onClick={() => setShowEditForm(false)}
                     type="button"
                 >
                     Cancel
                 </Button>
                 <Button
-                    className={styles.Button}
+                    className={appStyles.BlogButton}
                     disabled={!content.trim()}
                     type="submit"
                 >

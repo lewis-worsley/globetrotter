@@ -84,7 +84,7 @@ function BlogsPage({ message }) {
             <Row className="h-100 mt-3">
                 <Col className="py-2 p-0 p-lg-2 text-center" xs={8}>
                     <>
-                        <Button className={`${styles.Button} py-2 px-4`} onClick={handleShow}>
+                        <Button className={`${appStyles.BlogButton} py-2 px-4`} onClick={handleShow}>
                             Create blog <i className="fa-solid fa-globe"></i>
                         </Button>
 

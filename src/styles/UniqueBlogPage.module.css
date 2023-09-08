@@ -27,6 +27,11 @@
     margin-bottom: 4em;
 }
 
+.CardTop {
+    background-color: #02636d;
+    color: white;
+}
+
 .User {
     font-weight: bold;
 }
@@ -34,4 +39,3 @@
 .Date {
     font-size: 14px;
 }
-

@@ -118,7 +118,6 @@ const Blog = (props) => {
                     <Col className='d-flex justify-content-end'>
                         <Card.Text className={appStyles.Headings}>{countries}</Card.Text>
                     </Col>
-
                 </Row>
             </Card.Body>
             <Card.Body>
@@ -127,9 +126,11 @@ const Blog = (props) => {
                     <Card.Text>
                         <ReadMore>{content}</ReadMore>
                     </Card.Text>}
-                <Link to={`/blogs/${id}`}>
-                    <Card.Img src={image} alt={title} />
-                </Link>
+                <div> 
+                    <Link to={`/blogs/${id}`}>
+                        <Card.Img src={image} alt={title} className={appStyles.Image} />
+                    </Link>
+                </div>
                 <div className='mt-4 d-flex justify-content-end align-items-center'>
                     {is_owner ? (
                         <OverlayTrigger
@@ -162,7 +163,7 @@ const Blog = (props) => {
                         Comments {comments_count}
                     </span>
                     <Link to={`/blogs/${id}`}>
-                        <Button className={`${styles.Button} ml-4 py-2 px-4`}>Read blog</Button>
+                        <Button className={`${appStyles.BlogButton} ml-4 py-2 px-4`}>Read blog</Button>
                     </Link>
                 </div>
             </Card.Body>
