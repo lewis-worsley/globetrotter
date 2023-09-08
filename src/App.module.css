@@ -88,3 +88,11 @@ input[type="file"] {
 .BlogButton:disabled {
     background-color: #02636d;
 }
+
+.Button {
+    border-radius: 100px;
+    background-color: #c4b6b6;
+    color: white;
+    padding: 12px 28px;
+    margin-top: 1.5em;
+}
