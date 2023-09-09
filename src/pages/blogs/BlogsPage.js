@@ -9,7 +9,7 @@ import Container from "react-bootstrap/Container";
 
 import Blog from "./Blog";
 import appStyles from "../../App.module.css";
-import styles from "../../styles/Blog.module.css"
+import blogStyles from "../../styles/BlogPages.module.css"
 
 import NoResults from "../../assets/no-results.png";
 import { axiosReq } from "../../api/axiosDefaults";
@@ -80,11 +80,13 @@ function BlogsPage({ message }) {
     }
 
     return (
-        <div>
+            <Container>
+
+
             <Row className="h-100 mt-3">
-                <Col className="py-2 p-0 p-lg-2 text-center" xs={8}>
+                <Col className="py-2 p-0 p-lg-2 text-center" xs={12} sm={8}>
                     <>
-                        <Button className={`${appStyles.BlogButton} py-2 px-4`} onClick={handleShow}>
+                        <Button className={`${blogStyles.BlogButton} ${appStyles.Button}`} onClick={handleShow}>
                             Create blog <i className="fa-solid fa-globe"></i>
                         </Button>
 
@@ -94,7 +96,7 @@ function BlogsPage({ message }) {
                         />
                     </>
                 </Col>
-                <Col xs={4}>
+                <Col xs={12} sm={4}>
                     <Form className="py-2 p-0 p-lg-2" onSubmit={(event) => event.preventDefault()}>
                         <Form.Control
                             value={query}
@@ -135,7 +137,7 @@ function BlogsPage({ message }) {
                     <PopularProfiles />
                 </Col>
             </Row>
-        </div>
+            </Container>
     );
 }
 

@@ -1,0 +1,13 @@
+.CardTop {
+    background-color: #02636d;
+}
+
+.BlogButton {
+    background-color: #02636d;
+    color: white;
+    margin-left: 1.5em;
+}
+
+.BlogButton:disabled {
+    background-color: #02636d;
+}

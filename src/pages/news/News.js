@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import styles from "../../styles/Blog.module.css"
 import Card from 'react-bootstrap/Card';
 import Media from 'react-bootstrap/Media';
 import { Link } from "react-router-dom";
@@ -29,7 +28,7 @@ const News = (props) => {
         return (
             <p className="text">
                 {isReadMore ? text.slice(0, 280) : text}
-                <span onClick={toggleReadMore} className={`${styles.ReadOrHide} pl-1`}>
+                <span onClick={toggleReadMore} className={`${appStyles.ReadOrHide} pl-1`}>
                     {isReadMore ? <Link to={`/news/${id}`}>...read more</Link> : ""}
                 </span>
             </p>

@@ -69,30 +69,51 @@ input[type="file"] {
     display: none;
 }
 
-.BlogButton {
+.Button {
     border: none;
-    background-color: #02636d;
-    color: white;
     border-radius: 100px;
-    padding: 4px 10px;
-    min-width: 75px;
-    margin: 5px;
+    color: white;
+    padding: 12px 28px;
 }
 
-.BlogButton:hover {
+.Button:hover {
     cursor: pointer;
     background-color: #c4b6b6;
     color: white;
 }
 
-.BlogButton:disabled {
-    background-color: #02636d;
+a {
+    color: white;
+    transition: color ease-in-out 0.3s;
 }
 
-.Button {
-    border-radius: 100px;
-    background-color: #c4b6b6;
-    color: white;
-    padding: 12px 28px;
-    margin-top: 1.5em;
+a:hover {
+    text-decoration: none;
+    color: #0EA098;
+}
+
+a:hover i {
+    color: #0EA098;
+    transition: color ease-in-out 0.3s;
+}
+
+i:hover {
+    cursor: pointer;
+    transition: color ease-in-out 0.3s;
+    color: #0EA098;
+}
+
+.ReadOrHide {
+    color: #c4b6b6;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.User {
+    font-weight: bold;
+}
+
+.Date {
+    font-size: 14px;
 }

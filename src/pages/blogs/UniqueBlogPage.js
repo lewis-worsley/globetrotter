@@ -1,5 +1,4 @@
 import React from 'react'
-import iconStyles from "../../styles/Blog.module.css"
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import Card from 'react-bootstrap/Card';
 import Media from 'react-bootstrap/Media';
@@ -140,18 +139,18 @@ const UniqueBlogPage = (props) => {
                                             </OverlayTrigger>
                                         ) : like_id ? (
                                             <span onClick={handleUnlike}>
-                                                <i className={`fas fa-heart ${iconStyles.Heart}`}></i>
+                                                <i className={`fas fa-heart ${appStyles.Heart}`}></i>
                                             </span>
                                         ) : currentUser ? (
                                             <span onClick={handleLike}>
-                                                <i className={`fas fa-heart ${iconStyles.HeartOutline}`}></i>
+                                                <i className={`fas fa-heart ${appStyles.HeartOutline}`}></i>
                                             </span>
                                         ) : (
                                             <OverlayTrigger
                                                 placement="top"
                                                 overlay={<Tooltip>Login to like posts!</Tooltip>}
                                             >
-                                                <i className={`${iconStyles.Heart} far fa-heart`}></i>
+                                                <i className={`${appStyles.Heart} far fa-heart`}></i>
                                             </OverlayTrigger>
                                         )}
                                         <span>Likes {likes_count}</span>

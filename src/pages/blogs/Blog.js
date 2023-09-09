@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import styles from "../../styles/Blog.module.css"
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import Card from 'react-bootstrap/Card';
 import Media from 'react-bootstrap/Media';
@@ -12,6 +11,7 @@ import { MoreDropdown } from '../../components/MoreDropdown';
 import { useHistory } from "react-router-dom";
 import { Button, Col, Row } from 'react-bootstrap';
 import appStyles from '../../App.module.css'
+import blogStyles from '../../styles/BlogPages.module.css'
 
 const Blog = (props) => {
     const {
@@ -45,8 +45,8 @@ const Blog = (props) => {
         };
         return (
             <p className="text">
-                {isReadMore ? text.slice(0, 280) : text}
-                <span onClick={toggleReadMore} className={`${styles.ReadOrHide} pl-1`}>
+                {isReadMore ? text.slice(0, 180) : text}
+                <span onClick={toggleReadMore} className={`${appStyles.ReadOrHide} pl-1`}>
                     {isReadMore ? <Link to={`/blogs/${id}`}>...read more</Link> : ""}
                 </span>
             </p>
@@ -100,7 +100,7 @@ const Blog = (props) => {
 
     return (
         <Card className='my-4' bg='dark' text='light'>
-            <Card.Body className={`${styles.CardTop}`}>
+            <Card.Body className={`${blogStyles.CardTop}`}>
                 <Row className="align-items-center">
                     <Col xs={8}>
                         <Media className="align-items-center">
@@ -109,9 +109,9 @@ const Blog = (props) => {
                             </Link>
                             <div className='mx-4'>
                                 <Link to={`/profiles/${profile_id}`}>
-                                    <span className={styles.User}>{owner}</span>
+                                    <span className={appStyles.User}>{owner}</span>
                                 </Link>
-                                <Card.Text className={`${styles.Date}`}>{created_at}</Card.Text>
+                                <Card.Text className={`${appStyles.Date}`}>{created_at}</Card.Text>
                             </div>
                         </Media>
                     </Col>
@@ -141,29 +141,29 @@ const Blog = (props) => {
                         </OverlayTrigger>
                     ) : like_id ? (
                         <span onClick={handleUnlike}>
-                            <i className={`fas fa-heart ${styles.Heart}`}></i>
+                            <i className={`fas fa-heart ${appStyles.Heart}`}></i>
                         </span>
                     ) : currentUser ? (
                         <span onClick={handleLike}>
-                            <i className={`fas fa-heart ${styles.HeartOutline}`}></i>
+                            <i className={`fas fa-heart ${appStyles.HeartOutline}`}></i>
                         </span>
                     ) : (
                         <OverlayTrigger
                             placement="top"
                             overlay={<Tooltip>Login to like blogs!</Tooltip>}
                         >
-                            <i className={`${styles.Heart} far fa-heart`}></i>
+                            <i className={`${appStyles.Heart} far fa-heart`}></i>
                         </OverlayTrigger>
                     )}
-                    <span>Likes {likes_count}</span>
+                    {likes_count}
                     <span className='ml-3'>
                         <Link to={`/blogs/${id}`}>
-                            <i className={`${styles.Comment} far fa-comments`}></i>
+                            <i className={`${appStyles.Comment} far fa-comments`}></i>
                         </Link>
-                        Comments {comments_count}
+                    {comments_count}
                     </span>
                     <Link to={`/blogs/${id}`}>
-                        <Button className={`${appStyles.BlogButton} ml-4 py-2 px-4`}>Read blog</Button>
+                        <Button className={`${blogStyles.BlogButton} ${appStyles.Button}`}>Read blog</Button>
                     </Link>
                 </div>
             </Card.Body>

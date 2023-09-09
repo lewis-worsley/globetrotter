@@ -12,6 +12,7 @@ import { MoreDropdown } from '../../components/MoreDropdown';
 import { useHistory } from "react-router-dom";
 import { Button, CardColumns, CardDeck, Col, Container, Row } from 'react-bootstrap';
 import appStyles from '../../App.module.css'
+import blogStyles from '../../styles/BlogPages.module.css'
 
 const BlogProfilePageFeature = (props) => {
     const {
@@ -46,7 +47,7 @@ const BlogProfilePageFeature = (props) => {
         return (
             <p className="text">
                 {isReadMore ? text.slice(0, 100) : text}
-                <span onClick={toggleReadMore} className={`${styles.ReadOrHide} pl-1`}>
+                <span onClick={toggleReadMore} className={`${appStyles.ReadOrHide} pl-1`}>
                     {isReadMore ? <Link to={`/blogs/${id}`}>...read more</Link> : ""}
                 </span>
             </p>
@@ -101,11 +102,11 @@ const BlogProfilePageFeature = (props) => {
     return (
         <CardColumns>
             <Card className={` my-4`} bg='dark' text='light'>
-                <Card.Body className={`${styles.CardTop}`}>
+                <Card.Body className={`${blogStyles.CardTop}`}>
                     <Row className="align-items-center">
                         <Col xs={8}>
                             <Media className="align-items-center">
-                                <Card.Text className={`${styles.Date}`}>{created_at}</Card.Text>
+                                <Card.Text className={`${appStyles.Date}`}>{created_at}</Card.Text>
                             </Media>
                         </Col>
                         <Col className='d-flex justify-content-end'>
@@ -154,7 +155,7 @@ const BlogProfilePageFeature = (props) => {
                             {comments_count}
                         </span>
                         <Link to={`/blogs/${id}`}>
-                            <Button className={`${appStyles.BlogButton} ml-4 py-2 px-4`}>Read blog</Button>
+                            <Button className={`${appStyles.Button} ${blogStyles.BlogButton}`}>Read blog</Button>
                         </Link>
                     </div>
                 </Card.Body>
