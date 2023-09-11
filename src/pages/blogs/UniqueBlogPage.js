@@ -10,7 +10,6 @@ import { axiosRes } from '../../api/axiosDefaults';
 import { MoreDropdown } from '../../components/MoreDropdown';
 import { useHistory } from "react-router-dom";
 import { Button, Col, Row } from 'react-bootstrap';
-import styles from '../../styles/UniqueBlogPage.module.css'
 import appStyles from '../../App.module.css'
 import { useSetProfileData } from '../../contexts/ProfileDataContext';
 
@@ -91,19 +90,18 @@ const UniqueBlogPage = (props) => {
     return (
 
         <div>
-            <div className={styles.HeroImage}>
-                <div className={`d-flex text-center`}>
-                    <div className={`${styles.Hero}`}>
-                        <Card.Img src={image} alt={title} className={`${styles.Hero}  `} />
-                        <div className={`${styles.Title} border-bottom`}>
-                            {title && <Card.Title ><h1 className={appStyles.Headings}>{title}</h1></Card.Title>}
-                            <h3 className={`${appStyles.Headings} mt-3`}>{countries}</h3>
-                        </div>
+            <div className={appStyles.HeroImage}>
+                <div className={`text-center`}>
+                    <Card.Img src={image} alt={title} className={`${appStyles.Hero}`} />
+                    <image src={image}/>
+                    <div className={`${appStyles.Title} border-bottom`}>
+                        {title && <Card.Title ><h1 className={appStyles.Headings}>{title}</h1></Card.Title>}
+                        <h3 className={`${appStyles.Headings} mt-5`}>{countries}</h3>
                     </div>
                 </div>
             </div>
 
-            <Card className={`${styles.Card} p-1`} mobile bg="dark" text="white">
+            <Card className={`${appStyles.Card}`} bg="dark" text="white">
                 <Card.Body>
                     <Row>
                         <Col xs={12}>
@@ -121,11 +119,12 @@ const UniqueBlogPage = (props) => {
                                 <Card.Body>
                                     <div>
                                         <Row>
-                                            <Col>
-                                                <span className={styles.Date}>{created_at}</span>
-                                                {title && <Card.Title className={`${appStyles.Headings} mt-3`}>{title}</Card.Title>}
+                                            <Col xs={12} className='d-flex align-items-baseline'>
+
+                                                <span className={`${appStyles.Date}`}>{created_at}</span>
+                                                <span className={`${appStyles.Headings} ml-auto`}>{countries}</span>
                                             </Col>
-                                            <p className={` ${appStyles.Headings} mx-3`}>{countries}</p>
+                                            <Col>{title && <Card.Title className={`${appStyles.Headings} mt-3`}>{title}</Card.Title>}</Col>
                                         </Row>
                                     </div>
                                     {content && <Card.Text>{content}</Card.Text>}
@@ -156,7 +155,7 @@ const UniqueBlogPage = (props) => {
                                         <span>Likes {likes_count}</span>
                                         <span className='ml-3'>
                                             <Link to={`/blogs/${id}`}>
-                                                <i className={`${styles.Comment} far fa-comments`}></i>
+                                                <i className={`${appStyles.Comment} far fa-comments`}></i>
                                             </Link>
                                             Comments {comments_count}
                                         </span>
@@ -168,7 +167,7 @@ const UniqueBlogPage = (props) => {
                                     </Link>
                                     <div className="mx-4">
                                         <Link to={`/profiles/${profile_id}`}>
-                                            <span className={styles.User}>{owner}</span>
+                                            <span className={appStyles.User}>{owner}</span>
                                         </Link>
 
                                         <div className='mt-3'>
@@ -183,7 +182,7 @@ const UniqueBlogPage = (props) => {
                                                     </Button>
                                                 ) : (
                                                     <Button
-                                                    className={`${appStyles.FollowButton} py-2 px-4`}
+                                                        className={`${appStyles.FollowButton} py-2 px-4`}
                                                         onClick={() => handleFollow(profile)}
                                                     >
                                                         Follow

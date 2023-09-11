@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import styles from "../../styles/UniqueBlogPage.module.css"
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import Card from 'react-bootstrap/Card';
 import Media from 'react-bootstrap/Media';
@@ -133,24 +132,24 @@ const BlogProfilePageFeature = (props) => {
                             </OverlayTrigger>
                         ) : like_id ? (
                             <span onClick={handleUnlike}>
-                                <i className={`fas fa-heart ${styles.Heart}`}></i>
+                                <i className={`fas fa-heart ${appStyles.Heart}`}></i>
                             </span>
                         ) : currentUser ? (
                             <span onClick={handleLike}>
-                                <i className={`fas fa-heart ${styles.HeartOutline}`}></i>
+                                <i className={`fas fa-heart ${appStyles.HeartOutline}`}></i>
                             </span>
                         ) : (
                             <OverlayTrigger
                                 placement="top"
                                 overlay={<Tooltip>Login to like blogs!</Tooltip>}
                             >
-                                <i className={`${styles.Heart} far fa-heart`}></i>
+                                <i className={`${appStyles.Heart} far fa-heart`}></i>
                             </OverlayTrigger>
                         )}
                         <span>{likes_count}</span>
                         <span className='ml-3'>
                             <Link to={`/blogs/${id}`}>
-                                <i className={`${styles.Comment} far fa-comments`}></i>
+                                <i className={`${appStyles.Comment} far fa-comments`}></i>
                             </Link>
                             {comments_count}
                         </span>
