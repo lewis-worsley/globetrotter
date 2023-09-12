@@ -17,11 +17,17 @@ import Form from "react-bootstrap/Form";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 import PopularProfiles from "../profiles/PopularProfiles";
+import { useProfileData, useSetProfileData } from "../../contexts/ProfileDataContext";
+import { Button } from "react-bootstrap";
+import Journey from "../journeys/Journey";
+import Blog from "../blogs/Blog";
 
 function NewssPage({ message }) {
     const [newss, setNewss] = useState({ results: [] });
     const [hasLoaded, setHasLoaded] = useState(false);
     const { pathname } = useLocation();
+
+    const profile = useSetProfileData();
 
     const [query, setQuery] = useState("");
 
@@ -49,6 +55,7 @@ function NewssPage({ message }) {
 
     return (
         <div>
+            {profile?.is_admin && <p>Hello</p>}
             <Row className="h-100">
                 <Col xs={12}>
                     <Form className="py-2 p-0 p-lg-2" onSubmit={(event) => event.preventDefault()}>

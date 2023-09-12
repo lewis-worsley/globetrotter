@@ -16,6 +16,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import Asset from "../../components/Asset";
 import { fetchMoreData } from "../../utils/utils";
 import { Button } from "react-bootstrap";
+import UniqueNewsPage from "./UniqueNewsPage";
 
 function NewsPage() {
     const { id } = useParams();
@@ -39,7 +40,7 @@ function NewsPage() {
     return (
         <Row className="h-100">
             <Col className="py-2 p-0 p-lg-2">
-                <News {...news.results[0]} setNews={setNews} NewsPage />
+                <UniqueNewsPage {...news.results[0]} setNews={setNews} NewsPage />
             </Col>
         </Row>
     );

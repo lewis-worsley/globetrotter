@@ -12,6 +12,8 @@ import Asset from "../../components/Asset";
 
 import Upload from "../../assets/upload.png";
 
+import formStyles from "../../styles/Form.module.css";
+import newsStyles from "../../styles/NewsPages.module.css"
 import appStyles from "../../App.module.css";
 import { useHistory } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
@@ -100,7 +102,13 @@ function NewsCreateForm(props) {
                 </Alert>
             ))}
 
-            <Button type="submit" onClick={handleSubmit}>Publish</Button>
+            <Button 
+                type="submit" 
+                onClick={handleSubmit}
+                className={`${newsStyles.NewsButton} ${appStyles.Button}`}
+            >
+                Publish
+            </Button>
         </div>
     );
 
@@ -109,7 +117,7 @@ function NewsCreateForm(props) {
             <Row>
                 <Col className="py-2 p-0 p-md-2" xs={12}>
                     <Container
-                        className={`${appStyles.Content} d-flex flex-column justify-content-center`}
+                        className={`${appStyles.Content} ${formStyles.Container} d-flex flex-column justify-content-center`}
                     >
                         <Form.Group className="text-center">
                             {image ? (
@@ -155,11 +163,11 @@ function NewsCreateForm(props) {
                         <div className="d-md-none">{textFields}</div>
                     </Container>
                 </Col>
-                <Col xs={12} className="d-none d-md-block p-0 p-md-2" >
+                <Col xs={12} sm={{ span: 8, offset: 2 }} className="d-none d-md-block p-0 p-md-2" >
                     <Container className={appStyles.Content}>{textFields}</Container>
                 </Col>
             </Row>
-        </Form >
+        </Form>
     );
 }
 

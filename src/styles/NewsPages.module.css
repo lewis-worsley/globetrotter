@@ -2,42 +2,11 @@
     background-color: #46616e;
 }
 
-a {
-    color: white;
-    transition: color ease-in-out 0.3s;
-}
-
-a:hover {
-    text-decoration: none;
-    color: #0EA098;
-}
-
-a:hover i {
-    color: #0EA098;
-    transition: color ease-in-out 0.3s;
-}
-
-i:hover {
-    cursor: pointer;
-    transition: color ease-in-out 0.3s;
-    color: #0EA098;
-}
-
-.ReadOrHide {
-    color: #c4b6b6;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 14px;
-}
-
 .NewsButton {
-    border: none;
     background-color: #46616e;
+    border: none;
     color: white;
-}
-
-.NewsButton:hover {
-    cursor: pointer;
+    margin-top: 1.5em;
 }
 
 .NewsButton:disabled {

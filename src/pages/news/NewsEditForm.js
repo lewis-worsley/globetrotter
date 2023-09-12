@@ -9,7 +9,7 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Image from "react-bootstrap/Image";
 
-import styles from "../../styles/BlogCreateEditForm.module.css";
+import formStyles from "../../styles/Form.module.css";
 import appStyles from "../../App.module.css";
 import { useHistory } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
@@ -131,7 +131,7 @@ function NewsEditForm() {
             <Row>
                 <Col className="py-2 p-0 p-md-2" xs={12}>
                     <Container
-                        className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
+                        className={`${appStyles.Content} ${formStyles.Container} d-flex flex-column justify-content-center`}
                     >
                         <Form.Group className="text-center">
                             <figure>
