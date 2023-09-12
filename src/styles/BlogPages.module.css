@@ -4,6 +4,7 @@
 
 .BlogButton {
     background-color: #02636d;
+    border: none;
     color: white;
     margin-left: 1.5em;
 }

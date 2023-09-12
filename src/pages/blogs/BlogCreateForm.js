@@ -12,7 +12,8 @@ import Asset from "../../components/Asset";
 
 import Upload from "../../assets/upload.png";
 
-import styles from "../../styles/BlogCreateEditForm.module.css";
+import formStyles from "../../styles/Form.module.css";
+import blogStyles from "../../styles/BlogPages.module.css"
 import appStyles from "../../App.module.css";
 import { useHistory } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
@@ -138,7 +139,7 @@ function BlogCreateForm(props) {
             <Button
                 type="submit"
                 onClick={handleSubmit}
-                className={`${appStyles.BlogButton} px-4 py-2 mt-4`}
+                className={`${blogStyles.BlogButton} ${appStyles.Button} px-4 py-2 mt-4`}
             >
                 Publish
             </Button>
@@ -150,7 +151,7 @@ function BlogCreateForm(props) {
             <Row>
                 <Col className="py-2 p-0 p-md-2" xs={12}>
                     <Container
-                        className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
+                        className={`${appStyles.Content} ${formStyles.Container} d-flex flex-column justify-content-center`}
                     >
                         <Form.Group className="text-center">
                             {image ? (
