@@ -118,11 +118,17 @@ i:hover {
     font-size: 14px;
 }
 
+.BlogWordTitle {
+    color: #02636d;
+}
 
+.NewsWordTitle {
+    color: 
+}
 
 .HeroImage {
     margin-top: -2em;
-    height: 58.5em;
+    height: 59em;
     overflow: hidden;
     left: 50%;
 	margin-left: -50vw;
@@ -137,6 +143,15 @@ i:hover {
     height: 960px;
     width: 100%;
     object-fit: cover;
+}
+
+.HeroImageHomePage {
+    background: url("./assets/homepage-hero.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: hard-light;
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 .Title {

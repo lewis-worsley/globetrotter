@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Card, CardDeck, Col, Container, Image, Media, Row } from 'react-bootstrap';
-import hero from '../../assets/homepage-hero.jpg'
 import { Link, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import { axiosReq } from '../../api/axiosDefaults';
 import Journey from "../journeys/Journey";
 import Asset from "../../components/Asset";
 import appStyles from "../../App.module.css";
-import Blog from '../blogs/Blog';
-import News from '../news/News';
-
-
-
+import styles from "../../styles/Homepage.module.css"
+import blogStyles from "../../styles/BlogPages.module.css"
+import newsStyles from "../../styles/NewsPages.module.css"
+import BlogHomePageFeature from '../blogs/BlogHomePageFeature';
+import NewsHomePageFeature from '../news/NewsHomePageFeature';
 
 const HomePage = () => {
     const [blogs, setBlogs] = useState({ results: [] });
@@ -64,32 +63,39 @@ const HomePage = () => {
 
     return (
         <div>
-            <div>
-                <Image src={hero} />
-                <h1>Wow</h1>
+            <div className={`${appStyles.HeroImage} ${appStyles.HeroImageHomePage}`}>
+                <div className={appStyles.Centered}>
+                    <h1 className={`${appStyles.Headings}`}>
+                        Life is either a daring adventure or nothing at all
+                    </h1>
+                    <Link to={"/signup"}>
+                        <Button>
+                            Sign up
+                        </Button>
+                    </Link>
+                    <Link to={"/signin"}>
+                        <Button>
+                            Sign in
+                        </Button>
+                    </Link>
+                </div>
             </div>
 
 
-            <Row>
+            <Row className={`${styles.Intro} py-5`}>
                 <Col>
-                    <Card>
-                        <Card.Img src={hero} />
-                        <Card.Body>
-                            <Card.Title className='mt-1'>Hello</Card.Title>
-                        </Card.Body>
-                    </Card>
                     <Image />
                 </Col>
 
                 <Col>
-                    <h2>About Globetrotters</h2>
+                    <h2 className={appStyles.Headings}>About Globetrotters</h2>
                     <p>Blurb</p>
 
                 </Col>
             </Row>
 
-            <Row>
-                <Col>
+            <Row className={`${styles.Journey} py-5`}>
+                <Col xs={6}>
                     <h2>Become a Globetrotter</h2>
                     <p>Blurb</p>
                     <Link to="/signup">
@@ -99,54 +105,53 @@ const HomePage = () => {
                         <Button variant='secondary'>Sign in</Button>
                     </Link>
                 </Col>
-                <Col>
+                <Col xs={6}>
                     Image goes here
+
                 </Col>
-            </Row>
-            <Row>
-                <Col>
-                    <h3>Fellow Globetrotters</h3>
+                <Col xs={12}>
+                    <h3 className={appStyles.Headings}>Fellow Globetrotters</h3>
                     <p>Blurb</p>
                 </Col>
+                <Row>
+                    <Col>
+                        <CardDeck>
+                            <Card>
+                                {hasLoaded ? (
+                                    <>
+                                        {journeys.results.slice(0, 3).map((journey) => (
+                                            <Journey key={journey.id} {...journey} setJourneys={setJourneys} />
+                                        ))}
+                                    </>
+                                ) : (
+                                    <Container className={appStyles.Content}>
+                                        <Asset spinner />
+                                    </Container>
+                                )}
+                            </Card>
+                        </CardDeck>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <Link>
+                            <Button>
+                                Share your journey with the world!
+                            </Button>
+                        </Link>
+                    </Col>
+                </Row>
             </Row>
 
             <Row>
                 <Col>
-                    <CardDeck>
-
-                        {hasLoaded ? (
-                            <>
-                                {journeys.results.slice(0, 3).map((journey) => (
-                                    <Journey key={journey.id} {...journey} setJourneys={setJourneys} />
-                                ))}
-                            </>
-                        ) : (
-                            <Container className={appStyles.Content}>
-                                <Asset spinner />
-                            </Container>
-                        )}
-                    </CardDeck>
-                </Col>
-            </Row>
-            <Row>
-                <Col>
-                    <Link>
-                        <Button>
-                            Share your journey with the world!
-                        </Button>
-                    </Link>
-                </Col>
-            </Row>
-            
-            <Row>
-                <Col>
-                <h3>Latest blogs</h3>
-                <p>Blurb</p>
+                    <h3 className={appStyles.Headings}>Latest <span className={appStyles.BlogWordTitle}>blogs</span></h3>
+                    <p>Blurb</p>
                     <CardDeck>
                         {hasLoaded ? (
                             <>
                                 {blogs.results.slice(0, 3).map((blog) => (
-                                    <Blog key={blog.id} {...blog} setBlogs={setBlogs} />
+                                    <BlogHomePageFeature key={blog.id} {...blog} setBlogs={setBlogs} />
                                 ))}
                             </>
                         ) : (
@@ -155,23 +160,25 @@ const HomePage = () => {
                             </Container>
                         )}
                     </CardDeck>
-                    <Link to="/blogs">
-                        <Button>
-                            View latest blogs
-                        </Button>
-                    </Link>
+                    <div className='text-center'>
+                        <Link to="/blogs">
+                            <Button className={`${appStyles.Button} ${blogStyles.BlogButton}`}>
+                                View latest blogs
+                            </Button>
+                        </Link>
+                    </div>
                 </Col>
             </Row>
 
             <Row>
                 <Col>
-                <h3>Latest news</h3>
-                <p>Blurb</p>
+                    <h3 className={appStyles.Headings}>Latest <span className={appStyles.NewsWordTitle}>news</span></h3>
+                    <p>Blurb</p>
                     <CardDeck>
                         {hasLoaded ? (
                             <>
                                 {newss.results.slice(0, 3).map((news) => (
-                                    <News key={news.id} {...news} setNewss={setNewss} />
+                                    <NewsHomePageFeature key={news.id} {...news} setNewss={setNewss} />
                                 ))}
                             </>
                         ) : (
@@ -180,11 +187,13 @@ const HomePage = () => {
                             </Container>
                         )}
                     </CardDeck>
-                    <Link to="/news">
-                        <Button>
-                            View latest news
-                        </Button>
-                    </Link>
+                    <div className='text-center'>
+                        <Link to="/news">
+                            <Button className={`${appStyles.Button} ${newsStyles.NewsButton}`}>
+                                View latest news
+                            </Button>
+                        </Link>
+                    </div>
                 </Col>
             </Row>
 
