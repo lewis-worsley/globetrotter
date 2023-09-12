@@ -1,0 +1,21 @@
+.CardTop {
+    background-color: #63610c;
+}
+
+.JourneyButton {
+    background-color: #63610c;
+    border: none;
+    color: white;
+    margin-left: 1.5em;
+}
+
+.JourneyFormButton {
+    background-color: #63610c;
+    border: none;
+    color: white;
+}
+
+.JourneyButton:disabled, .JourneyFormButton:disabled {
+    background-color: #63610c;
+}
+
