@@ -9,7 +9,13 @@
     margin-left: 1.5em;
 }
 
-.BlogButton:disabled {
+.BlogFormButton {
+    background-color: #02636d;
+    border: none;
+    color: white;
+}
+
+.BlogButton:disabled, .BlogFormButton:disabled {
     background-color: #02636d;
 }
 

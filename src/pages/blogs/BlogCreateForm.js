@@ -139,7 +139,7 @@ function BlogCreateForm(props) {
             <Button
                 type="submit"
                 onClick={handleSubmit}
-                className={`${blogStyles.BlogButton} ${appStyles.Button} px-4 py-2 mt-4`}
+                className={`${blogStyles.BlogFormButton} ${appStyles.Button} px-4 py-2 mt-4`}
             >
                 Publish
             </Button>

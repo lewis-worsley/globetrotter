@@ -11,6 +11,7 @@ import Image from "react-bootstrap/Image";
 
 import formStyles from "../../styles/Form.module.css";
 import appStyles from "../../App.module.css";
+import blogStyles from "../../styles/BlogPages.module.css"
 import { useHistory } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import { Alert } from "react-bootstrap";
@@ -155,7 +156,7 @@ function BlogEditForm() {
             <Button
                 type="submit"
                 onClick={handleSubmit}
-                className={`${appStyles.BlogButton} px-4 py-2 mt-4`}
+                className={`${blogStyles.BlogFormButton} ${appStyles.Button} px-4 py-2 mt-4`}
             >
                 Save
             </Button>
