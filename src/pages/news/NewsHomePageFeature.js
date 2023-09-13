@@ -36,7 +36,7 @@ const NewsHomePageFeature = (props) => {
     };
 
     return (
-        <Card className='my-4' bg='dark' text='light'>
+        <Card bg='dark' text='light'>
             <Card.Body className={`${newsStyles.CardTop}`}>
                 {created_at}
             </Card.Body>
