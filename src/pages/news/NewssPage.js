@@ -65,7 +65,7 @@ function NewssPage({ message }) {
                     <>
                         <Link to="/news/create">
                             <Button
-                                className={`${newsStyles.NewsFormButton} ${appStyles.Button}`}
+                                className={`${newsStyles.NewsButton} ${appStyles.Button}`}
                             >
                                 Create News <i className="fa-solid fa-newspaper"></i>
                             </Button>
