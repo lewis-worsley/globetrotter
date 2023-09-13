@@ -16,6 +16,7 @@ import JourneyComment from "../comments/journey_comments/JourneyComment";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Asset from "../../components/Asset";
 import { fetchMoreData } from "../../utils/utils";
+import UniqueJourneyPage from "./UniqueJourneyPage";
 
 function JourneyPage() {
     const { id } = useParams();
@@ -45,7 +46,7 @@ function JourneyPage() {
     return (
         <Row className="h-100">
             <Col className="py-2 p-0 p-lg-2">
-                <Journey {...journey.results[0]} setJourney={setJourney} journeyPage />
+                <UniqueJourneyPage {...journey.results[0]} setJourney={setJourney} journeyPage />
                 <Container className={appStyles.Content}>
                     {currentUser ? (
                         <JourneyCommentCreateForm

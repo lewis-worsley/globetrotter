@@ -9,6 +9,8 @@ import Container from "react-bootstrap/Container";
 
 import Journey from "./Journey";
 import appStyles from "../../App.module.css";
+import journeyStyles from "../../styles/JourneyPages.module.css"
+
 
 import NoResults from "../../assets/no-results.png";
 import { axiosReq } from "../../api/axiosDefaults";
@@ -80,10 +82,13 @@ function JourneysPage({ message }) {
 
     return (
         <div>
-            <Row className="h-100">
-                <Col className="py-2 p-0 p-lg-2" xs={8}>
+            <Row className="h-100 mt-4">
+                <Col className="py-2 p-0 p-lg-2 text-center" xs={12} sm={8}>
                     <>
-                        <Button variant="primary" onClick={handleShow}>
+                        <Button 
+                        onClick={handleShow}
+                        className={`${journeyStyles.JourneyFormButton} ${appStyles.Button}`}
+                        >
                             Create journey <i className="fa-solid fa-globe"></i>
                         </Button>
 

@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from "../../styles/Journey.modules.css";
+import appStyles from "../../App.module.css"
+import journeyStyles from "../../styles/JourneyPages.module.css"
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import Card from 'react-bootstrap/Card';
 import Media from 'react-bootstrap/Media';
@@ -10,6 +12,8 @@ import { Link } from "react-router-dom";
 import { axiosRes } from '../../api/axiosDefaults';
 import { MoreDropdown } from '../../components/MoreDropdown';
 import { useHistory } from "react-router-dom";
+import { Button, Col, Row } from 'react-bootstrap';
+
 
 const Journey = (props) => {
     const {
@@ -26,6 +30,7 @@ const Journey = (props) => {
         locations,
         image,
         updated_at,
+        created_at,
         journeyPage,
         setJourneys,
     } = props;
@@ -33,6 +38,22 @@ const Journey = (props) => {
     const currentUser = useCurrentUser();
     const is_owner = currentUser?.username === owner
     const history = useHistory();
+
+    const ReadMore = ({ children }) => {
+        const text = children;
+        const [isReadMore, setIsReadMore] = useState(true);
+        const toggleReadMore = () => {
+            setIsReadMore(!isReadMore);
+        };
+        return (
+            <p className="text">
+                {isReadMore ? text.slice(0, 180) : text}
+                <span onClick={toggleReadMore} className={`${appStyles.ReadOrHide} pl-1`}>
+                    {isReadMore ? <Link to={`/journeys/${id}`}>...read more</Link> : ""}
+                </span>
+            </p>
+        );
+    };
 
     const handleEdit = () => {
         history.push(`/journeys/${id}/edit`);
@@ -42,7 +63,7 @@ const Journey = (props) => {
         try {
             await axiosRes.delete(`/journeys/${id}/`)
             history.goBack();
-        } catch(err) {
+        } catch (err) {
             console.log(err);
         }
     };
@@ -70,42 +91,47 @@ const Journey = (props) => {
                 ...prevJourneys,
                 results: prevJourneys.results.map((journey) => {
                     return journey.id === id
-                    ? {...journey, likes_count: journey.likes_count - 1, like_id: null}
-                    : journey;
+                        ? { ...journey, likes_count: journey.likes_count - 1, like_id: null }
+                        : journey;
                 }),
             }));
-        } catch(err) {
+        } catch (err) {
             console.log(err);
         }
     };
 
     return (
-        <Card className={styles.Post}>
-            <Card.Body>
-                <Media className="align-items-center justify-content-between">
-                    <Link to={`/profiles/${profile_id}`}>
-                        <Avatar src={profile_image} height={55} />
-                        {owner}
-                    </Link>
-                    {countries}
-                    <div className="d-flex align-items-center">
-                        <span>{updated_at}</span>
-                        {is_owner && journeyPage && (
-                            <MoreDropdown
-                                handleEdit={handleEdit}
-                                handleDelete={handleDelete}
-                            />
-                        )}
-                    </div>
-                </Media>
+        <Card className='my-4' bg='dark' text='light'>
+            <Card.Body className={`${journeyStyles.CardTop}`}>
+                <Row className="align-items-center">
+                    <Col xs={8}>
+                        <Media className="align-items-center">
+                            <Link to={`/profiles/${profile_id}`}>
+                                <Avatar src={profile_image} height={55} />
+                            </Link>
+                            <div className='mx-4'>
+                                <Link to={`/profiles/${profile_id}`}>
+                                    <span className={appStyles.User}>{owner}</span>
+                                </Link>
+                                <Card.Text className={`${appStyles.Date}`}>{created_at}</Card.Text>
+                            </div>
+                        </Media>
+                    </Col>
+                    <Col className='d-flex justify-content-end'>
+                        <Card.Text className={appStyles.Headings}>{countries}</Card.Text>
+                    </Col>
+                </Row>
             </Card.Body>
-            <Link to={`/journeys/${id}`}>
-                <Card.Img src={image} alt={title} />
-            </Link>
             <Card.Body>
-                {title && <Card.Title className="text-center">{title}</Card.Title>}
-                {content && <Card.Text>{content}</Card.Text>}
-                <div className={styles.Post}>
+                {title && <Card.Title><h2 className={appStyles.Headings}>{title}</h2></Card.Title>}
+                {content &&
+                    <Card.Text>
+                        <ReadMore>{content}</ReadMore>
+                    </Card.Text>}
+                    <Link to={`/journeys/${id}`}>
+                        <Card.Img src={image} alt={title} className={appStyles.Image} />
+                    </Link>
+                <div className='mt-4 d-flex justify-content-end align-items-center'>
                     {is_owner ? (
                         <OverlayTrigger
                             placement="top"
@@ -115,25 +141,30 @@ const Journey = (props) => {
                         </OverlayTrigger>
                     ) : like_id ? (
                         <span onClick={handleUnlike}>
-                            <i className={`fas fa-heart ${styles.Heart}`}></i>
+                            <i className={`fas fa-heart ${appStyles.Heart}`}></i>
                         </span>
                     ) : currentUser ? (
                         <span onClick={handleLike}>
-                            <i className={`fas fa-heart ${styles.HeartOutline}`}></i>
+                            <i className={`fas fa-heart ${appStyles.HeartOutline}`}></i>
                         </span>
                     ) : (
                         <OverlayTrigger
                             placement="top"
-                            overlay={<Tooltip>Login to like posts!</Tooltip>}
+                            overlay={<Tooltip>Login to like journeys!</Tooltip>}
                         >
-                            <i className={`${styles.Heart} far fa-heart`}></i>
+                            <i className={`${appStyles.Heart} far fa-heart`}></i>
                         </OverlayTrigger>
                     )}
                     {likes_count}
+                    <span className='ml-3'>
+                        <Link to={`/journeys/${id}`}>
+                            <i className={`${appStyles.Comment} far fa-comments`}></i>
+                        </Link>
+                        {comments_count}
+                    </span>
                     <Link to={`/journeys/${id}`}>
-                        <i className={`${styles.Comment} far fa-comments`}></i>
+                        <Button className={`${journeyStyles.JourneyButton} ${appStyles.Button}`}>Read journey</Button>
                     </Link>
-                    {comments_count}
                 </div>
             </Card.Body>
         </Card>
