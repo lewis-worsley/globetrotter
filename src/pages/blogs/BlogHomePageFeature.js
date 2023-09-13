@@ -128,7 +128,7 @@ const BlogHomePageFeature = (props) => {
                         <ReadMore>{content}</ReadMore>
                     </Card.Text>}
                 <Link to={`/blogs/${id}`}>
-                    <Card.Img src={image} alt={title} />
+                    <Card.Img src={image} alt={title} className={appStyles.Image} />
                 </Link>
                 <div className='mt-4 d-flex justify-content-end align-items-center'>
                     {is_owner ? (
