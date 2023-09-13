@@ -52,7 +52,7 @@ const News = (props) => {
                 <Link to={`/news/${id}`}>
                     <Card.Img src={image} alt={title} className={appStyles.Image} />
                 </Link>
-                <div className='d-flex justify-content-end'>
+                <div className='mt-4 d-flex justify-content-end'>
                     <Link to={`/news/${id}`}>
                         <Button className={`${newsStyles.NewsButton} ${appStyles.Button}`}>
                             Read more

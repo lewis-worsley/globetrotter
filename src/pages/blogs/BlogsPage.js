@@ -65,6 +65,7 @@ function BlogsPage({ message }) {
                     </Link>
                     </>
                 </Col>
+
                 <Col xs={12} lg={4}>
                     <Form className="py-2 p-0 p-lg-2" onSubmit={(event) => event.preventDefault()}>
                         <Form.Control

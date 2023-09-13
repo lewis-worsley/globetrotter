@@ -58,24 +58,23 @@ function NewssPage({ message }) {
 
     return (
         <Container>
-            <Row className="h-100">
+            <Row className="h-100 mt-4">
             {
                 profile &&
                 <Col className="py-2 p-0 p-lg-2 text-center" xs={12} lg={8}>
                     <>
                         <Link to="/news/create">
                             <Button
-                                className={`${newsStyles.NewsButton} ${appStyles.Button}`}
+                                className={`${newsStyles.NewsFormButton} ${appStyles.Button}`}
                             >
                                 Create News <i className="fa-solid fa-newspaper"></i>
                             </Button>
                         </Link>
                     </>
                 </Col>
-
             }
 
-                <Col xs={12} lg={4} className="mt-4">
+                <Col xs={12} lg={4}>
                     <Form className="py-2 p-0 p-lg-2" onSubmit={(event) => event.preventDefault()}>
                         <Form.Control
                             value={query}

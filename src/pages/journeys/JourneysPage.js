@@ -67,6 +67,7 @@ function JourneysPage({ message }) {
                         </Link>
                     </>
                 </Col>
+
                 <Col xs={12} lg={4}>
                     <Form className="py-2 p-0 p-lg-2" onSubmit={(event) => event.preventDefault()}>
                         <Form.Control
@@ -78,6 +79,7 @@ function JourneysPage({ message }) {
                     </Form>
                 </Col>
             </Row>
+            
             <Row>
                 <Col className="py-2 p-0 p-lg-2" lg={8}>
                     {hasLoaded ? (
