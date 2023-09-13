@@ -15,7 +15,7 @@ import { useHistory } from "react-router-dom";
 import { Button, CardColumns, Col, Row } from 'react-bootstrap';
 
 
-const JourneyProfilePageFeature = (props) => {
+const JourneyHomePageFeature = (props) => {
     const {
         id,
         owner,
@@ -101,12 +101,10 @@ const JourneyProfilePageFeature = (props) => {
     };
 
     return (
-        <CardColumns>
             <Card className='my-4' bg='dark' text='light'>
                 <Card.Body className={`${journeyStyles.CardTop}`}>
                     <Row className="align-items-center">
-                        <Col xs={8}>
-                            <Media className="align-items-center">
+                            <Media>
                                 <Link to={`/profiles/${profile_id}`}>
                                     <Avatar src={profile_image} height={55} />
                                 </Link>
@@ -117,7 +115,6 @@ const JourneyProfilePageFeature = (props) => {
                                     <Card.Text className={`${appStyles.Date}`}>{created_at}</Card.Text>
                                 </div>
                             </Media>
-                        </Col>
                         <Col className='d-flex justify-content-end'>
                             <Card.Text className={appStyles.Headings}>{countries}</Card.Text>
                         </Col>
@@ -130,7 +127,7 @@ const JourneyProfilePageFeature = (props) => {
                             <ReadMore>{content}</ReadMore>
                         </Card.Text>}
                     <Link to={`/journeys/${id}`}>
-                        <Card.Img src={image} alt={title} className={appStyles.GridImage} />
+                        <Card.Img src={image} alt={title} className={appStyles.Image} />
                     </Link>
                     <div className='mt-4 d-flex justify-content-end align-items-center'>
                         {is_owner ? (
@@ -169,8 +166,7 @@ const JourneyProfilePageFeature = (props) => {
                     </div>
                 </Card.Body>
             </Card>
-        </CardColumns>
     )
 }
 
-export default JourneyProfilePageFeature;
+export default JourneyHomePageFeature;

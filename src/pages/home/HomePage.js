@@ -8,8 +8,10 @@ import appStyles from "../../App.module.css";
 import styles from "../../styles/Homepage.module.css"
 import blogStyles from "../../styles/BlogPages.module.css"
 import newsStyles from "../../styles/NewsPages.module.css"
+import journeyStyles from "../../styles/JourneyPages.module.css"
 import BlogHomePageFeature from '../blogs/BlogHomePageFeature';
 import NewsHomePageFeature from '../news/NewsHomePageFeature';
+import JourneyHomePageFeature from '../journeys/JourneyHomePageFeature';
 
 const HomePage = () => {
     const [blogs, setBlogs] = useState({ results: [] });
@@ -82,45 +84,60 @@ const HomePage = () => {
             </div>
 
 
-            <Row className={`${styles.Intro} py-5`}>
-                <Col>
+            <Row className={`my-5`}>
+                <Col className='d-none d-md-block'>
                     <Image />
                 </Col>
 
-                <Col>
+                <Col xs={12} md={6} className='text-md-left text-center'>
                     <h2 className={appStyles.Headings}>About Globetrotters</h2>
-                    <p>Blurb</p>
-
+                    <p>
+                        We bring you closer to the people and places you love
+                        (or wish to visit) from around the world. Globetrotters provides
+                        travellers a platform to share and inspire global travellers. It
+                        covers all aspects, from cities to airports, cruise ports to ski
+                        and beach resorts, attractions to events, and it also includes
+                        weekly travel news, guides and blogs.
+                    </p>
                 </Col>
             </Row>
 
-            <Row className={`${styles.Journey} py-5`}>
-                <Col xs={6}>
-                    <h2>Become a Globetrotter</h2>
-                    <p>Blurb</p>
-                    <Link to="/signup">
-                        <Button>Sign up</Button>
-                    </Link>
-                    <Link to="/signin">
-                        <Button variant='secondary'>Sign in</Button>
-                    </Link>
-                </Col>
-                <Col xs={6}>
-                    Image goes here
+            <div className={`my-5`}>
 
-                </Col>
-                <Col xs={12}>
-                    <h3 className={appStyles.Headings}>Fellow Globetrotters</h3>
-                    <p>Blurb</p>
-                </Col>
-                <Row>
+                <Row >
+                    <Col xs={12} md={6} className='text-md-left text-center'>
+                        <h2 className={appStyles.Headings}>Become a Globetrotter</h2>
+                        <p>
+                            Love travel? Discover and plan your perfect trip with expert
+                            advice, travel guides, destination information and inspiration
+                            from fellow Globetrotters.
+                        </p>
+                        <Link to="/signup">
+                            <Button className={`${appStyles.Button}`}>Sign up</Button>
+                        </Link>
+                        <Link to="/signin">
+                            <Button className={`${appStyles.Button}`}>Sign in</Button>
+                        </Link>
+                    </Col>
+                    <Col xs={12} md={6} className='d-none d-md-block'>
+                        Image goes here
+                    </Col>
+                </Row>
+
+                <Row className={`mt-5`}>
                     <Col>
-                        <CardDeck>
-                            <Card>
+                        <div className='text-center'>
+                            <h3 className={appStyles.Headings}>Fellow <span className={appStyles.JourneyWordTitle}>Globetrotters</span></h3>
+                            <p>Discover where our Globetrotters have travelled, we are sure you'll find their content inspiring, engaging and informative.</p>
+                        </div>
+
+                        {/* 3 journeys are displayed in extra larger devices (1200px) and less than 576px */}
+                        <div className='d-block d-sm-none d-md-none d-lg-none d-xl-block'>
+                            <CardDeck>
                                 {hasLoaded ? (
                                     <>
                                         {journeys.results.slice(0, 3).map((journey) => (
-                                            <Journey key={journey.id} {...journey} setJourneys={setJourneys} />
+                                            <JourneyHomePageFeature key={journey.id} {...journey} setJourneys={setJourneys} />
                                         ))}
                                     </>
                                 ) : (
@@ -128,41 +145,116 @@ const HomePage = () => {
                                         <Asset spinner />
                                     </Container>
                                 )}
-                            </Card>
-                        </CardDeck>
+                            </CardDeck>
+                        </div>
+
+                        {/* 2 journeys are displayed in medium devices (768px>) */}
+                        <div className='d-none d-sm-none d-md-block d-lg-block d-xl-none'>
+                            <CardDeck>
+                                {hasLoaded ? (
+                                    <>
+                                        {journeys.results.slice(0, 2).map((journey) => (
+                                            <JourneyHomePageFeature key={journey.id} {...journey} setJourneys={setJourneys} />
+                                        ))}
+                                    </>
+                                ) : (
+                                    <Container className={appStyles.Content}>
+                                        <Asset spinner />
+                                    </Container>
+                                )}
+                            </CardDeck>
+                        </div>
+
+                        {/* 1 journey is displayed in small devices (576px>) */}
+                        <div className='d-none d-sm-block d-md-none'>
+                            <CardDeck>
+                                {hasLoaded ? (
+                                    <>
+                                        {journeys.results.slice(0, 1).map((journey) => (
+                                            <JourneyHomePageFeature key={journey.id} {...journey} setJourneys={setJourneys} />
+                                        ))}
+                                    </>
+                                ) : (
+                                    <Container className={appStyles.Content}>
+                                        <Asset spinner />
+                                    </Container>
+                                )}
+                            </CardDeck>
+                        </div>
+
+                        <div className='text-center'>
+                            <Link to="/signin">
+                                <Button className={`${appStyles.Button} ${journeyStyles.JourneyFormButton}`}>
+                                    Share your journey with the world!
+                                </Button>
+                            </Link>
+                        </div>
                     </Col>
                 </Row>
-                <Row>
-                    <Col>
-                        <Link>
-                            <Button>
-                                Share your journey with the world!
-                            </Button>
-                        </Link>
-                    </Col>
-                </Row>
-            </Row>
+            </div>
 
             <Row>
                 <Col>
-                    <h3 className={appStyles.Headings}>Latest <span className={appStyles.BlogWordTitle}>blogs</span></h3>
-                    <p>Blurb</p>
-                    <CardDeck>
-                        {hasLoaded ? (
-                            <>
-                                {blogs.results.slice(0, 3).map((blog) => (
-                                    <BlogHomePageFeature key={blog.id} {...blog} setBlogs={setBlogs} />
-                                ))}
-                            </>
-                        ) : (
-                            <Container className={appStyles.Content}>
-                                <Asset spinner />
-                            </Container>
-                        )}
-                    </CardDeck>
+                    <div className='text-center'>
+                        <h3 className={appStyles.Headings}>Latest <span className={appStyles.BlogWordTitle}>blogs</span></h3>
+                        <p>Check out the most recent travel blogs that offer informative and interactive travel storytelling, taking your wanderlust to new destinations.</p>
+                    </div>
+
+
+                    {/* 3 blogs are displayed in extra larger devices (1200px) and less than 576px */}
+                    <div className='d-block d-sm-none d-md-none d-lg-none d-xl-block'>
+                        <CardDeck>
+                            {hasLoaded ? (
+                                <>
+                                    {blogs.results.slice(0, 3).map((blog) => (
+                                        <BlogHomePageFeature key={blog.id} {...blog} setBlogs={setBlogs} />
+                                    ))}
+                                </>
+                            ) : (
+                                <Container className={appStyles.Content}>
+                                    <Asset spinner />
+                                </Container>
+                            )}
+                        </CardDeck>
+                    </div>
+
+                    {/* 2 blogs are displayed in medium devices (768px>) */}
+                    <div className='d-none d-sm-none d-md-block d-lg-block d-xl-none'>
+                        <CardDeck>
+                            {hasLoaded ? (
+                                <>
+                                    {blogs.results.slice(0, 2).map((blog) => (
+                                        <BlogHomePageFeature key={blog.id} {...blog} setBlogs={setBlogs} />
+                                    ))}
+                                </>
+                            ) : (
+                                <Container className={appStyles.Content}>
+                                    <Asset spinner />
+                                </Container>
+                            )}
+                        </CardDeck>
+                    </div>
+
+                    {/* 1 blog is displayed in small devices (576px>) */}
+                    <div className='d-none d-sm-block d-md-none'>
+                        <CardDeck>
+                            {hasLoaded ? (
+                                <>
+                                    {blogs.results.slice(0, 1).map((blog) => (
+                                        <BlogHomePageFeature key={blog.id} {...blog} setBlogs={setBlogs} />
+                                    ))}
+                                </>
+                            ) : (
+                                <Container className={appStyles.Content}>
+                                    <Asset spinner />
+                                </Container>
+                            )}
+                        </CardDeck>
+                    </div>
+
                     <div className='text-center'>
                         <Link to="/blogs">
-                            <Button className={`${appStyles.Button} ${blogStyles.BlogButton}`}>
+                            <Button className={`${appStyles.Button} ${blogStyles.BlogFormButton}`}>
                                 View latest blogs
                             </Button>
                         </Link>
@@ -170,23 +262,64 @@ const HomePage = () => {
                 </Col>
             </Row>
 
-            <Row>
+            <Row className={`mt-5`}>
                 <Col>
-                    <h3 className={appStyles.Headings}>Latest <span className={appStyles.NewsWordTitle}>news</span></h3>
-                    <p>Blurb</p>
-                    <CardDeck>
-                        {hasLoaded ? (
-                            <>
+                <div className='text-center'>
+                <h3 className={appStyles.Headings}>Latest <span className={appStyles.NewsWordTitle}>news</span></h3>
+                        <p>Latest travel news and reviews around the globe, travel guides to global destinations, city breaks, hotels and more.</p>
+                    </div>
+
+
+                    {/* 3 news are displayed in extra larger devices (1200px) and less than 576px */}
+                    <div className='d-block d-sm-none d-md-none d-lg-none d-xl-block'>
+                        <CardDeck>
+                            {hasLoaded ? (
+                                <>
                                 {newss.results.slice(0, 3).map((news) => (
                                     <NewsHomePageFeature key={news.id} {...news} setNewss={setNewss} />
                                 ))}
-                            </>
-                        ) : (
-                            <Container className={appStyles.Content}>
-                                <Asset spinner />
-                            </Container>
-                        )}
-                    </CardDeck>
+                                </>
+                            ) : (
+                                <Container className={appStyles.Content}>
+                                    <Asset spinner />
+                                </Container>
+                            )}
+                        </CardDeck>
+                    </div>
+
+                    {/* 2 news are displayed in medium devices (768px>) */}
+                    <div className='d-none d-sm-none d-md-block d-lg-block d-xl-none'>
+                        <CardDeck>
+                            {hasLoaded ? (
+                                <>
+                                {newss.results.slice(0, 2).map((news) => (
+                                    <NewsHomePageFeature key={news.id} {...news} setNewss={setNewss} />
+                                ))}
+                                </>
+                            ) : (
+                                <Container className={appStyles.Content}>
+                                    <Asset spinner />
+                                </Container>
+                            )}
+                        </CardDeck>
+                    </div>
+
+                    {/* 1 news is displayed in small devices (576px>) */}
+                    <div className='d-none d-sm-block d-md-none'>
+                        <CardDeck>
+                            {hasLoaded ? (
+                                <>
+                                {newss.results.slice(0, 1).map((news) => (
+                                    <NewsHomePageFeature key={news.id} {...news} setNewss={setNewss} />
+                                ))}
+                                </>
+                            ) : (
+                                <Container className={appStyles.Content}>
+                                    <Asset spinner />
+                                </Container>
+                            )}
+                        </CardDeck>
+                    </div>
                     <div className='text-center'>
                         <Link to="/news">
                             <Button className={`${appStyles.Button} ${newsStyles.NewsButton}`}>
@@ -196,9 +329,6 @@ const HomePage = () => {
                     </div>
                 </Col>
             </Row>
-
-
-
         </div>
     )
 }
