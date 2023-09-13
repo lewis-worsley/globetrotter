@@ -80,13 +80,13 @@ function BlogsPage({ message }) {
     }
 
     return (
-            <Container>
+        <Container>
 
 
-            <Row className="h-100 mt-3">
+            <Row className="h-100 mt-4">
                 <Col className="py-2 p-0 p-lg-2 text-center" xs={12} sm={8}>
                     <>
-                        <Button className={`${blogStyles.BlogButton} ${appStyles.Button}`} onClick={handleShow}>
+                        <Button className={`${blogStyles.BlogFormButton} ${appStyles.Button}`} onClick={handleShow}>
                             Create blog <i className="fa-solid fa-globe"></i>
                         </Button>
 
@@ -137,7 +137,7 @@ function BlogsPage({ message }) {
                     <PopularProfiles />
                 </Col>
             </Row>
-            </Container>
+        </Container>
     );
 }
 
