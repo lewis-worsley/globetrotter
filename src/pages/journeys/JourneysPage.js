@@ -22,6 +22,7 @@ import JourneyCreateForm from "./JourneyCreateForm"
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 import PopularProfiles from "../profiles/PopularProfiles";
+import { Link } from 'react-router-dom';
 
 function JourneysPage({ message }) {
     const [journeys, setJourneys] = useState({ results: [] });
@@ -29,11 +30,6 @@ function JourneysPage({ message }) {
     const { pathname } = useLocation();
 
     const [query, setQuery] = useState("");
-
-    // handle modal appearance
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
 
     useEffect(() => {
         const fetchJourneys = async () => {
@@ -57,48 +53,21 @@ function JourneysPage({ message }) {
 
     }, [query, pathname])
 
-    function CreateJourneyModal(props) {
-
-        return (
-            <Modal
-                {...props}
-                size="lg"
-                aria-labelledby="contained-modal-title-vcenter"
-                centered
-                show={show}
-                onHide={handleClose}
-            >
-                <Modal.Header closeButton>
-                    <Modal.Title id="contained-modal-title-vcenter">
-                        Create journey
-                    </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <JourneyCreateForm />
-                </Modal.Body>
-            </Modal>
-        );
-    }
-
     return (
-        <div>
+        <Container>
             <Row className="h-100 mt-4">
-                <Col className="py-2 p-0 p-lg-2 text-center" xs={12} sm={8}>
+                <Col className="py-2 p-0 p-lg-2 text-center" xs={12} lg={8}>
                     <>
-                        <Button 
-                        onClick={handleShow}
-                        className={`${journeyStyles.JourneyFormButton} ${appStyles.Button}`}
-                        >
-                            Create journey <i className="fa-solid fa-globe"></i>
-                        </Button>
-
-                        <CreateJourneyModal
-                            show={setShow}
-                            onHide={() => setShow(false)}
-                        />
+                        <Link to="/journeys/create">
+                            <Button
+                                className={`${journeyStyles.JourneyFormButton} ${appStyles.Button}`}
+                            >
+                                Create journey <i className="fa-solid fa-globe"></i>
+                            </Button>
+                        </Link>
                     </>
                 </Col>
-                <Col xs={4}>
+                <Col xs={12} lg={4}>
                     <Form className="py-2 p-0 p-lg-2" onSubmit={(event) => event.preventDefault()}>
                         <Form.Control
                             value={query}
@@ -124,9 +93,9 @@ function JourneysPage({ message }) {
                                     next={() => fetchMoreData(journeys, setJourneys)}
                                 />
                             ) : (
-                            <Container className={appStyles.Content}>
-                                <Asset src={NoResults} message={message} />
-                            </Container>
+                                <Container className={appStyles.Content}>
+                                    <Asset src={NoResults} message={message} />
+                                </Container>
                             )}
                         </>
                     ) : (
@@ -139,7 +108,7 @@ function JourneysPage({ message }) {
                     <PopularProfiles />
                 </Col>
             </Row>
-        </div>
+        </Container>
     );
 }
 

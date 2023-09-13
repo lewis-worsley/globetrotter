@@ -21,6 +21,8 @@ import BlogCreateForm from "./BlogCreateForm";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 import PopularProfiles from "../profiles/PopularProfiles";
+import { Link } from 'react-router-dom';
+
 
 function BlogsPage({ message }) {
     const [blogs, setBlogs] = useState({ results: [] });
@@ -28,11 +30,6 @@ function BlogsPage({ message }) {
     const { pathname } = useLocation();
 
     const [query, setQuery] = useState("");
-
-    // handle modal appearance
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
 
     useEffect(() => {
         const fetchBlogs = async () => {
@@ -56,47 +53,19 @@ function BlogsPage({ message }) {
 
     }, [query, pathname])
 
-    function CreateBlogModal(props) {
-
-        return (
-            <Modal
-                {...props}
-                size="lg"
-                aria-labelledby="contained-modal-title-vcenter"
-                centered
-                show={show}
-                onHide={handleClose}
-            >
-                <Modal.Header closeButton>
-                    <Modal.Title id="contained-modal-title-vcenter">
-                        Create blog
-                    </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <BlogCreateForm />
-                </Modal.Body>
-            </Modal>
-        );
-    }
-
     return (
         <Container>
-
-
             <Row className="h-100 mt-4">
-                <Col className="py-2 p-0 p-lg-2 text-center" xs={12} sm={8}>
+                <Col className="py-2 p-0 p-lg-2 text-center" xs={12} lg={8}>
                     <>
-                        <Button className={`${blogStyles.BlogFormButton} ${appStyles.Button}`} onClick={handleShow}>
-                            Create blog <i className="fa-solid fa-globe"></i>
+                    <Link to="/blogs/create">
+                        <Button className={`${blogStyles.BlogFormButton} ${appStyles.Button}`}>
+                            Create blog <i className="fa-solid fa-blog"></i>
                         </Button>
-
-                        <CreateBlogModal
-                            show={setShow}
-                            onHide={() => setShow(false)}
-                        />
+                    </Link>
                     </>
                 </Col>
-                <Col xs={12} sm={4}>
+                <Col xs={12} lg={4}>
                     <Form className="py-2 p-0 p-lg-2" onSubmit={(event) => event.preventDefault()}>
                         <Form.Control
                             value={query}
