@@ -45,7 +45,7 @@ const Blog = (props) => {
         };
         return (
             <p className="text">
-                {isReadMore ? text.slice(0, 180) : text}
+                {isReadMore ? text.slice(0, 250) : text}
                 <span onClick={toggleReadMore} className={`${appStyles.ReadOrHide} pl-1`}>
                     {isReadMore ? <Link to={`/blogs/${id}`}>...read more</Link> : ""}
                 </span>
@@ -126,7 +126,7 @@ const Blog = (props) => {
                     <Card.Text>
                         <ReadMore>{content}</ReadMore>
                     </Card.Text>}
-                <div> 
+                <div>
                     <Link to={`/blogs/${id}`}>
                         <Card.Img src={image} alt={title} className={appStyles.Image} />
                     </Link>
@@ -160,7 +160,7 @@ const Blog = (props) => {
                         <Link to={`/blogs/${id}`}>
                             <i className={`${appStyles.Comment} far fa-comments`}></i>
                         </Link>
-                    {comments_count}
+                        {comments_count}
                     </span>
                     <Link to={`/blogs/${id}`}>
                         <Button className={`${blogStyles.BlogButton} ${appStyles.Button}`}>Read blog</Button>

@@ -47,7 +47,7 @@ const Journey = (props) => {
         };
         return (
             <p className="text">
-                {isReadMore ? text.slice(0, 180) : text}
+                {isReadMore ? text.slice(0, 250) : text}
                 <span onClick={toggleReadMore} className={`${appStyles.ReadOrHide} pl-1`}>
                     {isReadMore ? <Link to={`/journeys/${id}`}>...read more</Link> : ""}
                 </span>

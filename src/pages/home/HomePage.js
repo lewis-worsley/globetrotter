@@ -96,7 +96,7 @@ const HomePage = () => {
             <div>
                 <Row className='align-items-center'>
                     <Col xs={12} md={6} className='text-md-left text-center'>
-                        <h2 className={appStyles.Headings}>Why be a Globetrotter?</h2>
+                        <h2 className={`${appStyles.Headings} ${appStyles.GreenHeading}`}>Why be a Globetrotter?</h2>
                         <p>
                             Love travel? Discover and plan your perfect trip with expert
                             advice, travel guides, destination information and inspiration

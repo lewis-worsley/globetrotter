@@ -5,9 +5,17 @@
     background-color: #f5f5f5;
 }
 
+p {
+    font-size: large;
+}
+
 .Headings {
     font-family: "Playfair Display", sans-serif;
     font-weight: bold;
+}
+
+.GreenHeading {
+    color: #63610c;
 }
 
 .Main {
