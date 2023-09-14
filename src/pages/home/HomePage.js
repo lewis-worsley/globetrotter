@@ -2,16 +2,17 @@ import React, { useEffect, useState } from 'react'
 import { Button, Card, CardDeck, Col, Container, Image, Media, Row } from 'react-bootstrap';
 import { Link, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import { axiosReq } from '../../api/axiosDefaults';
-import Journey from "../journeys/Journey";
 import Asset from "../../components/Asset";
 import appStyles from "../../App.module.css";
-import styles from "../../styles/Homepage.module.css"
+import homePageStyles from "../../styles/HomePage.module.css"
 import blogStyles from "../../styles/BlogPages.module.css"
 import newsStyles from "../../styles/NewsPages.module.css"
 import journeyStyles from "../../styles/JourneyPages.module.css"
 import BlogHomePageFeature from '../blogs/BlogHomePageFeature';
 import NewsHomePageFeature from '../news/NewsHomePageFeature';
 import JourneyHomePageFeature from '../journeys/JourneyHomePageFeature';
+import companyLogo from "../../assets/globetrotters-logo.png"
+import globetrotter from "../../assets/pexels-yogendra-singh-3930029.jpg"
 
 const HomePage = () => {
     const [blogs, setBlogs] = useState({ results: [] });
@@ -65,28 +66,18 @@ const HomePage = () => {
 
     return (
         <div>
-            <div className={`${appStyles.HeroImage} ${appStyles.HeroImageHomePage}`}>
-                <div className={appStyles.Centered}>
+            <div className={`${homePageStyles.HeroImage} ${homePageStyles.Hero} text-center`}>
+                <div className={homePageStyles.Centered}>
                     <h1 className={`${appStyles.Headings}`}>
-                        Life is either a daring adventure or nothing at all
+                        Welcome to the Globetrotter lifestyle
                     </h1>
-                    <Link to={"/signup"}>
-                        <Button>
-                            Sign up
-                        </Button>
-                    </Link>
-                    <Link to={"/signin"}>
-                        <Button>
-                            Sign in
-                        </Button>
-                    </Link>
                 </div>
             </div>
 
 
-            <Row className={`my-5`}>
-                <Col className='d-none d-md-block'>
-                    <Image />
+            <Row className={`${homePageStyles.FullBleed} ${homePageStyles.Intro} align-items-center`}>
+                <Col md={6} className={`text-center d-none d-md-block`}>
+                    <Image src={companyLogo} className={homePageStyles.ImageLogo}/>
                 </Col>
 
                 <Col xs={12} md={6} className='text-md-left text-center'>
@@ -102,25 +93,24 @@ const HomePage = () => {
                 </Col>
             </Row>
 
-            <div className={`my-5`}>
-
-                <Row >
+            <div>
+                <Row className='align-items-center'>
                     <Col xs={12} md={6} className='text-md-left text-center'>
-                        <h2 className={appStyles.Headings}>Become a Globetrotter</h2>
+                        <h2 className={appStyles.Headings}>Why be a Globetrotter?</h2>
                         <p>
                             Love travel? Discover and plan your perfect trip with expert
                             advice, travel guides, destination information and inspiration
                             from fellow Globetrotters.
                         </p>
                         <Link to="/signup">
-                            <Button className={`${appStyles.Button}`}>Sign up</Button>
+                            <Button className={`${appStyles.Button} ${homePageStyles.SignUpButton} mr-2`}>Sign up</Button>
                         </Link>
                         <Link to="/signin">
-                            <Button className={`${appStyles.Button}`}>Sign in</Button>
+                            <Button className={`${appStyles.Button} ${homePageStyles.SignInButton} ml-2`}>Sign in</Button>
                         </Link>
                     </Col>
-                    <Col xs={12} md={6} className='d-none d-md-block'>
-                        Image goes here
+                    <Col xs={12} md={6} className='d-none d-md-block text-center'>
+                        <Image src={globetrotter} className={`${homePageStyles.Globetrotter}`} rounded/>
                     </Col>
                 </Row>
 
@@ -185,7 +175,7 @@ const HomePage = () => {
                         <div className='text-center'>
                             <Link to="/signin">
                                 <Button className={`${appStyles.Button} ${journeyStyles.JourneyFormButton}`}>
-                                    Share your journey with the world!
+                                    Share your journey
                                 </Button>
                             </Link>
                         </div>
@@ -193,7 +183,7 @@ const HomePage = () => {
                 </Row>
             </div>
 
-            <Row>
+            <Row className='mt-5'>
                 <Col>
                     <div className='text-center'>
                         <h3 className={appStyles.Headings}>Latest <span className={appStyles.BlogWordTitle}>blogs</span></h3>
@@ -320,7 +310,7 @@ const HomePage = () => {
                             )}
                         </CardDeck>
                     </div>
-                    <div className='text-center'>
+                    <div className='text-center mt-4'>
                         <Link to="/news">
                             <Button className={`${appStyles.Button} ${newsStyles.NewsButton}`}>
                                 View latest news
