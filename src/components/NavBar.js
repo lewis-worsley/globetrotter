@@ -4,7 +4,8 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
 import logo from "../assets/globetrotters-logo.png";
-import styles from "../styles/NavBar.module.css"
+import appStyles from "../App.module.css";
+import navbarStyles from "../styles/NavBar.module.css"
 import { NavLink } from "react-router-dom";
 import { useCurrentUser, useSetCurrentUser } from "../contexts/CurrentUserContext";
 import axios from "axios";
@@ -22,7 +23,7 @@ const NavBar = () => {
         try {
             await axios.post("dj-rest-auth/logout/");
             setCurrentUser(null);
-        } catch(err) {
+        } catch (err) {
             console.log(err);
         }
     };
@@ -31,24 +32,28 @@ const NavBar = () => {
         <>
             <NavLink
                 to="/"
+                className={navbarStyles.NavLink}
             >
                 <i className="fas fa-stream"></i>Feed
             </NavLink>
 
             <NavLink
-                to="/news"
-            >
-                <i className="fa-solid fa-newspaper"></i>News
-            </NavLink>
-
-            <NavLink
                 to="/blogs"
+                className={navbarStyles.NavLink}
             >
                 <i className="fa-solid fa-blog"></i>Blogs
             </NavLink>
 
             <NavLink
+                to="/news"
+                className={navbarStyles.NavLink}
+            >
+                <i className="fa-solid fa-newspaper"></i>News
+            </NavLink>
+
+            <NavLink
                 to={`/profiles/${currentUser?.profile_id}`}
+                className={navbarStyles.NavLink}
             >
                 <Avatar src={currentUser?.profile_image} text="Profile" height={40} /> Profile
             </NavLink>
@@ -56,6 +61,7 @@ const NavBar = () => {
             <NavLink
                 to="/home"
                 onClick={handleSignOut}
+                className={navbarStyles.NavLink}
             >
                 <i className="fas fa-sign-out-alt"></i>Sign out
             </NavLink>
@@ -63,38 +69,35 @@ const NavBar = () => {
     )
     const loggedOutIcons = (
         <>
-            <NavLink
-                to="/home"
-                className={styles.NavLink}
-                activeClassName={styles.Active}
-            >
-                <i className="fas fa-home"></i>Home
-            </NavLink>
-            <NavLink
-                to="/signin"
-                className={styles.NavLink}
-                activeClassName={styles.Active}
-            >
-                <i className="fas fa-sign-in-alt"></i>Sign in
-            </NavLink>
-            <NavLink
-                to="signup"
-                activeClassName={styles.Active}
-            >
-                <Button>
-                    <i className="fas fa-user-plus"></i>Sign up
-                </Button>
-            </NavLink>
+
+                <NavLink
+                    to="/home"
+                    className={navbarStyles.NavLink}
+                >
+                    <i className="fas fa-home"></i>Home
+                </NavLink>
+                <NavLink
+                    to="/signin"
+                    className={navbarStyles.NavLink}
+                >
+                    <i className="fas fa-sign-in-alt"></i>Sign in
+                </NavLink>
+                <NavLink
+                    to="signup"
+                >
+                    <Button className={`${navbarStyles.NavBarButton}`}>
+                        <i className="fas fa-user-plus"></i>Sign up
+                    </Button>
+                </NavLink>
         </>
     );
 
     return (
         <Navbar
             expanded={expanded}
-            variant="dark"
             expand="md"
             fixed="top"
-            className={styles.NavBar}
+            className={navbarStyles.NavBar}
         >
             <Container>
                 <NavLink to="/home">
@@ -102,10 +105,10 @@ const NavBar = () => {
                         <img src={logo} alt="logo" height="45" />
                     </Navbar.Brand>
                 </NavLink>
-                <Navbar.Toggle 
-                    aria-controls="basic-navbar-nav" 
+                <Navbar.Toggle
+                    aria-controls="basic-navbar-nav"
                     onClick={() => setExpanded(!expanded)}
-                    ref={ref} 
+                    ref={ref}
                 />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto text-center">
