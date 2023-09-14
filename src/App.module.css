@@ -89,6 +89,10 @@ input[type="file"] {
     color: white;
 }
 
+.GreenButton {
+    background-color: #63610c;
+}
+
 a {
     color: white;
     transition: color ease-in-out 0.3s;
