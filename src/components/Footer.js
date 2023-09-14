@@ -1,20 +1,33 @@
 import React from 'react';
-import styles from '../styles/Footer.module.css';
+import footerStyles from '../styles/Footer.module.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import appStyles from '../App.module.css'
+import { Image } from 'react-bootstrap';
+import companyLogo from "../assets/globetrotters-logo.png"
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 const Footer = () => {
     return (
-        <div className={styles.Footer}>
-            <Container>
+        <div className={footerStyles.Footer}>
+            <Container className='text-md-left text-center'>
+                <Link to="/home">
+                <Image src={companyLogo} className={footerStyles.CompanyLogo} />
+                </Link>
                 <Row>
-                    <Col xs={12} sm={4}>1 of 3</Col>
-                    <Col xs={12} sm={4}>2 of 3</Col>
-                    <Col xs={12} sm={4}>3 of 3</Col>
+                    <Col xs={12} md={4} className={`${appStyles.Headings} mt-2`}>
+                        <Link to="/">Journeys</Link>
+                    </Col>
+                    <Col xs={12} md={4} className={`${appStyles.Headings} mt-2`}>
+                        <Link to="/blogs">Blogs</Link>
+                    </Col>
+                    <Col xs={12} md={4} className={`${appStyles.Headings} mt-2`}>
+                        <Link to="/news">News</Link>
+                    </Col>
                 </Row>
-                <Row>
-                    <Col>Copyright goes here</Col>
+                <Row className='mt-5'>
+                    <Col>Copyright © Globetrotters 2023. All rights reserved.</Col>
                 </Row>
             </Container>
         </div>

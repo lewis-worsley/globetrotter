@@ -1,5 +1,12 @@
 .Footer {
-    background-color: #535252;
+    background-color: #212529;
     color: white;
-    min-height: 30vh;
+    min-height: 15vh;
+    padding: 5vh 0vh;
+}
+
+.CompanyLogo {
+    object-fit: cover;
+    max-height: 50px;
+    margin-bottom: 2vh;
 }
