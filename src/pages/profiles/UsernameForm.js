@@ -55,11 +55,11 @@ const UsernameForm = () => {
 
     return (
         <Row>
-            <Col className="py-2 mx-auto text-center" md={6}>
+            <Col className="py-5 mx-auto text-center" md={6}>
                 <Container className={appStyles.Content}>
-                    <Form onSubmit={handleSubmit} className="my-2">
+                    <Form onSubmit={handleSubmit} className="my-5">
+                        <h1 className={`${appStyles.Headings} ${appStyles.GreenHeading} mb-5`}>Change username</h1>
                         <Form.Group>
-                            <Form.Label>Change username</Form.Label>
                             <Form.Control
                                 placeholder="username"
                                 type="text"
@@ -72,15 +72,20 @@ const UsernameForm = () => {
                                 {message}
                             </Alert>
                         ))}
+                        <div>
+                            <Button
+                                type="submit"
+                                className={`${appStyles.Button} ${appStyles.GreenButton} mt-4`}
+                            >
+                                Save name change
+                            </Button>
+                        </div>
+
                         <Button
                             onClick={() => history.goBack()}
+                            className={`${appStyles.Button} ${appStyles.InverseButton} mt-4`}
                         >
                             Cancel
-                        </Button>
-                        <Button
-                            type="submit"
-                        >
-                            Save
                         </Button>
                     </Form>
                 </Container>

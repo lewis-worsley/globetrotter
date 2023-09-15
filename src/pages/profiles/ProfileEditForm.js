@@ -19,6 +19,8 @@ import {
 } from "../../contexts/CurrentUserContext";
 
 import appStyles from "../../App.module.css";
+import formStyles from "../../styles/Form.module.css";
+
 
 const ProfileEditForm = () => {
     const currentUser = useCurrentUser();
@@ -99,58 +101,68 @@ const ProfileEditForm = () => {
 
     const textFields = (
         <>
-            <Form.Group>
-                <Form.Label>Bio</Form.Label>
-                <Form.Control
-                    as="textarea"
-                    value={content}
-                    onChange={handleChange}
-                    name="content"
-                    rows={7}
-                />
-            </Form.Group>
-            {errors?.content?.map((message, idx) => (
-                <Alert variant="warning" key={idx}>
-                    {message}
-                </Alert>
-            ))}
+            <div className="text-center">
 
-            <Form.Group>
-                <Form.Label>Based</Form.Label>
-                <Form.Control
-                    as="textarea"
-                    value={based}
-                    onChange={handleChange}
-                    name="based"
-                    rows={1}
-                />
-            </Form.Group>
-            {errors?.based?.map((message, idx) => (
-                <Alert variant="warning" key={idx}>
-                    {message}
-                </Alert>
-            ))}
+                <Form.Group>
+                    <Form.Label>Bio</Form.Label>
+                    <Form.Control
+                        as="textarea"
+                        value={content}
+                        onChange={handleChange}
+                        name="content"
+                        rows={7}
+                    />
+                </Form.Group>
+                {errors?.content?.map((message, idx) => (
+                    <Alert variant="warning" key={idx}>
+                        {message}
+                    </Alert>
+                ))}
 
-            <Button
-                onClick={() => history.goBack()}
-            >
-                Cancel
-            </Button>
-            <Button type="submit">
-                Save
-            </Button>
+                <Form.Group>
+                    <Form.Label>Which country are you based?</Form.Label>
+                    <Form.Control
+                        as="textarea"
+                        value={based}
+                        onChange={handleChange}
+                        name="based"
+                        rows={1}
+                    />
+                </Form.Group>
+                {errors?.based?.map((message, idx) => (
+                    <Alert variant="warning" key={idx}>
+                        {message}
+                    </Alert>
+                ))}
+                <div>
+                    <Button
+                        type="submit"
+                        className={`${appStyles.Button} ${appStyles.GreenButton} mt-4`}
+                    >
+                        Save
+                    </Button>
+                </div>
+
+                <Button
+                    onClick={() => history.goBack()}
+                    className={`${appStyles.Button} ${appStyles.InverseButton} mt-4`}
+                >
+                    Cancel
+                </Button>
+            </div>
+
         </>
     );
 
     return (
         <Form onSubmit={handleSubmit}>
             <Row>
-                <Col className="py-2 p-0 p-md-2 text-center" md={7} lg={6}>
-                    <Container className={appStyles.Content}>
+                <Col className="py-5 p-0 text-center" xs={12}>
+                    <Container className={`${formStyles.Container} d-flex flex-column justify-content-center`}>
                         <Form.Group>
                             {image && (
                                 <figure>
-                                    <Image src={image} fluid />
+                                    <Image className={appStyles.Image} src={image} rounded/>
                                 </figure>
                             )}
                             {errors?.image?.map((message, idx) => (
@@ -163,7 +175,7 @@ const ProfileEditForm = () => {
                                     className="btn my-auto"
                                     htmlFor="image-upload"
                                 >
-                                    Change the image
+                                    Click to change your profile image
                                 </Form.Label>
                             </div>
                             <Form.File
@@ -176,8 +188,8 @@ const ProfileEditForm = () => {
                         <div className="d-md-none">{textFields}</div>
                     </Container>
                 </Col>
-                <Col md={5} lg={6} className="d-none d-md-block p-0 p-md-2 text-center">
-                    <Container className={appStyles.Content}>{textFields}</Container>
+                <Col xs={12} sm={{ span: 8, offset: 2 }} className="d-none d-md-block p-0 p-md-2">
+                    <Container >{textFields}</Container>
                 </Col>
             </Row>
         </Form>

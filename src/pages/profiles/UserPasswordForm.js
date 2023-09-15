@@ -55,9 +55,10 @@ const UserPasswordForm = () => {
 
     return (
         <Row>
-            <Col className="py-2 mx-auto text-center" md={6}>
+            <Col className="py-5 mx-auto text-center" md={6}>
                 <Container className={appStyles.Content}>
                     <Form onSubmit={handleSubmit}>
+                    <h1 className={`${appStyles.Headings} ${appStyles.GreenHeading} mb-5`}>Change password</h1>
                         <Form.Group>
                             <Form.Label>New password</Form.Label>
                             <Form.Control
@@ -88,15 +89,20 @@ const UserPasswordForm = () => {
                                 {message}
                             </Alert>
                         ))}
+                        <div>
+                            <Button
+                                type="submit"
+                                className={`${appStyles.Button} ${appStyles.GreenButton} mt-4`}
+                            >
+                                Save new password
+                            </Button>
+                        </div>
+
                         <Button
                             onClick={() => history.goBack()}
+                            className={`${appStyles.Button} ${appStyles.InverseButton} mt-4`}
                         >
                             Cancel
-                        </Button>
-                        <Button
-                            type="submit"
-                        >
-                            Save
                         </Button>
                     </Form>
                 </Container>
