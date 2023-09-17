@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "../../styles/Profile.module.css";
+import appStyles from "../../App.module.css"
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Link } from "react-router-dom";
 import Avatar from "../../components/Avatar";
@@ -33,16 +34,19 @@ const Profile = (props) => {
                     (following_id ? (
                         <Button
                             onClick={() => handleUnfollow(profile)}
+                            className={`${appStyles.FollowButton} ${appStyles.InverseButton} px-3 pt-4`}
                         >
                             Unfollow
                         </Button>
                     ) : (
                         <Button
                             onClick={() => handleFollow(profile)}
+                            className={`${appStyles.FollowButton} ${appStyles.Button} px-3`}
                         >
                             Follow
                         </Button>
-                    ))}
+                    ))
+                }
             </div>
         </div>
     );
