@@ -22,13 +22,14 @@ import NewssPage from "./pages/news/NewssPage";
 import NewsCreateForm from "./pages/news/NewsCreateForm";
 import HomePage from "./pages/home/HomePage";
 import NewsPage from "./pages/news/NewsPage";
+import NewsEditForm from "./pages/news/NewsEditForm";
 
 function App() {
 
 	return (
 		<div className={styles.App}>
 			<NavBar />
-			<Container className={styles.Main}>
+			<Container className={`${styles.Main} ${styles.MinPageHeight}`}>
 				<Switch>
 					<Route
 						exact
@@ -51,8 +52,9 @@ function App() {
 					<Route exact path='/journeys/:id/edit' render={() => <JourneyEditForm />} />
 					<Route exact path='/profiles/:id' render={() => <ProfilePage />} />
 					<Route exact path='/news' render={() => <NewssPage />} />
-					<Route exact path='/news/:id' render={() => <NewsPage />} />
 					<Route exact path='/news/create' render={() => <NewsCreateForm />} />
+					<Route exact path='/news/:id' render={() => <NewsPage />} />
+					<Route exact path='/news/:id/edit' render={() => <NewsEditForm />} />
 					<Route
 						exact
 						path='/profiles/:id/edit/username'
