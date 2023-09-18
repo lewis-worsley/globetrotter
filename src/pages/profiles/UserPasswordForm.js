@@ -14,6 +14,8 @@ import { axiosRes } from "../../api/axiosDefaults";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 import appStyles from "../../App.module.css";
+import { ProfileEditDropdown } from "../../components/MoreDropdown";
+import { useProfileData } from "../../contexts/ProfileDataContext";
 
 const UserPasswordForm = () => {
     const history = useHistory();
@@ -25,6 +27,16 @@ const UserPasswordForm = () => {
         new_password2: "",
     });
     const { new_password1, new_password2 } = userData;
+
+    const { pageProfile } = useProfileData();
+
+    const [profile] = pageProfile.results;
+
+    const mainProfile = (
+        <>
+            {<ProfileEditDropdown id={profile?.id} />}
+        </>
+    );
 
     const [errors, setErrors] = useState({});
 
@@ -57,8 +69,9 @@ const UserPasswordForm = () => {
         <Row>
             <Col className="py-5 mx-auto text-center" md={6}>
                 <Container className={appStyles.Content}>
+                    {mainProfile}
                     <Form onSubmit={handleSubmit}>
-                    <h1 className={`${appStyles.Headings} ${appStyles.GreenHeading} mb-5`}>Change password</h1>
+                        <h1 className={`${appStyles.Headings} ${appStyles.GreenHeading} mb-5`}>Change password</h1>
                         <Form.Group>
                             <Form.Label>New password</Form.Label>
                             <Form.Control

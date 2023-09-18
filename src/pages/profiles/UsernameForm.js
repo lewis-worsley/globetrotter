@@ -17,6 +17,8 @@ import {
 } from "../../contexts/CurrentUserContext";
 
 import appStyles from "../../App.module.css";
+import { useProfileData } from "../../contexts/ProfileDataContext";
+import { ProfileEditDropdown } from "../../components/MoreDropdown";
 
 const UsernameForm = () => {
     const [username, setUsername] = useState("");
@@ -27,6 +29,18 @@ const UsernameForm = () => {
 
     const currentUser = useCurrentUser();
     const setCurrentUser = useSetCurrentUser();
+
+    const { pageProfile } = useProfileData();
+
+    const [profile] = pageProfile.results;
+    
+    const mainProfile = (
+        <>
+            <Container>
+                {<ProfileEditDropdown id={profile?.id} />}
+            </Container>
+        </>
+    );
 
     useEffect(() => {
         if (currentUser?.profile_id?.toString() === id) {
@@ -58,6 +72,7 @@ const UsernameForm = () => {
             <Col className="py-5 mx-auto text-center" md={6}>
                 <Container className={appStyles.Content}>
                     <Form onSubmit={handleSubmit} className="my-5">
+                    {mainProfile}
                         <h1 className={`${appStyles.Headings} ${appStyles.GreenHeading} mb-5`}>Change username</h1>
                         <Form.Group>
                             <Form.Control

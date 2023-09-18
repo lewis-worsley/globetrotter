@@ -30,7 +30,6 @@ import JourneyProfilePageFeature from "../journeys/JourneyProfilePageFeature";
 import { useRedirect } from "../../hooks/useRedirect";
 
 
-
 function ProfilePage() {
     useRedirect("loggedOut")
 

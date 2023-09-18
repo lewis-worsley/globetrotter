@@ -20,6 +20,8 @@ import {
 
 import appStyles from "../../App.module.css";
 import formStyles from "../../styles/Form.module.css";
+import { useProfileData } from "../../contexts/ProfileDataContext";
+import { ProfileEditDropdown } from "../../components/MoreDropdown";
 
 
 const ProfileEditForm = () => {
@@ -37,7 +39,17 @@ const ProfileEditForm = () => {
     });
     const { name, content, image, based } = profileData;
 
+    const { pageProfile } = useProfileData();
+
+    const [profile] = pageProfile.results;
+
     const [errors, setErrors] = useState({});
+
+    const mainProfile = (
+        <>
+            {<ProfileEditDropdown id={profile?.id} />}
+        </>
+    );
 
     useEffect(() => {
         const handleMount = async () => {
@@ -158,11 +170,12 @@ const ProfileEditForm = () => {
         <Form onSubmit={handleSubmit}>
             <Row>
                 <Col className="py-5 p-0 text-center" xs={12}>
+                    {mainProfile}
                     <Container className={`${formStyles.Container} d-flex flex-column justify-content-center`}>
                         <Form.Group>
                             {image && (
                                 <figure>
-                                    <Image className={appStyles.Image} src={image} rounded/>
+                                    <Image className={appStyles.Image} src={image} rounded />
                                 </figure>
                             )}
                             {errors?.image?.map((message, idx) => (
