@@ -1,26 +1,22 @@
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { Container } from 'react-bootstrap'
-import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import { axiosReq } from '../../api/axiosDefaults';
 import appStyles from "../../App.module.css"
 import Asset from '../../components/Asset';
-import Profile from '../profiles/Profile';
-import { useProfileData } from '../../contexts/ProfileDataContext';
-import Journey from './Journey';
-import JourneyFeature from './JourneyFeature';
+import BlogFeature from './BlogFeature,';
 
-const LatestJourneys = () => {
-    const [journeys, setJourneys] = useState({ results: [] });
+const LatestBlogs = () => {
+    const [blogs, setBlogs] = useState({ results: [] });
     const [hasLoaded, setHasLoaded] = useState(false);
 
     useEffect(() => {
-        const fetchJourneys = async () => {
+        const fetchBlogs = async () => {
             try {
                 const { data } = await axiosReq.get(
-                    "/journeys/?ordering=-created_at"
+                    "/blogs/?ordering=-created_at"
                 );
-                setJourneys(data);
+                setBlogs(data);
                 setHasLoaded(true);
             } catch (err) {
                 console.log(err);
@@ -29,7 +25,7 @@ const LatestJourneys = () => {
 
         setHasLoaded(false);
         const timer = setTimeout(() => {
-            fetchJourneys();
+            fetchBlogs();
         }, 1000);
 
         return () => {
@@ -42,9 +38,9 @@ const LatestJourneys = () => {
         <Container>
             {hasLoaded ? (
                 <>
-                    <h3 className={`${appStyles.Headings} mb-4 mt-3`}>Latest <span className={appStyles.GreenHeading}>journeys</span></h3>
-                    {journeys.results.slice(0, 2).map((journey) => (
-                        <JourneyFeature key={journey.id} {...journey} setJourneys={setJourneys} />
+                    <h3 className={`${appStyles.Headings} mb-4 mt-3`}>Latest <span className={appStyles.BlueHeading}>blogs</span></h3>
+                    {blogs.results.slice(0, 2).map((blog) => (
+                        <BlogFeature key={blog.id} {...blog} setBlogs={setBlogs} />
                     ))}
                 </>
             ) : (
@@ -56,4 +52,4 @@ const LatestJourneys = () => {
     )
 }
 
-export default LatestJourneys;
+export default LatestBlogs;

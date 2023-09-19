@@ -24,6 +24,7 @@ import Blog from "../blogs/Blog";
 import { Link } from 'react-router-dom';
 import newsStyles from '../../styles/NewsPages.module.css'
 import LatestJourneys from "../journeys/LatestJourneys";
+import LatestBlogs from "../blogs/LatestBlogs";
 
 
 function NewssPage({ message }) {
@@ -59,7 +60,7 @@ function NewssPage({ message }) {
 
     return (
         <Container>
-            <Row className="h-100 mt-4">
+            <Row className="h-100 mt-4 align-items-center">
             {
                 profile &&
                 <Col className="py-2 p-0 p-lg-2 text-center" xs={12} lg={8}>
@@ -114,6 +115,7 @@ function NewssPage({ message }) {
                 </Col>
                 <Col md={4} className="d-none d-lg-block p-0 p-lg-2">
                     <LatestJourneys />
+                    <LatestBlogs />
                     <PopularProfiles />
                 </Col>
             </Row>
