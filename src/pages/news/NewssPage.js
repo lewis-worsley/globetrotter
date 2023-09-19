@@ -23,6 +23,7 @@ import Journey from "../journeys/Journey";
 import Blog from "../blogs/Blog";
 import { Link } from 'react-router-dom';
 import newsStyles from '../../styles/NewsPages.module.css'
+import LatestJourneys from "../journeys/LatestJourneys";
 
 
 function NewssPage({ message }) {
@@ -112,6 +113,7 @@ function NewssPage({ message }) {
                     )}
                 </Col>
                 <Col md={4} className="d-none d-lg-block p-0 p-lg-2">
+                    <LatestJourneys />
                     <PopularProfiles />
                 </Col>
             </Row>

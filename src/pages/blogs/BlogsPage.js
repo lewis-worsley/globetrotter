@@ -22,6 +22,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 import PopularProfiles from "../profiles/PopularProfiles";
 import { Link } from 'react-router-dom';
+import LatestJourneys from "../journeys/LatestJourneys";
 
 
 function BlogsPage({ message }) {
@@ -104,6 +105,7 @@ function BlogsPage({ message }) {
                     )}
                 </Col>
                 <Col md={4} className="d-none d-lg-block p-0 p-lg-2">
+                    <LatestJourneys />
                     <PopularProfiles />
                 </Col>
             </Row>
