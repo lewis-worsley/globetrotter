@@ -117,7 +117,7 @@ const HomePage = () => {
                 <Row className={`mt-5`}>
                     <Col>
                         <div className='text-center'>
-                            <h3 className={appStyles.Headings}>Fellow <span className={appStyles.JourneyWordTitle}>Globetrotters</span></h3>
+                            <h3 className={appStyles.Headings}>Fellow <span className={appStyles.GreenHeading}>Globetrotters</span></h3>
                             <p>Discover where our Globetrotters have travelled, we are sure you'll find their content inspiring, engaging and informative.</p>
                         </div>
 
@@ -186,7 +186,7 @@ const HomePage = () => {
             <Row className='mt-5'>
                 <Col>
                     <div className='text-center'>
-                        <h3 className={appStyles.Headings}>Latest <span className={appStyles.BlogWordTitle}>blogs</span></h3>
+                        <h3 className={appStyles.Headings}>Latest <span className={appStyles.BlueHeading}>blogs</span></h3>
                         <p>Check out the most recent travel blogs that offer informative and interactive travel storytelling, taking your wanderlust to new destinations.</p>
                     </div>
 
@@ -255,7 +255,7 @@ const HomePage = () => {
             <Row className={`mt-5`}>
                 <Col>
                 <div className='text-center'>
-                <h3 className={appStyles.Headings}>Latest <span className={appStyles.NewsWordTitle}>news</span></h3>
+                <h3 className={appStyles.Headings}>Latest <span className={appStyles.GreyBlueHeading}>news</span></h3>
                         <p>Latest travel news and reviews around the globe, travel guides to global destinations, city breaks, hotels and more.</p>
                     </div>
 

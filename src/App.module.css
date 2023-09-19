@@ -30,6 +30,10 @@ p {
     color: #02636d;
 }
 
+.GreyBlueHeading {
+    color: #46616e;
+}
+
 .TealHeading {
     color: #0ea098;
 }
@@ -160,18 +164,6 @@ i:hover {
 
 .Date {
     font-size: 14px;
-}
-
-.JourneyWordTitle {
-    color: #63610c;
-}
-
-.BlogWordTitle {
-    color: #02636d;
-}
-
-.NewsWordTitle {
-    color: #46616e
 }
 
 .HeroImage {

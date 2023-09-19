@@ -25,6 +25,7 @@ import PopularProfiles from "../profiles/PopularProfiles";
 import { Link } from 'react-router-dom';
 import BlogFeature from "../blogs/BlogFeature,";
 import LatestBlogs from "../blogs/LatestBlogs";
+import LatestNews from "../news/LatestNews";
 
 function JourneysPage({ message }) {
     const [journeys, setJourneys] = useState({ results: [] });
@@ -110,6 +111,7 @@ function JourneysPage({ message }) {
                 </Col>
                 <Col md={4} className="d-none d-lg-block p-0 p-lg-2">
                     <LatestBlogs />
+                    <LatestNews />
                     <PopularProfiles />
                 </Col>
             </Row>
