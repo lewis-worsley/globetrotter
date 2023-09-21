@@ -7,12 +7,11 @@ import appStyles from '../App.module.css'
 import { Image } from 'react-bootstrap';
 import companyLogo from "../assets/globetrotters-logo.png"
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
-import { useCurrentUser, useSetCurrentUser } from '../contexts/CurrentUserContext';
+import { useCurrentUser } from '../contexts/CurrentUserContext';
 
 const Footer = () => {
 
     const currentUser = useCurrentUser();
-    const setCurrentUser = useSetCurrentUser();
 
     return (
         <div className={footerStyles.Footer}>
