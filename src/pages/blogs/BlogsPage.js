@@ -57,7 +57,7 @@ function BlogsPage({ message }) {
 
     return (
         <Container>
-            <Row className="h-100 mt-4">
+            <Row className="h-100 mt-4 align-items-center">
                 <Col className="py-2 p-0 p-lg-2 text-center" xs={12} lg={8}>
                     <>
                     <Link to="/blogs/create">
