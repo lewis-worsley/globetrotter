@@ -59,14 +59,14 @@ function BlogCommentEditForm(props) {
             </Form.Group>
             <div>
                 <Button
-                    className={appStyles.BlogButton}
+                    className={`${appStyles.Button} ${appStyles.InverseButton} mr-2 mt-2 pt-2`}
                     onClick={() => setShowEditForm(false)}
                     type="button"
                 >
                     Cancel
                 </Button>
                 <Button
-                    className={appStyles.BlogButton}
+                    className={`${appStyles.Button} ${appStyles.BlueButton} ml-2 mt-2`}
                     disabled={!content.trim()}
                     type="submit"
                 >

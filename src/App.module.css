@@ -132,6 +132,10 @@ input[type="file"] {
     background-color: #63610c;
 }
 
+.BlueButton {
+    background-color: #02636d;
+}
+
 a {
     color: white;
     transition: color ease-in-out 0.3s;
