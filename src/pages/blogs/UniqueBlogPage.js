@@ -93,7 +93,6 @@ const UniqueBlogPage = (props) => {
             <div className={appStyles.HeroImage}>
                 <div className={`text-center`}>
                     <Card.Img src={image} alt={title} className={`${appStyles.Hero}`} />
-                    <image src={image}/>
                     <div className={`${appStyles.Title} border-bottom`}>
                         {title && <Card.Title ><h1 className={appStyles.Headings}>{title}</h1></Card.Title>}
                         <h3 className={`${appStyles.Headings} mt-5`}>{countries}</h3>
@@ -196,12 +195,9 @@ const UniqueBlogPage = (props) => {
                         </Col>
                     </Row>
                 </Card.Body>
-
-
             </Card>
         </div>
-
-    )
-}
+    );
+};
 
 export default UniqueBlogPage;
