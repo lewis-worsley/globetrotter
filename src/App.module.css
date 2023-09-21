@@ -128,11 +128,11 @@ input[type="file"] {
     border-color: transparent;
 }
 
-.GreenButton {
+.GreenButton, .GreenButton:disabled {
     background-color: #63610c;
 }
 
-.BlueButton {
+.BlueButton, .BlueButton:disabled {
     background-color: #02636d;
 }
 

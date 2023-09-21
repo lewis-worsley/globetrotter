@@ -1,12 +1,14 @@
-import { useState } from 'react'
+import { useState } from 'react';
 import { Link } from "react-router-dom";
 
 import Form from "react-bootstrap/Form";
+import Button from 'react-bootstrap/Button';
 import InputGroup from "react-bootstrap/InputGroup";
 
-import styles from "../../../styles/CommentCreateEditForm.module.css"
+import appStyles from "../../../App.module.css"
+import commentStyles from "../../../styles/Comment.module.css"
+
 import Avatar from "../../../components/Avatar";
-import { Button } from 'react-bootstrap';
 import { axiosRes } from '../../../api/axiosDefaults';
 
 function JourneyCommentCreateForm(props) {
@@ -58,7 +60,7 @@ function JourneyCommentCreateForm(props) {
                         <Avatar src={profileImage} />
                     </Link>
                     <Form.Control
-                        className={styles.Form}
+                        className={commentStyles.JourneyForm}
                         placeholder="Add your comment here..."
                         as="textarea"
                         value={content}
@@ -68,7 +70,7 @@ function JourneyCommentCreateForm(props) {
                 </InputGroup>
             </Form.Group>
             <Button
-                className={`${styles.Button} btn d-block ml-auto`}
+                className={`${appStyles.Button} ${appStyles.GreenButton} d-block ml-auto`}
                 disabled={!content.trim()}
                 type="submit"
             >

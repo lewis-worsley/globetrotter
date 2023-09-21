@@ -1,11 +1,18 @@
-import React, { useState } from 'react'
-import { Media } from 'react-bootstrap';
+import React from 'react';
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import Avatar from '../../../components/Avatar';
-import styles from "../../../styles/Comment.module.css"
+
+import Media from 'react-bootstrap/Media';
+
+import commentStyles from "../../../styles/Comment.module.css"
+
 import { useCurrentUser } from '../../../contexts/CurrentUserContext';
+
+import Avatar from '../../../components/Avatar';
 import { MoreDropdown } from '../../../components/MoreDropdown';
+
 import { axiosRes } from '../../../api/axiosDefaults';
+
 import JourneyCommentEditForm from './JourneyCommentEditForm';
 
 const JourneyComment = (props) => {
@@ -55,9 +62,9 @@ const JourneyComment = (props) => {
                 </Link>
                 <Media.Body className="align-self-center ml-2">
                     <Link to={`/profiles/${profile_id}`}>
-                        <span className={styles.Owner}>{owner}</span>
+                        <span className={commentStyles.JourneyUser}>{owner}</span>
                     </Link>
-                    <span className={styles.Date}>{updated_at}</span>
+                    <span className={commentStyles.Date}>{updated_at}</span>
                     {showEditForm ? (
                         <JourneyCommentEditForm
                             id={id}

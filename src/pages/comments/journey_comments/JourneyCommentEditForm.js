@@ -1,10 +1,12 @@
 import { useState } from "react";
 
 import Form from "react-bootstrap/Form";
-import { axiosRes } from '../../../api/axiosDefaults';
-
-import styles from "../../../styles/CommentCreateEditForm.module.css";
 import Button from "react-bootstrap/Button";
+
+import appStyles from "../../../App.module.css"
+import commentStyles from "../../../styles/Comment.module.css";
+
+import { axiosRes } from '../../../api/axiosDefaults';
 
 function JourneyCommentEditForm(props) {
     const {
@@ -49,7 +51,7 @@ function JourneyCommentEditForm(props) {
         <Form onSubmit={handleSubmit}>
             <Form.Group className="pr-1">
                 <Form.Control
-                    className={styles.Form}
+                    className={commentStyles.JourneyForm}
                     as="textarea"
                     value={formContent}
                     onChange={handleChange}
@@ -58,14 +60,14 @@ function JourneyCommentEditForm(props) {
             </Form.Group>
             <div>
                 <Button
-                    className={styles.Button}
+                    className={`${appStyles.Button} ${appStyles.InverseButton} mr-2 mt-2 pt-2`}
                     onClick={() => setShowEditForm(false)}
                     type="button"
                 >
                     Cancel
                 </Button>
                 <Button
-                    className={styles.Button}
+                    className={`${appStyles.Button} ${appStyles.GreenButton} ml-2 mt-2`}
                     disabled={!content.trim()}
                     type="submit"
                 >

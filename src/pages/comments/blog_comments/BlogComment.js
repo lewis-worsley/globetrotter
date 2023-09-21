@@ -1,11 +1,17 @@
-import React, { useState } from 'react'
+import React from 'react';
+import { useState } from "react";
 import { Media } from 'react-bootstrap';
 import { Link } from "react-router-dom";
-import Avatar from '../../../components/Avatar';
-import styles from "../../../styles/Comment.module.css"
+
+import commentStyles from "../../../styles/Comment.module.css"
+
 import { useCurrentUser } from '../../../contexts/CurrentUserContext';
+
+import Avatar from '../../../components/Avatar';
 import { MoreDropdown } from '../../../components/MoreDropdown';
+
 import { axiosRes } from '../../../api/axiosDefaults';
+
 import BlogCommentEditForm from '../blog_comments/BlogCommentEditForm';
 
 const BlogComment = (props) => {
@@ -55,9 +61,9 @@ const BlogComment = (props) => {
                 </Link>
                 <Media.Body className="align-self-center ml-2">
                     <Link to={`/profiles/${profile_id}`}>
-                        <span className={styles.Owner}>{owner}</span>
+                        <span className={commentStyles.BlogUser}>{owner}</span>
                     </Link>
-                    <span className={styles.Date}>{updated_at}</span>
+                    <span className={commentStyles.Date}>{updated_at}</span>
                     {showEditForm ? (
                         <BlogCommentEditForm
                             id={id}

@@ -1,14 +1,15 @@
 import { useState } from 'react'
 import { Link } from "react-router-dom";
 
+import commentStyles from "../../../styles/Comment.module.css"
+import appStyles from "../../../App.module.css"
+
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
-
-import styles from "../../../styles/BlogCommentCreateEditForm.module.css"
-import appStyles from "../../../App.module.css"
-import blogStyles from "../../../styles/BlogPages.module.css"
-import Avatar from "../../../components/Avatar";
 import { Button } from 'react-bootstrap';
+
+import Avatar from "../../../components/Avatar";
+
 import { axiosRes } from '../../../api/axiosDefaults';
 
 function BlogCommentCreateForm(props) {
@@ -60,7 +61,7 @@ function BlogCommentCreateForm(props) {
                         <Avatar src={profileImage} />
                     </Link>
                     <Form.Control
-                        className={styles.Form}
+                        className={commentStyles.BlogForm}
                         placeholder="Add your comment here..."
                         as="textarea"
                         value={content}
@@ -70,7 +71,7 @@ function BlogCommentCreateForm(props) {
                 </InputGroup>
             </Form.Group>
             <Button
-                className={`${blogStyles.BlogButton} btn d-block ml-auto`}
+                className={`${appStyles.Button} ${appStyles.BlueButton} d-block ml-auto`}
                 disabled={!content.trim()}
                 type="submit"
             >

@@ -1,10 +1,26 @@
-.Owner {
+.JourneyUser {
     font-weight: bold;
     color: #63610c;
+    margin-right: 8px;
+}
+
+.BlogUser {
+    font-weight: bold;
+    color: #02636d;
     margin-right: 8px;
 }
 
 .Date {
     font-weight: lighter;
     color: #c1c1c5;
+}
+
+.JourneyForm {
+    border: none;
+    border-bottom: 2px #63610c solid;
+}
+
+.BlogForm {
+    border: none;
+    border-bottom: 2px #02636d solid;
 }

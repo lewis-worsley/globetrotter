@@ -1,11 +1,12 @@
 import { useState } from "react";
 
-import Form from "react-bootstrap/Form";
-import { axiosRes } from '../../../api/axiosDefaults';
-
-import styles from "../../../styles/CommentCreateEditForm.module.css";
+import commentStyles from "../../../styles/Comment.module.css";
 import appStyles from "../../../App.module.css"
+
 import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+
+import { axiosRes } from '../../../api/axiosDefaults';
 
 function BlogCommentEditForm(props) {
     const {
@@ -50,7 +51,7 @@ function BlogCommentEditForm(props) {
         <Form onSubmit={handleSubmit}>
             <Form.Group className="pr-1">
                 <Form.Control
-                    className={styles.Form}
+                    className={commentStyles.BlogForm}
                     as="textarea"
                     value={formContent}
                     onChange={handleChange}
