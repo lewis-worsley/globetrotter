@@ -69,10 +69,13 @@ p {
     background-color: #c4b6b6;
 }
 
+.FollowButton:active, .FollowButton:focus-visible .FollowButton:focus  {
+    background-color: transparent;
+    border-color: transparent;
+}
+
 .FollowButton:focus {
-    background-color: #f5f5f5;
     color: #63610c;
-    border: none;
 }
 
 
@@ -100,6 +103,11 @@ input[type="file"] {
     color: white;
 }
 
+.Button:focus, .Button:active, .Button:focus-visible {
+    background-color: transparent;
+    border-color: transparent;
+}
+
 .InverseButton {
     background-color: #f5f5f5;
     color: #63610c;
@@ -112,6 +120,12 @@ input[type="file"] {
     background-color: #f5f5f5;
     color: #212529;
     text-decoration: underline;
+}
+
+.InverseButton:focus, .InverseButton:active {
+    background-color: transparent;
+    color: #63610c;
+    border-color: transparent;
 }
 
 .GreenButton {
