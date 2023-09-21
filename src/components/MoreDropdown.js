@@ -8,7 +8,7 @@ import { useHistory } from "react-router-dom";
 // Dropdown needs access to the DOM node in order to position the Menu
 const ThreeDots = React.forwardRef(({ onClick }, ref) => (
     <i
-        className="fas fa-ellipsis"
+        className={`${styles.ThreeDotsColour} fas fa-ellipsis`}
         ref={ref}
         onClick={(e) => {
             e.preventDefault();
