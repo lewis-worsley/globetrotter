@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import styles from "../../styles/Journey.modules.css";
 import appStyles from "../../App.module.css"
 import journeyStyles from "../../styles/JourneyPages.module.css"
 import { useCurrentUser } from '../../contexts/CurrentUserContext';

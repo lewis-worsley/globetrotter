@@ -99,67 +99,63 @@ const BlogProfilePageFeature = (props) => {
     };
 
     return (
-        <CardColumns>
-            <Card className={` my-4`} bg='dark' text='light'>
-                <Card.Body className={`${blogStyles.CardTop}`}>
-                    <Row className="align-items-center">
-                        <Col xs={8}>
-                            <Media className="align-items-center">
-                                <Card.Text className={`${appStyles.Date}`}>{created_at}</Card.Text>
-                            </Media>
-                        </Col>
-                        <Col className='d-flex justify-content-end'>
-                            <Card.Text className={appStyles.Headings}>{countries}</Card.Text>
-                        </Col>
-                    </Row>
-                </Card.Body>
-                <Card.Body className='p-4'>
-                    {title && <Card.Title><h2 className={appStyles.Headings}>{title}</h2></Card.Title>}
-                    {content &&
-                        <Card.Text>
-                            <ReadMore>{content}</ReadMore>
-                        </Card.Text>}
-                    <Link to={`/blogs/${id}`}>
-                        <Card.Img src={image} alt={title} className={appStyles.GridImage} />
-                    </Link>
-                    <div className='mt-4 d-flex justify-content-end align-items-center'>
-                        {is_owner ? (
-                            <OverlayTrigger
-                                placement="top"
-                                overlay={<Tooltip>Can't like your own blog!</Tooltip>}
-                            >
-                                <i className="far fa-heart"></i>
-                            </OverlayTrigger>
-                        ) : like_id ? (
-                            <span onClick={handleUnlike}>
-                                <i className={`fas fa-heart ${appStyles.Heart}`}></i>
-                            </span>
-                        ) : currentUser ? (
-                            <span onClick={handleLike}>
-                                <i className={`fas fa-heart ${appStyles.HeartOutline}`}></i>
-                            </span>
-                        ) : (
-                            <OverlayTrigger
-                                placement="top"
-                                overlay={<Tooltip>Login to like blogs!</Tooltip>}
-                            >
-                                <i className={`${appStyles.Heart} far fa-heart`}></i>
-                            </OverlayTrigger>
-                        )}
-                        <span>{likes_count}</span>
-                        <span className='ml-3'>
-                            <Link to={`/blogs/${id}`}>
-                                <i className={`${appStyles.Comment} far fa-comments`}></i>
-                            </Link>
-                            {comments_count}
+        <Card className="my-4" bg='dark' text='light'>
+            <Card.Body className={`${blogStyles.CardTop}`}>
+                <Row className="align-items-center">
+                    <Col xs={5}>
+                        <Card.Text className={`${appStyles.Date}`}>{created_at}</Card.Text>
+                    </Col>
+                    <Col className='d-flex justify-content-end'>
+                        <Card.Text className={appStyles.Headings}>{countries}</Card.Text>
+                    </Col>
+                </Row>
+            </Card.Body>
+            <Card.Body className='p-4'>
+                {title && <Card.Title><h4 className={appStyles.Headings}>{title}</h4></Card.Title>}
+                {content &&
+                    <Card.Text>
+                        <ReadMore>{content}</ReadMore>
+                    </Card.Text>}
+                <Link to={`/blogs/${id}`}>
+                    <Card.Img src={image} alt={title} className={appStyles.Image} />
+                </Link>
+                <div className='mt-4 d-flex justify-content-end align-items-center'>
+                    {is_owner ? (
+                        <OverlayTrigger
+                            placement="top"
+                            overlay={<Tooltip>Can't like your own blog!</Tooltip>}
+                        >
+                            <i className="far fa-heart"></i>
+                        </OverlayTrigger>
+                    ) : like_id ? (
+                        <span onClick={handleUnlike}>
+                            <i className={`fas fa-heart ${appStyles.Heart}`}></i>
                         </span>
+                    ) : currentUser ? (
+                        <span onClick={handleLike}>
+                            <i className={`fas fa-heart ${appStyles.HeartOutline}`}></i>
+                        </span>
+                    ) : (
+                        <OverlayTrigger
+                            placement="top"
+                            overlay={<Tooltip>Login to like blogs!</Tooltip>}
+                        >
+                            <i className={`${appStyles.Heart} far fa-heart`}></i>
+                        </OverlayTrigger>
+                    )}
+                    <span>{likes_count}</span>
+                    <span className='ml-3'>
                         <Link to={`/blogs/${id}`}>
-                            <Button className={`${appStyles.Button} ${blogStyles.BlogButton}`}>Read blog</Button>
+                            <i className={`${appStyles.Comment} far fa-comments`}></i>
                         </Link>
-                    </div>
-                </Card.Body>
-            </Card>
-        </CardColumns>
+                        {comments_count}
+                    </span>
+                    <Link to={`/blogs/${id}`}>
+                        <Button className={`${appStyles.Button} ${blogStyles.BlogButton}`}>Read blog</Button>
+                    </Link>
+                </div>
+            </Card.Body>
+        </Card>
     )
 }
 
