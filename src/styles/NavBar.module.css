@@ -13,6 +13,12 @@
     margin: 4px 0
 }
 
+.NavBarButton:focus, .NavBarButton:focus-visible, .NavBarButton:active {
+    border-color: transparent;
+    background-color: transparent;
+    border: none;
+}
+
 .HamburgerMenu {
     color: white;
 }
