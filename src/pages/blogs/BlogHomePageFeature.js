@@ -122,7 +122,7 @@ const BlogHomePageFeature = (props) => {
                 </Row>
             </Card.Body>
             <Card.Body>
-                {title && <Card.Title><h2 className={appStyles.Headings}>{title}</h2></Card.Title>}
+                {title && <Card.Title><h4 className={appStyles.Headings}>{title}</h4></Card.Title>}
                 {content &&
                     <Card.Text>
                         <ReadMore>{content}</ReadMore>
