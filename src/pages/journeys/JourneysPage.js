@@ -26,11 +26,14 @@ import { Link } from 'react-router-dom';
 import BlogFeature from "../blogs/BlogFeature,";
 import LatestBlogs from "../blogs/LatestBlogs";
 import LatestNews from "../news/LatestNews";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 function JourneysPage({ message }) {
     const [journeys, setJourneys] = useState({ results: [] });
     const [hasLoaded, setHasLoaded] = useState(false);
     const { pathname } = useLocation();
+
+    const currentUser = useCurrentUser();
 
     const [query, setQuery] = useState("");
 
@@ -59,20 +62,22 @@ function JourneysPage({ message }) {
     return (
         <Container>
             <Row className="h-100 mt-4 align-items-center">
-                <Col className="py-2 p-0 p-lg-2 text-center" xs={12} lg={8}>
-                    <>
-                        <Link to="/journeys/create">
-                            <Button
-                                className={`${journeyStyles.JourneyFormButton} ${appStyles.Button}`}
-                            >
-                                Create journey <i className="fa-solid fa-globe"></i>
-                            </Button>
-                        </Link>
-                    </>
-                </Col>
+                {currentUser &&
+                    <Col className="py-2 p-0 p-lg-2 text-center" xs={12} lg={8}>
+                        <>
+                            <Link to="/journeys/create">
+                                <Button
+                                    className={`${journeyStyles.JourneyFormButton} ${appStyles.Button}`}
+                                >
+                                    Create journey <i className="fa-solid fa-globe"></i>
+                                </Button>
+                            </Link>
+                        </>
+                    </Col>
+                }
 
-                <Col xs={12} lg={4}>
-                    <Form className="py-2 p-0 p-lg-2" onSubmit={(event) => event.preventDefault()}>
+                <Col xs={12} lg={8}>
+                    <Form className="py-2 p-0 p-lg-2 mt-3" onSubmit={(event) => event.preventDefault()}>
                         <Form.Control
                             value={query}
                             onChange={(event) => setQuery(event.target.value)}
@@ -82,7 +87,7 @@ function JourneysPage({ message }) {
                     </Form>
                 </Col>
             </Row>
-            
+
             <Row>
                 <Col className="py-2 p-0 p-lg-2" lg={8}>
                     {hasLoaded ? (

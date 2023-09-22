@@ -24,12 +24,16 @@ import PopularProfiles from "../profiles/PopularProfiles";
 import { Link } from 'react-router-dom';
 import LatestJourneys from "../journeys/LatestJourneys";
 import LatestNews from "../news/LatestNews";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 
 function BlogsPage({ message }) {
     const [blogs, setBlogs] = useState({ results: [] });
     const [hasLoaded, setHasLoaded] = useState(false);
     const { pathname } = useLocation();
+
+    const currentUser = useCurrentUser();
+
 
     const [query, setQuery] = useState("");
 
@@ -58,18 +62,20 @@ function BlogsPage({ message }) {
     return (
         <Container>
             <Row className="h-100 mt-4 align-items-center">
-                <Col className="py-2 p-0 p-lg-2 text-center" xs={12} lg={8}>
-                    <>
-                    <Link to="/blogs/create">
-                        <Button className={`${blogStyles.BlogFormButton} ${appStyles.Button}`}>
-                            Create blog <i className="fa-solid fa-blog"></i>
-                        </Button>
-                    </Link>
-                    </>
-                </Col>
+                {currentUser &&
+                    <Col className="py-2 p-0 p-lg-2 text-center" xs={12} lg={8}>
+                        <>
+                            <Link to="/blogs/create">
+                                <Button className={`${blogStyles.BlogFormButton} ${appStyles.Button}`}>
+                                    Create blog <i className="fa-solid fa-blog"></i>
+                                </Button>
+                            </Link>
+                        </>
+                    </Col>
+                }
 
-                <Col xs={12} lg={4}>
-                    <Form className="py-2 p-0 p-lg-2" onSubmit={(event) => event.preventDefault()}>
+                <Col xs={12} lg={8}>
+                    <Form className="py-2 p-0 p-lg-2 mt-3" onSubmit={(event) => event.preventDefault()}>
                         <Form.Control
                             value={query}
                             onChange={(event) => setQuery(event.target.value)}
