@@ -6,7 +6,7 @@
 }
 
 .CompanyLogo {
-    object-fit: cover;
+    object-fit: contain;
     max-height: 50px;
     margin-bottom: 2vh;
 }
