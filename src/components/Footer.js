@@ -32,11 +32,25 @@ const Footer = () => {
                     <Col xs={12} md={3} className={`${appStyles.Headings} mt-2`}>
                         <Link to="/news">News</Link>
                     </Col>
-                    <Col xs={12} md={3} className={`${appStyles.Headings} mt-2`}>
-                        <Link to={`/profiles/${currentUser?.profile_id}`}>
-                            Profile account
-                        </Link>
-                    </Col>
+                    {currentUser ? (
+                        <Col xs={12} md={3} className={`${appStyles.Headings} mt-2`}>
+                            <Link to={`/profiles/${currentUser?.profile_id}`}>
+                                Profile account
+                            </Link>
+                        </Col>
+                    ) : (
+                        <Col xs={12} md={3} className={`mt-2`}>
+                            <Link to={`/profiles/${currentUser?.profile_id}`} className={appStyles.Headings}>
+                                Account
+                            </Link>
+                            <Link to="/signin">
+                                <div className="mt-2">Sign in</div>
+                            </Link>
+                            <Link to="/signup">
+                                <div className="mt-1">Sign up</div>
+                            </Link>
+                        </Col>
+                    )}
                 </Row>
                 <Row className='mt-5'>
                     <Col>Copyright © Globetrotters 2023. All rights reserved.</Col>
