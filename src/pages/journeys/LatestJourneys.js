@@ -43,7 +43,7 @@ const LatestJourneys = () => {
             {hasLoaded ? (
                 <>
                     <h3 className={`${appStyles.Headings} mb-4 mt-3`}>Latest <span className={appStyles.GreenHeading}>journeys</span></h3>
-                    {journeys.results.slice(0, 2).map((journey) => (
+                    {journeys.results.slice(0, 3).map((journey) => (
                         <JourneyFeature key={journey.id} {...journey} setJourneys={setJourneys} />
                     ))}
                 </>

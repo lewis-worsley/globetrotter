@@ -39,7 +39,7 @@ const LatestBlogs = () => {
             {hasLoaded ? (
                 <>
                     <h3 className={`${appStyles.Headings} mb-4 mt-3`}>Latest <span className={appStyles.BlueHeading}>blogs</span></h3>
-                    {blogs.results.slice(0, 2).map((blog) => (
+                    {blogs.results.slice(0, 3).map((blog) => (
                         <BlogFeature key={blog.id} {...blog} setBlogs={setBlogs} />
                     ))}
                 </>
