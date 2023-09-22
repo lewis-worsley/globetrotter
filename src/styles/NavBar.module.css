@@ -19,16 +19,8 @@
     border: none;
 }
 
-.HamburgerMenu {
-    color: white;
-}
-
 .NavBarButton:hover {
     background-color: #c4b6b6;
-}
-
-.NavBarButton:hover > i {
-    color: white;
 }
 
 .NavLink {

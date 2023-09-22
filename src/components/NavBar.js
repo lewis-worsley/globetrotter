@@ -5,6 +5,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
+import Image from "react-bootstrap/Image";
 
 import companyLogo from "../assets/globetrotters-logo-green.svg";
 
@@ -76,9 +77,9 @@ const NavBar = () => {
             </NavLink>
         </>
     )
+
     const loggedOutIcons = (
         <>
-
             <NavLink
                 to="/home"
                 className={navbarStyles.NavLink}
@@ -106,18 +107,19 @@ const NavBar = () => {
             expanded={expanded}
             expand="md"
             fixed="top"
-            className={navbarStyles.NavBar}
+            className={`${navbarStyles.NavBar}`}
         >
             <Container>
                 <NavLink to="/home">
                     <Navbar.Brand>
-                        <img src={companyLogo} alt="company logo" height="45" />
+                        <Image src={companyLogo} alt="company logo" height="45" />
                     </Navbar.Brand>
                 </NavLink>
                 <Navbar.Toggle
                     aria-controls="basic-navbar-nav"
                     onClick={() => setExpanded(!expanded)}
                     ref={ref}
+                    style={{borderColor: "white", backgroundColor: "white"}}
                 />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto text-center">
