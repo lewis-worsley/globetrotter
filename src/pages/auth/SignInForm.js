@@ -14,6 +14,7 @@ import appStyles from "../../App.module.css";
 import { Col, Image, Row } from 'react-bootstrap';
 import authStyles from '../../styles/AuthPages.module.css'
 import signInImage from "../../assets/pexels-mathew-thomas-906531.jpg"
+import { setTokenTimestamp } from '../../utils/utils';
 
 
 const SignInForm = () => {
@@ -42,6 +43,7 @@ const SignInForm = () => {
         try {
             const { data } = await axios.post("/dj-rest-auth/login/", signInData);
             setCurrentUser(data.user);
+            setTokenTimestamp();
             history.goBack();
         } catch (err) {
             setErrors(err.response?.data);
