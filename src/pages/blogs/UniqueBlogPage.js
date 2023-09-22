@@ -1,17 +1,22 @@
-import React from 'react'
+import React from 'react';
+import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
+
 import Card from 'react-bootstrap/Card';
 import Media from 'react-bootstrap/Media';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+
 import Avatar from '../../components/Avatar';
-import { Link } from "react-router-dom";
-import { axiosRes } from '../../api/axiosDefaults';
 import { MoreDropdown } from '../../components/MoreDropdown';
-import { useHistory } from "react-router-dom";
-import { Button, Col, Row } from 'react-bootstrap';
-import appStyles from '../../App.module.css'
-import { useSetProfileData } from '../../contexts/ProfileDataContext';
+
+import { axiosRes } from '../../api/axiosDefaults';
+
+import appStyles from '../../App.module.css';
 
 const UniqueBlogPage = (props) => {
     const {
@@ -25,22 +30,15 @@ const UniqueBlogPage = (props) => {
         title,
         content,
         countries,
-        locations,
         image,
-        updated_at,
         created_at,
         blogPage,
         setBlogs,
-        following_id,
-        profile,
     } = props;
 
     const currentUser = useCurrentUser();
     const is_owner = currentUser?.username === owner
     const history = useHistory();
-
-    const { handleFollow, handleUnfollow } = useSetProfileData();
-
 
     const handleEdit = () => {
         history.push(`/blogs/${id}/edit`);
@@ -168,27 +166,6 @@ const UniqueBlogPage = (props) => {
                                         <Link to={`/profiles/${profile_id}`}>
                                             <span className={appStyles.User}>{owner}</span>
                                         </Link>
-
-                                        <div className='mt-3'>
-                                            {currentUser &&
-                                                !is_owner &&
-                                                (following_id ? (
-                                                    <Button
-                                                        className={`${appStyles.FollowButton} py-2 px-4`}
-                                                        onClick={() => handleUnfollow(profile)}
-                                                    >
-                                                        Unfollow
-                                                    </Button>
-                                                ) : (
-                                                    <Button
-                                                        className={`${appStyles.FollowButton} py-2 px-4`}
-                                                        onClick={() => handleFollow(profile)}
-                                                    >
-                                                        Follow
-                                                    </Button>
-                                                ))
-                                            }
-                                        </div>
                                     </div>
                                 </Media>
                             </Col>
