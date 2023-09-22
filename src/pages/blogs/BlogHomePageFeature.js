@@ -7,8 +7,6 @@ import Tooltip from 'react-bootstrap/Tooltip';
 import Avatar from '../../components/Avatar';
 import { Link } from "react-router-dom";
 import { axiosRes } from '../../api/axiosDefaults';
-import { MoreDropdown } from '../../components/MoreDropdown';
-import { useHistory } from "react-router-dom";
 import { Button, Col, Row } from 'react-bootstrap';
 import appStyles from '../../App.module.css'
 import blogStyles from '../../styles/BlogPages.module.css'
@@ -25,17 +23,13 @@ const BlogHomePageFeature = (props) => {
         title,
         content,
         countries,
-        locations,
         image,
-        updated_at,
         created_at,
-        blogPage,
         setBlogs,
     } = props;
 
     const currentUser = useCurrentUser();
     const is_owner = currentUser?.username === owner
-    const history = useHistory();
 
     const ReadMore = ({ children }) => {
         const text = children;
@@ -51,19 +45,6 @@ const BlogHomePageFeature = (props) => {
                 </span>
             </p>
         );
-    };
-
-    const handleEdit = () => {
-        history.push(`/blogs/${id}/edit`);
-    }
-
-    const handleDelete = async () => {
-        try {
-            await axiosRes.delete(`/blogs/${id}/`)
-            history.goBack();
-        } catch (err) {
-            console.log(err);
-        }
     };
 
     const handleLike = async () => {
@@ -122,7 +103,9 @@ const BlogHomePageFeature = (props) => {
                 </Row>
             </Card.Body>
             <Card.Body>
-                {title && <Card.Title><h4 className={appStyles.Headings}>{title}</h4></Card.Title>}
+                <Link to={`/blogs/${id}`}>
+                    {title && <Card.Title><h4 className={appStyles.Headings}>{title}</h4></Card.Title>}
+                </Link>
                 {content &&
                     <Card.Text>
                         <ReadMore>{content}</ReadMore>

@@ -14,9 +14,6 @@ const NewsHomePageFeature = (props) => {
         content,
         image,
         created_at,
-        updated_at,
-        newsPage,
-        setNewss,
     } = props;
 
     const ReadMore = ({ children }) => {
@@ -41,7 +38,9 @@ const NewsHomePageFeature = (props) => {
                 {created_at}
             </Card.Body>
             <Card.Body>
-                {title && <Card.Title><h4 className={appStyles.Headings}>{title}</h4></Card.Title>}
+                <Link to={`/news/${id}`}>
+                    {title && <Card.Title><h4 className={appStyles.Headings}>{title}</h4></Card.Title>}
+                </Link>
                 {
                     content &&
                     <Card.Text>

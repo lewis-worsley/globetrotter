@@ -9,9 +9,7 @@ import Tooltip from 'react-bootstrap/Tooltip';
 import Avatar from '../../components/Avatar';
 import { Link } from "react-router-dom";
 import { axiosRes } from '../../api/axiosDefaults';
-import { MoreDropdown } from '../../components/MoreDropdown';
-import { useHistory } from "react-router-dom";
-import { Button, CardColumns, Col, Row } from 'react-bootstrap';
+import { Button, Col, Row } from 'react-bootstrap';
 
 
 const JourneyHomePageFeature = (props) => {
@@ -26,17 +24,13 @@ const JourneyHomePageFeature = (props) => {
         title,
         content,
         countries,
-        locations,
         image,
-        updated_at,
         created_at,
-        journeyPage,
         setJourneys,
     } = props;
 
     const currentUser = useCurrentUser();
     const is_owner = currentUser?.username === owner
-    const history = useHistory();
 
     const ReadMore = ({ children }) => {
         const text = children;
@@ -52,19 +46,6 @@ const JourneyHomePageFeature = (props) => {
                 </span>
             </p>
         );
-    };
-
-    const handleEdit = () => {
-        history.push(`/journeys/${id}/edit`);
-    }
-
-    const handleDelete = async () => {
-        try {
-            await axiosRes.delete(`/journeys/${id}/`)
-            history.goBack();
-        } catch (err) {
-            console.log(err);
-        }
     };
 
     const handleLike = async () => {
@@ -100,71 +81,73 @@ const JourneyHomePageFeature = (props) => {
     };
 
     return (
-            <Card className='my-4' bg='dark' text='light'>
-                <Card.Body className={`${journeyStyles.CardTop}`}>
-                    <Row className="align-items-center">
-                            <Media>
-                                <Link to={`/profiles/${profile_id}`}>
-                                    <Avatar src={profile_image} height={55} />
-                                </Link>
-                                <div className='mx-4'>
-                                    <Link to={`/profiles/${profile_id}`}>
-                                        <span className={appStyles.User}>{owner}</span>
-                                    </Link>
-                                    <Card.Text className={`${appStyles.Date}`}>{created_at}</Card.Text>
-                                </div>
-                            </Media>
-                        <Col className='d-flex justify-content-end'>
-                            <Card.Text className={appStyles.Headings}>{countries}</Card.Text>
-                        </Col>
-                    </Row>
-                </Card.Body>
-                <Card.Body>
-                    {title && <Card.Title><h4 className={appStyles.Headings}>{title}</h4></Card.Title>}
-                    {content &&
-                        <Card.Text>
-                            <ReadMore>{content}</ReadMore>
-                        </Card.Text>}
-                    <Link to={`/journeys/${id}`}>
-                        <Card.Img src={image} alt={title} className={appStyles.Image} />
-                    </Link>
-                    <div className='mt-4 d-flex justify-content-end align-items-center'>
-                        {is_owner ? (
-                            <OverlayTrigger
-                                placement="top"
-                                overlay={<Tooltip>Can't like your own journey!</Tooltip>}
-                            >
-                                <i className="far fa-heart"></i>
-                            </OverlayTrigger>
-                        ) : like_id ? (
-                            <span onClick={handleUnlike}>
-                                <i className={`fas fa-heart ${appStyles.Heart}`}></i>
-                            </span>
-                        ) : currentUser ? (
-                            <span onClick={handleLike}>
-                                <i className={`fas fa-heart ${appStyles.HeartOutline}`}></i>
-                            </span>
-                        ) : (
-                            <OverlayTrigger
-                                placement="top"
-                                overlay={<Tooltip>Login to like journeys!</Tooltip>}
-                            >
-                                <i className={`${appStyles.Heart} far fa-heart`}></i>
-                            </OverlayTrigger>
-                        )}
-                        {likes_count}
-                        <span className='ml-3'>
-                            <Link to={`/journeys/${id}`}>
-                                <i className={`${appStyles.Comment} far fa-comments`}></i>
-                            </Link>
-                            {comments_count}
-                        </span>
-                        <Link to={`/journeys/${id}`}>
-                            <Button className={`${journeyStyles.JourneyButton} ${appStyles.Button}`}>Read journey</Button>
+        <Card className='my-4' bg='dark' text='light'>
+            <Card.Body className={`${journeyStyles.CardTop}`}>
+                <Row className="align-items-center">
+                    <Media>
+                        <Link to={`/profiles/${profile_id}`}>
+                            <Avatar src={profile_image} height={55} />
                         </Link>
-                    </div>
-                </Card.Body>
-            </Card>
+                        <div className='mx-4'>
+                            <Link to={`/profiles/${profile_id}`}>
+                                <span className={appStyles.User}>{owner}</span>
+                            </Link>
+                            <Card.Text className={`${appStyles.Date}`}>{created_at}</Card.Text>
+                        </div>
+                    </Media>
+                    <Col className='d-flex justify-content-end'>
+                        <Card.Text className={appStyles.Headings}>{countries}</Card.Text>
+                    </Col>
+                </Row>
+            </Card.Body>
+            <Card.Body>
+                <Link to={`/journeys/${id}`}>
+                    {title && <Card.Title><h4 className={appStyles.Headings}>{title}</h4></Card.Title>}
+                </Link>
+                {content &&
+                    <Card.Text>
+                        <ReadMore>{content}</ReadMore>
+                    </Card.Text>}
+                <Link to={`/journeys/${id}`}>
+                    <Card.Img src={image} alt={title} className={appStyles.Image} />
+                </Link>
+                <div className='mt-4 d-flex justify-content-end align-items-center'>
+                    {is_owner ? (
+                        <OverlayTrigger
+                            placement="top"
+                            overlay={<Tooltip>Can't like your own journey!</Tooltip>}
+                        >
+                            <i className="far fa-heart"></i>
+                        </OverlayTrigger>
+                    ) : like_id ? (
+                        <span onClick={handleUnlike}>
+                            <i className={`fas fa-heart ${appStyles.Heart}`}></i>
+                        </span>
+                    ) : currentUser ? (
+                        <span onClick={handleLike}>
+                            <i className={`fas fa-heart ${appStyles.HeartOutline}`}></i>
+                        </span>
+                    ) : (
+                        <OverlayTrigger
+                            placement="top"
+                            overlay={<Tooltip>Login to like journeys!</Tooltip>}
+                        >
+                            <i className={`${appStyles.Heart} far fa-heart`}></i>
+                        </OverlayTrigger>
+                    )}
+                    {likes_count}
+                    <span className='ml-3'>
+                        <Link to={`/journeys/${id}`}>
+                            <i className={`${appStyles.Comment} far fa-comments`}></i>
+                        </Link>
+                        {comments_count}
+                    </span>
+                    <Link to={`/journeys/${id}`}>
+                        <Button className={`${journeyStyles.JourneyButton} ${appStyles.Button}`}>Read journey</Button>
+                    </Link>
+                </div>
+            </Card.Body>
+        </Card>
     )
 }
 

@@ -104,14 +104,16 @@ const Journey = (props) => {
                 </Row>
             </Card.Body>
             <Card.Body>
-                {title && <Card.Title><h2 className={appStyles.Headings}>{title}</h2></Card.Title>}
+                <Link to={`/journeys/${id}`}>
+                    {title && <Card.Title><h2 className={appStyles.Headings}>{title}</h2></Card.Title>}
+                </Link>
                 {content &&
                     <Card.Text>
                         <ReadMore>{content}</ReadMore>
                     </Card.Text>}
-                    <Link to={`/journeys/${id}`}>
-                        <Card.Img src={image} alt={title} className={appStyles.Image} />
-                    </Link>
+                <Link to={`/journeys/${id}`}>
+                    <Card.Img src={image} alt={title} className={appStyles.Image} />
+                </Link>
                 <div className='mt-4 d-flex justify-content-end align-items-center'>
                     {is_owner ? (
                         <OverlayTrigger

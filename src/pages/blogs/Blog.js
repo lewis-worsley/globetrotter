@@ -103,7 +103,9 @@ const Blog = (props) => {
                 </Row>
             </Card.Body>
             <Card.Body>
-                {title && <Card.Title><h2 className={appStyles.Headings}>{title}</h2></Card.Title>}
+                <Link to={`/blogs/${id}`}>
+                    {title && <Card.Title><h2 className={appStyles.Headings}>{title}</h2></Card.Title>}
+                </Link>
                 {content &&
                     <Card.Text>
                         <ReadMore>{content}</ReadMore>
