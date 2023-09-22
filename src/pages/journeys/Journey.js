@@ -9,8 +9,6 @@ import Tooltip from 'react-bootstrap/Tooltip';
 import Avatar from '../../components/Avatar';
 import { Link } from "react-router-dom";
 import { axiosRes } from '../../api/axiosDefaults';
-import { MoreDropdown } from '../../components/MoreDropdown';
-import { useHistory } from "react-router-dom";
 import { Button, Col, Row } from 'react-bootstrap';
 
 
@@ -28,15 +26,12 @@ const Journey = (props) => {
         countries,
         locations,
         image,
-        updated_at,
         created_at,
-        journeyPage,
         setJourneys,
     } = props;
 
     const currentUser = useCurrentUser();
     const is_owner = currentUser?.username === owner
-    const history = useHistory();
 
     const ReadMore = ({ children }) => {
         const text = children;
@@ -52,19 +47,6 @@ const Journey = (props) => {
                 </span>
             </p>
         );
-    };
-
-    const handleEdit = () => {
-        history.push(`/journeys/${id}/edit`);
-    }
-
-    const handleDelete = async () => {
-        try {
-            await axiosRes.delete(`/journeys/${id}/`)
-            history.goBack();
-        } catch (err) {
-            console.log(err);
-        }
     };
 
     const handleLike = async () => {
@@ -103,8 +85,8 @@ const Journey = (props) => {
         <Card className='my-4' bg='dark' text='light'>
             <Card.Body className={`${journeyStyles.CardTop}`}>
                 <Row className="align-items-center">
-                    <Col xs={8}>
-                        <Media className="align-items-center">
+                    <Col xs={12} sm={5}>
+                        <Media className="align-items-center justify-content-center justify-content-sm-start">
                             <Link to={`/profiles/${profile_id}`}>
                                 <Avatar src={profile_image} height={55} />
                             </Link>
@@ -116,8 +98,8 @@ const Journey = (props) => {
                             </div>
                         </Media>
                     </Col>
-                    <Col className='d-flex justify-content-end'>
-                        <Card.Text className={appStyles.Headings}>{countries}</Card.Text>
+                    <Col className='d-flex justify-content-center justify-content-sm-end mt-4 mt-sm-0'>
+                        <Card.Text className={appStyles.Headings}>{locations}, {countries}</Card.Text>
                     </Col>
                 </Row>
             </Card.Body>
