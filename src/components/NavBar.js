@@ -1,17 +1,23 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
-import logo from "../assets/globetrotters-logo.png";
-import appStyles from "../App.module.css";
-import navbarStyles from "../styles/NavBar.module.css"
-import { NavLink } from "react-router-dom";
-import { useCurrentUser, useSetCurrentUser } from "../contexts/CurrentUserContext";
-import axios from "axios";
-import Avatar from "./Avatar";
-import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 
+import logo from "../assets/globetrotters-logo.png";
+
+import navbarStyles from "../styles/NavBar.module.css";
+
+import { useCurrentUser, useSetCurrentUser }
+    from "../contexts/CurrentUserContext";
+
+import axios from "axios";
+
+import Avatar from "./Avatar";
+
+import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 
 const NavBar = () => {
     const currentUser = useCurrentUser();
@@ -70,25 +76,25 @@ const NavBar = () => {
     const loggedOutIcons = (
         <>
 
-                <NavLink
-                    to="/home"
-                    className={navbarStyles.NavLink}
-                >
-                    <i className="fas fa-home"></i>Home
-                </NavLink>
-                <NavLink
-                    to="/signin"
-                    className={navbarStyles.NavLink}
-                >
-                    <i className="fas fa-sign-in-alt"></i>Sign in
-                </NavLink>
-                <NavLink
-                    to="signup"
-                >
-                    <Button className={`${navbarStyles.NavBarButton}`}>
-                        <i className="fas fa-user-plus"></i>Sign up
-                    </Button>
-                </NavLink>
+            <NavLink
+                to="/home"
+                className={navbarStyles.NavLink}
+            >
+                <i className="fas fa-home"></i>Home
+            </NavLink>
+            <NavLink
+                to="/signin"
+                className={navbarStyles.NavLink}
+            >
+                <i className="fas fa-sign-in-alt"></i>Sign in
+            </NavLink>
+            <NavLink
+                to="signup"
+            >
+                <Button className={`${navbarStyles.NavBarButton}`}>
+                    <i className="fas fa-user-plus"></i>Sign up
+                </Button>
+            </NavLink>
         </>
     );
 
