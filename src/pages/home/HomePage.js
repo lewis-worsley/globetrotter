@@ -13,12 +13,15 @@ import NewsHomePageFeature from '../news/NewsHomePageFeature';
 import JourneyHomePageFeature from '../journeys/JourneyHomePageFeature';
 import companyLogo from "../../assets/globetrotters-logo-grey.svg"
 import globetrotter from "../../assets/pexels-yogendra-singh-3930029.jpg"
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
 
 const HomePage = () => {
     const [blogs, setBlogs] = useState({ results: [] });
     const [journeys, setJourneys] = useState({ results: [] });
     const [newss, setNewss] = useState({ results: [] });
     const [hasLoaded, setHasLoaded] = useState(false);
+
+    const currentUser = useCurrentUser();
 
     useEffect(() => {
         const fetchJourneys = async () => {
@@ -77,7 +80,7 @@ const HomePage = () => {
 
             <Row className={`${homePageStyles.FullBleed} ${homePageStyles.Intro} align-items-center`}>
                 <Col md={6} className={`text-center d-none d-md-block`}>
-                    <Image src={companyLogo} className={homePageStyles.ImageLogo}/>
+                    <Image src={companyLogo} className={homePageStyles.ImageLogo} />
                 </Col>
 
                 <Col xs={12} md={6} className='text-md-left text-center'>
@@ -102,15 +105,21 @@ const HomePage = () => {
                             advice, travel guides, destination information and inspiration
                             from fellow Globetrotters.
                         </p>
-                        <Link to="/signup">
-                            <Button className={`${appStyles.Button} ${homePageStyles.SignUpButton} mr-2`}>Sign up</Button>
-                        </Link>
-                        <Link to="/signin">
-                            <Button className={`${appStyles.Button} ${homePageStyles.SignInButton} ml-2`}>Sign in</Button>
-                        </Link>
+                        {currentUser ? (
+                            <span></span>
+                        ) : (
+                            <Col>
+                                <Link to="/signup">
+                                    <Button className={`${appStyles.Button} ${homePageStyles.SignUpButton} mr-2`}>Sign up</Button>
+                                </Link>
+                                <Link to="/signin">
+                                    <Button className={`${appStyles.Button} ${homePageStyles.SignInButton} ml-2`}>Sign in</Button>
+                                </Link>
+                            </Col>
+                        )}
                     </Col>
                     <Col xs={12} md={6} className='d-none d-md-block text-center'>
-                        <Image src={globetrotter} className={`${homePageStyles.Globetrotter}`} rounded/>
+                        <Image src={globetrotter} className={`${homePageStyles.Globetrotter}`} rounded />
                     </Col>
                 </Row>
 
@@ -254,8 +263,8 @@ const HomePage = () => {
 
             <Row className={`mt-5`}>
                 <Col>
-                <div className='text-center'>
-                <h3 className={appStyles.Headings}>Latest <span className={appStyles.GreyBlueHeading}>news</span></h3>
+                    <div className='text-center'>
+                        <h3 className={appStyles.Headings}>Latest <span className={appStyles.GreyBlueHeading}>news</span></h3>
                         <p>Latest travel news and reviews around the globe, travel guides to global destinations, city breaks, hotels and more.</p>
                     </div>
 
@@ -265,9 +274,9 @@ const HomePage = () => {
                         <CardDeck>
                             {hasLoaded ? (
                                 <>
-                                {newss.results.slice(0, 3).map((news) => (
-                                    <NewsHomePageFeature key={news.id} {...news} setNewss={setNewss} />
-                                ))}
+                                    {newss.results.slice(0, 3).map((news) => (
+                                        <NewsHomePageFeature key={news.id} {...news} setNewss={setNewss} />
+                                    ))}
                                 </>
                             ) : (
                                 <Container className={appStyles.Content}>
@@ -282,9 +291,9 @@ const HomePage = () => {
                         <CardDeck>
                             {hasLoaded ? (
                                 <>
-                                {newss.results.slice(0, 2).map((news) => (
-                                    <NewsHomePageFeature key={news.id} {...news} setNewss={setNewss} />
-                                ))}
+                                    {newss.results.slice(0, 2).map((news) => (
+                                        <NewsHomePageFeature key={news.id} {...news} setNewss={setNewss} />
+                                    ))}
                                 </>
                             ) : (
                                 <Container className={appStyles.Content}>
@@ -299,9 +308,9 @@ const HomePage = () => {
                         <CardDeck>
                             {hasLoaded ? (
                                 <>
-                                {newss.results.slice(0, 1).map((news) => (
-                                    <NewsHomePageFeature key={news.id} {...news} setNewss={setNewss} />
-                                ))}
+                                    {newss.results.slice(0, 1).map((news) => (
+                                        <NewsHomePageFeature key={news.id} {...news} setNewss={setNewss} />
+                                    ))}
                                 </>
                             ) : (
                                 <Container className={appStyles.Content}>
