@@ -11,7 +11,7 @@ import journeyStyles from "../../styles/JourneyPages.module.css"
 import BlogHomePageFeature from '../blogs/BlogHomePageFeature';
 import NewsHomePageFeature from '../news/NewsHomePageFeature';
 import JourneyHomePageFeature from '../journeys/JourneyHomePageFeature';
-import companyLogo from "../../assets/globetrotters-logo.png"
+import companyLogo from "../../assets/globetrotters-logo-grey.svg"
 import globetrotter from "../../assets/pexels-yogendra-singh-3930029.jpg"
 
 const HomePage = () => {

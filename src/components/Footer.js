@@ -9,7 +9,7 @@ import Image from "react-bootstrap/Image";
 import appStyles from "../App.module.css";
 import footerStyles from "../styles/Footer.module.css";
 
-import companyLogo from "../assets/globetrotters-logo.png";
+import companyLogo from "../assets/globetrotters-logo-grey.svg"
 
 import { useCurrentUser } from "../contexts/CurrentUserContext";
 

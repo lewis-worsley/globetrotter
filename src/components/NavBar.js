@@ -6,7 +6,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
 
-import logo from "../assets/globetrotters-logo.png";
+import companyLogo from "../assets/globetrotters-logo-green.svg";
 
 import navbarStyles from "../styles/NavBar.module.css";
 
@@ -111,7 +111,7 @@ const NavBar = () => {
             <Container>
                 <NavLink to="/home">
                     <Navbar.Brand>
-                        <img src={logo} alt="logo" height="45" />
+                        <img src={companyLogo} alt="company logo" height="45" />
                     </Navbar.Brand>
                 </NavLink>
                 <Navbar.Toggle
