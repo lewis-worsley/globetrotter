@@ -37,16 +37,16 @@ const UniqueBlogPage = (props) => {
     } = props;
 
     const currentUser = useCurrentUser();
-    const is_owner = currentUser?.username === owner
+    const is_owner = currentUser?.username === owner;
     const history = useHistory();
 
     const handleEdit = () => {
         history.push(`/blogs/${id}/edit`);
-    }
+    };
 
     const handleDelete = async () => {
         try {
-            await axiosRes.delete(`/blogs/${id}/`)
+            await axiosRes.delete(`/blogs/${id}/`);
             history.goBack();
         } catch (err) {
             console.log(err);
@@ -89,12 +89,10 @@ const UniqueBlogPage = (props) => {
 
         <div>
             <div className={appStyles.HeroImage}>
-                <div className={`text-center`}>
-                    <Card.Img src={image} alt={title} className={`${appStyles.Hero}`} />
-                    <div className={`${appStyles.Title} border-bottom`}>
-                        {title && <Card.Title ><h1 className={appStyles.Headings}>{title}</h1></Card.Title>}
-                        <h3 className={`${appStyles.Headings} mt-5`}>{countries}</h3>
-                    </div>
+                <Card.Img src={image} alt={title} className={`${appStyles.Hero}`} />
+                <div className={`${appStyles.Title} border-bottom text-center`}>
+                    {title && <Card.Title ><h1 className={appStyles.Headings}>{title}</h1></Card.Title>}
+                    <h3 className={`${appStyles.Headings} mt-5`}>{countries}</h3>
                 </div>
             </div>
 
@@ -112,63 +110,61 @@ const UniqueBlogPage = (props) => {
                             </div>
                         </Col>
                         <Col xs={12}>
-                            <Col>
-                                <Card.Body>
-                                    <div>
-                                        <Row>
-                                            <Col xs={12} className='d-flex align-items-baseline'>
+                            <Card.Body>
+                                <div>
+                                    <Row>
+                                        <Col xs={12} className='d-flex align-items-baseline'>
 
-                                                <span className={`${appStyles.Date}`}>{created_at}</span>
-                                                <span className={`${appStyles.Headings} ml-auto`}>{countries}</span>
-                                            </Col>
-                                            <Col>{title && <Card.Title className={`${appStyles.Headings} mt-3`}>{title}</Card.Title>}</Col>
-                                        </Row>
-                                    </div>
-                                    {content && <Card.Text>{content}</Card.Text>}
-                                    <div>
-                                        {is_owner ? (
-                                            <OverlayTrigger
-                                                placement="top"
-                                                overlay={<Tooltip>Can't like your own blog!</Tooltip>}
-                                            >
-                                                <i className="far fa-heart"></i>
-                                            </OverlayTrigger>
-                                        ) : like_id ? (
-                                            <span onClick={handleUnlike}>
-                                                <i className={`fas fa-heart ${appStyles.Heart}`}></i>
-                                            </span>
-                                        ) : currentUser ? (
-                                            <span onClick={handleLike}>
-                                                <i className={`fas fa-heart ${appStyles.HeartOutline}`}></i>
-                                            </span>
-                                        ) : (
-                                            <OverlayTrigger
-                                                placement="top"
-                                                overlay={<Tooltip>Login to like posts!</Tooltip>}
-                                            >
-                                                <i className={`${appStyles.Heart} far fa-heart`}></i>
-                                            </OverlayTrigger>
-                                        )}
-                                        <span>Likes {likes_count}</span>
-                                        <span className='ml-3'>
-                                            <Link to={`/blogs/${id}`}>
-                                                <i className={`${appStyles.Comment} far fa-comments`}></i>
-                                            </Link>
-                                            Comments {comments_count}
+                                            <span className={`${appStyles.Date}`}>{created_at}</span>
+                                            <span className={`${appStyles.Headings} ml-auto`}>{countries}</span>
+                                        </Col>
+                                        <Col>{title && <Card.Title className={`${appStyles.Headings} mt-3`}>{title}</Card.Title>}</Col>
+                                    </Row>
+                                </div>
+                                {content && <Card.Text>{content}</Card.Text>}
+                                <div>
+                                    {is_owner ? (
+                                        <OverlayTrigger
+                                            placement="top"
+                                            overlay={<Tooltip>Can't like your own blog!</Tooltip>}
+                                        >
+                                            <i className="far fa-heart"></i>
+                                        </OverlayTrigger>
+                                    ) : like_id ? (
+                                        <span onClick={handleUnlike}>
+                                            <i className={`fas fa-heart ${appStyles.Heart}`}></i>
                                         </span>
-                                    </div>
-                                </Card.Body>
-                                <Media className="align-items-center p-4">
-                                    <Link to={`/profiles/${profile_id}`}>
-                                        <Avatar src={profile_image} height={100} />
-                                    </Link>
-                                    <div className="mx-4">
-                                        <Link to={`/profiles/${profile_id}`}>
-                                            <span className={appStyles.User}>{owner}</span>
+                                    ) : currentUser ? (
+                                        <span onClick={handleLike}>
+                                            <i className={`fas fa-heart ${appStyles.HeartOutline}`}></i>
+                                        </span>
+                                    ) : (
+                                        <OverlayTrigger
+                                            placement="top"
+                                            overlay={<Tooltip>Login to like posts!</Tooltip>}
+                                        >
+                                            <i className={`${appStyles.Heart} far fa-heart`}></i>
+                                        </OverlayTrigger>
+                                    )}
+                                    <span>Likes {likes_count}</span>
+                                    <span className='ml-3'>
+                                        <Link to={`/blogs/${id}`}>
+                                            <i className={`${appStyles.Comment} far fa-comments`}></i>
                                         </Link>
-                                    </div>
-                                </Media>
-                            </Col>
+                                        Comments {comments_count}
+                                    </span>
+                                </div>
+                            </Card.Body>
+                            <Media className="align-items-center p-4">
+                                <Link to={`/profiles/${profile_id}`}>
+                                    <Avatar src={profile_image} height={100} />
+                                </Link>
+                                <div className="mx-4">
+                                    <Link to={`/profiles/${profile_id}`}>
+                                        <span className={appStyles.User}>{owner}</span>
+                                    </Link>
+                                </div>
+                            </Media>
                         </Col>
                     </Row>
                 </Card.Body>
