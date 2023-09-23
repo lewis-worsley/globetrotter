@@ -31,10 +31,7 @@ import NoResults from "../../assets/no-results.png";
 import BlogProfilePageFeature from "../blogs/BlogProfilePageFeature";
 import JourneyProfilePageFeature from "../journeys/JourneyProfilePageFeature";
 
-import { useRedirect } from "../../hooks/useRedirect";
-
 function ProfilePage() {
-    useRedirect("loggedOut");
 
     const [hasLoaded, setHasLoaded] = useState(false);
     const [profileJourneys, setProfileJourneys] = useState({ results: [] });
