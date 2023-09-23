@@ -1,24 +1,26 @@
 import { useEffect } from "react";
 import { useRef } from "react";
 import { useState } from "react";
+import { useHistory } from "react-router";
+import { useParams } from "react-router";
 
-import Form from "react-bootstrap/Form";
+import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
-import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
+import Form from "react-bootstrap/Form";
 import Image from "react-bootstrap/Image";
+import Row from "react-bootstrap/Row";
 
-import formStyles from "../../styles/Form.module.css";
 import appStyles from "../../App.module.css";
-import { useHistory } from "react-router";
+import formStyles from "../../styles/Form.module.css";
+
 import { axiosReq } from "../../api/axiosDefaults";
-import { Alert } from "react-bootstrap";
-import { useParams } from "react-router";
+
 import { useRedirect } from "../../hooks/useRedirect";
 
 function NewsEditForm() {
-    useRedirect("loggedOut")
+    useRedirect("loggedOut");
     const [errors, setErrors] = useState({});
 
     const [newsData, setNewsData] = useState({
@@ -38,14 +40,14 @@ function NewsEditForm() {
                 const { data } = await axiosReq.get(`/news/${id}/`);
                 const { image, title, content } = data;
 
-                setNewsData({ image, title, content })
+                setNewsData({ image, title, content });
             } catch (err) {
-                console.log(err)
+                console.log(err);
             }
         };
 
         handleMount();
-    }, [history, id])
+    }, [history, id]);
 
     const handleChange = (event) => {
         setNewsData({
@@ -133,7 +135,9 @@ function NewsEditForm() {
             <Row>
                 <Col className="py-2 p-0 p-md-2" xs={12}>
                     <Container
-                        className={`${appStyles.Content} ${formStyles.Container} d-flex flex-column justify-content-center`}
+                        className={
+                            `${formStyles.Container} d-flex flex-column justify-content-center`
+                        }
                     >
                         <Form.Group className="text-center">
                             <figure>
@@ -164,12 +168,15 @@ function NewsEditForm() {
                         <div className="d-md-none">{textFields}</div>
                     </Container>
                 </Col>
-                <Col xs={12} sm={{ span: 8, offset: 2 }} className="d-none d-md-block p-0 p-md-2">
-                    <Container className={appStyles.Content}>{textFields}</Container>
+                <Col
+                    xs={12} sm={{ span: 8, offset: 2 }}
+                    className="d-none d-md-block p-0 p-md-2"
+                >
+                    <Container>{textFields}</Container>
                 </Col>
             </Row>
         </Form >
     );
-}
+};
 
 export default NewsEditForm;

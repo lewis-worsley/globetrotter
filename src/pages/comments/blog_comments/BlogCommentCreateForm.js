@@ -1,19 +1,18 @@
-import { useState } from 'react'
+import { useState } from 'react';
 import { Link } from "react-router-dom";
 
-import commentStyles from "../../../styles/Comment.module.css"
-import appStyles from "../../../App.module.css"
+import Avatar from "../../../components/Avatar";
 
+import Button from 'react-bootstrap/Button';
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
-import { Button } from 'react-bootstrap';
 
-import Avatar from "../../../components/Avatar";
+import appStyles from "../../../App.module.css";
+import commentStyles from "../../../styles/Comment.module.css";
 
 import { axiosRes } from '../../../api/axiosDefaults';
 
 function BlogCommentCreateForm(props) {
-
     const {
         blog,
         setBlog,
@@ -51,7 +50,7 @@ function BlogCommentCreateForm(props) {
         } catch (err) {
             console.log(err);
         }
-    }
+    };
 
     return (
         <Form onSubmit={handleSubmit}>
@@ -71,14 +70,16 @@ function BlogCommentCreateForm(props) {
                 </InputGroup>
             </Form.Group>
             <Button
-                className={`${appStyles.Button} ${appStyles.BlueButton} d-block ml-auto`}
+                className={
+                    `${appStyles.Button} ${appStyles.BlueButton} d-block ml-auto`
+                }
                 disabled={!content.trim()}
                 type="submit"
             >
                 Post
             </Button>
         </Form>
-    )
-}
+    );
+};
 
 export default BlogCommentCreateForm;

@@ -1,16 +1,16 @@
-import React from 'react'
+import React from 'react';
 import { useState } from "react";
-import appStyles from "../../App.module.css"
-import blogStyles from "../../styles/BlogPages.module.css"
-import { useCurrentUser } from '../../contexts/CurrentUserContext';
-import Card from 'react-bootstrap/Card';
-import Media from 'react-bootstrap/Media';
-import Avatar from '../../components/Avatar';
 import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
+
+import Avatar from '../../components/Avatar';
+
+import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
+import Media from 'react-bootstrap/Media';
 import Row from 'react-bootstrap/Row';
 
+import appStyles from "../../App.module.css";
+import blogStyles from "../../styles/BlogPages.module.css";
 
 const BlogFeature = (props) => {
     const {
@@ -18,21 +18,11 @@ const BlogFeature = (props) => {
         owner,
         profile_id,
         profile_image,
-        comments_count,
-        likes_count,
-        like_id,
         title,
         content,
-        countries,
-        locations,
         image,
-        updated_at,
         created_at,
-        blogPage,
-        setBlogs,
     } = props;
-
-
 
     const ReadMore = ({ children }) => {
         const text = children;
@@ -52,7 +42,7 @@ const BlogFeature = (props) => {
 
     return (
         <Card className='my-4' bg='dark' text='light'>
-            <Card.Body className={`${blogStyles.CardTop}`}>
+            <Card.Body className={blogStyles.CardTop}>
                 <Row className="align-items-center">
                     <Col xs={8}>
                         <Media className="align-items-center">
@@ -73,7 +63,11 @@ const BlogFeature = (props) => {
             </Card.Body>
             <Card.Body>
                 <Link to={`/blogs/${id}`}>
-                    {title && <Card.Title><h4 className={appStyles.Headings}>{title}</h4></Card.Title>}
+                    {title &&
+                        <Card.Title>
+                            <h4 className={appStyles.Headings}>{title}</h4>
+                        </Card.Title>
+                    }
                 </Link>
                 {content &&
                     <Card.Text>
@@ -84,7 +78,7 @@ const BlogFeature = (props) => {
                 </Link>
             </Card.Body>
         </Card>
-    )
-}
+    );
+};
 
 export default BlogFeature;

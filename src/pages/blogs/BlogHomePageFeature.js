@@ -1,15 +1,23 @@
-import React, { useState } from 'react'
-import { useCurrentUser } from '../../contexts/CurrentUserContext';
+import React from 'react';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+
+import Avatar from '../../components/Avatar';
+
+import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
 import Media from 'react-bootstrap/Media';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Row from 'react-bootstrap/Row';
 import Tooltip from 'react-bootstrap/Tooltip';
-import Avatar from '../../components/Avatar';
-import { Link } from "react-router-dom";
+
+import appStyles from '../../App.module.css';
+import blogStyles from '../../styles/BlogPages.module.css';
+
 import { axiosRes } from '../../api/axiosDefaults';
-import { Button, Col, Row } from 'react-bootstrap';
-import appStyles from '../../App.module.css'
-import blogStyles from '../../styles/BlogPages.module.css'
+
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
 
 const BlogHomePageFeature = (props) => {
     const {
@@ -29,7 +37,7 @@ const BlogHomePageFeature = (props) => {
     } = props;
 
     const currentUser = useCurrentUser();
-    const is_owner = currentUser?.username === owner
+    const is_owner = currentUser?.username === owner;
 
     const ReadMore = ({ children }) => {
         const text = children;
@@ -92,19 +100,26 @@ const BlogHomePageFeature = (props) => {
                                 <Link to={`/profiles/${profile_id}`}>
                                     <span className={appStyles.User}>{owner}</span>
                                 </Link>
-                                <Card.Text className={`${appStyles.Date}`}>{created_at}</Card.Text>
+                                <Card.Text
+                                    className={appStyles.Date}
+                                >
+                                    {created_at}
+                                </Card.Text>
                             </div>
                         </Media>
                     </Col>
                     <Col className='d-flex justify-content-end'>
                         <Card.Text className={appStyles.Headings}>{countries}</Card.Text>
                     </Col>
-
                 </Row>
             </Card.Body>
             <Card.Body>
                 <Link to={`/blogs/${id}`}>
-                    {title && <Card.Title><h4 className={appStyles.Headings}>{title}</h4></Card.Title>}
+                    {title &&
+                        <Card.Title>
+                            <h4 className={appStyles.Headings}>{title}</h4>
+                        </Card.Title>
+                    }
                 </Link>
                 {content &&
                     <Card.Text>
@@ -145,12 +160,16 @@ const BlogHomePageFeature = (props) => {
                         {comments_count}
                     </span>
                     <Link to={`/blogs/${id}`}>
-                        <Button className={`${appStyles.Button} ${blogStyles.BlogButton}`}>Read blog</Button>
+                        <Button
+                            className={`${appStyles.Button} ${blogStyles.BlogButton}`}
+                        >
+                            Read blog
+                        </Button>
                     </Link>
                 </div>
             </Card.Body>
         </Card>
-    )
-}
+    );
+};
 
 export default BlogHomePageFeature;

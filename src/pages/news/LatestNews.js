@@ -1,9 +1,14 @@
-import { useEffect } from 'react'
-import { useState } from 'react'
-import { Container } from 'react-bootstrap'
-import { axiosReq } from '../../api/axiosDefaults';
-import appStyles from "../../App.module.css"
+import { useEffect } from 'react';
+import { useState } from 'react';
+
 import Asset from '../../components/Asset';
+
+import Container from 'react-bootstrap/Container';
+
+import appStyles from "../../App.module.css";
+
+import { axiosReq } from '../../api/axiosDefaults';
+
 import NewsFeature from './NewsFeature';
 
 const LatestNews = () => {
@@ -32,13 +37,17 @@ const LatestNews = () => {
             clearTimeout(timer);
         };
 
-    }, [])
+    }, []);
 
     return (
         <Container>
             {hasLoaded ? (
                 <>
-                    <h3 className={`${appStyles.Headings} mb-4 mt-3`}>Latest <span className={appStyles.GreyBlueHeading}>news</span></h3>
+                    <h3
+                        className={`${appStyles.Headings} mb-4 mt-3`}
+                    >
+                        Latest <span className={appStyles.GreyBlueHeading}>news</span>
+                    </h3>
                     {newss.results.slice(0, 3).map((news) => (
                         <NewsFeature key={news.id} {...news} setNewss={setNewss} />
                     ))}
@@ -49,7 +58,7 @@ const LatestNews = () => {
                 </Container>
             )}
         </Container>
-    )
-}
+    );
+};
 
 export default LatestNews;

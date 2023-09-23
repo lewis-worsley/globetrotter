@@ -1,27 +1,29 @@
 import { useRef } from "react";
 import { useState } from "react";
+import { useHistory } from "react-router";
 
-import Form from "react-bootstrap/Form";
+import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
-import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
+import Form from "react-bootstrap/Form";
 import Image from "react-bootstrap/Image";
+import Row from "react-bootstrap/Row";
 
 import Asset from "../../components/Asset";
 
 import Upload from "../../assets/upload.png";
 
-import formStyles from '../../styles/Form.module.css'
 import appStyles from "../../App.module.css";
-import journeyStyles from "../../styles/JourneyPages.module.css"
-import { useHistory } from "react-router";
+import formStyles from '../../styles/Form.module.css';
+import journeyStyles from "../../styles/JourneyPages.module.css";
+
 import { axiosReq } from "../../api/axiosDefaults";
-import { Alert } from "react-bootstrap";
+
 import { useRedirect } from "../../hooks/useRedirect";
 
 function JourneyCreateForm(props) {
-    useRedirect("loggedOut")
+    useRedirect("loggedOut");
     const [errors, setErrors] = useState({});
 
     const [journeyData, setJourneyData] = useState({
@@ -136,10 +138,12 @@ function JourneyCreateForm(props) {
                 </Alert>
             ))}
 
-            <Button 
-                type="submit" 
+            <Button
+                type="submit"
                 onClick={handleSubmit}
-                className={`${appStyles.Button} ${journeyStyles.JourneyFormButton} px-4 py-2 mt-4`}
+                className={
+                    `${appStyles.Button} ${journeyStyles.JourneyFormButton} px-4 py-2 mt-4`
+                }
             >
                 Publish
             </Button>
@@ -151,7 +155,9 @@ function JourneyCreateForm(props) {
             <Row>
                 <Col className="py-2 p-0 p-md-2 mt-5" xs={12}>
                     <Container
-                        className={`${formStyles.Container} d-flex flex-column justify-content-center`}
+                        className={
+                            `${formStyles.Container} d-flex flex-column justify-content-center`
+                        }
                     >
                         <Form.Group className="text-center">
                             {image ? (
@@ -197,12 +203,15 @@ function JourneyCreateForm(props) {
                         <div className="d-md-none">{textFields}</div>
                     </Container>
                 </Col>
-                <Col xs={12} sm={{ span: 8, offset: 2 }} className="d-none d-md-block p-0 p-md-2">
+                <Col
+                    xs={12} sm={{ span: 8, offset: 2 }}
+                    className="d-none d-md-block p-0 p-md-2"
+                >
                     <Container>{textFields}</Container>
                 </Col>
             </Row>
         </Form >
     );
-}
+};
 
 export default JourneyCreateForm;

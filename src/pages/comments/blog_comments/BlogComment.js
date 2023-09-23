@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Media } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 
-import commentStyles from "../../../styles/Comment.module.css"
+import commentStyles from "../../../styles/Comment.module.css";
 
 import { useCurrentUser } from '../../../contexts/CurrentUserContext';
 
@@ -42,14 +42,14 @@ const BlogComment = (props) => {
                     },
                 ],
             }));
-
             setBlogComments((prevBlogComments) => ({
                 ...prevBlogComments,
-                results: prevBlogComments.results.filter((blogComment) => blogComment.id !== id),
+                results:
+                    prevBlogComments.results.filter((blogComment) => blogComment.id !== id),
             }));
         } catch (err) {
             console.log(err);
-        };
+        }
     };
 
     return (
@@ -76,7 +76,6 @@ const BlogComment = (props) => {
                     ) : (
                         <p>{content}</p>
                     )}
-
                 </Media.Body>
                 {is_owner && !showEditForm && (
                     <MoreDropdown

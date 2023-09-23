@@ -15,17 +15,19 @@ const UniqueNewsPage = (props) => {
     } = props;
 
     return (
-
         <div>
             <div className={appStyles.HeroImage}>
-                <Card.Img src={image} alt={title} className={`${appStyles.Hero}`} />
+                <Card.Img src={image} alt={title} className={appStyles.Hero} />
                 <image src={image} />
                 <div className={`${appStyles.Title} border-bottom text-center`}>
-                    {title && <Card.Title ><h1 className={appStyles.Headings}>{title}</h1></Card.Title>}
+                    {title &&
+                        <Card.Title>
+                            <h1 className={appStyles.Headings}>{title}</h1>
+                        </Card.Title>
+                    }
                 </div>
             </div>
-
-            <Card className={`${appStyles.Card}`} bg="dark" text="white">
+            <Card className={appStyles.Card} bg="dark" text="white">
                 <Card.Body>
                     <Row>
                         <Col xs={12}>
@@ -33,9 +35,15 @@ const UniqueNewsPage = (props) => {
                                 <div>
                                     <Row>
                                         <Col xs={12} className='d-flex align-items-baseline'>
-                                            <span className={`${appStyles.Date}`}>{created_at}</span>
+                                            <span className={appStyles.Date}>{created_at}</span>
                                         </Col>
-                                        <Col>{title && <Card.Title className={`${appStyles.Headings} mt-3`}>{title}</Card.Title>}</Col>
+                                        <Col>
+                                            {title &&
+                                                <Card.Title
+                                                    className={`${appStyles.Headings} mt-3`}>{title}
+                                                </Card.Title>
+                                            }
+                                        </Col>
                                     </Row>
                                 </div>
                                 {content && <Card.Text>{content}</Card.Text>}
@@ -45,7 +53,7 @@ const UniqueNewsPage = (props) => {
                 </Card.Body>
             </Card>
         </div>
-    )
-}
+    );
+};
 
 export default UniqueNewsPage;

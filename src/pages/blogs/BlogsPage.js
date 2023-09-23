@@ -2,30 +2,32 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useLocation } from "react-router";
+import { Link } from 'react-router-dom';
 
+import Asset from "../../components/Asset";
+
+import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+import Form from "react-bootstrap/Form";
+import InfiniteScroll from "react-infinite-scroll-component";
+import Row from "react-bootstrap/Row";
+
+import appStyles from "../../App.module.css";
+import blogStyles from "../../styles/BlogPages.module.css";
 
 import Blog from "./Blog";
-import appStyles from "../../App.module.css";
-import blogStyles from "../../styles/BlogPages.module.css"
-
-import NoResults from "../../assets/no-results.png";
-import { axiosReq } from "../../api/axiosDefaults";
-import Asset from "../../components/Asset";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import Modal from "react-bootstrap/Modal";
-import BlogCreateForm from "./BlogCreateForm";
-import InfiniteScroll from "react-infinite-scroll-component";
-import { fetchMoreData } from "../../utils/utils";
 import PopularProfiles from "../profiles/PopularProfiles";
-import { Link } from 'react-router-dom';
 import LatestJourneys from "../journeys/LatestJourneys";
 import LatestNews from "../news/LatestNews";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
+import NoResults from "../../assets/no-results.png";
+
+import { axiosReq } from "../../api/axiosDefaults";
+
+import { fetchMoreData } from "../../utils/utils";
+
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 function BlogsPage({ message }) {
     const [blogs, setBlogs] = useState({ results: [] });
@@ -33,7 +35,6 @@ function BlogsPage({ message }) {
     const { pathname } = useLocation();
 
     const currentUser = useCurrentUser();
-
 
     const [query, setQuery] = useState("");
 
@@ -57,7 +58,7 @@ function BlogsPage({ message }) {
             clearTimeout(timer);
         };
 
-    }, [query, pathname])
+    }, [query, pathname]);
 
     return (
         <Container>
@@ -66,7 +67,9 @@ function BlogsPage({ message }) {
                     <Col className="py-2 p-0 p-lg-2 text-center" xs={12} lg={8}>
                         <>
                             <Link to="/blogs/create">
-                                <Button className={`${blogStyles.BlogFormButton} ${appStyles.Button}`}>
+                                <Button
+                                    className={`${blogStyles.BlogFormButton} ${appStyles.Button}`}
+                                >
                                     Create blog <i className="fa-solid fa-blog"></i>
                                 </Button>
                             </Link>
@@ -75,7 +78,10 @@ function BlogsPage({ message }) {
                 }
 
                 <Col xs={12} lg={8}>
-                    <Form className="py-2 p-0 p-lg-2 mt-3" onSubmit={(event) => event.preventDefault()}>
+                    <Form
+                        className="py-2 p-0 p-lg-2 mt-3"
+                        onSubmit={(event) => event.preventDefault()}
+                    >
                         <Form.Control
                             value={query}
                             onChange={(event) => setQuery(event.target.value)}
@@ -100,13 +106,13 @@ function BlogsPage({ message }) {
                                     next={() => fetchMoreData(blogs, setBlogs)}
                                 />
                             ) : (
-                                <Container className={appStyles.Content}>
+                                <Container>
                                     <Asset src={NoResults} message={message} />
                                 </Container>
                             )}
                         </>
                     ) : (
-                        <Container className={appStyles.Content}>
+                        <Container>
                             <Asset spinner />
                         </Container>
                     )}
@@ -119,6 +125,6 @@ function BlogsPage({ message }) {
             </Row>
         </Container>
     );
-}
+};
 
 export default BlogsPage;

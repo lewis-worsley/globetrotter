@@ -3,36 +3,29 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useLocation } from "react-router";
 
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import Container from "react-bootstrap/Container";
-
-import News from "./News";
-import appStyles from "../../App.module.css";
-
-import NoResults from "../../assets/no-results.png";
-import { axiosReq } from "../../api/axiosDefaults";
 import Asset from "../../components/Asset";
+
+import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { fetchMoreData } from "../../utils/utils";
-import PopularProfiles from "../profiles/PopularProfiles";
-import { useProfileData, useSetProfileData } from "../../contexts/ProfileDataContext";
-import { Button } from "react-bootstrap";
-import Journey from "../journeys/Journey";
-import Blog from "../blogs/Blog";
-import { Link } from 'react-router-dom';
-import newsStyles from '../../styles/NewsPages.module.css'
-import LatestJourneys from "../journeys/LatestJourneys";
-import LatestBlogs from "../blogs/LatestBlogs";
 
+import LatestBlogs from "../blogs/LatestBlogs";
+import LatestJourneys from "../journeys/LatestJourneys";
+import News from "./News";
+import PopularProfiles from "../profiles/PopularProfiles";
+
+import NoResults from "../../assets/no-results.png";
+
+import { axiosReq } from "../../api/axiosDefaults";
+
+import { fetchMoreData } from "../../utils/utils";
 
 function NewssPage({ message }) {
     const [newss, setNewss] = useState({ results: [] });
     const [hasLoaded, setHasLoaded] = useState(false);
     const { pathname } = useLocation();
-
-    const profile = useSetProfileData();
 
     const [query, setQuery] = useState("");
 
@@ -56,13 +49,16 @@ function NewssPage({ message }) {
             clearTimeout(timer);
         };
 
-    }, [query, pathname])
+    }, [query, pathname]);
 
     return (
         <Container>
             <Row className="h-100 mt-4 align-items-center">
                 <Col xs={12} lg={8}>
-                    <Form className="py-2 p-0 p-lg-2" onSubmit={(event) => event.preventDefault()}>
+                    <Form
+                        className="py-2 p-0 p-lg-2"
+                        onSubmit={(event) => event.preventDefault()}
+                    >
                         <Form.Control
                             value={query}
                             onChange={(event) => setQuery(event.target.value)}
@@ -87,13 +83,13 @@ function NewssPage({ message }) {
                                     next={() => fetchMoreData(newss, setNewss)}
                                 />
                             ) : (
-                                <Container className={appStyles.Content}>
+                                <Container>
                                     <Asset src={NoResults} message={message} />
                                 </Container>
                             )}
                         </>
                     ) : (
-                        <Container className={appStyles.Content}>
+                        <Container>
                             <Asset spinner />
                         </Container>
                     )}
@@ -106,6 +102,6 @@ function NewssPage({ message }) {
             </Row>
         </Container>
     );
-}
+};
 
 export default NewssPage;

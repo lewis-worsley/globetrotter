@@ -1,9 +1,9 @@
 import { useState } from "react";
 
-import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
-import appStyles from "../../../App.module.css"
+import appStyles from "../../../App.module.css";
 import commentStyles from "../../../styles/Comment.module.css";
 
 import { axiosRes } from '../../../api/axiosDefaults';
@@ -32,17 +32,16 @@ function JourneyCommentEditForm(props) {
                 ...prevJourneyComments,
                 results: prevJourneyComments.results.map((journeyComment) => {
                     return journeyComment.id === id
-                    ? {
-                        ...journeyComment,
-                        content: formContent.trim(),
-                        updated_at: "now",
-                    }
-                    : journeyComment;
+                        ? {
+                            ...journeyComment,
+                            content: formContent.trim(),
+                            updated_at: "now",
+                        }
+                        : journeyComment;
                 }),
             }));
-            
             setShowEditForm(false);
-        } catch(err) {
+        } catch (err) {
             console.log(err);
         }
     };
@@ -60,14 +59,18 @@ function JourneyCommentEditForm(props) {
             </Form.Group>
             <div>
                 <Button
-                    className={`${appStyles.Button} ${appStyles.InverseButton} mr-2 mt-2 pt-2`}
+                    className={
+                        `${appStyles.Button} ${appStyles.InverseButton} mr-2 mt-2 pt-2`
+                    }
                     onClick={() => setShowEditForm(false)}
                     type="button"
                 >
                     Cancel
                 </Button>
                 <Button
-                    className={`${appStyles.Button} ${appStyles.GreenButton} ml-2 mt-2`}
+                    className={
+                        `${appStyles.Button} ${appStyles.GreenButton} ml-2 mt-2`
+                    }
                     disabled={!content.trim()}
                     type="submit"
                 >

@@ -1,14 +1,15 @@
-import { useEffect } from 'react'
-import { useState } from 'react'
-import { Container } from 'react-bootstrap'
-import { useCurrentUser } from '../../contexts/CurrentUserContext';
-import { axiosReq } from '../../api/axiosDefaults';
-import appStyles from "../../App.module.css"
+import { useEffect } from 'react';
+import { useState } from 'react';
+
 import Asset from '../../components/Asset';
-import Profile from '../profiles/Profile';
-import { useProfileData } from '../../contexts/ProfileDataContext';
-import Journey from './Journey';
+
+import Container from 'react-bootstrap/Container';
+
+import appStyles from "../../App.module.css";
+
 import JourneyFeature from './JourneyFeature';
+
+import { axiosReq } from '../../api/axiosDefaults';
 
 const LatestJourneys = () => {
     const [journeys, setJourneys] = useState({ results: [] });
@@ -35,16 +36,23 @@ const LatestJourneys = () => {
         return () => {
             clearTimeout(timer);
         };
-
-    }, [])
+    }, []);
 
     return (
         <Container>
             {hasLoaded ? (
                 <>
-                    <h3 className={`${appStyles.Headings} mb-4 mt-3`}>Latest <span className={appStyles.GreenHeading}>journeys</span></h3>
+                    <h3
+                        className={`${appStyles.Headings} mb-4 mt-3`}
+                    >
+                        Latest <span className={appStyles.GreenHeading}>journeys</span>
+                    </h3>
                     {journeys.results.slice(0, 3).map((journey) => (
-                        <JourneyFeature key={journey.id} {...journey} setJourneys={setJourneys} />
+                        <JourneyFeature
+                            key={journey.id}
+                            {...journey}
+                            setJourneys={setJourneys}
+                        />
                     ))}
                 </>
             ) : (
@@ -53,7 +61,7 @@ const LatestJourneys = () => {
                 </Container>
             )}
         </Container>
-    )
-}
+    );
+};
 
 export default LatestJourneys;

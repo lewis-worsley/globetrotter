@@ -1,15 +1,16 @@
-import React, { useState } from 'react'
-import appStyles from "../../App.module.css"
-import journeyStyles from "../../styles/JourneyPages.module.css"
-import { useCurrentUser } from '../../contexts/CurrentUserContext';
-import Card from 'react-bootstrap/Card';
-import Media from 'react-bootstrap/Media';
-import Avatar from '../../components/Avatar';
+import React from 'react';
+import { useState } from 'react';
 import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
+
+import Avatar from '../../components/Avatar';
+
+import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
+import Media from 'react-bootstrap/Media';
 import Row from 'react-bootstrap/Row';
 
+import appStyles from "../../App.module.css";
+import journeyStyles from "../../styles/JourneyPages.module.css";
 
 const JourneyFeature = (props) => {
     const {
@@ -17,23 +18,11 @@ const JourneyFeature = (props) => {
         owner,
         profile_id,
         profile_image,
-        comments_count,
-        likes_count,
-        like_id,
         title,
         content,
-        countries,
-        locations,
         image,
-        updated_at,
         created_at,
-        journeyPage,
-        setJourneys,
     } = props;
-
-    const currentUser = useCurrentUser();
-    const is_owner = currentUser?.username === owner
-    const history = useHistory();
 
     const ReadMore = ({ children }) => {
         const text = children;
@@ -68,13 +57,21 @@ const JourneyFeature = (props) => {
                         </Media>
                     </Col>
                     <Col className='d-flex justify-content-end'>
-                        <Card.Text className={`${appStyles.Date}`}>{created_at}</Card.Text>
+                        <Card.Text
+                            className={`${appStyles.Date}`}
+                        >
+                            {created_at}
+                        </Card.Text>
                     </Col>
                 </Row>
             </Card.Body>
             <Card.Body>
                 <Link to={`/journeys/${id}`}>
-                    {title && <Card.Title><h4 className={appStyles.Headings}>{title}</h4></Card.Title>}
+                    {title &&
+                        <Card.Title>
+                            <h4 className={appStyles.Headings}>{title}</h4>
+                        </Card.Title>
+                    }
                 </Link>
                 {content &&
                     <Card.Text>
@@ -85,7 +82,7 @@ const JourneyFeature = (props) => {
                 </Link>
             </Card.Body>
         </Card>
-    )
-}
+    );
+};
 
 export default JourneyFeature;

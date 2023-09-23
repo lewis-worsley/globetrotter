@@ -16,34 +16,6 @@ const ThreeDots = React.forwardRef(({ onClick }, ref) => (
     />
 ));
 
-export const MoreDropdownFollow = ({ handleFollow, handleUnfollow }) => {
-    return (
-        <Dropdown className="ml-auto" drop="left">
-            <Dropdown.Toggle as={ThreeDots} />
-
-            <Dropdown.Menu
-                className="text-center"
-                popperConfig={{ strategy: "fixed" }}
-            >
-                <Dropdown.Item
-                    className={dropdownStyles.DropdownItem}
-                    onClick={handleFollow}
-                    aria-label="follow"
-                >
-                    <i className={`${dropdownStyles.IconColour} fas fa-edit`} />
-                </Dropdown.Item>
-                <Dropdown.Item
-                    className={dropdownStyles.DropdownItem}
-                    onClick={handleUnfollow}
-                    aria-label="unfollow"
-                >
-                    <i className={`${dropdownStyles.IconColour} fas fa-trash-alt`} />
-                </Dropdown.Item>
-            </Dropdown.Menu>
-        </Dropdown>
-    );
-};
-
 export const MoreDropdown = ({ handleEdit, handleDelete }) => {
     return (
         <Dropdown className="ml-auto" drop="left">

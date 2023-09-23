@@ -1,10 +1,14 @@
 import React from "react";
-import styles from "../../styles/Profile.module.css";
-import appStyles from "../../App.module.css"
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Link } from "react-router-dom";
+
 import Avatar from "../../components/Avatar";
-import { Button } from "react-bootstrap";
+
+import Button from "react-bootstrap/Button";
+
+import appStyles from "../../App.module.css";
+import profileStyles from "../../styles/Profile.module.css";
+
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useSetProfileData } from "../../contexts/ProfileDataContext";
 
 const Profile = (props) => {
@@ -17,15 +21,13 @@ const Profile = (props) => {
     const { handleFollow, handleUnfollow } = useSetProfileData();
 
     return (
-        <div
-            className="my-3 d-flex align-items-center"
-        >
+        <div className="my-3 d-flex align-items-center">
             <div>
                 <Link className="align-self-center" to={`/profiles/${id}`}>
                     <Avatar src={image} height={imageSize} />
                 </Link>
             </div>
-            <div className={`mx-2 ${styles.WordBreak}`}>
+            <div className={`mx-2 ${profileStyles.WordBreak}`}>
                 <strong>{owner}</strong>
             </div>
             <div className="text-right ml-auto">
@@ -34,7 +36,9 @@ const Profile = (props) => {
                     (following_id ? (
                         <Button
                             onClick={() => handleUnfollow(profile)}
-                            className={`${appStyles.FollowButton} ${appStyles.InverseButton} px-3 pt-4`}
+                            className={
+                                `${appStyles.FollowButton} ${appStyles.InverseButton} px-3 pt-4`
+                            }
                         >
                             Unfollow
                         </Button>

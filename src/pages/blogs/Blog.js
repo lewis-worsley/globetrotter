@@ -1,15 +1,23 @@
-import React, { useState } from 'react'
-import { useCurrentUser } from '../../contexts/CurrentUserContext';
+import React from 'react';
+import { useState } from 'react';
+import { Link } from "react-router-dom";
+
+import Avatar from '../../components/Avatar';
+
+import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
 import Media from 'react-bootstrap/Media';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Row from 'react-bootstrap/Row';
 import Tooltip from 'react-bootstrap/Tooltip';
-import Avatar from '../../components/Avatar';
-import { Link } from "react-router-dom";
+
 import { axiosRes } from '../../api/axiosDefaults';
-import { Button, Col, Row } from 'react-bootstrap';
-import appStyles from '../../App.module.css'
-import blogStyles from '../../styles/BlogPages.module.css'
+
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
+
+import appStyles from '../../App.module.css';
+import blogStyles from '../../styles/BlogPages.module.css';
 
 const Blog = (props) => {
     const {
@@ -30,7 +38,7 @@ const Blog = (props) => {
     } = props;
 
     const currentUser = useCurrentUser();
-    const is_owner = currentUser?.username === owner
+    const is_owner = currentUser?.username === owner;
 
     const ReadMore = ({ children }) => {
         const text = children;
@@ -85,7 +93,9 @@ const Blog = (props) => {
             <Card.Body className={`${blogStyles.CardTop}`}>
                 <Row className="align-items-center">
                     <Col xs={12} sm={5}>
-                        <Media className="align-items-center justify-content-center justify-content-sm-start">
+                        <Media
+                            className="align-items-center justify-content-center justify-content-sm-start"
+                        >
                             <Link to={`/profiles/${profile_id}`}>
                                 <Avatar src={profile_image} height={55} />
                             </Link>
@@ -93,18 +103,32 @@ const Blog = (props) => {
                                 <Link to={`/profiles/${profile_id}`}>
                                     <span className={appStyles.User}>{owner}</span>
                                 </Link>
-                                <Card.Text className={`${appStyles.Date}`}>{created_at}</Card.Text>
+                                <Card.Text
+                                    className={`${appStyles.Date}`}
+                                >
+                                    {created_at}
+                                </Card.Text>
                             </div>
                         </Media>
                     </Col>
-                    <Col className='d-flex justify-content-center justify-content-sm-end mt-4 mt-sm-0'>
-                        <Card.Text className={appStyles.Headings}>{locations}, {countries}</Card.Text>
+                    <Col
+                        className='d-flex justify-content-center justify-content-sm-end mt-4 mt-sm-0'
+                    >
+                        <Card.Text
+                            className={appStyles.Headings}
+                        >
+                            {locations}, {countries}
+                        </Card.Text>
                     </Col>
                 </Row>
             </Card.Body>
             <Card.Body>
                 <Link to={`/blogs/${id}`}>
-                    {title && <Card.Title><h2 className={appStyles.Headings}>{title}</h2></Card.Title>}
+                    {title &&
+                        <Card.Title>
+                            <h2 className={appStyles.Headings}>{title}</h2>
+                        </Card.Title>
+                    }
                 </Link>
                 {content &&
                     <Card.Text>
@@ -147,12 +171,16 @@ const Blog = (props) => {
                         {comments_count}
                     </span>
                     <Link to={`/blogs/${id}`}>
-                        <Button className={`${blogStyles.BlogButton} ${appStyles.Button}`}>Read blog</Button>
+                        <Button
+                            className={`${blogStyles.BlogButton} ${appStyles.Button}`}
+                        >
+                            Read blog
+                        </Button>
                     </Link>
                 </div>
             </Card.Body>
         </Card>
-    )
-}
+    );
+};
 
 export default Blog;

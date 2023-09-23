@@ -1,16 +1,23 @@
-import React, { useState } from 'react'
-import appStyles from "../../App.module.css"
-import journeyStyles from "../../styles/JourneyPages.module.css"
-import { useCurrentUser } from '../../contexts/CurrentUserContext';
+import React from 'react';
+import { useState } from 'react';
+import { Link } from "react-router-dom";
+
+import Avatar from '../../components/Avatar';
+
+import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
 import Media from 'react-bootstrap/Media';
+import Row from 'react-bootstrap/Row';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
-import Avatar from '../../components/Avatar';
-import { Link } from "react-router-dom";
-import { axiosRes } from '../../api/axiosDefaults';
-import { Button, Col, Row } from 'react-bootstrap';
 
+import appStyles from "../../App.module.css";
+import journeyStyles from "../../styles/JourneyPages.module.css";
+
+import { axiosRes } from '../../api/axiosDefaults';
+
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
 
 const JourneyHomePageFeature = (props) => {
     const {
@@ -30,7 +37,7 @@ const JourneyHomePageFeature = (props) => {
     } = props;
 
     const currentUser = useCurrentUser();
-    const is_owner = currentUser?.username === owner
+    const is_owner = currentUser?.username === owner;
 
     const ReadMore = ({ children }) => {
         const text = children;
@@ -82,7 +89,7 @@ const JourneyHomePageFeature = (props) => {
 
     return (
         <Card className='my-4' bg='dark' text='light'>
-            <Card.Body className={`${journeyStyles.CardTop}`}>
+            <Card.Body className={journeyStyles.CardTop}>
                 <Row className="align-items-center">
                     <Media>
                         <Link to={`/profiles/${profile_id}`}>
@@ -92,17 +99,29 @@ const JourneyHomePageFeature = (props) => {
                             <Link to={`/profiles/${profile_id}`}>
                                 <span className={appStyles.User}>{owner}</span>
                             </Link>
-                            <Card.Text className={`${appStyles.Date}`}>{created_at}</Card.Text>
+                            <Card.Text
+                                className={appStyles.Date}
+                            >
+                                {created_at}
+                            </Card.Text>
                         </div>
                     </Media>
                     <Col className='d-flex justify-content-end'>
-                        <Card.Text className={appStyles.Headings}>{countries}</Card.Text>
+                        <Card.Text
+                            className={appStyles.Headings}
+                        >
+                            {countries}
+                        </Card.Text>
                     </Col>
                 </Row>
             </Card.Body>
             <Card.Body>
                 <Link to={`/journeys/${id}`}>
-                    {title && <Card.Title><h4 className={appStyles.Headings}>{title}</h4></Card.Title>}
+                    {title &&
+                        <Card.Title>
+                            <h4 className={appStyles.Headings}>{title}</h4>
+                        </Card.Title>
+                    }
                 </Link>
                 {content &&
                     <Card.Text>
@@ -148,7 +167,7 @@ const JourneyHomePageFeature = (props) => {
                 </div>
             </Card.Body>
         </Card>
-    )
-}
+    );
+};
 
 export default JourneyHomePageFeature;

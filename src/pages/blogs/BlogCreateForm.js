@@ -1,29 +1,31 @@
 import { useRef } from "react";
 import { useState } from "react";
+import { useHistory } from "react-router";
 
-import Form from "react-bootstrap/Form";
+import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
-import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
+import Form from "react-bootstrap/Form";
 import Image from "react-bootstrap/Image";
+import Row from "react-bootstrap/Row";
 
 import Asset from "../../components/Asset";
 
 import Upload from "../../assets/upload.png";
 
-import formStyles from "../../styles/Form.module.css";
-import blogStyles from "../../styles/BlogPages.module.css"
 import appStyles from "../../App.module.css";
-import { useHistory } from "react-router";
+import blogStyles from "../../styles/BlogPages.module.css";
+import formStyles from "../../styles/Form.module.css";
+
 import { axiosReq } from "../../api/axiosDefaults";
-import { Alert } from "react-bootstrap";
+
 import { useRedirect } from "../../hooks/useRedirect";
 
 function BlogCreateForm(props) {
-    useRedirect("loggedOut")
-    const [errors, setErrors] = useState({});
+    useRedirect("loggedOut");
 
+    const [errors, setErrors] = useState({});
     const [blogData, setBlogData] = useState({
         image: "",
         title: "",
@@ -151,7 +153,9 @@ function BlogCreateForm(props) {
             <Row>
                 <Col className="py-2 p-0 p-md-2" xs={12}>
                     <Container
-                        className={`${appStyles.Content} ${formStyles.Container} d-flex flex-column justify-content-center`}
+                        className={
+                            `${formStyles.Container} d-flex flex-column justify-content-center`
+                        }
                     >
                         <Form.Group className="text-center">
                             {image ? (
@@ -197,12 +201,15 @@ function BlogCreateForm(props) {
                         <div className="d-md-none">{textFields}</div>
                     </Container>
                 </Col>
-                <Col xs={12} sm={{ span: 8, offset: 2 }} className="d-none d-lg-block p-0 p-md-2 d-flex justify-content-center">
-                    <Container className={`${appStyles.Content}`}>{textFields}</Container>
+                <Col
+                    xs={12} sm={{ span: 8, offset: 2 }}
+                    className="d-none d-lg-block p-0 p-md-2 d-flex justify-content-center"
+                >
+                    <Container>{textFields}</Container>
                 </Col>
             </Row>
         </Form >
     );
-}
+};
 
 export default BlogCreateForm;

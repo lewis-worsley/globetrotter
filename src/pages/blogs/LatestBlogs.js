@@ -1,10 +1,15 @@
-import { useEffect } from 'react'
-import { useState } from 'react'
-import { Container } from 'react-bootstrap'
-import { axiosReq } from '../../api/axiosDefaults';
-import appStyles from "../../App.module.css"
+import { useEffect } from 'react';
+import { useState } from 'react';
+
 import Asset from '../../components/Asset';
+
+import Container from 'react-bootstrap/Container';
+
+import appStyles from "../../App.module.css";
+
 import BlogFeature from './BlogFeature,';
+
+import { axiosReq } from '../../api/axiosDefaults';
 
 const LatestBlogs = () => {
     const [blogs, setBlogs] = useState({ results: [] });
@@ -38,7 +43,11 @@ const LatestBlogs = () => {
         <Container>
             {hasLoaded ? (
                 <>
-                    <h3 className={`${appStyles.Headings} mb-4 mt-3`}>Latest <span className={appStyles.BlueHeading}>blogs</span></h3>
+                    <h3
+                        className={`${appStyles.Headings} mb-4 mt-3`}
+                    >
+                        Latest <span className={appStyles.BlueHeading}>blogs</span>
+                    </h3>
                     {blogs.results.slice(0, 3).map((blog) => (
                         <BlogFeature key={blog.id} {...blog} setBlogs={setBlogs} />
                     ))}
@@ -49,7 +58,7 @@ const LatestBlogs = () => {
                 </Container>
             )}
         </Container>
-    )
-}
+    );
+};
 
 export default LatestBlogs;

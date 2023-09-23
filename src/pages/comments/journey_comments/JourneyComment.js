@@ -2,14 +2,14 @@ import React from 'react';
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import Media from 'react-bootstrap/Media';
-
-import commentStyles from "../../../styles/Comment.module.css"
-
-import { useCurrentUser } from '../../../contexts/CurrentUserContext';
-
 import Avatar from '../../../components/Avatar';
 import { MoreDropdown } from '../../../components/MoreDropdown';
+
+import Media from 'react-bootstrap/Media';
+
+import commentStyles from "../../../styles/Comment.module.css";
+
+import { useCurrentUser } from '../../../contexts/CurrentUserContext';
 
 import { axiosRes } from '../../../api/axiosDefaults';
 
@@ -43,14 +43,13 @@ const JourneyComment = (props) => {
                     },
                 ],
             }));
-
             setJourneyComments((prevJourneyComments) => ({
                 ...prevJourneyComments,
                 results: prevJourneyComments.results.filter((journeyComment) => journeyComment.id !== id),
             }));
         } catch (err) {
             console.log(err);
-        };
+        }
     };
 
     return (
@@ -77,7 +76,6 @@ const JourneyComment = (props) => {
                     ) : (
                         <p>{content}</p>
                     )}
-
                 </Media.Body>
                 {is_owner && !showEditForm && (
                     <MoreDropdown

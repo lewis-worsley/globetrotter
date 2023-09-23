@@ -1,28 +1,30 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { useRef } from "react";
-import { useHistory } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { useHistory } from "react-router";
+import { useParams } from "react-router";
 
-import Form from "react-bootstrap/Form";
+import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
-import Image from "react-bootstrap/Image";
-import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
-import Alert from "react-bootstrap/Alert";
+import Form from "react-bootstrap/Form";
+import Image from "react-bootstrap/Image";
+import Row from "react-bootstrap/Row";
+
+import appStyles from "../../App.module.css";
+import formStyles from "../../styles/Form.module.css";
 
 import { axiosReq } from "../../api/axiosDefaults";
+
 import {
     useCurrentUser,
     useSetCurrentUser,
 } from "../../contexts/CurrentUserContext";
 
-import appStyles from "../../App.module.css";
-import formStyles from "../../styles/Form.module.css";
 import { useProfileData } from "../../contexts/ProfileDataContext";
-import { ProfileEditDropdown } from "../../components/MoreDropdown";
 
+import { ProfileEditDropdown } from "../../components/MoreDropdown";
 
 const ProfileEditForm = () => {
     const currentUser = useCurrentUser();
@@ -40,7 +42,6 @@ const ProfileEditForm = () => {
     const { name, content, image, based } = profileData;
 
     const { pageProfile } = useProfileData();
-
     const [profile] = pageProfile.results;
 
     const [errors, setErrors] = useState({});
@@ -114,7 +115,6 @@ const ProfileEditForm = () => {
     const textFields = (
         <>
             <div className="text-center">
-
                 <Form.Group>
                     <Form.Label>Bio</Form.Label>
                     <Form.Control
@@ -146,6 +146,7 @@ const ProfileEditForm = () => {
                         {message}
                     </Alert>
                 ))}
+
                 <div>
                     <Button
                         type="submit"
@@ -154,7 +155,6 @@ const ProfileEditForm = () => {
                         Save
                     </Button>
                 </div>
-
                 <Button
                     onClick={() => history.goBack()}
                     className={`${appStyles.Button} ${appStyles.InverseButton} mt-4`}
@@ -162,7 +162,6 @@ const ProfileEditForm = () => {
                     Cancel
                 </Button>
             </div>
-
         </>
     );
 
@@ -171,7 +170,11 @@ const ProfileEditForm = () => {
             <Row>
                 <Col className="py-5 p-0 text-center" xs={12}>
                     {mainProfile}
-                    <Container className={`${formStyles.Container} d-flex flex-column justify-content-center`}>
+                    <Container
+                        className={
+                            `${formStyles.Container} d-flex flex-column justify-content-center`
+                        }
+                    >
                         <Form.Group>
                             {image && (
                                 <figure>
@@ -201,7 +204,10 @@ const ProfileEditForm = () => {
                         <div className="d-md-none">{textFields}</div>
                     </Container>
                 </Col>
-                <Col xs={12} sm={{ span: 8, offset: 2 }} className="d-none d-md-block p-0 p-md-2">
+                <Col
+                    xs={12} sm={{ span: 8, offset: 2 }}
+                    className="d-none d-md-block p-0 p-md-2"
+                >
                     <Container >{textFields}</Container>
                 </Col>
             </Row>

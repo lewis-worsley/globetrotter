@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import { useHistory } from "react-router";
+import { useParams } from "react-router";
 
 import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
@@ -8,16 +10,16 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 
-import { useHistory } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import appStyles from "../../App.module.css";
+
 import { axiosRes } from "../../api/axiosDefaults";
+
+import { useProfileData } from "../../contexts/ProfileDataContext";
 import {
     useCurrentUser,
     useSetCurrentUser,
 } from "../../contexts/CurrentUserContext";
 
-import appStyles from "../../App.module.css";
-import { useProfileData } from "../../contexts/ProfileDataContext";
 import { ProfileEditDropdown } from "../../components/MoreDropdown";
 
 const UsernameForm = () => {
@@ -33,7 +35,7 @@ const UsernameForm = () => {
     const { pageProfile } = useProfileData();
 
     const [profile] = pageProfile.results;
-    
+
     const mainProfile = (
         <>
             <Container>
@@ -70,10 +72,17 @@ const UsernameForm = () => {
     return (
         <Row>
             <Col className="py-5 mx-auto text-center" md={6}>
-                <Container className={appStyles.Content}>
+                <Container>
                     <Form onSubmit={handleSubmit} className="my-5">
-                    {mainProfile}
-                        <h1 className={`${appStyles.Headings} ${appStyles.GreenHeading} mb-5`}>Change username</h1>
+                        {mainProfile}
+                        <h1
+                            className={
+                                `${appStyles.Headings} ${appStyles.GreenHeading} mb-5`
+                            }
+                        >
+                            Change username
+                        </h1>
+
                         <Form.Group>
                             <Form.Control
                                 placeholder="username"
@@ -87,18 +96,22 @@ const UsernameForm = () => {
                                 {message}
                             </Alert>
                         ))}
+
                         <div>
                             <Button
                                 type="submit"
-                                className={`${appStyles.Button} ${appStyles.GreenButton} mt-4`}
+                                className={
+                                    `${appStyles.Button} ${appStyles.GreenButton} mt-4`
+                                }
                             >
                                 Save name change
                             </Button>
                         </div>
-
                         <Button
                             onClick={() => history.goBack()}
-                            className={`${appStyles.Button} ${appStyles.InverseButton} mt-4`}
+                            className={
+                                `${appStyles.Button} ${appStyles.InverseButton} mt-4`
+                            }
                         >
                             Cancel
                         </Button>

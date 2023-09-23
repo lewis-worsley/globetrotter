@@ -1,38 +1,40 @@
-import React, { useEffect, useState } from "react";
-
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import Container from "react-bootstrap/Container";
+import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
+import { useParams } from "react-router";
 
 import Asset from "../../components/Asset";
+import { ProfileEditDropdown } from "../../components/MoreDropdown";
 
-import profileStyles from "../../styles/ProfilePage.module.css";
+import Button from "react-bootstrap/Button";
+import CardDeck from "react-bootstrap/CardDeck";
+import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
+import Image from "react-bootstrap/Image";
+import Row from "react-bootstrap/Row";
+import Tab from "react-bootstrap/Tab";
+import Tabs from 'react-bootstrap/Tabs';
+
 import appStyles from "../../App.module.css";
+import profileStyles from "../../styles/ProfilePage.module.css";
 
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { useParams } from "react-router";
-import { axiosReq } from "../../api/axiosDefaults";
 import {
     useProfileData,
     useSetProfileData,
 } from "../../contexts/ProfileDataContext";
-import { Button, Card, CardColumns, CardDeck, Image } from "react-bootstrap";
-import InfiniteScroll from "react-infinite-scroll-component";
-import Journey from "../journeys/Journey";
-import Blog from "../blogs/Blog";
-import { fetchMoreData } from "../../utils/utils";
+
+import { axiosReq } from "../../api/axiosDefaults";
+
 import NoResults from "../../assets/no-results.png";
-import { ProfileEditDropdown } from "../../components/MoreDropdown";
-import Tabs from 'react-bootstrap/Tabs';
-import Tab from "react-bootstrap/Tab";
+
 import BlogProfilePageFeature from "../blogs/BlogProfilePageFeature";
 import JourneyProfilePageFeature from "../journeys/JourneyProfilePageFeature";
-import { useRedirect } from "../../hooks/useRedirect";
-import JourneyHomePageFeature from "../journeys/JourneyHomePageFeature";
 
+import { useRedirect } from "../../hooks/useRedirect";
 
 function ProfilePage() {
-    useRedirect("loggedOut")
+    useRedirect("loggedOut");
 
     const [hasLoaded, setHasLoaded] = useState(false);
     const [profileJourneys, setProfileJourneys] = useState({ results: [] });
@@ -77,7 +79,10 @@ function ProfilePage() {
     const mainProfile = (
         <>
             {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
-            <Row noGutters className="mb-5 align-items-center text-lg-left text-center">
+            <Row
+                noGutters
+                className="mb-5 align-items-center text-lg-left text-center"
+            >
                 <Col lg={3}>
                     <Image
                         className={profileStyles.ProfileImage}
@@ -87,19 +92,29 @@ function ProfilePage() {
                 </Col>
                 <Col lg={9} className="px-4">
                     <div className="align-items-center">
-                        <h3 className={`${appStyles.Headings} ${appStyles.GreenHeading} my-3`}>{profile?.owner}</h3>
+                        <h3
+                            className={
+                                `${appStyles.Headings} ${appStyles.GreenHeading} my-3`
+                            }
+                        >
+                            {profile?.owner}
+                        </h3>
                         {currentUser &&
                             !is_owner &&
                             (profile?.following_id ? (
                                 <Button
-                                    className={`${appStyles.FollowButton} ${appStyles.InverseButton} ml-5 pt-3`}
+                                    className={
+                                        `${appStyles.FollowButton} ${appStyles.InverseButton} ml-5 pt-3`
+                                    }
                                     onClick={() => handleUnfollow(profile)}
                                 >
                                     Unfollow
                                 </Button>
                             ) : (
                                 <Button
-                                    className={`${appStyles.Button} ${appStyles.FollowButton} ml-5`}
+                                    className={
+                                        `${appStyles.Button} ${appStyles.FollowButton} ml-5`
+                                    }
                                     onClick={() => handleFollow(profile)}
                                 >
                                     Follow
@@ -107,22 +122,32 @@ function ProfilePage() {
                             ))
                         }
                         {profile?.content}
-                        <div className="my-2 "><span className={`${appStyles.Headings} mr-1`}>Country: </span>{profile?.based}</div>
+                        <div className="my-2">
+                            <span
+                                className={`${appStyles.Headings} mr-1`}
+                            >
+                                Country:
+                            </span>{profile?.based}
+                        </div>
 
                         <Row className="no-gutters">
                             <Col xs={6} lg={4} className="my-2">
-                                <span className={appStyles.Headings}>Journeys: </span><strong className="ml-1">{profile?.journeys_count}</strong>
+                                <span className={appStyles.Headings}>Journeys: </span>
+                                <strong className="ml-1">{profile?.journeys_count}</strong>
                             </Col>
                             <Col xs={6} lg={4} className="my-2">
-                                <span className={appStyles.Headings}>Blogs: </span><strong className="ml-1">{profile?.blogs_count}</strong>
+                                <span className={appStyles.Headings}>Blogs: </span>
+                                <strong className="ml-1">{profile?.blogs_count}</strong>
                             </Col>
                         </Row>
                         <Row className="no-gutters">
                             <Col xs={6} lg={4} className="my-2">
-                                <span className={appStyles.Headings}>Followers: </span><strong className="ml-1">{profile?.followers_count}</strong>
+                                <span className={appStyles.Headings}>Followers: </span>
+                                <strong className="ml-1">{profile?.followers_count}</strong>
                             </Col>
                             <Col xs={6} lg={4} className="my-2">
-                                <span className={appStyles.Headings}>Following: </span><strong className="ml-1">{profile?.following_count}</strong>
+                                <span className={appStyles.Headings}>Following: </span>
+                                <strong className="ml-1">{profile?.following_count}</strong>
                             </Col>
                         </Row>
                     </div>
@@ -137,15 +162,21 @@ function ProfilePage() {
                 {hasLoaded ? (
                     <>
                         {profileJourneys.results.map((journey) => (
-                            <JourneyProfilePageFeature key={journey.id} {...journey} setProfileJourneys={setProfileJourneys} />
-                        ))}                        
+                            <JourneyProfilePageFeature
+                                key={journey.id}
+                                {...journey}
+                                setProfileJourneys={setProfileJourneys}
+                            />
+                        ))}
                     </>
                 ) : (
-                        <Asset 
-                            spinner
-                            src={NoResults}
-                            message={`No results found, ${profile?.owner} hasn't posted a journey yet`}
-                            />
+                    <Asset
+                        spinner
+                        src={NoResults}
+                        message={
+                            `No results found, ${profile?.owner} hasn't posted a journey yet`
+                        }
+                    />
                 )}
             </CardDeck>
         </>
@@ -157,16 +188,21 @@ function ProfilePage() {
                 {hasLoaded ? (
                     <>
                         {profileBlogs.results.map((blog) => (
-                            <BlogProfilePageFeature key={blog.id} {...blog} setProfileBlogs={setProfileBlogs} />
+                            <BlogProfilePageFeature
+                                key={blog.id}
+                                {...blog}
+                                setProfileBlogs={setProfileBlogs}
+                            />
                         ))}
-                        
                     </>
                 ) : (
-                        <Asset 
-                            spinner
-                            src={NoResults}
-                            message={`No results found, ${profile?.owner} hasn't posted a blog yet`}
-                            />
+                    <Asset
+                        spinner
+                        src={NoResults}
+                        message={
+                            `No results found, ${profile?.owner} hasn't posted a blog yet`
+                        }
+                    />
                 )}
             </CardDeck>
         </>
@@ -210,6 +246,6 @@ function ProfilePage() {
             </Col>
         </Row>
     );
-}
+};
 
 export default ProfilePage;

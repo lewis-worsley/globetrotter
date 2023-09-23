@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-import commentStyles from "../../../styles/Comment.module.css";
-import appStyles from "../../../App.module.css"
-
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+
+import appStyles from "../../../App.module.css";
+import commentStyles from "../../../styles/Comment.module.css";
 
 import { axiosRes } from '../../../api/axiosDefaults';
 
@@ -32,17 +32,16 @@ function BlogCommentEditForm(props) {
                 ...prevBlogComments,
                 results: prevBlogComments.results.map((blogComment) => {
                     return blogComment.id === id
-                    ? {
-                        ...blogComment,
-                        content: formContent.trim(),
-                        updated_at: "now",
-                    }
-                    : blogComment;
+                        ? {
+                            ...blogComment,
+                            content: formContent.trim(),
+                            updated_at: "now",
+                        }
+                        : blogComment;
                 }),
             }));
-            
             setShowEditForm(false);
-        } catch(err) {
+        } catch (err) {
             console.log(err);
         }
     };
@@ -60,14 +59,18 @@ function BlogCommentEditForm(props) {
             </Form.Group>
             <div>
                 <Button
-                    className={`${appStyles.Button} ${appStyles.InverseButton} mr-2 mt-2 pt-2`}
+                    className={
+                        `${appStyles.Button} ${appStyles.InverseButton} mr-2 mt-2 pt-2`
+                    }
                     onClick={() => setShowEditForm(false)}
                     type="button"
                 >
                     Cancel
                 </Button>
                 <Button
-                    className={`${appStyles.Button} ${appStyles.BlueButton} ml-2 mt-2`}
+                    className={
+                        `${appStyles.Button} ${appStyles.BlueButton} ml-2 mt-2`
+                    }
                     disabled={!content.trim()}
                     type="submit"
                 >

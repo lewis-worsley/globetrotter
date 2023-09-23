@@ -2,30 +2,31 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useLocation } from "react-router";
+import { Link } from 'react-router-dom';
 
+import Asset from "../../components/Asset";
+
+import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 import Journey from "./Journey";
 import appStyles from "../../App.module.css";
-import journeyStyles from "../../styles/JourneyPages.module.css"
-
+import journeyStyles from "../../styles/JourneyPages.module.css";
 
 import NoResults from "../../assets/no-results.png";
+
 import { axiosReq } from "../../api/axiosDefaults";
-import Asset from "../../components/Asset";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import Modal from "react-bootstrap/Modal";
-import JourneyCreateForm from "./JourneyCreateForm"
-import InfiniteScroll from "react-infinite-scroll-component";
+
 import { fetchMoreData } from "../../utils/utils";
+
 import PopularProfiles from "../profiles/PopularProfiles";
-import { Link } from 'react-router-dom';
-import BlogFeature from "../blogs/BlogFeature,";
 import LatestBlogs from "../blogs/LatestBlogs";
 import LatestNews from "../news/LatestNews";
+
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 function JourneysPage({ message }) {
@@ -57,7 +58,7 @@ function JourneysPage({ message }) {
             clearTimeout(timer);
         };
 
-    }, [query, pathname])
+    }, [query, pathname]);
 
     return (
         <Container>
@@ -67,7 +68,9 @@ function JourneysPage({ message }) {
                         <>
                             <Link to="/journeys/create">
                                 <Button
-                                    className={`${journeyStyles.JourneyFormButton} ${appStyles.Button}`}
+                                    className={
+                                        `${journeyStyles.JourneyFormButton} ${appStyles.Button}`
+                                    }
                                 >
                                     Create journey <i className="fa-solid fa-globe"></i>
                                 </Button>
@@ -75,9 +78,11 @@ function JourneysPage({ message }) {
                         </>
                     </Col>
                 }
-
                 <Col xs={12} lg={8}>
-                    <Form className="py-2 p-0 p-lg-2 mt-3" onSubmit={(event) => event.preventDefault()}>
+                    <Form
+                        className="py-2 p-0 p-lg-2 mt-3"
+                        onSubmit={(event) => event.preventDefault()}
+                    >
                         <Form.Control
                             value={query}
                             onChange={(event) => setQuery(event.target.value)}
@@ -87,7 +92,6 @@ function JourneysPage({ message }) {
                     </Form>
                 </Col>
             </Row>
-
             <Row>
                 <Col className="py-2 p-0 p-lg-2" lg={8}>
                     {hasLoaded ? (
@@ -95,7 +99,11 @@ function JourneysPage({ message }) {
                             {journeys.results.length ? (
                                 <InfiniteScroll
                                     children={journeys.results.map((journey) => (
-                                        <Journey key={journey.id} {...journey} setJourneys={setJourneys} />
+                                        <Journey
+                                            key={journey.id}
+                                            {...journey}
+                                            setJourneys={setJourneys}
+                                        />
                                     ))}
                                     dataLength={journeys.results.length}
                                     loader={<Asset spinner />}
@@ -103,13 +111,13 @@ function JourneysPage({ message }) {
                                     next={() => fetchMoreData(journeys, setJourneys)}
                                 />
                             ) : (
-                                <Container className={appStyles.Content}>
+                                <Container>
                                     <Asset src={NoResults} message={message} />
                                 </Container>
                             )}
                         </>
                     ) : (
-                        <Container className={appStyles.Content}>
+                        <Container>
                             <Asset spinner />
                         </Container>
                     )}
@@ -122,6 +130,6 @@ function JourneysPage({ message }) {
             </Row>
         </Container>
     );
-}
+};
 
 export default JourneysPage;

@@ -1,42 +1,38 @@
-import React, { useState } from 'react'
+import React from 'react';
+import { useState } from 'react';
+import { Link } from "react-router-dom";
+
 import appStyles from "../../App.module.css"
 import journeyStyles from "../../styles/JourneyPages.module.css"
-import { useCurrentUser } from '../../contexts/CurrentUserContext';
+
+import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import Media from 'react-bootstrap/Media';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
-import Avatar from '../../components/Avatar';
-import { Link } from "react-router-dom";
-import { axiosRes } from '../../api/axiosDefaults';
-import { MoreDropdown } from '../../components/MoreDropdown';
-import { useHistory } from "react-router-dom";
-import { Button, CardColumns, Col, Row } from 'react-bootstrap';
 
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
+
+import { axiosRes } from '../../api/axiosDefaults';
 
 const JourneyProfilePageFeature = (props) => {
     const {
         id,
         owner,
-        profile_id,
-        profile_image,
         comments_count,
         likes_count,
         like_id,
         title,
         content,
         countries,
-        locations,
         image,
-        updated_at,
         created_at,
-        journeyPage,
         setJourneys,
     } = props;
 
     const currentUser = useCurrentUser();
     const is_owner = currentUser?.username === owner
-    const history = useHistory();
 
     const ReadMore = ({ children }) => {
         const text = children;
@@ -52,19 +48,6 @@ const JourneyProfilePageFeature = (props) => {
                 </span>
             </p>
         );
-    };
-
-    const handleEdit = () => {
-        history.push(`/journeys/${id}/edit`);
-    }
-
-    const handleDelete = async () => {
-        try {
-            await axiosRes.delete(`/journeys/${id}/`)
-            history.goBack();
-        } catch (err) {
-            console.log(err);
-        }
     };
 
     const handleLike = async () => {
@@ -112,7 +95,11 @@ const JourneyProfilePageFeature = (props) => {
                 </Row>
             </Card.Body>
             <Card.Body>
-                {title && <Card.Title><h4 className={appStyles.Headings}>{title}</h4></Card.Title>}
+                {title &&
+                    <Card.Title>
+                        <h4 className={appStyles.Headings}>{title}</h4>
+                    </Card.Title>
+                }
                 {content &&
                     <Card.Text>
                         <ReadMore>{content}</ReadMore>
@@ -152,12 +139,16 @@ const JourneyProfilePageFeature = (props) => {
                         {comments_count}
                     </span>
                     <Link to={`/journeys/${id}`}>
-                        <Button className={`${journeyStyles.JourneyButton} ${appStyles.Button}`}>Read journey</Button>
+                        <Button
+                            className={`${journeyStyles.JourneyButton} ${appStyles.Button}`}
+                        >
+                            Read journey
+                        </Button>
                     </Link>
                 </div>
             </Card.Body>
         </Card>
-    )
-}
+    );
+};
 
 export default JourneyProfilePageFeature;

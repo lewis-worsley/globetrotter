@@ -1,21 +1,23 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import { useHistory } from "react-router";
+import { useParams } from "react-router";
 
 import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
-
-import { useHistory } from "react-router-dom";
-import { useParams } from "react-router-dom";
-import { axiosRes } from "../../api/axiosDefaults";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import Row from "react-bootstrap/Row";
 
 import appStyles from "../../App.module.css";
-import { ProfileEditDropdown } from "../../components/MoreDropdown";
+
+import { axiosRes } from "../../api/axiosDefaults";
+
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { useProfileData } from "../../contexts/ProfileDataContext";
+
+import { ProfileEditDropdown } from "../../components/MoreDropdown";
 
 const UserPasswordForm = () => {
     const history = useHistory();
@@ -29,7 +31,6 @@ const UserPasswordForm = () => {
     const { new_password1, new_password2 } = userData;
 
     const { pageProfile } = useProfileData();
-
     const [profile] = pageProfile.results;
 
     const mainProfile = (
@@ -68,10 +69,17 @@ const UserPasswordForm = () => {
     return (
         <Row>
             <Col className="py-5 mx-auto text-center" md={6}>
-                <Container className={appStyles.Content}>
+                <Container>
                     {mainProfile}
                     <Form onSubmit={handleSubmit}>
-                        <h1 className={`${appStyles.Headings} ${appStyles.GreenHeading} mb-5`}>Change password</h1>
+                        <h1
+                            className={
+                                `${appStyles.Headings} ${appStyles.GreenHeading} mb-5`
+                            }
+                        >
+                            Change password
+                        </h1>
+
                         <Form.Group>
                             <Form.Label>New password</Form.Label>
                             <Form.Control
@@ -87,6 +95,7 @@ const UserPasswordForm = () => {
                                 {message}
                             </Alert>
                         ))}
+
                         <Form.Group>
                             <Form.Label>Confirm password</Form.Label>
                             <Form.Control
@@ -102,18 +111,22 @@ const UserPasswordForm = () => {
                                 {message}
                             </Alert>
                         ))}
+
                         <div>
                             <Button
                                 type="submit"
-                                className={`${appStyles.Button} ${appStyles.GreenButton} mt-4`}
+                                className={
+                                    `${appStyles.Button} ${appStyles.GreenButton} mt-4`
+                                }
                             >
                                 Save new password
                             </Button>
                         </div>
-
                         <Button
                             onClick={() => history.goBack()}
-                            className={`${appStyles.Button} ${appStyles.InverseButton} mt-4`}
+                            className={
+                                `${appStyles.Button} ${appStyles.InverseButton} mt-4`
+                            }
                         >
                             Cancel
                         </Button>

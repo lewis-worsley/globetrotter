@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
-import Card from 'react-bootstrap/Card';
-import Media from 'react-bootstrap/Media';
+import React from 'react';
+import { useState } from 'react';
 import { Link } from "react-router-dom";
-import { Button } from 'react-bootstrap';
-import appStyles from '../../App.module.css'
-import newsStyles from '../../styles/NewsPages.module.css'
 
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+
+import appStyles from '../../App.module.css';
+import newsStyles from '../../styles/NewsPages.module.css';
 
 const News = (props) => {
     const {
@@ -14,9 +15,6 @@ const News = (props) => {
         content,
         image,
         created_at,
-        updated_at,
-        newsPage,
-        setNewss,
     } = props;
 
     const ReadMore = ({ children }) => {
@@ -40,10 +38,13 @@ const News = (props) => {
             <Card.Body className={`${newsStyles.CardTop}`}>
                 {created_at}
             </Card.Body>
-
             <Card.Body>
                 <Link to={`/news/${id}`}>
-                    {title && <Card.Title><h2 className={appStyles.Headings}>{title}</h2></Card.Title>}
+                    {title &&
+                        <Card.Title>
+                            <h2 className={appStyles.Headings}>{title}</h2>
+                        </Card.Title>
+                    }
                 </Link>
                 {
                     content &&
@@ -56,14 +57,16 @@ const News = (props) => {
                 </Link>
                 <div className='mt-4 d-flex justify-content-end'>
                     <Link to={`/news/${id}`}>
-                        <Button className={`${newsStyles.NewsButton} ${appStyles.Button}`}>
+                        <Button
+                            className={`${newsStyles.NewsButton} ${appStyles.Button}`}
+                        >
                             Read more
                         </Button>
                     </Link>
                 </div>
             </Card.Body>
         </Card>
-    )
-}
+    );
+};
 
 export default News;

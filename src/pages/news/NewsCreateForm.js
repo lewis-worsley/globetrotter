@@ -1,27 +1,29 @@
 import { useRef } from "react";
 import { useState } from "react";
-
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
-import Image from "react-bootstrap/Image";
+import { useHistory } from "react-router";
 
 import Asset from "../../components/Asset";
 
+import Alert from "react-bootstrap/Alert";
+import Button from "react-bootstrap/Button";
+import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
+import Form from "react-bootstrap/Form";
+import Image from "react-bootstrap/Image";
+import Row from "react-bootstrap/Row";
+
 import Upload from "../../assets/upload.png";
 
-import formStyles from "../../styles/Form.module.css";
-import newsStyles from "../../styles/NewsPages.module.css"
 import appStyles from "../../App.module.css";
-import { useHistory } from "react-router";
+import newsStyles from "../../styles/NewsPages.module.css";
+import formStyles from "../../styles/Form.module.css";
+
 import { axiosReq } from "../../api/axiosDefaults";
-import { Alert } from "react-bootstrap";
+
 import { useRedirect } from "../../hooks/useRedirect";
 
 function NewsCreateForm(props) {
-    useRedirect("loggedOut")
+    useRedirect("loggedOut");
     const [errors, setErrors] = useState({});
 
     const [newsData, setNewsData] = useState({
@@ -102,8 +104,8 @@ function NewsCreateForm(props) {
                 </Alert>
             ))}
 
-            <Button 
-                type="submit" 
+            <Button
+                type="submit"
                 onClick={handleSubmit}
                 className={`${newsStyles.NewsButton} ${appStyles.Button}`}
             >
@@ -117,7 +119,9 @@ function NewsCreateForm(props) {
             <Row>
                 <Col className="py-2 p-0 p-md-2" xs={12}>
                     <Container
-                        className={`${appStyles.Content} ${formStyles.Container} d-flex flex-column justify-content-center`}
+                        className={
+                            `${formStyles.Container} d-flex flex-column justify-content-center`
+                        }
                     >
                         <Form.Group className="text-center">
                             {image ? (
@@ -163,12 +167,15 @@ function NewsCreateForm(props) {
                         <div className="d-md-none">{textFields}</div>
                     </Container>
                 </Col>
-                <Col xs={12} sm={{ span: 8, offset: 2 }} className="d-none d-md-block p-0 p-md-2" >
-                    <Container className={appStyles.Content}>{textFields}</Container>
+                <Col
+                    xs={12} sm={{ span: 8, offset: 2 }}
+                    className="d-none d-md-block p-0 p-md-2"
+                >
+                    <Container>{textFields}</Container>
                 </Col>
             </Row>
         </Form>
     );
-}
+};
 
 export default NewsCreateForm;

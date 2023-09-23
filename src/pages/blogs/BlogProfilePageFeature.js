@@ -1,41 +1,38 @@
-import React, { useState } from 'react'
-import { useCurrentUser } from '../../contexts/CurrentUserContext';
-import Card from 'react-bootstrap/Card';
-import Media from 'react-bootstrap/Media';
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import Tooltip from 'react-bootstrap/Tooltip';
-import Avatar from '../../components/Avatar';
+import React from 'react';
+import { useState } from "react";
 import { Link } from "react-router-dom";
+
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Row from 'react-bootstrap/Row';
+import Tooltip from 'react-bootstrap/Tooltip';
+
 import { axiosRes } from '../../api/axiosDefaults';
-import { MoreDropdown } from '../../components/MoreDropdown';
-import { useHistory } from "react-router-dom";
-import { Button, CardColumns, CardDeck, Col, Container, Row } from 'react-bootstrap';
-import appStyles from '../../App.module.css'
-import blogStyles from '../../styles/BlogPages.module.css'
+
+import appStyles from '../../App.module.css';
+import blogStyles from '../../styles/BlogPages.module.css';
+
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
 
 const BlogProfilePageFeature = (props) => {
     const {
         id,
         owner,
-        profile_id,
-        profile_image,
         comments_count,
         likes_count,
         like_id,
         title,
         content,
         countries,
-        locations,
         image,
-        updated_at,
         created_at,
-        blogPage,
         setBlogs,
     } = props;
 
     const currentUser = useCurrentUser();
-    const is_owner = currentUser?.username === owner
-    const history = useHistory();
+    const is_owner = currentUser?.username === owner;
 
     const ReadMore = ({ children }) => {
         const text = children;
@@ -51,19 +48,6 @@ const BlogProfilePageFeature = (props) => {
                 </span>
             </p>
         );
-    };
-
-    const handleEdit = () => {
-        history.push(`/blogs/${id}/edit`);
-    }
-
-    const handleDelete = async () => {
-        try {
-            await axiosRes.delete(`/blogs/${id}/`)
-            history.goBack();
-        } catch (err) {
-            console.log(err);
-        }
     };
 
     const handleLike = async () => {
@@ -100,10 +84,10 @@ const BlogProfilePageFeature = (props) => {
 
     return (
         <Card className="my-4" bg='dark' text='light'>
-            <Card.Body className={`${blogStyles.CardTop}`}>
+            <Card.Body className={blogStyles.CardTop}>
                 <Row className="align-items-center">
                     <Col xs={5}>
-                        <Card.Text className={`${appStyles.Date}`}>{created_at}</Card.Text>
+                        <Card.Text className={appStyles.Date}>{created_at}</Card.Text>
                     </Col>
                     <Col className='d-flex justify-content-end'>
                         <Card.Text className={appStyles.Headings}>{countries}</Card.Text>
@@ -111,7 +95,11 @@ const BlogProfilePageFeature = (props) => {
                 </Row>
             </Card.Body>
             <Card.Body className='p-4'>
-                {title && <Card.Title><h4 className={appStyles.Headings}>{title}</h4></Card.Title>}
+                {title &&
+                    <Card.Title>
+                        <h4 className={appStyles.Headings}>{title}</h4>
+                    </Card.Title>
+                }
                 {content &&
                     <Card.Text>
                         <ReadMore>{content}</ReadMore>
@@ -151,12 +139,16 @@ const BlogProfilePageFeature = (props) => {
                         {comments_count}
                     </span>
                     <Link to={`/blogs/${id}`}>
-                        <Button className={`${appStyles.Button} ${blogStyles.BlogButton}`}>Read blog</Button>
+                        <Button
+                            className={`${appStyles.Button} ${blogStyles.BlogButton}`}
+                        >
+                            Read blog
+                        </Button>
                     </Link>
                 </div>
             </Card.Body>
         </Card>
-    )
-}
+    );
+};
 
 export default BlogProfilePageFeature;

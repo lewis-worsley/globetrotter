@@ -1,23 +1,22 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
-
-import { useCurrentUser } from '../../contexts/CurrentUserContext';
-
-import Card from 'react-bootstrap/Card';
-import Media from 'react-bootstrap/Media';
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import Tooltip from 'react-bootstrap/Tooltip';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
+import { useHistory } from "react-router";
 
 import Avatar from '../../components/Avatar';
 import { MoreDropdown } from '../../components/MoreDropdown';
 
-import { axiosRes } from '../../api/axiosDefaults';
+import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import Media from 'react-bootstrap/Media';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Row from 'react-bootstrap/Row';
+import Tooltip from 'react-bootstrap/Tooltip';
 
 import appStyles from '../../App.module.css';
 
+import { useCurrentUser } from '../../contexts/CurrentUserContext';
+
+import { axiosRes } from '../../api/axiosDefaults';
 
 const UniqueJourneyPage = (props) => {
     const {
@@ -115,11 +114,22 @@ const UniqueJourneyPage = (props) => {
                                 <div>
                                     <Row>
                                         <Col xs={12} className='d-flex align-items-baseline'>
-
                                             <span className={`${appStyles.Date}`}>{created_at}</span>
-                                            <span className={`${appStyles.Headings} ml-auto`}>{locations}, {countries}</span>
+                                            <span
+                                                className={`${appStyles.Headings} ml-auto`}
+                                            >
+                                                {locations}, {countries}
+                                            </span>
                                         </Col>
-                                        <Col>{title && <Card.Title className={`${appStyles.Headings} mt-3`}>{title}</Card.Title>}</Col>
+                                        <Col>
+                                            {title &&
+                                                <Card.Title
+                                                    className={`${appStyles.Headings} mt-3`}
+                                                >
+                                                    {title}
+                                                </Card.Title>
+                                            }
+                                        </Col>
                                     </Row>
                                 </div>
                                 {content && <Card.Text>{content}</Card.Text>}

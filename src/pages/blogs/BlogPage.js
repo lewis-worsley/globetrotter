@@ -1,21 +1,25 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import { useParams } from "react-router";
 
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 import appStyles from "../../App.module.css";
-import { useParams } from "react-router";
-import { axiosReq } from "../../api/axiosDefaults";
-import Blog from "./Blog";
 
-import BlogCommentCreateForm from "../comments/blog_comments/BlogCommentCreateForm";
+import { axiosReq } from "../../api/axiosDefaults";
+
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import BlogComment from "../comments/blog_comments/BlogComment";
-import InfiniteScroll from "react-infinite-scroll-component";
+
 import Asset from "../../components/Asset";
+
 import { fetchMoreData } from "../../utils/utils";
+
+import BlogComment from "../comments/blog_comments/BlogComment";
+import BlogCommentCreateForm 
+    from "../comments/blog_comments/BlogCommentCreateForm";
 import UniqueBlogPage from "./UniqueBlogPage";
 
 function BlogPage() {

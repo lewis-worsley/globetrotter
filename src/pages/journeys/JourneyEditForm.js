@@ -1,25 +1,27 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
+import { useRef } from "react";
 import { useState } from "react";
+import { useHistory } from "react-router";
+import { useParams } from "react-router";
 
-import Form from "react-bootstrap/Form";
+import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
-import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
+import Form from "react-bootstrap/Form";
 import Image from "react-bootstrap/Image";
+import Row from "react-bootstrap/Row";
 
-import formStyles from "../../styles/Form.module.css";
 import appStyles from "../../App.module.css";
-import journeyStyles from "../../styles/JourneyPages.module.css"
+import formStyles from "../../styles/Form.module.css";
+import journeyStyles from "../../styles/JourneyPages.module.css";
 
-import { useHistory } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
-import { Alert } from "react-bootstrap";
-import { useParams } from "react-router";
+
 import { useRedirect } from "../../hooks/useRedirect";
 
 function JourneyEditForm() {
-    useRedirect("loggedOut")
+    useRedirect("loggedOut");
     const [errors, setErrors] = useState({});
 
     const [journeyData, setJourneyData] = useState({
@@ -41,14 +43,16 @@ function JourneyEditForm() {
                 const { data } = await axiosReq.get(`/journeys/${id}/`);
                 const { image, title, countries, locations, content, is_owner } = data;
 
-                is_owner ? setJourneyData({ image, title, countries, locations, content }) : history.push("/");
+                is_owner ?
+                    setJourneyData({ image, title, countries, locations, content })
+                    : history.push("/");
             } catch (err) {
-                console.log(err)
+                console.log(err);
             }
         };
 
         handleMount();
-    }, [history, id])
+    }, [history, id]);
 
     const handleChange = (event) => {
         setJourneyData({
@@ -153,11 +157,12 @@ function JourneyEditForm() {
                 </Alert>
             ))}
 
-            <Button 
-            type="submit" 
-            onClick={handleSubmit}
-            className={`${appStyles.Button} ${journeyStyles.JourneyFormButton} px-4 py-2 mt-4`}
-            
+            <Button
+                type="submit"
+                onClick={handleSubmit}
+                className={
+                    `${appStyles.Button} ${journeyStyles.JourneyFormButton} px-4 py-2 mt-4`
+                }
             >
                 Save
             </Button>
@@ -169,20 +174,22 @@ function JourneyEditForm() {
             <Row>
                 <Col className="py-2 p-0 p-md-2 mt-5" xs={12}>
                     <Container
-                        className={`${formStyles.Container} d-flex flex-column justify-content-center`}
+                        className={
+                            `${formStyles.Container} d-flex flex-column justify-content-center`
+                        }
                     >
                         <Form.Group className="text-center">
-                                    <figure>
-                                        <Image className={appStyles.Image} src={image} />
-                                    </figure>
-                                    <div>
-                                        <Form.Label
-                                            className="btn"
-                                            htmlFor="image-upload"
-                                        >
-                                            Change the image
-                                        </Form.Label>
-                                    </div>
+                            <figure>
+                                <Image className={appStyles.Image} src={image} />
+                            </figure>
+                            <div>
+                                <Form.Label
+                                    className="btn"
+                                    htmlFor="image-upload"
+                                >
+                                    Change the image
+                                </Form.Label>
+                            </div>
                             <Form.File
                                 id="image-upload"
                                 accept="image/*"
@@ -200,12 +207,15 @@ function JourneyEditForm() {
                         <div className="d-md-none">{textFields}</div>
                     </Container>
                 </Col>
-                <Col xs={12} sm={{ span: 8, offset: 2 }} className="d-none d-md-block p-0 p-md-2">
+                <Col
+                    xs={12} sm={{ span: 8, offset: 2 }}
+                    className="d-none d-md-block p-0 p-md-2"
+                >
                     <Container >{textFields}</Container>
                 </Col>
             </Row>
         </Form >
     );
-}
+};
 
 export default JourneyEditForm;

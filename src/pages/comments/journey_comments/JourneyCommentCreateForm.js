@@ -1,18 +1,18 @@
 import { useState } from 'react';
 import { Link } from "react-router-dom";
 
-import Form from "react-bootstrap/Form";
+import Avatar from "../../../components/Avatar";
+
 import Button from 'react-bootstrap/Button';
+import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 
-import appStyles from "../../../App.module.css"
-import commentStyles from "../../../styles/Comment.module.css"
+import appStyles from "../../../App.module.css";
+import commentStyles from "../../../styles/Comment.module.css";
 
-import Avatar from "../../../components/Avatar";
 import { axiosRes } from '../../../api/axiosDefaults';
 
 function JourneyCommentCreateForm(props) {
-
     const {
         journey,
         setJourney,
@@ -50,7 +50,7 @@ function JourneyCommentCreateForm(props) {
         } catch (err) {
             console.log(err);
         }
-    }
+    };
 
     return (
         <Form className="mt-2" onSubmit={handleSubmit}>
@@ -70,14 +70,16 @@ function JourneyCommentCreateForm(props) {
                 </InputGroup>
             </Form.Group>
             <Button
-                className={`${appStyles.Button} ${appStyles.GreenButton} d-block ml-auto`}
+                className={
+                    `${appStyles.Button} ${appStyles.GreenButton} d-block ml-auto`
+                }
                 disabled={!content.trim()}
                 type="submit"
             >
                 Post
             </Button>
         </Form>
-    )
-}
+    );
+};
 
 export default JourneyCommentCreateForm;
