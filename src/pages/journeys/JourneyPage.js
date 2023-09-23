@@ -9,8 +9,6 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-import appStyles from "../../App.module.css";
-
 import { axiosReq } from "../../api/axiosDefaults";
 
 import JourneyCommentCreateForm
