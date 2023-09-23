@@ -24,6 +24,7 @@ import NewsCreateForm from "./pages/news/NewsCreateForm";
 import HomePage from "./pages/home/HomePage";
 import NewsPage from "./pages/news/NewsPage";
 import NewsEditForm from "./pages/news/NewsEditForm";
+import NotFound from "./components/NotFound";
 
 function App() {
 
@@ -71,7 +72,7 @@ function App() {
 						path='/profiles/:id/edit'
 						render={() => <ProfileEditForm />}
 					/>
-					<Route render={() => <h1 className={styles.Headings}>Page not found!</h1>} />
+					<Route render={() => <NotFound />} />
 				</Switch>
 			</Container>
 			<Footer />
