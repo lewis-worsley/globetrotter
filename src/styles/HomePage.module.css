@@ -65,18 +65,15 @@
     background-color: #f5f5f5;
     color: #63610c;
     text-decoration: underline;
-
 }
 
 .SignInButton:hover {
     background-color: #f5f5f5;
     color: #212529;
     text-decoration: underline;
-
 }
 
 @media screen and (max-width: 575px) {
-
     .HeroImage {
         width: 700px;
         margin-left: -2vh;
@@ -91,7 +88,5 @@
 
     .Intro {
         margin-bottom: 13vh;
-    
     }
-
 }
