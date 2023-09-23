@@ -44,7 +44,7 @@ const HomePage = () => {
                 setJourneys(data);
                 setHasLoaded(true);
             } catch (err) {
-                console.log(err);
+                // console.log(err);
             }
         };
         const fetchBlogs = async () => {
@@ -53,7 +53,7 @@ const HomePage = () => {
                 setBlogs(data);
                 setHasLoaded(true);
             } catch (err) {
-                console.log(err);
+                // console.log(err);
             }
         };
         const fetchNews = async () => {
@@ -62,7 +62,7 @@ const HomePage = () => {
                 setNewss(data);
                 setHasLoaded(true);
             } catch (err) {
-                console.log(err);
+                // console.log(err);
             }
         };
 

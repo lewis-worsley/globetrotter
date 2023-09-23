@@ -62,7 +62,7 @@ const JourneyProfilePageFeature = (props) => {
                 }),
             }));
         } catch (err) {
-            console.log(err);
+            // console.log(err);
         }
     };
 
@@ -78,7 +78,7 @@ const JourneyProfilePageFeature = (props) => {
                 }),
             }));
         } catch (err) {
-            console.log(err);
+            // console.log(err);
         }
     };
 

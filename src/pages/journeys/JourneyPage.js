@@ -38,7 +38,7 @@ function JourneyPage() {
                 setJourney({ results: [journey] });
                 setJourneyComments(journeyComments);
             } catch (err) {
-                console.log(err);
+                // console.log(err);
             }
         };
 

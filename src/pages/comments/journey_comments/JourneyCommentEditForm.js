@@ -42,7 +42,7 @@ function JourneyCommentEditForm(props) {
             }));
             setShowEditForm(false);
         } catch (err) {
-            console.log(err);
+            // console.log(err);
         }
     };
 

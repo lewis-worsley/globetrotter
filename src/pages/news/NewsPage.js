@@ -21,7 +21,7 @@ function NewsPage() {
                 ]);
                 setNews({ results: [news] });
             } catch (err) {
-                console.log(err);
+                // console.log(err);
             }
         };
 

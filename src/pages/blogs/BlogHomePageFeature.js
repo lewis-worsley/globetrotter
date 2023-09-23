@@ -67,7 +67,7 @@ const BlogHomePageFeature = (props) => {
                 }),
             }));
         } catch (err) {
-            console.log(err);
+            // console.log(err);
         }
     };
 
@@ -83,7 +83,7 @@ const BlogHomePageFeature = (props) => {
                 }),
             }));
         } catch (err) {
-            console.log(err);
+            // console.log(err);
         }
     };
 

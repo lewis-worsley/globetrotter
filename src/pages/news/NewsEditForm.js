@@ -42,7 +42,7 @@ function NewsEditForm() {
 
                 setNewsData({ image, title, content });
             } catch (err) {
-                console.log(err);
+                // console.log(err);
             }
         };
 
