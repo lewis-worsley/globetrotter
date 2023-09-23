@@ -91,36 +91,42 @@ function ProfilePage() {
                     />
                 </Col>
                 <Col lg={9} className="px-4">
-                    <div className="align-items-center">
-                        <h3
-                            className={
-                                `${appStyles.Headings} ${appStyles.GreenHeading} my-3`
-                            }
-                        >
-                            {profile?.owner}
-                        </h3>
-                        {currentUser &&
-                            !is_owner &&
-                            (profile?.following_id ? (
-                                <Button
+                    <div>
+                        <Row className="align-items-center my-3">
+                            <Col xs={12} lg={4}>
+                                <h3
                                     className={
-                                        `${appStyles.FollowButton} ${appStyles.InverseButton} ml-5 pt-3`
+                                        `${appStyles.Headings} ${appStyles.GreenHeading}`
                                     }
-                                    onClick={() => handleUnfollow(profile)}
                                 >
-                                    Unfollow
-                                </Button>
-                            ) : (
-                                <Button
-                                    className={
-                                        `${appStyles.Button} ${appStyles.FollowButton} ml-5`
-                                    }
-                                    onClick={() => handleFollow(profile)}
-                                >
-                                    Follow
-                                </Button>
-                            ))
-                        }
+                                    {profile?.owner}
+                                </h3>
+                            </Col>
+                            <Col>
+                                {currentUser &&
+                                    !is_owner &&
+                                    (profile?.following_id ? (
+                                        <Button
+                                            className={
+                                                `${appStyles.FollowButton} ${appStyles.InverseButton} p-0 m-0`
+                                            }
+                                            onClick={() => handleUnfollow(profile)}
+                                        >
+                                            Unfollow
+                                        </Button>
+                                    ) : (
+                                        <Button
+                                            className={
+                                                `${appStyles.Button} ${appStyles.FollowButton}`
+                                            }
+                                            onClick={() => handleFollow(profile)}
+                                        >
+                                            Follow
+                                        </Button>
+                                    ))
+                                }
+                            </Col>
+                        </Row>
                         {profile?.content}
                         <div className="my-2">
                             <span
