@@ -62,7 +62,6 @@ p {
     color: white;
     border-width: 0px;
     border-radius: 100px;
-
 }
 
 .FollowButton:hover {
@@ -77,7 +76,6 @@ p {
 .FollowButton:focus {
     color: #63610c;
 }
-
 
 .Image {
     max-height: 400px;
@@ -136,27 +134,6 @@ input[type="file"] {
     background-color: #02636d;
 }
 
-a {
-    color: white;
-    transition: color ease-in-out 0.3s;
-}
-
-a:hover {
-    text-decoration: none;
-    color: #0EA098;
-}
-
-a:hover i {
-    color: #0EA098;
-    transition: color ease-in-out 0.3s;
-}
-
-i:hover {
-    cursor: pointer;
-    transition: color ease-in-out 0.3s;
-    color: #0EA098;
-}
-
 .ReadOrHide {
     color: #c4b6b6;
     cursor: pointer;
@@ -207,17 +184,13 @@ i:hover {
 }
 
 @media screen and (max-width: 767px) {
-
     .Image {
         max-width: 512px;
         object-fit: cover;
-        
     }
-
 }
 
 @media screen and (max-width: 575px) {
-
     .HeroImage {
         width: 100%;
         margin-left: 0em;
@@ -242,7 +215,5 @@ i:hover {
     .Image {
         max-width: 500px;
         object-fit: cover;
-        
     }
-
 }
