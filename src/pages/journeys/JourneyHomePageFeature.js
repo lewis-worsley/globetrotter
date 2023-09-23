@@ -128,7 +128,7 @@ const JourneyHomePageFeature = (props) => {
                         <ReadMore>{content}</ReadMore>
                     </Card.Text>}
                 <Link to={`/journeys/${id}`}>
-                    <Card.Img src={image} alt={title} className={appStyles.Image} />
+                    <Card.Img src={image} alt={title} className={appStyles.SmallImage} />
                 </Link>
                 <div className='mt-4 d-flex justify-content-end align-items-center'>
                     {is_owner ? (

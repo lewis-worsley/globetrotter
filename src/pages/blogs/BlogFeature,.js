@@ -74,7 +74,7 @@ const BlogFeature = (props) => {
                         <ReadMore>{content}</ReadMore>
                     </Card.Text>}
                 <Link to={`/blogs/${id}`}>
-                    <Card.Img src={image} alt={title} className={appStyles.Image} />
+                    <Card.Img src={image} alt={title} className={appStyles.SmallImage} />
                 </Link>
             </Card.Body>
         </Card>

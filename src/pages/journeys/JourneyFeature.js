@@ -78,7 +78,7 @@ const JourneyFeature = (props) => {
                         <ReadMore>{content}</ReadMore>
                     </Card.Text>}
                 <Link to={`/journeys/${id}`}>
-                    <Card.Img src={image} alt={title} className={appStyles.Image} />
+                    <Card.Img src={image} alt={title} className={appStyles.SmallImage} />
                 </Link>
             </Card.Body>
         </Card>

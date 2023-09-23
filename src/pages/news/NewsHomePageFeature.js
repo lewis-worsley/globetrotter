@@ -53,7 +53,7 @@ const NewsHomePageFeature = (props) => {
                     </Card.Text>
                 }
                 <Link to={`/news/${id}`}>
-                    <Card.Img src={image} alt={title} className={appStyles.Image} />
+                    <Card.Img src={image} alt={title} className={appStyles.SmallImage} />
                 </Link>
                 <div className='mt-4 d-flex justify-content-end'>
                     <Link to={`/news/${id}`}>

@@ -63,7 +63,7 @@ const NewsFeature = (props) => {
                         <ReadMore>{content}</ReadMore>
                     </Card.Text>}
                 <Link to={`/news/${id}`}>
-                    <Card.Img src={image} alt={title} className={appStyles.Image} />
+                    <Card.Img src={image} alt={title} className={appStyles.SmallImage} />
                 </Link>
             </Card.Body>
         </Card>
