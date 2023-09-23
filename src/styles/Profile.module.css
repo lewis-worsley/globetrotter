@@ -1,3 +1,12 @@
 .WordBreak {
     word-break: break-all;
 }
+
+.OwnerColour {
+    color: #212529;
+}
+
+.OwnerColour:hover {
+    color: #0ea098;
+    transition: color ease-in-out 0.3s;
+}

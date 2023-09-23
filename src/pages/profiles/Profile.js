@@ -28,7 +28,9 @@ const Profile = (props) => {
                 </Link>
             </div>
             <div className={`mx-2 ${profileStyles.WordBreak}`}>
-                <strong>{owner}</strong>
+                <Link to={`/profiles/${id}`}>
+                <strong className={profileStyles.OwnerColour}>{owner}</strong>
+                </Link>
             </div>
             <div className="text-right ml-auto">
                 {currentUser &&
