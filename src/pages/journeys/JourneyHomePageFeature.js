@@ -106,7 +106,7 @@ const JourneyHomePageFeature = (props) => {
                             </Card.Text>
                         </div>
                     </Media>
-                    <Col className='d-flex justify-content-end'>
+                    <Col className='d-flex justify-content-end text-right'>
                         <Card.Text
                             className={appStyles.Headings}
                         >

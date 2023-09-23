@@ -108,7 +108,7 @@ const BlogHomePageFeature = (props) => {
                             </div>
                         </Media>
                     </Col>
-                    <Col className='d-flex justify-content-end'>
+                    <Col className='d-flex justify-content-end text-right'>
                         <Card.Text className={appStyles.Headings}>{countries}</Card.Text>
                     </Col>
                 </Row>

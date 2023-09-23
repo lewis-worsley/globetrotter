@@ -89,7 +89,7 @@ const BlogProfilePageFeature = (props) => {
                     <Col xs={5}>
                         <Card.Text className={appStyles.Date}>{created_at}</Card.Text>
                     </Col>
-                    <Col className='d-flex justify-content-end'>
+                    <Col className='d-flex justify-content-end text-end'>
                         <Card.Text className={appStyles.Headings}>{countries}</Card.Text>
                     </Col>
                 </Row>
