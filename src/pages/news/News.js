@@ -24,12 +24,12 @@ const News = (props) => {
             setIsReadMore(!isReadMore);
         };
         return (
-            <p className="text">
+            <span className="text">
                 {isReadMore ? text.slice(0, 250) : text}
                 <span onClick={toggleReadMore} className={`${appStyles.ReadOrHide} pl-1`}>
                     {isReadMore ? <Link to={`/news/${id}`}>...read more</Link> : ""}
                 </span>
-            </p>
+            </span>
         );
     };
 
