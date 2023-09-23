@@ -78,8 +78,8 @@ p {
 }
 
 .Image {
-    max-height: 400px;
-    max-width: 720px;
+    max-height: 155px;
+    max-width: 900px;
     object-fit: cover;
     
 }
@@ -186,6 +186,7 @@ input[type="file"] {
 @media screen and (max-width: 767px) {
     .Image {
         max-width: 512px;
+        max-height: 190px;
         object-fit: cover;
     }
 }
@@ -214,6 +215,7 @@ input[type="file"] {
 
     .Image {
         max-width: 500px;
+        max-height: 265px;
         object-fit: cover;
     }
 }
