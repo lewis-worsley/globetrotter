@@ -19,12 +19,12 @@ const Footer = () => {
     return (
         <div className={footerStyles.Footer}>
             <Container className='text-md-left text-center'>
-                <Link to="/home">
+                <Link to="/">
                     <Image src={companyLogo} className={footerStyles.CompanyLogo} />
                 </Link>
                 <Row>
                     <Col xs={12} md={3} className={`${appStyles.Headings} mt-2`}>
-                        <Link to="/">Journeys</Link>
+                        <Link to="/journeys">Journeys</Link>
                     </Col>
                     <Col xs={12} md={3} className={`${appStyles.Headings} mt-2`}>
                         <Link to="/blogs">Blogs</Link>
