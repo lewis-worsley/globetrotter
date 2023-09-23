@@ -143,7 +143,7 @@ const SignUpForm = () => {
                                 <h1 className={`${appStyles.Headings} ${appStyles.GreenHeading} mb-3`}>Recapture the memories & tell your travel story</h1>
                                 <h2 className={appStyles.Headings}>Join Globetrotters today</h2>
 
-                                <Container className={`${appStyles.Content} mt-4`}>{textFields}</Container>
+                                <Container className="mt-4">{textFields}</Container>
                             </Container>
 
                             <div className='text-center mt-3'>

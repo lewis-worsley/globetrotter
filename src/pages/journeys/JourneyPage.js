@@ -55,7 +55,7 @@ function JourneyPage() {
                     setJourney={setJourney}
                     journeyPage
                 />
-                <Container className={appStyles.Content}>
+                <Container>
                     {currentUser ? (
                         <JourneyCommentCreateForm
                             profile_id={currentUser.profile_id}

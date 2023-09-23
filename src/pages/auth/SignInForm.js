@@ -128,7 +128,7 @@ const SignInForm = () => {
                                 <h1 className={`${appStyles.Headings} ${appStyles.GreenHeading} mb-3`}>Hey there, Globetrotter!</h1>
                                 <h2 className={appStyles.Headings}>Sign in to continue the adventure</h2>
 
-                                <Container className={`${appStyles.Content} mt-4`}>{textFields}</Container>
+                                <Container className="mt-4">{textFields}</Container>
                             </Container>
 
                             <div className='text-center mt-3'>

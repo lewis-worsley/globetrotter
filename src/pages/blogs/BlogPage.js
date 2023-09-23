@@ -51,7 +51,7 @@ function BlogPage() {
         <Row className="h-100">
             <Col className="py-2 p-0 p-lg-2">
                 <UniqueBlogPage {...blog.results[0]} setBlog={setBlog} blogPage />
-                <Container className={appStyles.Content}>
+                <Container>
                     {currentUser ? (
                         <BlogCommentCreateForm
                             profile_id={currentUser.profile_id}
