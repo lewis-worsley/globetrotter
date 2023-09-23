@@ -96,9 +96,11 @@ const BlogProfilePageFeature = (props) => {
             </Card.Body>
             <Card.Body className='p-4'>
                 {title &&
-                    <Card.Title>
-                        <h4 className={appStyles.Headings}>{title}</h4>
-                    </Card.Title>
+                    <Link to={`/blogs/${id}`}>
+                        <Card.Title>
+                            <h4 className={appStyles.Headings}>{title}</h4>
+                        </Card.Title>
+                    </Link>
                 }
                 {content &&
                     <Card.Text>

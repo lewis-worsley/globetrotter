@@ -96,9 +96,11 @@ const JourneyProfilePageFeature = (props) => {
             </Card.Body>
             <Card.Body>
                 {title &&
-                    <Card.Title>
-                        <h4 className={appStyles.Headings}>{title}</h4>
-                    </Card.Title>
+                    <Link to={`/journeys/${id}`}>
+                        <Card.Title>
+                            <h4 className={appStyles.Headings}>{title}</h4>
+                        </Card.Title>
+                    </Link>
                 }
                 {content &&
                     <Card.Text>
