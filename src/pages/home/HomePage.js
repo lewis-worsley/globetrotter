@@ -233,15 +233,27 @@ const HomePage = () => {
                             </CardDeck>
                         </div>
                         <div className='text-center'>
-                            <Link to="/signin">
-                                <Button
-                                    className={
-                                        `${appStyles.Button} ${journeyStyles.JourneyFormButton}`
-                                    }
-                                >
-                                    Share your journey
-                                </Button>
-                            </Link>
+                            {currentUser ? (
+                                <Link to="/journeys/create">
+                                    <Button
+                                        className={
+                                            `${appStyles.Button} ${journeyStyles.JourneyFormButton}`
+                                        }
+                                    >
+                                        Share your journey
+                                    </Button>
+                                </Link>
+                            ) : (
+                                <Link to="/signin">
+                                    <Button
+                                        className={
+                                            `${appStyles.Button} ${journeyStyles.JourneyFormButton}`
+                                        }
+                                    >
+                                        Sign in to create your journey
+                                    </Button>
+                                </Link>
+                            )}
                         </div>
                     </Col>
                 </Row>
