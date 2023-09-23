@@ -33,14 +33,17 @@ const Footer = () => {
                         <Link to="/news">News</Link>
                     </Col>
                     {currentUser ? (
-                        <Col xs={12} md={3} className={`${appStyles.Headings} mt-2`}>
-                            <Link to={`/profiles/${currentUser?.profile_id}`}>
+                        <Col xs={12} md={3} className="mt-2">
+                            <Link
+                                to={`/profiles/${currentUser?.profile_id}`}
+                                className={appStyles.Headings}
+                            >
                                 Profile account
                             </Link>
                         </Col>
                     ) : (
                         <Col xs={12} md={3} className={`mt-2`}>
-                            <Link to={`/profiles/${currentUser?.profile_id}`} className={appStyles.Headings}>
+                            <Link to="/signin" className={appStyles.Headings}>
                                 Account
                             </Link>
                             <Link to="/signin">
