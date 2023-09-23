@@ -58,7 +58,7 @@ function BlogsPage({ message }) {
             clearTimeout(timer);
         };
 
-    }, [query, pathname]);
+    }, [query, pathname, currentUser]);
 
     return (
         <Container>
