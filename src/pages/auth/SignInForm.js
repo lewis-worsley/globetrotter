@@ -51,7 +51,7 @@ const SignInForm = () => {
         try {
             const { data } = await axios.post("/dj-rest-auth/login/", signInData);
             setCurrentUser(data.user);
-            setTokenTimestamp();
+            setTokenTimestamp(data);
             history.goBack();
         } catch (err) {
             setErrors(err.response?.data);
@@ -119,13 +119,24 @@ const SignInForm = () => {
                 <Col xs={12} lg={6} className='d-none d-lg-block '>
                     <Image src={signInImage} className={authStyles.SignInImage} rounded />
                 </Col>
-                <Col xs={12} lg={6} className="d-none d-lg-block p-0 p-md-2 text-center d-flex justify-content-center">
+                <Col
+                    xs={12} lg={6}
+                    className="d-none d-lg-block p-0 p-md-2 text-center d-flex justify-content-center"
+                >
                     <Form onSubmit={handleSubmit} className='mt-4'>
                         <Col>
                             <Container
-                                className={`${formStyles.Container} d-flex flex-column justify-content-center`}
+                                className={
+                                    `${formStyles.Container} d-flex flex-column justify-content-center`
+                                }
                             >
-                                <h1 className={`${appStyles.Headings} ${appStyles.GreenHeading} mb-3`}>Hey there, Globetrotter!</h1>
+                                <h1
+                                    className={
+                                        `${appStyles.Headings} ${appStyles.GreenHeading} mb-3`
+                                    }
+                                >
+                                    Hey there, Globetrotter!
+                                </h1>
                                 <h2 className={appStyles.Headings}>Sign in to continue the adventure</h2>
 
                                 <Container className="mt-4">{textFields}</Container>
