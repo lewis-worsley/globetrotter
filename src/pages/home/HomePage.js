@@ -252,7 +252,7 @@ const HomePage = () => {
                 <Col>
                     <div className='text-center'>
                         <h3 className={appStyles.Headings}>Latest
-                            <span className={appStyles.BlueHeading}>blogs</span>
+                            <span className={appStyles.BlueHeading}> blogs</span>
                         </h3>
                         <p>
                             Check out the most recent travel blogs that offer informative and
@@ -339,7 +339,7 @@ const HomePage = () => {
                 <Col>
                     <div className='text-center'>
                         <h3 className={appStyles.Headings}>Latest
-                            <span className={appStyles.GreyBlueHeading}>news</span>
+                            <span className={appStyles.GreyBlueHeading}> news</span>
                         </h3>
                         <p>
                             Latest travel news and reviews around the globe, travel guides
