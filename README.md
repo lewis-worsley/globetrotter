@@ -14,6 +14,10 @@ Globetrotters servers as a front-end component which is connected to the globetr
 
 [Features](https://github.com/lewis-worsley/globetrotter/blob/main/README.md#features)
 
+[Components](https://github.com/lewis-worsley/globetrotter/blob/main/README.md#components)
+
+[Defensive Design](https://github.com/lewis-worsley/globetrotter/blob/main/README.md#defensive-design)
+
 [Testing](https://github.com/lewis-worsley/globetrotter/blob/main/README.md#testing)
 
 [Deployment](https://github.com/lewis-worsley/globetrotter/blob/main/README.md#deployment)
@@ -611,6 +615,55 @@ Users can edit their profiles: [here](https://github.com/lewis-worsley/globetrot
 Users can change their username: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/profile/profile-change-username.png)
 
 Users can change their password: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/profile/profile-change-password.png)
+
+<br>
+
+## Components
+
+Several components are reused throughout the project:
+
+- Asset.js is used to integrate the user Avatar in the navbar, profile, journey and blogs pages. It is also used in the comments. Asset.js also supplies the loading animation
+
+- axiosDefaults.js is a simple file created to assist with communication with the back-end API
+
+- CurrentUserContext.js is used to confirm users' logged-in status and what functionality they are permitted
+
+- DropdownMenu.js is used to allow users to edit profiles, journeys, blogs and comments
+
+- Navbar.js to provide an easy way to navigate the site
+
+- ProfileDataContext provides follow and un-follow functionality across the site
+
+- useRedirect.js redirects users to other pages of they are not authorised to view the page they are trying to access
+
+- utils.js is used to provide the infinite scroll functionality
+
+- Footer.js is used to signify the end of the page on each page of the website. Along with the navbar it also provides navigation
+
+<br>
+
+## Defensive design
+
+The website needs to have defensive measure inputted to protect its credibility.
+
+<br>
+
+### User authentication
+<hr>
+
+All pages that are associated with creating or editing forms are protected by user authentication. Furthermore, users can edit or delete another post they do not own.
+
+The useRedirect hook is used to prevent signed out users from entering pages they should not have access to.
+
+<br>
+
+### 404 page
+<hr>
+
+To signify to users they are on a wrong URL page, a 404 page has been created. This notifies the user they should move on from this page as the URL page doesn't exist.
+
+404 error: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/defensive-design/404-error.png)
+
 
 <br>
 
