@@ -269,8 +269,8 @@ The homepage performs conditional rendering based on whether a user is signed in
 
 As a Globetrotters is a social media platform hoping to attract as many sign ups as possible from their target audience, a welcoming message is presented to the user.
 
-- Desktop view: [here]()
-- Mobile view: [here]()
+- Desktop view: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/homepage/hero.png)
+- Mobile view: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/homepage/hero-mobile.png)
 
 Future development: fix the title margin on smaller screens and include a scroll icon as there is no apparent call-to-action (CTA) visible. This could potentially be offset by introducing a compelling video for engagement.
 
@@ -283,8 +283,8 @@ The about section provides a short blurb to communicate with visitors about the 
 
 On mobile view, the logo disappears to help condense the page.
 
-- Desktop view: [here]()
-- Mobile view: [here]()
+- Desktop view: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/homepage/about.png)
+- Mobile view: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/homepage/about-mobile.png)
 
 <br>
 
@@ -295,16 +295,16 @@ A small blurb is included to encourage users to create an account or sign in if 
 
 On mobile view, the image disappears to help condense the page.
 
-- Desktop view - signed out: [here]()
-- Desktop view - signed in: [here]()
-- Mobile view: [here]()
+- Desktop view - signed out: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/homepage/journeys-signed-out.png)
+- Desktop view - signed in: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/homepage/journeys-signed-in.png)
+- Mobile view: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/homepage/journeys-mobile-without-image.png)
 
 The three latest journeys published are featured on the homepage on large and extra small screens, two on medium screens, and one on small screens. This is because the React component CardDeck causes the content to lose it's format on screens smaller than large or screens bigger than extra small.
 
 Conditional rendering is added to the button underneath the cards whether a user is logged in or not.
 
-- Signed out: [here]()
-- Signed in: [here]()
+- Signed out: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/homepage/journeys-signed-out-button-cta.png)
+- Signed in: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/homepage/journeys-signed-in-button-cta.png)
 
 <br>
 
@@ -315,8 +315,8 @@ The three latest blogs published are featured on the homepage on large and extra
 
 The button has no conditional rendering - pushes users to the blogs page.
 
-- Desktop view: [here]()
-- Mobile view: [here]()
+- Desktop view: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/homepage/blogs.png)
+- Mobile view: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/homepage/blogs-mobile.png)
 
 <br>
 
@@ -327,8 +327,8 @@ The three latest news published are featured on the homepage on large and extra 
 
 The button has no conditional rendering - pushes users to the news page.
 
-- Desktop view: [here]()
-- Mobile view: [here]()
+- Desktop view: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/homepage/news.png)
+- Mobile view: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/homepage/news-mobile.png)
 
 <br>
 
