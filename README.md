@@ -488,6 +488,37 @@ Infinite scroll component has been implemented to display further news published
 
 <br>
 
+#### Unique (id) pages
+<hr>
+
+Each journey, blog and news article, has their own unique (id) page - news comes without likes and comments, as well as no ability to edit the content for non and authenticated users. The following example in the links below is demonstrated by a journey post.
+
+Journey example:
+-  [first part](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/unique-pages/journey-first.png)
+-  [second part](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/unique-pages/journey-second.png)
+-  [third part](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/unique-pages/journey-third.png)
+
+If the owner owns the unique page, three dots appear in the right top column of the Card component for them to be able to edit or delete the journey or blog. If the user doesn't own the unique page, they cannot edit nor delete it.
+
+A user cannot like their own material but can comment - a ToolTip component is used to notify the owner. A non authenticated user is notified to login to like posts. The owner of the unique page can't like their posts which they're informed by a Tooltip.
+
+- ToolTip: can't like own posts: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/unique-pages/tooltip-cant-like-own-post.png)
+- ToolTip: login to like posts: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/unique-pages/tooltip-login-to-like-posts.png)
+
+The image that is uploaded by the user on a form appears as the hero image on the unique page.
+
+Comments that are published show the associated profile image and owner. The comment form is removed for non authenticated users.
+
+The like and comment icons have a count number to register how many users and comment a given post.
+
+Future development: 
+- install and deploy a use rich text editor for users to be able to format their content how they wish. At the moment, text content is not easy to read as there is spacing between paragraphs nor subheadings
+- page doesn't always refresh after a comment or like is submitted so the plan would be to fix that error from occuring
+- add a tooltip to comments to notify users to login to comment
+- add a map api for journeys
+
+<br>
+
 ## Languages & Frameworks and other technologies
 
 - HTML
