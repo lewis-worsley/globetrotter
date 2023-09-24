@@ -29,7 +29,6 @@ Globetrotters servers as a front-end component which is connected to the globetr
 <br>
 
 ## Planning & Development
-<hr>
 
 Popular social media platforms like X (Twitter), Facebook, Instagram, and TikTok are used in various ways for users to share any topic or interest, including travelling, which features heavily on Instagram and TikTok as pictures and videos are their primary source of interaction with the user. Globetrotters aims to created a dedicated space to only travel related content - to be the number one space where users can post detailed journeys and blogs. Furthermore, the app aims to share recent global news and guides for every country so users and non users are kept informed and educated about what's happening in the world.
 
@@ -199,3 +198,59 @@ The MoSCoW prioritisation technique was used as an agile work method for this pr
 <br>
 
 A project board was used to create epics and user stories by using the 'Issues' function. To view them, please click [here](https://github.com/lewis-worsley/globetrotter/issues).
+
+## Languages & Frameworks and other technologies
+
+- HTML
+- CSS
+- Javascript
+- Python
+- Django Rest Framework
+- React
+- React-Bootstrap
+- ElephantSQL
+- Heroku
+- Cloudinary
+
+<br>
+
+## Software
+
+The logo for Globetrotters was inspired by a google search for "backpacks". It was created via Adobe Creative Cloud Suite; more specifically I used:
+
+- Adobe Illustrator
+
+<br>
+
+## Media
+
+- Images were sourced from pexels.com
+- Icons were sourced from Font Awesome
+- No Results image was provided by Code Institute
+- Fonts provided by Google Fonts
+
+<br>
+
+## Credits
+
+To help bring this project to life, the following deserve recognition:
+
+<br>
+
+### Content
+<hr>
+
+- Stack Overflow for providing answers to errors discovered during the project and implementing new ideas such as extending the background colour beyond Container with CSS: https://stackoverflow.com/questions/22083157/extend-background-color-of-header-beyond-container-with-css
+- Geek for Geeks for providing me a solution to implement a ReadMore component: https://www.geeksforgeeks.org/how-to-create-a-read-more-component-in-reactjs/
+- gomakethings.com for teaching me how to make an image extend out Container via CSS: https://gomakethings.com/how-to-break-an-image-out-of-its-parent-container-with-css/
+
+
+<br>
+
+### Thanks
+<hr>
+
+- Richard Wells (mentor)
+    - With his help and guidance I was able to successfully build a project I'm proud of which including building the back and front ends. 
+- Code Institute
+    - The Moments walkthrough project provided me with the tools to tackle this challenge by providing a strong foundation and template to work from
