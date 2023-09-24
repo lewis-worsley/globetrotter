@@ -110,7 +110,7 @@ The brand has a five colour palette. Green was selected as the primary colour be
 
 The colour palette was inspired by the following picture:
 
-<img src="./docs/colour-palette.png">
+<img src="./docs/planning-development/colour-palette.png">
 <br>
 
 - Grey: not used
@@ -140,7 +140,7 @@ The following font pair was used imported from Google Fonts:
 
 I used Miro to help create a medium-fedility prototype/wireframe to assist my design create for Globetrotters. By creating pages I could understand how navigation would work for users and what the feel and look would represent to visitors and users. 
 
-<img src="./docs/wireframes.png">
+<img src="./docs/planning-development/wireframes.png">
 
 <br>
 
@@ -149,7 +149,7 @@ I used Miro to help create a medium-fedility prototype/wireframe to assist my de
 
 To help inspire my design I created a moodbood on Canva to ensure I was creating a website which reflected aspects of travelling
 
-<img src="./docs/moodboard.png">
+<img src="./docs/planning-development/moodboard.png">
 
 <br>
 
@@ -158,7 +158,7 @@ To help inspire my design I created a moodbood on Canva to ensure I was creating
 
 The application I used to draw my database schema was DBDiagram to help visualise how the models will look and operate in the backend
 
-<img src="./docs/database-schema.png">
+<img src="./docs/planning-development/database-schema.png">
 
 <br>
 
@@ -167,7 +167,7 @@ The application I used to draw my database schema was DBDiagram to help visualis
 
  A kanban board on GitHub was used as an agile tool for the planning and development of Globetrotters. To view it, please click [here](https://github.com/lewis-worsley/projects/4).
 
-<img src="./docs/kanban-board.png">
+<img src="./docs/planning-development/kanban-board.png">
 
 <br>
 
@@ -193,11 +193,303 @@ The MoSCoW prioritisation technique was used as an agile work method for this pr
 - should-have
 - could-have
 
-<img src="./docs/moscow.png">
+<img src="./docs/planning-development/moscow.png">
 
 <br>
 
 A project board was used to create epics and user stories by using the 'Issues' function. To view them, please click [here](https://github.com/lewis-worsley/globetrotter/issues).
+
+<br>
+
+## Features
+
+All contents on the website is restricted into a Container tag to give plenty of space and margin to the width of the webpage. All components displayed on the website are provided by React-Bootstrap.
+
+### Permanent features
+<hr>
+
+The following features are permanently visible across all pages to provide ease of use and navigation for visitors. 
+
+
+#### Navigation bar
+<hr>
+
+​The NavBar operates conditional rendering based on whether a user is signed in or out of their account. The NavBar is sticky so the user always has navigation available regardless of their position on the page.
+
+Here is how the NavBar appears based on conditional rendering:
+
+- Signed out: [here]()
+- Signed in: [here]()
+- Signed out (mobile): [here]()
+- Signed in (mobile): [here]()
+
+On mobile, if a user clicks on a navlink (tab), the user is pushed to that page and the navbar toggle closes. If a user opens the toggle but then clicks outside of the nav, the navbar toggle is closed.
+
+The logo is a permanent fixture regardless of condition and pushes the user to the homepage when clicked.
+
+<br>
+
+#### Footer
+<hr>
+
+​The Footer operates conditional rendering based on whether a user is signed in or out of their account. On smaller screens text is pushed to the centre.
+
+If a user is signed in, a link to their profile account is displayed. If signed out they are presented with sign in and sign up links.
+
+- Signed out: [here]()
+- Signed in: [here]()
+- Mobile: [here]()
+
+Future development: include company social media and contact details.
+
+<br>
+
+### Existing features
+<hr>
+
+Existing features:
+
+- Homepage
+
+#### Homepage
+<hr>
+
+The homepage performs conditional rendering based on whether a user is signed in or out. The homepage can be split into the following segments:
+
+- Hero image
+- About
+- Journeys ("Why be a Globetrotter?")
+- Blogs
+- News
+
+<br>
+
+##### Hero image
+<hr>
+
+As a Globetrotters is a social media platform hoping to attract as many sign ups as possible from their target audience, a welcoming message is presented to the user.
+
+- Desktop view: [here]()
+- Mobile view: [here]()
+
+Future development: fix the title margin on smaller screens and include a scroll icon as there is no apparent call-to-action (CTA) visible. This could potentially be offset by introducing a compelling video for engagement.
+
+<br>
+
+##### About
+<hr>
+
+The about section provides a short blurb to communicate with visitors about the existence of Globetrotters and it's vision.
+
+On mobile view, the logo disappears to help condense the page.
+
+- Desktop view: [here]()
+- Mobile view: [here]()
+
+<br>
+
+##### Journeys
+<hr>
+
+A small blurb is included to encourage users to create an account or sign in if logged out by providing two CTAs: Sign up or Sign in. Sign up button is giving better visual treatment as previous users should, in theory, be familiar with the layout of the website.
+
+On mobile view, the image disappears to help condense the page.
+
+- Desktop view - signed out: [here]()
+- Desktop view - signed in: [here]()
+- Mobile view: [here]()
+
+The three latest journeys published are featured on the homepage on large and extra small screens, two on medium screens, and one on small screens. This is because the React component CardDeck causes the content to lose it's format on screens smaller than large or screens bigger than extra small.
+
+Conditional rendering is added to the button underneath the cards whether a user is logged in or not.
+
+- Signed out: [here]()
+- Signed in: [here]()
+
+<br>
+
+##### Blogs
+<hr>
+
+The three latest blogs published are featured on the homepage on large and extra small screens, two on medium screens, and one on small screens. This is because the React component CardDeck causes the content to lose it's format on screens smaller than large or screens bigger than extra small.
+
+The button has no conditional rendering - pushes users to the blogs page.
+
+- Desktop view: [here]()
+- Mobile view: [here]()
+
+<br>
+
+##### News
+<hr>
+
+The three latest news published are featured on the homepage on large and extra small screens, two on medium screens, and one on small screens. This is because the React component CardDeck causes the content to lose it's format on screens smaller than large or screens bigger than extra small.
+
+The button has no conditional rendering - pushes users to the news page.
+
+- Desktop view: [here]()
+- Mobile view: [here]()
+
+<br>
+
+#### Authentication
+<hr>
+
+Users are presented with an option to either sign up or sign when on the webpage. If a user is logged in and proceeds to visit one of the following pages, they're redirected back to the homepage.
+
+If there is an error on the form, a user is presented with an error message.
+
+- Sign up example: [here]()
+- Sign in example: [here]()
+
+When a user successfully creates an account via the sign up page, they're then redirected to the sign in page to sign in.
+
+<br>
+
+##### Sign up
+<hr>
+
+Screens smaller than large (≥992px), the image is removed.
+
+- Desktop view: [here]()
+- Mobile view: [here]()
+
+<br>
+
+##### Sign in
+<hr>
+
+Screens smaller than large (≥992px), the image is removed.
+
+- Desktop view: [here]()
+- Mobile view: [here]()
+
+<br>
+
+#### Journeys
+<hr>
+
+Adopted colour theme for journeys: Green #63610C
+
+All journeys are published on the journeys page but this component can also be found on the blogs, news and homepage pages but as a smaller section on those pages respectively.
+
+See example: [here]()
+
+To ensure users are able to establish the difference between journeys, blogs and news, the colour card header background inherits a green colour.
+
+The information is placed in a React Card component for structural and content purposes.
+
+The card features:
+
+- heading
+- content
+- read more...
+- like count
+- comment count
+- CTA
+
+If a user clicks the heading, read more..., comment count, or CTA they are directed to the unique journey page. Authenticated users can like a journey without viewing the unique page.
+
+- Desktop view: [here]()
+- Mobile view: [here]()
+
+The search query is available to use on all screens.
+
+- Search query: [here]()
+
+If a user is signed in, a button appears above the search query for users to create a journey which directs them to an appropriate form.
+
+- Button for signed in users: [here]()
+
+On screens smaller than large (≥992px), all other components on the page are hidden.
+
+Image height cannot exceed image width but can be equal. However across all journey components width is greater than height to ensure a format that is close to a 16:9 screen on all devices.
+
+Infinite scroll component has been implemented to display further journeys published if the user goes on to scroll past more than 10 journeys.
+
+<br>
+
+#### Blogs
+<hr>
+
+Adopted colour theme for blogs: Blue #02636D
+
+All blogs are published on the blogs page but this component can also be found on the journeys, news and homepage pages but as a smaller section on those pages respectively.
+
+See example: [here]()
+
+To ensure users are able to establish the difference between journeys, blogs and news, the colour card header background inherits a blue colour.
+
+The information is placed in a React Card component for structural and content purposes.
+
+The card features:
+
+- heading
+- content
+- read more...
+- like count
+- comment count
+- CTA
+
+If a user clicks the heading, read more..., comment count, or CTA they are directed to the unique blogs page. Authenticated users can like a blog without viewing the unique page.
+
+- Desktop view: [here]()
+- Mobile view: [here]()
+
+The search query is available to use on all screens.
+
+- Search query: [here]()
+
+If a user is signed in, a button appears above the search query for users to create a blog which directs them to an appropriate form.
+
+- Button for signed in users: [here]()
+
+On screens smaller than large (≥992px), all other components on the page are hidden.
+
+Image height cannot exceed image width but can be equal. However across all blog components width is greater than height to ensure a format that is close to a 16:9 screen on all devices.
+
+Infinite scroll component has been implemented to display further blogs published if the user goes on to scroll past more than 10 blogs.
+
+<br>
+
+#### News
+<hr>
+
+Adopted colour theme for news: Grey Blue #023C62
+
+All news are published on the news page but this component can also be found on the journeys, blogs and homepage pages but as a smaller section on those pages respectively.
+
+See example: [here]()
+
+To ensure users are able to establish the difference between news, blogs and news, the colour card header background inherits a grey blue colour.
+
+The information is placed in a React Card component for structural and content purposes.
+
+The card features:
+
+- heading
+- content
+- read more...
+- CTA
+
+If a user clicks the heading, read more..., comment count, or CTA they are directed to the unique news page. There is no like or comment function for news.
+
+- Desktop view: [here]()
+- Mobile view: [here]()
+
+The search query is available to use on all screens.
+
+- Search query: [here]()
+
+A news article cannot be created by non and authenticated users, only by admin.
+
+On screens smaller than large (≥992px), all other components on the page are hidden.
+
+Image height cannot exceed image width but can be equal. However across all news components width is greater than height to ensure a format that is close to a 16:9 screen on all devices.
+
+Infinite scroll component has been implemented to display further news published if the user goes on to scroll past more than 10 news.
+
+<br>
 
 ## Languages & Frameworks and other technologies
 
