@@ -519,6 +519,33 @@ Future development:
 
 <br>
 
+#### Form pages
+<hr>
+
+Journeys and blogs both have form pages for authenticated users to submit posts - for users who are not logged in and try to enter they're redirected to the homepage.
+
+The format and fields are the same for both respective components.
+
+- See journey form page example: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/form-pages/form-page-journey.png)
+
+Error messages are highlighted to the user if an image and or text is missing from one or all of the fields.
+
+- Error message: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/form-pages/form-page-error-messages.png)
+
+The upload image in the form was provided by Code Institute.
+
+
+##### Edit forms
+<hr>
+
+A authenticated and owner of a post can edit their posts.
+
+- See journey form page example: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/form-pages/form-page-edit.png)
+
+Future development: a blog may not have a country associated with it, for example, it could be about hotels or hostels, parks, hobbies, costs etc. A separate field would need to be created.
+
+<br>
+
 ## Languages & Frameworks and other technologies
 
 - HTML
