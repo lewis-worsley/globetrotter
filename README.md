@@ -546,6 +546,66 @@ Future development: a blog may not have a country associated with it, for exampl
 
 <br>
 
+#### Profile
+<hr>
+
+A user can view their own profile by clicking on the profile link in the navbar or by clicking "Profile Account" in the footer.
+
+- Profile page: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/profile/profile-page.png)
+
+Alternatively, they can click on their own avatar when it appears across the site, for example, on a post or comment. 
+
+For non users and users of the website, clicking on any profile avatar or profile name will show the profile page for that particular user which displays their:
+
+- name
+- bio
+- country base
+- journey count
+- blog count
+- followers
+- following
+- journeys
+- blogs
+
+Profile intro: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/profile/profile-intro.png)
+
+
+When visiting a profile page, the visitor is presented with a React Tabs component underneath the profile intro: journeys and blogs. The purpose of this is prevent the profile page having a long path length if they've posted many journeys, blogs or both. It is presented in a grid like manner to emulate previous popular designs such like Instagram and TikTok.
+
+Profile grid: 
+
+- Journey tab: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/profile/profile-journeys.png)
+- Blogs tab: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/profile/profile-blogs.png)
+
+On screens smaller than large (≥992px), text is moved to the center to accommodate all the content on the profile page.
+
+- Mobile view: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/profile/profile-mobile.png)
+
+Future developments: fix React CardDeck format for screens smaller than Large and bigger than extra small
+
+<br>
+
+##### Profile edits
+<hr>
+
+Profile owners have the ability to edit their own profiles by clicking on the three dots on the top right corner of their profile intro.
+
+Upon clicking the three dots, they're presented with three options
+
+1. edit profile
+2. change username
+3. change password
+
+- Three options: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/profile/profile-three-options.png)
+
+Users can edit their profiles: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/profile/profile-edit-profile.png)
+
+Users can change their username: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/profile/profile-change-username.png)
+
+Users can change their password: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/profile/profile-change-password.png)
+
+<br>
+
 ## Languages & Frameworks and other technologies
 
 - HTML
