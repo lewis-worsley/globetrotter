@@ -114,7 +114,7 @@ The colour palette was inspired by the following picture:
 <br>
 
 - Grey: not used
-- Grey Blue: #023c62
+- Grey Blue: #023C62
 - Teal: #0EA098
 - Blue: #02636D
 - Green: #63610C
@@ -534,6 +534,8 @@ Error messages are highlighted to the user if an image and or text is missing fr
 
 The upload image in the form was provided by Code Institute.
 
+<br>
+
 
 ##### Edit forms
 <hr>
@@ -603,6 +605,82 @@ Users can edit their profiles: [here](https://github.com/lewis-worsley/globetrot
 Users can change their username: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/profile/profile-change-username.png)
 
 Users can change their password: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/profile/profile-change-password.png)
+
+<br>
+
+## Testing
+
+Throughout the build of the website, but more so after the structure and contents of the page was added, Google Dev-tools was used extensively to validate new ideas, fix errors, unearth solutions, styles, and ensure consistency with the design and user experience across various devices by ensuring the website was responsive.
+
+All links work as expected.
+
+<br>
+
+### Am I responsive
+<hr>
+
+To check to see if the website was responsive across different types of devices, the URL was entered into https://ui.dev/amiresponsive/. The website appeared as expected across each device. The image snippet in the intro section of this README.md is provided by Am I Responsive?
+
+<br>
+
+### Testing on devices
+<hr>
+
+During development of the website, the code was written and tested on MacBook Pro 14", LG 21.5" monitor, and Samsung 18" monitor - all of the screenshots in this README.md file have been captured on the MacBook Pro.
+
+Google Chrome was used as the browser for writing the code for this project.
+
+Google Dev-tools was used extensively throughout the process, as it provides instant feedback on appearance and responsivity across elements and dimensions.
+
+After development, the website has been tested on the following devices:
+
+- MacBook Pro 14"
+- Samsung 18" monitor
+- LG 21.5" monitor
+- iPhone XS Max - Chrome and Safari
+
+<br>
+
+### Validator testing
+<hr>
+
+The three websites used to validate the code are:
+
+- HTML: https://validator.w3.org/
+- CSS: https://jigsaw.w3.org/css-validator/
+- Python: https://pep8ci.herokuapp.com/
+- Javascript: https://jshint.com/
+
+For accessibility, the following Chrome extensions was used:
+
+- Lighthouse
+
+<br>
+
+#### Testing report
+<hr>
+
+- HTML:
+- CSS: no existing errors reported
+- Python: no existing errors reported
+- Javascript: warnings reported, however they do not effect the functionality of the website. See link below for example:
+
+Javascript example: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/testing/jshint.png)
+
+<br>
+
+#### Lighthouse
+<hr>
+
+Lighthouse has reported fairly positive metrics (see graphic below) with scores ranging from 82 to 93, but it shows there are signs of improvements for the website.
+
+Lighthouse score: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/testing/lighthouse.png)
+
+<br>
+
+## Deployment
+
+
 
 <br>
 
