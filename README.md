@@ -205,6 +205,12 @@ A project board was used to create epics and user stories by using the 'Issues' 
 
 All contents on the website is restricted into a Container tag to give plenty of space and margin to the width of the webpage. All components displayed on the website are provided by React-Bootstrap.
 
+Journeys, blogs and news each have their own unique colour associated with them and this is reflected in the headings, background colour header and buttons.
+
+- Headings: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/colour-heading.png)
+- Background colour header: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/background-colour-heading.png)
+- Buttons: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/colour-button.png)
+
 ### Permanent features
 <hr>
 
@@ -665,7 +671,7 @@ For accessibility, the following Chrome extensions was used:
 - Python: no existing errors reported
 - Javascript: warnings reported, however they do not effect the functionality of the website. See link below for example:
 
-Javascript example: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/testing/jshint.png)
+Javascript example for MoreDropdown.js component: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/testing/jshint.png)
 
 <br>
 
@@ -680,7 +686,77 @@ Lighthouse score: [here](https://github.com/lewis-worsley/globetrotter/blob/main
 
 ## Deployment
 
+This application was deployed through and connected to the globetrotter-drf-api 
 
+<br>
+
+### Initial deployment
+<hr>
+
+
+
+I took the following steps to deploy the site to Heroku as early as possible, and have listed any console commands required to initiate it. My aim was to ensure this process was completed as early as possible in the project, to avoid complications or issues as it progressed.
+
+
+### Create repository:
+<hr>
+
+*  Create a new repository in GitHub based on [this](https://github.com/Code-Institute-Org/react-ci-template/generate) template from Code Institute.
+
+<br>
+
+### Setting up the Workspace (To be done locally via the console of your chosen editor)
+<hr>
+
+* Enter `npm install` in the terminal and wait for all packages to install. This will install all dependencies required for the project.
+
+<br>
+
+### Deploying the App to heroku
+<hr>
+
+<br>
+
+#### Create Heroku App:
+<hr>
+
+The below works on the assumption that you already have an account with [Heroku](https://id.heroku.com/login) and are already signed in.
+
+1. Create a new Heroku app:
+    - Click "New" in the top right-hand corner of the landing page, then click "Create new app."
+1. Give the app a unique name:
+    - It will form part of the URL (in the case of this project, I called the Heroku app "globetrotters")
+1. Select the nearest location:
+    - For me, this was Europe.
+1. Connect to GitHub:
+    - From the deploy tab, click on "GitHub" in the "Deployment Method" section.
+    - Enter the name of the repository and click "connect".
+    - Click "deploy branch".
+
+<br>
+
+#### Connect to the API
+<hr>
+
+1. In *Heroku globetrotter-drf-api*:
+    * In the settings tab, add new config vars:
+    - Key: CLIENT_ORIGIN, Value: https://globetrotters-17c2ffb8496e.herokuapp.com
+    - Key: CLIENT_ORIGIN_DEV, Value: https://3000-lewisworsle-globetrotte-4fsv6xvyklj.ws-eu104.gitpod.io
+    * *IMPORTANT:* remove trailing slash at the end of each link.
+    * Install the Axios package and create axiosDefaults.js in api folder.
+    - In *axiosDefaults.js*, set baseURL, content-type header, withCredentials.
+    - Import axiosDefaults in *App.js*.
+
+<br>
+
+### Final Deployment
+<hr>
+
+In *package.json* file, in the “scripts” section, add the following prebuild command: `"heroku-prebuild": "npm install -g serve"`
+
+This will install a package needed to serve the single page application on heroku.
+
+Add a *Procfile* at the root of the project with the following web command: `web: serve -s build`
 
 <br>
 
@@ -736,6 +812,8 @@ To help bring this project to life, the following deserve recognition:
 <hr>
 
 - Richard Wells (mentor)
-    - With his help and guidance I was able to successfully build a project I'm proud of which including building the back and front ends. 
+    - With his help and guidance I was able to successfully build a project I'm proud of which including building the back and front ends
+
 - Code Institute
     - The Moments walkthrough project provided me with the tools to tackle this challenge by providing a strong foundation and template to work from
+    - The support team for helping me fix any bugs and errors in my code
