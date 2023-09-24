@@ -3,7 +3,11 @@ Globetrotters is a social media platform designed for travellers across the glob
 
 Globetrotters servers as a front-end component which is connected to the globetrotter-drf-api backend, developed using Django Rest Framework.
 
+<<<<<<< HEAD
 <img src="./docs/am-i-responsive.png">
+=======
+<img src="">
+>>>>>>> fd338751debfa7a2c20a8341538c49e19a8f1ea1
 
 <br>
 
@@ -111,6 +115,7 @@ The brand has a five colour palette. Green was selected as the primary colour be
 
 The colour palette was inspired by the following picture:
 
+<<<<<<< HEAD
 <img src="./docs/colour-palette.png">
 
 - Grey: not used
@@ -133,6 +138,28 @@ The following font pair was used imported from Google Fonts:
 - Headings: Playfair Display - a transtional design, featured on more than 4,300,000 websites
 - Body: Source Sans 3 - open source typefac family, intended to work well in user interfaces. Featured on more than 20,000 websites
 
+=======
+- Grey: not used
+- Grey Blue: #023c62
+- Teal: #0EA098
+- Blue: #02636D
+- Green: #63610C
+
+Bootstrap dark background colour was adopted for text, card, and footer to provide effective contrast.
+
+Page background was set to #F5F5F5.
+
+<br>
+
+### Typography
+<hr>
+
+The following font pair was used imported from Google Fonts:
+
+- Headings: Playfair Display - a transtional design, featured on more than 4,300,000 websites
+- Body: Source Sans 3 - open source typefac family, intended to work well in user interfaces. Featured on more than 20,000 websites
+
+>>>>>>> fd338751debfa7a2c20a8341538c49e19a8f1ea1
 <br>
 
 ### Wireframes
@@ -140,7 +167,11 @@ The following font pair was used imported from Google Fonts:
 
 I used Miro to help create a medium-fedility prototype/wireframe to assist my design create for Globetrotters. By creating pages I could understand how navigation would work for users and what the feel and look would represent to visitors and users. 
 
+<<<<<<< HEAD
 <img src="./docs/wireframes.png">
+=======
+{Links to wireframes go here}
+>>>>>>> fd338751debfa7a2c20a8341538c49e19a8f1ea1
 
 <br>
 
@@ -149,7 +180,11 @@ I used Miro to help create a medium-fedility prototype/wireframe to assist my de
 
 To help inspire my design I created a moodbood on Canva to ensure I was creating a website which reflected aspects of travelling
 
+<<<<<<< HEAD
 <img src="./docs/moodboard.png">
+=======
+{Links to wireframes go here}
+>>>>>>> fd338751debfa7a2c20a8341538c49e19a8f1ea1
 
 <br>
 
@@ -158,13 +193,18 @@ To help inspire my design I created a moodbood on Canva to ensure I was creating
 
 The application I used to draw my database schema was DBDiagram to help visualise how the models will look and operate in the backend
 
+<<<<<<< HEAD
 <img src="./docs/database-schema.png">
+=======
+{image goes here}
+>>>>>>> fd338751debfa7a2c20a8341538c49e19a8f1ea1
 
 <br>
 
 ### Agile Methodology
 <hr>
 
+<<<<<<< HEAD
  A kanban board on GitHub was used as an agile tool for the planning and development of Globetrotters. To view it, please click [here](https://github.com/lewis-worsley/projects/4).
 
 <img src="./docs/kanban-board.png">
@@ -181,6 +221,23 @@ In total, the project consisted of eight epics which are referenced and linked t
  6. Blogs
  7. News
  8. Profile
+=======
+ A kanban board on GitHub was used as an agile tool for the planning and development of Globetrotters.
+
+<img src="">
+
+<br>
+
+In total, the project consisted of six epics which are referenced and linked to user stories on the kanban board:
+
+ 1. Projects
+ 2. Moving projects to and from lists
+ 3. View projects
+ 4. Engagement
+ 5. Account
+ 6. Blogs
+ 7. Authorised access
+>>>>>>> fd338751debfa7a2c20a8341538c49e19a8f1ea1
 
 <br>
 
@@ -193,8 +250,16 @@ The MoSCoW prioritisation technique was used as an agile work method for this pr
 - should-have
 - could-have
 
+<<<<<<< HEAD
 <img src="./docs/moscow.png">
 
 <br>
 
 A project board was used to create epics and user stories by using the 'Issues' function. To view them, please click [here](https://github.com/lewis-worsley/globetrotter/issues).
+=======
+<img src="">
+
+<br>
+
+A project board was used to create epics and user stories by using the 'Issues' function. To view them, please click [here](https://github.com/lewis-worsley/globetrotter/issues).
+>>>>>>> fd338751debfa7a2c20a8341538c49e19a8f1ea1
