@@ -218,10 +218,10 @@ The following features are permanently visible across all pages to provide ease 
 
 Here is how the NavBar appears based on conditional rendering:
 
-- Signed out: [here]()
-- Signed in: [here]()
-- Signed out (mobile): [here]()
-- Signed in (mobile): [here]()
+- Signed out: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/navbar/signed-out.png)
+- Signed in: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/navbar/signed-in.png)
+- Signed out (mobile): [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/navbar/signed-out-mobile.png)
+- Signed in (mobile): [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/navbar/signed-in-mobile.png)
 
 On mobile, if a user clicks on a navlink (tab), the user is pushed to that page and the navbar toggle closes. If a user opens the toggle but then clicks outside of the nav, the navbar toggle is closed.
 
@@ -236,9 +236,9 @@ The logo is a permanent fixture regardless of condition and pushes the user to t
 
 If a user is signed in, a link to their profile account is displayed. If signed out they are presented with sign in and sign up links.
 
-- Signed out: [here]()
-- Signed in: [here]()
-- Mobile: [here]()
+- Signed out: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/footer/footer-signed-out.png)
+- Signed in: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/footer/footer-signed-in.png)
+- Mobile: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/footer/footer-mobile.png)
 
 Future development: include company social media and contact details.
 
@@ -339,8 +339,8 @@ Users are presented with an option to either sign up or sign when on the webpage
 
 If there is an error on the form, a user is presented with an error message.
 
-- Sign up example: [here]()
-- Sign in example: [here]()
+- Sign up error example: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/auth/signup-error.png)
+- Sign in error example: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/auth/signin-error.png)
 
 When a user successfully creates an account via the sign up page, they're then redirected to the sign in page to sign in.
 
@@ -351,8 +351,8 @@ When a user successfully creates an account via the sign up page, they're then r
 
 Screens smaller than large (≥992px), the image is removed.
 
-- Desktop view: [here]()
-- Mobile view: [here]()
+- Desktop view: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/auth/signup.png)
+- Mobile view: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/auth/signup-mobile.png)
 
 <br>
 
@@ -361,8 +361,8 @@ Screens smaller than large (≥992px), the image is removed.
 
 Screens smaller than large (≥992px), the image is removed.
 
-- Desktop view: [here]()
-- Mobile view: [here]()
+- Desktop view: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/auth/signin.png)
+- Mobile view: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/auth/signin-mobile.png)
 
 <br>
 
@@ -373,7 +373,7 @@ Adopted colour theme for journeys: Green #63610C
 
 All journeys are published on the journeys page but this component can also be found on the blogs, news and homepage pages but as a smaller section on those pages respectively.
 
-See example: [here]()
+See example: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/journeys/journeys-small-component.png)
 
 To ensure users are able to establish the difference between journeys, blogs and news, the colour card header background inherits a green colour.
 
@@ -390,16 +390,15 @@ The card features:
 
 If a user clicks the heading, read more..., comment count, or CTA they are directed to the unique journey page. Authenticated users can like a journey without viewing the unique page.
 
-- Desktop view: [here]()
-- Mobile view: [here]()
+- See example: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/journeys/journey-card.png)
 
 The search query is available to use on all screens.
 
-- Search query: [here]()
+- Search query: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/journeys/journey-search-query.png)
 
 If a user is signed in, a button appears above the search query for users to create a journey which directs them to an appropriate form.
 
-- Button for signed in users: [here]()
+- Button for signed in users: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/journeys/journey-create-button.png)
 
 On screens smaller than large (≥992px), all other components on the page are hidden.
 
@@ -416,7 +415,7 @@ Adopted colour theme for blogs: Blue #02636D
 
 All blogs are published on the blogs page but this component can also be found on the journeys, news and homepage pages but as a smaller section on those pages respectively.
 
-See example: [here]()
+See example: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/blogs/blogs-small-component.png)
 
 To ensure users are able to establish the difference between journeys, blogs and news, the colour card header background inherits a blue colour.
 
@@ -433,16 +432,15 @@ The card features:
 
 If a user clicks the heading, read more..., comment count, or CTA they are directed to the unique blogs page. Authenticated users can like a blog without viewing the unique page.
 
-- Desktop view: [here]()
-- Mobile view: [here]()
+- See example: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/blogs/blogs-card.png)
 
 The search query is available to use on all screens.
 
-- Search query: [here]()
+- Search query: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/blogs/blogs-search-query.png)
 
 If a user is signed in, a button appears above the search query for users to create a blog which directs them to an appropriate form.
 
-- Button for signed in users: [here]()
+- Button for signed in users: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/blogs/blogs-create-button.png)
 
 On screens smaller than large (≥992px), all other components on the page are hidden.
 
@@ -459,7 +457,7 @@ Adopted colour theme for news: Grey Blue #023C62
 
 All news are published on the news page but this component can also be found on the journeys, blogs and homepage pages but as a smaller section on those pages respectively.
 
-See example: [here]()
+See example: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/news/news-small-component.png)
 
 To ensure users are able to establish the difference between news, blogs and news, the colour card header background inherits a grey blue colour.
 
@@ -474,12 +472,11 @@ The card features:
 
 If a user clicks the heading, read more..., comment count, or CTA they are directed to the unique news page. There is no like or comment function for news.
 
-- Desktop view: [here]()
-- Mobile view: [here]()
+- See example: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/news/news-card.png)
 
 The search query is available to use on all screens.
 
-- Search query: [here]()
+- Search query: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/news/news-search-query.png)
 
 A news article cannot be created by non and authenticated users, only by admin.
 
