@@ -12,7 +12,7 @@ Full details of manual testing can be found on this page.
 
 <br>
 
-## **Bugs**
+## Bugs
 
 During the course of writing the code for this application, these are the following bugs I discovered.
 
@@ -23,9 +23,9 @@ During the course of writing the code for this application, these are the follow
 ​
 The following bugs were identified during user testing:
 
-- Bug 🐞 - Upon starting the workspace, an error message is displayed relating to the Node version.
-- Cause ⚒️ - There is a conflict between the template and current version of Node.
-- Resolution ✅ - In the terminal, enter: `nvm i 16` > `nvm use 16` > `npm start`.
+- Bug 🐞 - Upon starting the workspace, an error message is displayed relating to the Node version
+- Cause ⚒️ - There is a conflict between the template and current version of Node
+- Resolution ✅ - In the terminal, enter: `nvm i 16` > `nvm use 16` > `npm start`
 
 <br>
 
@@ -69,6 +69,18 @@ The following bugs were identified during user testing:
 - Resolution ✅ - Referred to this Stack Overflow [article](https://stackoverflow.com/questions/71582397/eresolve-unable-to-resolve-dependency-tree-while-installing-a-pacakge) to solve the problem. NOTE: I've since uninstalled react-summernote 
 
 <img src="./docs//testing/error-react-summernote-dependency.png">
+
+<br>
+
+- Bug 🐞 - Profile page not loading profile id when fetching data from the API 
+- Cause ⚒️ - added handleFollow and handleUnfollow variables to useSetProfileData()
+- Resolution ✅ - Removed handleFollow and handleUnfollow from useSetProfileData(). Which later got inserted when it was an appropriate time to do so
+
+<br>
+
+- Bug 🐞 - Couldn't upload a picture to my profile
+- Cause ⚒️ - the based field (required) which is in the model was not added to the form
+- Resolution ✅ - Added the based field to the form, which then allowed the form to be posted to the database
 
 <br>
 

@@ -695,7 +695,7 @@ To signify to users they are on a wrong URL page, a 404 page has been created. T
 
 Throughout the build of the website, but more so after the structure and contents of the page was added, Google Dev-tools was used extensively to validate new ideas, fix errors, unearth solutions, styles, and ensure consistency with the design and user experience across various devices by ensuring the website was responsive.
 
-The testing process, along with bugs, can be viewed [here](https://github.com/lewis-worsley/moments/blob/main/TESTING.md).
+The testing process, along with bugs, can be viewed [here](https://github.com/lewis-worsley/globetrotter/blob/main/TESTING.md).
 
 <br>
 
