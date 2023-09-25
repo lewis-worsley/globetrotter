@@ -144,7 +144,20 @@ The following font pair was used imported from Google Fonts:
 
 I used Miro to help create a medium-fedility prototype/wireframe to assist my design create for Globetrotters. By creating pages I could understand how navigation would work for users and what the feel and look would represent to visitors and users. 
 
-<img src="./docs/planning-development/wireframes.png">
+The designs in the wireframes may not be fully reflective on the final design of the website.
+
+Overview: <img src="./docs/planning-development/wireframes/overview.png">
+
+- [Homepage](https://github.com/lewis-worsley/globetrotter/blob/main/docs/planning-development/wireframes/homepage.png)
+- [Sign up](https://github.com/lewis-worsley/globetrotter/blob/main/docs/planning-development/wireframes/signup.png)
+- [Sign in](https://github.com/lewis-worsley/globetrotter/blob/main/docs/planning-development/wireframes/signin.png)
+- [Homepage after sign in](https://github.com/lewis-worsley/globetrotter/blob/main/docs/planning-development/wireframes/home-after-sign-in.png)
+- [Journeys feed](https://github.com/lewis-worsley/globetrotter/blob/main/docs/planning-development/wireframes/journeys-feed.png)
+- [Unique journey post](https://github.com/lewis-worsley/globetrotter/blob/main/docs/planning-development/wireframes/unique-journey-post.png)
+- [Unique journey stops post](https://github.com/lewis-worsley/globetrotter/blob/main/docs/planning-development/wireframes/unique-journey-stops-post.png) - unfortunately I ran out of time to implement stops to journeys
+- [Blogs feed](https://github.com/lewis-worsley/globetrotter/blob/main/docs/planning-development/wireframes/blogs-feed.png)
+- [News feed](https://github.com/lewis-worsley/globetrotter/blob/main/docs/planning-development/wireframes/news-feed.png)
+- [Profile page](https://github.com/lewis-worsley/globetrotter/blob/main/docs/planning-development/wireframes/profile-page.png)
 
 <br>
 
