@@ -91,7 +91,7 @@ p {
 }
 
 .SmallImage {
-    max-height: 165px;
+    height: 130px;
     max-width: 900px;
     object-fit: cover;
     
