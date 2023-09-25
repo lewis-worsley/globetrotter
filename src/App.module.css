@@ -78,7 +78,7 @@ p {
 }
 
 .Image {
-    max-height: 400px;
+    max-height: 300px;
     max-width: 900px;
     object-fit: cover;
     
