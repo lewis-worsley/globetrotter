@@ -8,10 +8,12 @@ import Row from "react-bootstrap/Row";
 import { axiosReq } from "../../api/axiosDefaults";
 
 import UniqueNewsPage from "./UniqueNewsPage";
+import NotFound from "../../components/NotFound";
 
 function NewsPage() {
     const { id } = useParams();
     const [news, setNews] = useState({ results: [] });
+    const [newsError, setNewsError] = useState(false);
 
     useEffect(() => {
         const handleMount = async () => {
@@ -21,12 +23,17 @@ function NewsPage() {
                 ]);
                 setNews({ results: [news] });
             } catch (err) {
+                setNewsError(true);
                 // console.log(err);
             }
         };
 
         handleMount();
     }, [id]);
+
+    if (newsError) {
+        return <NotFound />
+    }
 
     return (
         <Row className="h-100">

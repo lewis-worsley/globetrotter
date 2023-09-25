@@ -19,10 +19,12 @@ import BlogComment from "../comments/blog_comments/BlogComment";
 import BlogCommentCreateForm 
     from "../comments/blog_comments/BlogCommentCreateForm";
 import UniqueBlogPage from "./UniqueBlogPage";
+import NotFound from "../../components/NotFound";
 
 function BlogPage() {
     const { id } = useParams();
     const [blog, setBlog] = useState({ results: [] });
+    const [blogError, setBlogError] = useState(false);
 
     const currentUser = useCurrentUser();
     const profile_image = currentUser?.profile_image;
@@ -38,12 +40,17 @@ function BlogPage() {
                 setBlog({ results: [blog] });
                 setComments(comments);
             } catch (err) {
+                setBlogError(true);
                 // console.log(err);
             }
         };
 
         handleMount();
     }, [id]);
+
+    if (blogError) {
+        return <NotFound />
+    }
 
     return (
         <Row className="h-100">

@@ -30,12 +30,15 @@ import NoResults from "../../assets/no-results.png";
 
 import BlogProfilePageFeature from "../blogs/BlogProfilePageFeature";
 import JourneyProfilePageFeature from "../journeys/JourneyProfilePageFeature";
+import NotFound from "../../components/NotFound";
 
 function ProfilePage() {
 
     const [hasLoaded, setHasLoaded] = useState(false);
     const [profileJourneys, setProfileJourneys] = useState({ results: [] });
     const [profileBlogs, setProfileBlogs] = useState({ results: [] });
+    const [profileError, setProfileError] = useState(false);
+
 
     const currentUser = useCurrentUser();
     const { id } = useParams();
@@ -66,12 +69,17 @@ function ProfilePage() {
                 setProfileBlogs(profileBlogs);
                 setHasLoaded(true);
             } catch (err) {
+                setProfileError(true);
                 // console.log(err);
             }
         };
 
         fetchData();
     }, [id, setProfileData]);
+
+    if (profileError) {
+        return <NotFound />
+    }
 
     const mainProfile = (
         <>
