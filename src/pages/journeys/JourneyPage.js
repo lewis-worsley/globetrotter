@@ -11,14 +11,15 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 import { axiosReq } from "../../api/axiosDefaults";
 
+import JourneyComment from "../comments/journey_comments/JourneyComment";
 import JourneyCommentCreateForm
     from "../comments/journey_comments/JourneyCommentCreateForm";
-import JourneyComment from "../comments/journey_comments/JourneyComment";
 import UniqueJourneyPage from "./UniqueJourneyPage";
 
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 import { fetchMoreData } from "../../utils/utils";
+
 import NotFound from "../../components/NotFound";
 
 function JourneyPage() {
@@ -28,20 +29,20 @@ function JourneyPage() {
 
     const currentUser = useCurrentUser();
     const profile_image = currentUser?.profile_image;
-    const [journeyComments, setJourneyComments] = useState({ results: [] });
+    const [comments, setComments] = useState({ results: [] });
 
     useEffect(() => {
         const handleMount = async () => {
             try {
-                const [{ data: journey }, { data: journeyComments }] = await Promise.all([
+                const [{ data: journey }, { data: comments }] = await Promise.all([
                     axiosReq.get(`/journeys/${id}`),
                     axiosReq.get(`/journeys/comments/?journey=${id}`),
                 ]);
                 setJourney({ results: [journey] });
-                setJourneyComments(journeyComments);
+                setComments(comments);
             } catch (err) {
                 setJourneyError(true);
-
+                console.error(err)
             }
         };
 
@@ -67,25 +68,25 @@ function JourneyPage() {
                             profileImage={profile_image}
                             journey={id}
                             setJourney={setJourney}
-                            setJourneyComments={setJourneyComments}
+                            setComments={setComments}
                         />
-                    ) : journeyComments.results.length ? (
+                    ) : comments.results.length ? (
                         "Comments"
                     ) : null}
-                    {journeyComments.results.length ? (
+                    {comments.results.length ? (
                         <InfiniteScroll
-                            children={journeyComments.results.map((journeyComment) => (
+                            children={comments.results.map((comment) => (
                                 <JourneyComment
-                                    key={journeyComment.id}
-                                    {...journeyComment}
+                                    key={comment.id}
+                                    {...comment}
                                     setJourney={setJourney}
-                                    setJourneyComments={setJourneyComments}
+                                    setComments={setComments}
                                 />
                             ))}
-                            dataLength={journeyComments.results.length}
+                            dataLength={comments.results.length}
                             loader={<Asset spinner />}
-                            hasMore={!!journeyComments.next}
-                            next={() => fetchMoreData(journeyComments, setJourneyComments)}
+                            hasMore={!!comments.next}
+                            next={() => fetchMoreData(comments, setComments)}
                         />
                     ) : currentUser ? (
                         <p>No comments yet, be the first to comment!</p>
