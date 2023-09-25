@@ -215,11 +215,14 @@ Journeys, blogs and news each have their own unique colour associated with them 
 - Background colour header: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/background-colour-heading.png)
 - Buttons: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/colour-button.png)
 
+<br>
+
 ### Permanent features
 <hr>
 
 The following features are permanently visible across all pages to provide ease of use and navigation for visitors. 
 
+<br>
 
 #### Navigation bar
 <hr>
@@ -260,6 +263,12 @@ Future development: include company social media and contact details.
 Existing features:
 
 - Homepage
+- Journeys
+- Blogs
+- News
+- Profile
+
+<br>
 
 #### Homepage
 <hr>
@@ -618,6 +627,21 @@ Users can change their password: [here](https://github.com/lewis-worsley/globetr
 
 <br>
 
+##### Suggestions to follow
+<hr>
+
+A popular profiles component is present on the journeys, blogs and news page feeds, but on smaller screens less than large, the component is hidden.
+
+The idea is to encourage users to follow accounts who are active on the site.
+
+If the user is signed out, the follow button feature is removed. On the other hand, if the user is signed in, the follow/unfollow button is displayed.
+
+- Signed out: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/profile/profile-suggestions-to-follow-signed-out.png)
+- Signed in: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/profile/profile-suggestions-to-follow-signed-in.png)
+
+
+<br>
+
 ## Components
 
 Several components are reused throughout the project:
@@ -671,7 +695,7 @@ To signify to users they are on a wrong URL page, a 404 page has been created. T
 
 Throughout the build of the website, but more so after the structure and contents of the page was added, Google Dev-tools was used extensively to validate new ideas, fix errors, unearth solutions, styles, and ensure consistency with the design and user experience across various devices by ensuring the website was responsive.
 
-All links work as expected.
+The testing process, along with bugs, can be viewed [here](https://github.com/lewis-worsley/moments/blob/main/TESTING.md).
 
 <br>
 
