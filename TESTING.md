@@ -84,6 +84,12 @@ The following bugs were identified during user testing:
 
 <br>
 
+- Bug 🐞 - On the unique journey page, the comment count nor form appear to submit on post. When the page refreshed the comment count would increase and the comment would appear under the post
+- Cause ⚒️ - I used journeyComments instead of comments for the useState()
+- Resolution ✅ - I changed the name from journeyComments to comments
+
+<br>
+
 ### Unfixed bugs
 <hr>
 
@@ -92,9 +98,6 @@ The following bugs were identified during user testing:
 
 - Likes: 
     - On the journey and blogs page, the like count increasing and decreases when clicked but the like count doesn't refresh when clicked upon in the unique (id) pages, for both journeys and blogs
-
-- Comments: 
-    - On the unique journey page, the comment count doesn't refresh when a comment is added or deleted nor does the comment appear to be submitted under the post, meaning the user could spam the post button causing multiple instances of the same comment to be created. When the page is refreshed the comment appears under the card and comment count increases
 
 - News search query:
     - The news search query field is not filtering results based on user input
@@ -111,15 +114,23 @@ Although all CSS stylesheets passed on https://jigsaw.w3.org/css-validator/, the
 - Navbar toggle:
     -  Has a style attribute to target backgroundColor and borderColor. Targeting this through CSS proved difficult and time consuming. In future, I'd like to remove the attribute and find a way to style it via CSS
 
-### Unresolved issues
-<hr>
-
 - Profile page:
+    - If a user has only posted one journey or blog, the tabs section loses it's formatting causing the tabs to appear horizontal. 
+
+    <img src="./docs/testing/error-vertical-tabs.png">
+
+    <br>
+
     - If the user is browsing the tabs via screens smaller than large but larger than extra small, the card loses its structure due to the behaviour of the React CardDeck component - this problem is resolved on the homepage due to added logic such as the .slice() method being used. However, because a user can have more than three journeys and/or blogs, therefore using the .slice() method is impractical. Ideally, on screens smaller than large, I'd like the cards to show columns of 2 or 1 in a row.  The example below shows how the likes and comments icons loses it's positioning in the card when the content begins to squeeze - this is greatly exaggerated when the screen gets smaller and smaller until it reaches extra small screens like on mobile.
+
+    The fix was by changing 'display: flex" to change to 'display: block' on screens smaller than 1200px.
 
     <img src="./docs/testing/error-cards-squeeze.png">
 
 <br>
+
+### Unresolved issues
+<hr>
 
 - h1 tag and margin on small screens:
     - On smaller screens, the margin causes the heading to each form their own lines. This is because of the box shadow that is applied over the hero image
