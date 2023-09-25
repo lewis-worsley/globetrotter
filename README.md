@@ -743,10 +743,24 @@ For accessibility, the following Chrome extensions was used:
 #### Testing report
 <hr>
 
-- HTML:
+- HTML: 1 Error reported
 - CSS: no existing errors reported
 - Python: no existing errors reported
 - Javascript: warnings reported, however they do not effect the functionality of the website. See link below for example:
+
+<br>
+
+##### HTML
+<hr>
+
+The 1 error reported shows an error regarding Google fonts that I've imported. However, despite this, the website is functioning as expected with the two respective fonts that are imported. Removing the illegal character (spaces) caused the fonts to disable. I discussed this with my mentor and I was advised to leave as is. 
+
+HTML error: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/testing/html-error-validator.png)
+
+<br>
+
+##### Javascript
+<hr>
 
 Javascript example for MoreDropdown.js component: [here](https://github.com/lewis-worsley/globetrotter/blob/main/docs/features/testing/jshint.png)
 
