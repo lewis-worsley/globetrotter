@@ -5,9 +5,49 @@
     margin: 4px;
 }
 
+.ImagesOnProfile {
+    max-height: 450px;
+    max-width: 1100px;
+    object-fit: cover;
+}
+
+.Tabs {
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-top: 10px solid white;
+    border-left: 10px solid white;
+    border-right: 10px solid white;
+    border-bottom: 10px solid white;
+    margin-bottom: -15px;
+    background-color: #63610c;
+}
+
 @media screen and (max-width: 991px) {
     .ProfileImage {
         width: 250px;
         height: 250px;
+    }
+
+    .ImagesOnProfile {
+        max-width: 900px;
+        max-height: 190px;
+        object-fit: cover;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .ImagesOnProfile {
+        max-width: 900px;
+        max-height: 215px;
+        object-fit: cover;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .ImagesOnProfile {
+        max-width: 900px;
+        max-height: 265px;
+        object-fit: cover;
     }
 }

@@ -13,6 +13,7 @@ import { axiosRes } from '../../api/axiosDefaults';
 
 import appStyles from '../../App.module.css';
 import blogStyles from '../../styles/BlogPages.module.css';
+import profileStyles from "../../styles/ProfilePage.module.css";
 
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 
@@ -42,7 +43,7 @@ const BlogProfilePageFeature = (props) => {
         };
         return (
             <span className="text">
-                {isReadMore ? text.slice(0, 100) : text}
+                {isReadMore ? text.slice(0, 125) : text}
                 <span onClick={toggleReadMore} className={`${appStyles.ReadOrHide} pl-1`}>
                     {isReadMore ? <Link to={`/blogs/${id}`}>...read more</Link> : ""}
                 </span>
@@ -107,7 +108,7 @@ const BlogProfilePageFeature = (props) => {
                         <ReadMore>{content}</ReadMore>
                     </Card.Text>}
                 <Link to={`/blogs/${id}`}>
-                    <Card.Img src={image} alt={title} className={appStyles.ImagesOnProfile} />
+                    <Card.Img src={image} alt={title} className={profileStyles.ImagesOnProfile} />
                 </Link>
                 <div className='mt-4 d-flex justify-content-end align-items-center'>
                     {is_owner ? (

@@ -213,21 +213,21 @@ function ProfilePage() {
 
     function ControlledTabs() {
         return (
-            <Row className="justify-content-center justify-content-lg-start">
+            <div className="">
                 <Tabs
                     id="controlled-tab-example"
                     activeKey={key}
                     onSelect={(k) => setKey(k)}
-                    className={`${appStyles.Headings} ${appStyles.TabsNavBar}`}
+                    className={`${appStyles.Headings} ${profileStyles.Tabs} ${profileStyles.Tabs} justify-content-center row`}
                 >
-                    <Tab eventKey="journey" title="Journeys">
+                    <Tab eventKey="journey" title="Journeys" className={profileStyles.Tblue} >
                         {mainProfileJourneys}
                     </Tab>
-                    <Tab eventKey="blog" title="Blogs">
+                    <Tab eventKey="blog" title="Blogs" className={profileStyles.Tblue}>
                         {mainProfileBlogs}
                     </Tab>
                 </Tabs>
-            </Row>
+            </div>
         );
     }
 

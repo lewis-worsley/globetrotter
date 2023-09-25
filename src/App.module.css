@@ -84,12 +84,6 @@ p {
     
 }
 
-.ImagesOnProfile {
-    max-height: 250px;
-    max-width: 900px;
-    object-fit: cover;
-}
-
 .SmallImage {
     height: 130px;
     max-width: 900px;
@@ -196,24 +190,10 @@ input[type="file"] {
     margin-bottom: 4em;
 }
 
-@media screen and (max-width: 991px) {
-    .ImagesOnProfile {
-        max-width: 900px;
-        max-height: 190px;
-        object-fit: cover;
-    }
-}
-
 @media screen and (max-width: 767px) {
     .Image {
         max-width: 512px;
         max-height: 190px;
-        object-fit: cover;
-    }
-
-    .ImagesOnProfile {
-        max-width: 900px;
-        max-height: 100px;
         object-fit: cover;
     }
 
@@ -249,12 +229,6 @@ input[type="file"] {
 
     .Image {
         max-width: 500px;
-        max-height: 265px;
-        object-fit: cover;
-    }
-
-    .ImagesOnProfile {
-        max-width: 900px;
         max-height: 265px;
         object-fit: cover;
     }

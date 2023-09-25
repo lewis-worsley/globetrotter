@@ -19,10 +19,12 @@ import UniqueJourneyPage from "./UniqueJourneyPage";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 import { fetchMoreData } from "../../utils/utils";
+import NotFound from "../../components/NotFound";
 
 function JourneyPage() {
     const { id } = useParams();
     const [journey, setJourney] = useState({ results: [] });
+    const [journeyError, setJourneyError] = useState(false);
 
     const currentUser = useCurrentUser();
     const profile_image = currentUser?.profile_image;
@@ -38,12 +40,17 @@ function JourneyPage() {
                 setJourney({ results: [journey] });
                 setJourneyComments(journeyComments);
             } catch (err) {
-                // console.log(err);
+                setJourneyError(true);
+
             }
         };
 
         handleMount();
     }, [id]);
+
+    if (journeyError) {
+        return <NotFound />
+    }
 
     return (
         <Row className="h-100">
