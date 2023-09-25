@@ -156,7 +156,7 @@ const Journey = (props) => {
                     ) : (
                         <OverlayTrigger
                             placement="top"
-                            overlay={<Tooltip>Login to like journeys!</Tooltip>}
+                            overlay={<Tooltip>Sign in to like journeys!</Tooltip>}
                         >
                             <i className={`${appStyles.Heart} far fa-heart`}></i>
                         </OverlayTrigger>

@@ -152,7 +152,7 @@ const UniqueJourneyPage = (props) => {
                                     ) : (
                                         <OverlayTrigger
                                             placement="top"
-                                            overlay={<Tooltip>Login to like posts!</Tooltip>}
+                                            overlay={<Tooltip>Sign in to like journeys!</Tooltip>}
                                         >
                                             <i className={`${appStyles.Heart} far fa-heart`}></i>
                                         </OverlayTrigger>
