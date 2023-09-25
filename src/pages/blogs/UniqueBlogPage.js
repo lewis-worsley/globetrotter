@@ -31,6 +31,7 @@ const UniqueBlogPage = (props) => {
         title,
         content,
         countries,
+        locations,
         image,
         created_at,
         blogPage,
@@ -118,7 +119,15 @@ const UniqueBlogPage = (props) => {
                                     <Row>
                                         <Col xs={12} className='d-flex align-items-baseline'>
                                             <span className={`${appStyles.Date}`}>{created_at}</span>
-                                            <span className={`${appStyles.Headings} ml-auto`}>{countries}</span>
+                                            <span
+                                                className={`${appStyles.Headings} ml-auto`}
+                                            >
+                                                {locations ? (
+                                                    <span>{locations},</span>
+                                                ) : (
+                                                    ""
+                                                )} {countries}
+                                            </span>
                                         </Col>
                                         <Col>
                                             {title &&

@@ -118,7 +118,11 @@ const UniqueJourneyPage = (props) => {
                                             <span
                                                 className={`${appStyles.Headings} ml-auto`}
                                             >
-                                                {locations}, {countries}
+                                                {locations ? (
+                                                    <span>{locations},</span>
+                                                ) : (
+                                                    ""
+                                                )} {countries}
                                             </span>
                                         </Col>
                                         <Col>

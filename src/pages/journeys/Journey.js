@@ -117,7 +117,11 @@ const Journey = (props) => {
                         <Card.Text
                             className={appStyles.Headings}
                         >
-                            {locations}, {countries}
+                            {locations ? (
+                                <span>{locations},</span>
+                            ) : (
+                                ""
+                            )} {countries}
                         </Card.Text>
                     </Col>
                 </Row>
