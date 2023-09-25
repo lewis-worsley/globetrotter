@@ -23,6 +23,18 @@
     background-color: #63610c;
 }
 
+.CardDeck {
+    display: flex;
+    background-color: white;
+}
+
+@media screen and (max-width: 1199px) {
+    .CardDeck {
+        display: block;
+        padding: 10px;
+    }
+}
+
 @media screen and (max-width: 991px) {
     .ProfileImage {
         width: 250px;
@@ -49,5 +61,11 @@
         max-width: 900px;
         max-height: 265px;
         object-fit: cover;
+    }
+
+    .CardDeck {
+        display: block;
+        padding: 0px;
+        background-color: transparent;
     }
 }

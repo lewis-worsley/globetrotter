@@ -115,12 +115,6 @@ Although all CSS stylesheets passed on https://jigsaw.w3.org/css-validator/, the
 <hr>
 
 - Profile page:
-    - If a user has only posted one journey or blog, the tabs section loses it's formatting causing the tabs to appear horizontal. Unfortunately, I've not been able to find a solution to this problem. If a tab contains two or more cards, the tabs title returns to it's original horizontal position. 
-
-    <img src="./docs/testing/error-vertical-tabs.png">
-
-    <br>
-
     - If the user is browsing the tabs via screens smaller than large but larger than extra small, the card loses its structure due to the behaviour of the React CardDeck component - this problem is resolved on the homepage due to added logic such as the .slice() method being used. However, because a user can have more than three journeys and/or blogs, therefore using the .slice() method is impractical. Ideally, on screens smaller than large, I'd like the cards to show columns of 2 or 1 in a row.  The example below shows how the likes and comments icons loses it's positioning in the card when the content begins to squeeze - this is greatly exaggerated when the screen gets smaller and smaller until it reaches extra small screens like on mobile.
 
     <img src="./docs/testing/error-cards-squeeze.png">

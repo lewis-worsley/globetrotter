@@ -161,7 +161,7 @@ function ProfilePage() {
 
     const mainProfileJourneys = (
         <>
-            <CardDeck className={appStyles.TabBackgroundColor}>
+            <CardDeck className={profileStyles.CardDeck}>
                 {hasLoaded ? (
                     <>
                         {profileJourneys.results.map((journey) => (
@@ -187,7 +187,7 @@ function ProfilePage() {
 
     const mainProfileBlogs = (
         <>
-            <CardDeck className={appStyles.TabBackgroundColor}>
+            <CardDeck className={profileStyles.CardDeck}>
                 {hasLoaded ? (
                     <>
                         {profileBlogs.results.map((blog) => (
@@ -218,7 +218,7 @@ function ProfilePage() {
                     id="controlled-tab-example"
                     activeKey={key}
                     onSelect={(k) => setKey(k)}
-                    className={`${appStyles.Headings} ${profileStyles.Tabs} ${profileStyles.Tabs} justify-content-center row`}
+                    className={`${appStyles.Headings} ${profileStyles.Tabs} justify-content-center row`}
                 >
                     <Tab eventKey="journey" title="Journeys" className={profileStyles.Tblue} >
                         {mainProfileJourneys}
