@@ -70,7 +70,7 @@ function ProfilePage() {
                 setHasLoaded(true);
             } catch (err) {
                 setProfileError(true);
-                // console.log(err);
+                console.error(err);
             }
         };
 

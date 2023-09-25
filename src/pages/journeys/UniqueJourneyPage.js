@@ -50,7 +50,7 @@ const UniqueJourneyPage = (props) => {
             await axiosRes.delete(`/journeys/${id}/`);
             history.goBack();
         } catch (err) {
-            // console.log(err);
+            console.error(err);
         }
     };
 
@@ -66,7 +66,7 @@ const UniqueJourneyPage = (props) => {
                 }),
             }));
         } catch (err) {
-            // console.log(err);
+            console.error(err);
         }
     };
 
@@ -82,7 +82,7 @@ const UniqueJourneyPage = (props) => {
                 }),
             }));
         } catch (err) {
-            // console.log(err);
+            console.error(err);
         }
     };
 

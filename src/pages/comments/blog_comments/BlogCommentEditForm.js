@@ -42,7 +42,7 @@ function BlogCommentEditForm(props) {
             }));
             setShowEditForm(false);
         } catch (err) {
-            // console.log(err);
+            console.error(err);
         }
     };
 

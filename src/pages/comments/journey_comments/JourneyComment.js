@@ -48,7 +48,7 @@ const JourneyComment = (props) => {
                 results: prevJourneyComments.results.filter((journeyComment) => journeyComment.id !== id),
             }));
         } catch (err) {
-            // console.log(err);
+            console.error(err);
         }
     };
 

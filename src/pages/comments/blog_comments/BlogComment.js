@@ -48,7 +48,7 @@ const BlogComment = (props) => {
                     prevBlogComments.results.filter((blogComment) => blogComment.id !== id),
             }));
         } catch (err) {
-            // console.log(err);
+            console.error(err);
         }
     };
 

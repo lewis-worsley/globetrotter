@@ -63,7 +63,7 @@ const JourneyProfilePageFeature = (props) => {
                 }),
             }));
         } catch (err) {
-            // console.log(err);
+            console.error(err);
         }
     };
 
@@ -79,7 +79,7 @@ const JourneyProfilePageFeature = (props) => {
                 }),
             }));
         } catch (err) {
-            // console.log(err);
+            console.error(err);
         }
     };
 

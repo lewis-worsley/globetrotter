@@ -60,7 +60,7 @@ const ProfileEditForm = () => {
                     const { name, content, image, based } = data;
                     setProfileData({ name, content, image, based });
                 } catch (err) {
-                    // console.log(err);
+                    console.error(err);
                     history.push("/");
                 }
             } else {
@@ -107,7 +107,7 @@ const ProfileEditForm = () => {
             }));
             history.goBack();
         } catch (err) {
-            // console.log(err);
+            console.error(err);
             setErrors(err.response?.data);
         }
     };

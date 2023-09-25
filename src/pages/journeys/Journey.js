@@ -68,7 +68,7 @@ const Journey = (props) => {
                 }),
             }));
         } catch (err) {
-            // console.log(err);
+            console.error(err);
         }
     };
 
@@ -84,7 +84,7 @@ const Journey = (props) => {
                 }),
             }));
         } catch (err) {
-            // console.log(err);
+            console.error(err);
         }
     };
 

@@ -24,7 +24,7 @@ function NewsPage() {
                 setNews({ results: [news] });
             } catch (err) {
                 setNewsError(true);
-                // console.log(err);
+                console.error(err);
             }
         };
 

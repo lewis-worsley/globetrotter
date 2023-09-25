@@ -47,7 +47,7 @@ function JourneyEditForm() {
                     setJourneyData({ image, title, countries, locations, content })
                     : history.push("/");
             } catch (err) {
-                // console.log(err);
+                console.error(err);
             }
         };
 

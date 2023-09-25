@@ -63,7 +63,7 @@ const BlogProfilePageFeature = (props) => {
                 }),
             }));
         } catch (err) {
-            // console.log(err);
+            console.error(err);
         }
     };
 
@@ -79,7 +79,7 @@ const BlogProfilePageFeature = (props) => {
                 }),
             }));
         } catch (err) {
-            // console.log(err);
+            console.error(err);
         }
     };
 

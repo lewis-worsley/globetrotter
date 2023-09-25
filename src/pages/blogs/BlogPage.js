@@ -42,7 +42,7 @@ function BlogPage() {
                 setComments(comments);
             } catch (err) {
                 setBlogError(true);
-                // console.log(err);
+                console.error(err);
             }
         };
 
