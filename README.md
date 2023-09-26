@@ -182,7 +182,7 @@ The application I used to draw my database schema was DBDiagram to help visualis
 ### Agile Methodology
 <hr>
 
- A kanban board on GitHub was used as an agile tool for the planning and development of Globetrotters. To view it, please click [here](https://github.com/lewis-worsley/projects/4).
+A kanban board on GitHub was used as an agile tool for the planning and development of Globetrotters. To view it, please click [here](https://github.com/lewis-worsley/projects/4).
 
 <img src="./docs/planning-development/kanban-board.png">
 
@@ -190,14 +190,14 @@ The application I used to draw my database schema was DBDiagram to help visualis
 
 In total, the project consisted of eight epics which are referenced and linked to user stories on the kanban board:
 
- 1. Navigation & Authentication
- 2. Journeys
- 3. Feed
- 4. Comments
- 5. Tag
- 6. Blogs
- 7. News
- 8. Profile
+1. Navigation & Authentication
+2. Journeys
+3. Feed
+4. Comments
+5. Tag
+6. Blogs
+7. News
+8. Profile
 
 <br>
 
@@ -277,8 +277,11 @@ Existing features:
 
 - Homepage
 - Journeys
+- Auth
 - Blogs
 - News
+- Unique id pages
+- Form pages
 - Profile
 
 <br>

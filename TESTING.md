@@ -127,6 +127,9 @@ Although all CSS stylesheets passed on https://jigsaw.w3.org/css-validator/, the
 
     <img src="./docs/testing/error-cards-squeeze.png">
 
+- Horizontal scroll
+    - Because I tried to overflow the image outside the parent container, it created a horizontal scroll on the hero images on the homepage and unique pages for journeys, blogs and news. I have since redesigned the hero image for the home page and removed the overflow issues on the unique pages for journeys, blogs and news respectively.
+
 <br>
 
 ### Unresolved issues
