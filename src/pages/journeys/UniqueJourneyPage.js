@@ -91,7 +91,11 @@ const UniqueJourneyPage = (props) => {
             <div className={appStyles.HeroImage}>
                 <Card.Img src={image} alt={title} className={`${appStyles.Hero}`} />
                 <div className={`${appStyles.Title} border-bottom text-center`}>
-                    {title && <Card.Title ><h1 className={appStyles.Headings}>{title}</h1></Card.Title>}
+                    {title &&
+                        <Card.Title>
+                            <h1 className={appStyles.Headings}>{title}</h1>
+                        </Card.Title>
+                    }
                     <h3 className={`${appStyles.Headings} mt-5`}>{countries}</h3>
                 </div>
             </div>
