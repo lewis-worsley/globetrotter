@@ -83,12 +83,12 @@ const HomePage = () => {
         <div>
             <div
                 className={
-                    `${homePageStyles.HeroImage} ${homePageStyles.Hero} text-center`
+                    `${homePageStyles.HeroImage} ${homePageStyles.Hero} row text-center`
                 }
             >
                 <div className={homePageStyles.Centered}>
                     <h1 className={`${appStyles.Headings}`}>
-                        Welcome to the Globetrotter lifestyle
+                        Welcome to the <br />Globetrotter lifestyle
                     </h1>
                 </div>
             </div>

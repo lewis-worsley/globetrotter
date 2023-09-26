@@ -10,7 +10,7 @@
 }
 
 body {
-    margin-top: -5.3vh;
+    margin-top: -5vh;
 }
 
 p {
@@ -85,7 +85,7 @@ p {
 }
 
 .SmallImage {
-    height: 130px;
+    max-height: 130px;
     max-width: 900px;
     object-fit: cover;
     
@@ -160,13 +160,7 @@ input[type="file"] {
     margin-top: -2.6em;
     height: 59em;
     overflow: hidden;
-    left: 50%;
-	margin-left: -50vw;
-	margin-right: -50vw;
-	max-width: 100vw;
 	position: relative;
-	right: 50%;
-	width: 100vw;
 }
 
 .Hero {
@@ -208,23 +202,19 @@ input[type="file"] {
 @media screen and (max-width: 575px) {
     .HeroImage {
         width: 100%;
-        margin-left: 0em;
         height: 800px;
         object-fit: cover;
-        margin-right: 0em;
-        max-width: 100vw;
-        right: 50%;
         position: sticky;
     }
 
     .Title {
         position: absolute;
         top: 41%;
-        padding: 13em 12.5em;
+        padding: 13em 15em;
     }
 
     body {
-        margin-top: -9.0vh;
+        margin-top: -10.0vh;
     }
 
     .Image {
