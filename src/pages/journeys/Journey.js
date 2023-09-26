@@ -147,28 +147,28 @@ const Journey = (props) => {
                             placement="top"
                             overlay={<Tooltip>Can't like your own journey!</Tooltip>}
                         >
-                            <i className="far fa-heart"></i>
+                            <i className="fa-regular fa-heart"></i>
                         </OverlayTrigger>
                     ) : like_id ? (
                         <span onClick={handleUnlike}>
-                            <i className={`fas fa-heart ${appStyles.Heart}`}></i>
+                            <i className="fas fa-heart"></i>
                         </span>
                     ) : currentUser ? (
                         <span onClick={handleLike}>
-                            <i className={`fas fa-heart ${appStyles.HeartOutline}`}></i>
+                            <i className="fa-regular fa-heart"></i>
                         </span>
                     ) : (
                         <OverlayTrigger
                             placement="top"
                             overlay={<Tooltip>Sign in to like journeys!</Tooltip>}
                         >
-                            <i className={`${appStyles.Heart} far fa-heart`}></i>
+                            <i className="fas fa-heart"></i>
                         </OverlayTrigger>
                     )}
                     {likes_count}
                     <span className='ml-3'>
                         <Link to={`/journeys/${id}`}>
-                            <i className={`${appStyles.Comment} far fa-comments`}></i>
+                            <i className="far fa-comments"></i>
                         </Link>
                         {comments_count}
                     </span>
